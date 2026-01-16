@@ -1,0 +1,420 @@
+"use client";
+
+import { useState } from "react";
+
+export default function HowItWorksPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+  const steps = [
+    {
+      number: "01",
+      title: "Browse Our Fleet",
+      description: "Explore our diverse collection of vehicles and find the perfect car for your needs. Filter by category, transmission, seats, and more.",
+      icon: (
+        <svg className="w-12 h-12" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      ),
+    },
+    {
+      number: "02",
+      title: "Select Your Car",
+      description: "Choose your preferred vehicle and check availability. View detailed specifications, features, and pricing options for daily, weekly, or monthly rentals.",
+      icon: (
+        <svg className="w-12 h-12" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+    },
+    {
+      number: "03",
+      title: "Book & Confirm",
+      description: "Contact us via phone or email to make your reservation. Provide your rental dates, pickup location, and any special requirements.",
+      icon: (
+        <svg className="w-12 h-12" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      ),
+    },
+    {
+      number: "04",
+      title: "Pick Up Your Car",
+      description: "Present your valid driver's license and required documents. Our team will conduct a quick vehicle inspection with you before you drive off.",
+      icon: (
+        <svg className="w-12 h-12" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+        </svg>
+      ),
+    },
+    {
+      number: "05",
+      title: "Enjoy Your Journey",
+      description: "Hit the road and explore Rwanda at your own pace. Our vehicles are well-maintained and equipped for a comfortable, safe journey.",
+      icon: (
+        <svg className="w-12 h-12" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+        </svg>
+      ),
+    },
+    {
+      number: "06",
+      title: "Return the Vehicle",
+      description: "Return the car at the agreed time and location. We'll inspect the vehicle together and process your final payment if any additional charges apply.",
+      icon: (
+        <svg className="w-12 h-12" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+        </svg>
+      ),
+    },
+  ];
+
+  const requirements = [
+    {
+      title: "Valid Driver's License",
+      description: "A valid driver's license from your country of residence or an international driving permit.",
+      icon: (
+        <svg className="w-8 h-8" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+        </svg>
+      ),
+    },
+    {
+      title: "Identification",
+      description: "A valid passport or national ID card for verification purposes.",
+      icon: (
+        <svg className="w-8 h-8" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Minimum Age",
+      description: "Drivers must be at least 21 years old (25 for luxury vehicles).",
+      icon: (
+        <svg className="w-8 h-8" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+    },
+    {
+      title: "Payment Method",
+      description: "A valid credit card or cash payment for the rental and security deposit.",
+      icon: (
+        <svg className="w-8 h-8" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+        </svg>
+      ),
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: 'url(https://kigalicarhire.b-cdn.net/cars/1763129080013-2022-toyota-rav-4-prime-panoramic-carprousa-1404x1112.webp)' }}
+        >
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-32">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-[family-name:var(--font-plus-jakarta)]">
+            How It Works
+          </h1>
+          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
+            Renting a car in Rwanda has never been easier. Follow these simple steps to get on the road.
+          </p>
+          <a
+            href="/fleet"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#01B000] text-white font-bold rounded-lg hover:bg-[#019500] transition-all"
+          >
+            <svg
+              className="w-5 h-5 mr-2"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            Browse Our Fleet
+          </a>
+        </div>
+      </section>
+
+      {/* Steps Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Simple Rental Process
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            From browsing to driving, our streamlined process makes car rental quick and hassle-free.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {steps.map((step, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl border-2 border-gray-200 p-8 hover:border-[#01B000] transition-all group"
+            >
+              {/* Step Number */}
+              <div className="text-6xl font-bold text-gray-200 group-hover:text-[#01B000]/20 transition-colors mb-4">
+                {step.number}
+              </div>
+
+              {/* Icon */}
+              <div className="text-[#01B000] mb-4">
+                {step.icon}
+              </div>
+
+              {/* Content */}
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                {step.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Requirements Section */}
+      <section className="bg-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              What You'll Need
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Make sure you have these essentials ready for a smooth rental experience.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {requirements.map((req, index) => (
+              <div
+                key={index}
+                className="bg-gray-50 rounded-xl border-2 border-gray-200 p-6 text-center hover:border-[#01B000] transition-all"
+              >
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-[#01B000]/10 rounded-full text-[#01B000] mb-4">
+                  {req.icon}
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  {req.title}
+                </h3>
+                <p className="text-sm text-gray-600">
+                  {req.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Quick answers to common questions about our car rental service.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Left Column */}
+          <div className="space-y-4">
+            {[
+              {
+                question: "What's included in the rental price?",
+                answer: "The rental price includes the vehicle, basic insurance, and unlimited mileage. Additional services like GPS, child seats, or additional drivers may incur extra charges."
+              },
+              {
+                question: "Can I pick up and drop off at different locations?",
+                answer: "Yes, we offer flexible pickup and drop-off locations across Kigali and Rwanda. Contact us to arrange your preferred locations."
+              },
+              {
+                question: "What happens if I return the car late?",
+                answer: "Late returns may be subject to additional charges. Please contact us as soon as possible if you need to extend your rental period."
+              },
+              {
+                question: "Is fuel included in the rental?",
+                answer: "No, fuel is not included. You'll receive the car with a full tank and are expected to return it with a full tank, or we'll charge for refueling."
+              },
+              {
+                question: "Do you offer long-term rentals?",
+                answer: "Yes, we offer special rates for weekly and monthly rentals. Contact us for customized long-term rental packages and discounted rates."
+              },
+              {
+                question: "What are the age requirements for renting?",
+                answer: "Drivers must be at least 21 years old with a valid driver's license. For luxury and premium vehicles, the minimum age is 25 years."
+              }
+            ].map((faq, index) => (
+              <div
+                key={index}
+                className={`bg-white rounded-xl border-2 transition-all ${
+                  openFaq === index ? 'border-[#01B000]' : 'border-gray-200'
+                }`}
+              >
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 rounded-xl transition-colors"
+                >
+                  <h3 className="text-lg font-bold text-gray-900 pr-4">
+                    {faq.question}
+                  </h3>
+                  <svg
+                    className={`w-6 h-6 text-[#01B000] flex-shrink-0 transition-transform ${
+                      openFaq === index ? 'rotate-180' : ''
+                    }`}
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {openFaq === index && (
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-600 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Right Column */}
+          <div className="space-y-4">
+            {[
+              {
+                question: "What documents do I need to rent a car?",
+                answer: "You'll need a valid driver's license, a passport or national ID card, and a valid credit card or cash for payment and security deposit."
+              },
+              {
+                question: "Is insurance included in the rental?",
+                answer: "Basic insurance is included in all our rental packages. Additional comprehensive coverage options are available for purchase at competitive rates."
+              },
+              {
+                question: "Can I add an additional driver?",
+                answer: "Yes, additional drivers can be added to your rental. They must meet the same age and license requirements and be present during pickup to provide their documentation."
+              },
+              {
+                question: "What if the car breaks down during my rental?",
+                answer: "If you experience any mechanical issues, contact us immediately. We provide 24/7 roadside assistance and will arrange a replacement vehicle if needed."
+              },
+              {
+                question: "Can I cross the border into neighboring countries?",
+                answer: "Cross-border travel is possible with prior arrangement. Please inform us during booking so we can provide the necessary documentation and adjust the insurance coverage."
+              },
+              {
+                question: "How do I modify or cancel my reservation?",
+                answer: "Contact us via phone or email to modify or cancel your reservation. Cancellation policies vary depending on how far in advance you notify us. Early cancellations may receive partial or full refunds."
+              }
+            ].map((faq, index) => (
+              <div
+                key={index + 6}
+                className={`bg-white rounded-xl border-2 transition-all ${
+                  openFaq === index + 6 ? 'border-[#01B000]' : 'border-gray-200'
+                }`}
+              >
+                <button
+                  onClick={() => toggleFaq(index + 6)}
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 rounded-xl transition-colors"
+                >
+                  <h3 className="text-lg font-bold text-gray-900 pr-4">
+                    {faq.question}
+                  </h3>
+                  <svg
+                    className={`w-6 h-6 text-[#01B000] flex-shrink-0 transition-transform ${
+                      openFaq === index + 6 ? 'rotate-180' : ''
+                    }`}
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {openFaq === index + 6 && (
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-600 leading-relaxed">
+                      {faq.answer}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-gradient-to-r from-[#01B000] to-[#019500] text-white py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Ready to Get Started?
+          </h2>
+          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+            Browse our fleet and find the perfect vehicle for your journey in Rwanda.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/fleet"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#01B000] rounded-lg font-bold hover:bg-gray-100 transition-all"
+            >
+              <svg
+                className="w-5 h-5 mr-2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              Browse Fleet
+            </a>
+            <a
+              href="/contact"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white rounded-lg font-bold hover:bg-white hover:text-[#01B000] transition-all"
+            >
+              <svg
+                className="w-5 h-5 mr-2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
