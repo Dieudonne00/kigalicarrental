@@ -1,4 +1,4 @@
-# Kigali Car Hire
+# Kigali Car rental
 
 A modern, SEO-optimized car rental website built with Next.js, TypeScript, Tailwind CSS, and PostgreSQL.
 
