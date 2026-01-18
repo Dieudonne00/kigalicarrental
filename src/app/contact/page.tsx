@@ -125,7 +125,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 mb-1">Phone</h3>
                   <a href="tel:+250788892976" className="text-gray-600 hover:text-[#01B000] transition-colors">
-                    +250 788 892 976
+                    +250796077321
                   </a>
                 </div>
               </div>
@@ -147,8 +147,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 mb-1">Email</h3>
-                  <a href="mailto:info@kigalicarhire.com" className="text-gray-600 hover:text-[#01B000] transition-colors">
-                    info@kigalicarhire.com
+                  <a href="mailto:kigalicarrentals2004@gmail.com" className="text-gray-600 hover:text-[#01B000] transition-colors">
+                    kigalicarrentals2004@gmail.com
                   </a>
                 </div>
               </div>
