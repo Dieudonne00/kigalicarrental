@@ -21,7 +21,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Kigali Car Hire - Rent a Car in Kigali, Rwanda",
+  title: "Rwanda car rental | kigali car rental|  Rent a Car in Kigali | rent car with driver in kigali | rent a car in Rwanda self drive| Rwanda kigali car rentals",
   description: "Affordable car rental services in Kigali, Rwanda. Book your vehicle today for the best rates.",
   verification: {
     google: "xHopaPwEJGui02kgKU5AHndOdIRei2piro21JOdMeGk",
