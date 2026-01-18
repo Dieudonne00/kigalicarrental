@@ -35,7 +35,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/fleet" className="hover:text-[#4B5320] transition-colors">
-                  Our Fleet
+                  Our Cars
                 </Link>
               </li>
               <li>
