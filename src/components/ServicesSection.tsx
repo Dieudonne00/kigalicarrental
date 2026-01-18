@@ -98,10 +98,10 @@ export default function ServicesSection() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl border-2 border-gray-200 p-4 md:p-8 hover:border-[#01B000] transition-all duration-300 hover:shadow-lg group"
+              className="bg-white rounded-xl border-2 border-gray-200 p-4 md:p-8 hover:border-[#4B5320] transition-all duration-300 hover:shadow-lg group"
             >
               {/* Icon */}
-              <div className="w-10 h-10 md:w-16 md:h-16 bg-green-50 rounded-xl flex items-center justify-center text-[#01B000] mb-3 md:mb-6 group-hover:bg-[#01B000] group-hover:text-white transition-all duration-300">
+              <div className="w-10 h-10 md:w-16 md:h-16 bg-[#4B5320]/10 rounded-xl flex items-center justify-center text-[#4B5320] mb-3 md:mb-6 group-hover:bg-[#4B5320] group-hover:text-white transition-all duration-300">
                 <div className="scale-75 md:scale-100">
                   {service.icon}
                 </div>
@@ -122,7 +122,7 @@ export default function ServicesSection() {
                 {service.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-center text-[10px] md:text-sm">
                     <svg
-                      className="w-3 h-3 md:w-5 md:h-5 text-[#01B000] mr-1 md:mr-2 flex-shrink-0"
+                      className="w-3 h-3 md:w-5 md:h-5 text-[#4B5320] mr-1 md:mr-2 flex-shrink-0"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -152,7 +152,7 @@ export default function ServicesSection() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
                 href="tel:+250796077321"
-                className="inline-flex items-center justify-center px-6 py-3 bg-[#01B000] text-white font-bold rounded-lg hover:bg-[#019500] transition-all"
+                className="inline-flex items-center justify-center px-6 py-3 bg-[#4B5320] text-white font-bold rounded-lg hover:bg-[#3a4218] transition-all"
               >
                 <svg
                   className="w-5 h-5 mr-2"
@@ -169,7 +169,7 @@ export default function ServicesSection() {
               </a>
               <a
                 href="mailto:kigalicarrentals2004@gmail.com"
-                className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 text-gray-900 font-bold rounded-lg hover:border-[#01B000] hover:bg-[#01B000] hover:text-white transition-all"
+                className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 text-gray-900 font-bold rounded-lg hover:border-[#4B5320] hover:bg-[#4B5320] hover:text-white transition-all"
               >
                 <svg
                   className="w-5 h-5 mr-2"
