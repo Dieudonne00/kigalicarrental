@@ -2,9 +2,7 @@
 User-agent: *
 Allow: /
 
-# Disallow manager/admin pages
-Disallow: /manager/
-Disallow: /api/
+
 
 # Sitemap location
 Sitemap: https://www.kigalicarhire.rw/sitemap.xml
