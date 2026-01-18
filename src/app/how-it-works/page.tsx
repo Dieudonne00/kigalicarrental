@@ -132,7 +132,7 @@ export default function HowItWorksPage() {
           </p>
           <a
             href="/fleet"
-            className="inline-flex items-center justify-center px-8 py-4 bg-[#01B000] text-white font-bold rounded-lg hover:bg-[#019500] transition-all"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#4B5320] text-white font-bold rounded-lg hover:bg-[#3d441a] transition-all"
           >
             <svg
               className="w-5 h-5 mr-2"
@@ -165,15 +165,15 @@ export default function HowItWorksPage() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl border-2 border-gray-200 p-8 hover:border-[#01B000] transition-all group"
+              className="bg-white rounded-xl border-2 border-gray-200 p-8 hover:border-[#4B5320] transition-all group"
             >
               {/* Step Number */}
-              <div className="text-6xl font-bold text-gray-200 group-hover:text-[#01B000]/20 transition-colors mb-4">
+              <div className="text-6xl font-bold text-gray-200 group-hover:text-[#4B5320]/20 transition-colors mb-4">
                 {step.number}
               </div>
 
               {/* Icon */}
-              <div className="text-[#01B000] mb-4">
+              <div className="text-[#4B5320] mb-4">
                 {step.icon}
               </div>
 
@@ -205,9 +205,9 @@ export default function HowItWorksPage() {
             {requirements.map((req, index) => (
               <div
                 key={index}
-                className="bg-gray-50 rounded-xl border-2 border-gray-200 p-6 text-center hover:border-[#01B000] transition-all"
+                className="bg-gray-50 rounded-xl border-2 border-gray-200 p-6 text-center hover:border-[#4B5320] transition-all"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-[#01B000]/10 rounded-full text-[#01B000] mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-[#4B5320]/10 rounded-full text-[#4B5320] mb-4">
                   {req.icon}
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">
@@ -265,7 +265,7 @@ export default function HowItWorksPage() {
               <div
                 key={index}
                 className={`bg-white rounded-xl border-2 transition-all ${
-                  openFaq === index ? 'border-[#01B000]' : 'border-gray-200'
+                  openFaq === index ? 'border-[#4B5320]' : 'border-gray-200'
                 }`}
               >
                 <button
@@ -276,7 +276,7 @@ export default function HowItWorksPage() {
                     {faq.question}
                   </h3>
                   <svg
-                    className={`w-6 h-6 text-[#01B000] flex-shrink-0 transition-transform ${
+                    className={`w-6 h-6 text-[#4B5320] flex-shrink-0 transition-transform ${
                       openFaq === index ? 'rotate-180' : ''
                     }`}
                     fill="none"
@@ -331,7 +331,7 @@ export default function HowItWorksPage() {
               <div
                 key={index + 6}
                 className={`bg-white rounded-xl border-2 transition-all ${
-                  openFaq === index + 6 ? 'border-[#01B000]' : 'border-gray-200'
+                  openFaq === index + 6 ? 'border-[#4B5320]' : 'border-gray-200'
                 }`}
               >
                 <button
@@ -342,7 +342,7 @@ export default function HowItWorksPage() {
                     {faq.question}
                   </h3>
                   <svg
-                    className={`w-6 h-6 text-[#01B000] flex-shrink-0 transition-transform ${
+                    className={`w-6 h-6 text-[#4B5320] flex-shrink-0 transition-transform ${
                       openFaq === index + 6 ? 'rotate-180' : ''
                     }`}
                     fill="none"
@@ -369,7 +369,7 @@ export default function HowItWorksPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-[#01B000] to-[#019500] text-white py-16">
+      <section className="bg-gradient-to-r from-[#4B5320] to-[#3d441a] text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Get Started?
@@ -380,7 +380,7 @@ export default function HowItWorksPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/fleet"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#01B000] rounded-lg font-bold hover:bg-gray-100 transition-all"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#4B5320] rounded-lg font-bold hover:bg-gray-100 transition-all"
             >
               <svg
                 className="w-5 h-5 mr-2"
@@ -397,7 +397,7 @@ export default function HowItWorksPage() {
             </a>
             <a
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white rounded-lg font-bold hover:bg-white hover:text-[#01B000] transition-all"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white rounded-lg font-bold hover:bg-white hover:text-[#4B5320] transition-all"
             >
               <svg
                 className="w-5 h-5 mr-2"
