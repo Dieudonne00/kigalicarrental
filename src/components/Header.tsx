@@ -10,7 +10,6 @@ export default function Header() {
   const menuItems = [
     { label: "Home", href: "/" },
     { label: "Our Cars", href: "/fleet" },
-    
     { label: "How It Works", href: "/how-it-works" },
     { label: "Blog", href: "/blog" },
     { label: "About Us", href: "/about" },
@@ -39,7 +38,7 @@ export default function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-gray-700 hover:text-[#01B000] transition-colors font-bold"
+                  className="text-gray-700 hover:text-[#4B5320] transition-colors font-bold"
                 >
                   {item.label}
                 </Link>
@@ -51,7 +50,7 @@ export default function Header() {
           <div className="hidden lg:block">
             <Link
               href="/book-now"
-              className="bg-[#01B000] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#019500] transition-colors"
+              className="bg-[#4B5320] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#3a4218] transition-colors"
             >
               Book Now
             </Link>
@@ -89,7 +88,7 @@ export default function Header() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-gray-700 hover:text-[#01B000] transition-colors font-bold block"
+                    className="text-gray-700 hover:text-[#4B5320] transition-colors font-bold block"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
@@ -99,7 +98,7 @@ export default function Header() {
               <li className="pt-2">
                 <Link
                   href="/book-now"
-                  className="bg-[#01B000] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#019500] transition-colors block text-center"
+                  className="bg-[#4B5320] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#3a4218] transition-colors block text-center"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Book Now
