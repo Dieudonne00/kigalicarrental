@@ -6,7 +6,7 @@ export default function WhatsAppButton() {
   const [isHovered, setIsHovered] = useState(false);
 
   // WhatsApp number (use international format without + or spaces)
-  const phoneNumber = "250788892976";
+  const phoneNumber = "250796077321";
 
   // Default message when user clicks
   const defaultMessage = "Hi! I'm interested in renting a car from Kigali Car Hire.";
