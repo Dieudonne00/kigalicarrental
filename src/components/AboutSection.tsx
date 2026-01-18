@@ -26,7 +26,7 @@ export default function AboutSection() {
           {/* Left Column */}
           <div className="flex items-start">
             <h2 className="text-2xl font-bold text-gray-900 font-[family-name:var(--font-plus-jakarta)]">
-              About Kigali Car Rentals
+              Why we deserve your trust
             </h2>
           </div>
 
@@ -47,12 +47,12 @@ export default function AboutSection() {
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="bg-white border-2 border-gray-200 rounded-xl p-4 hover:border-[#01B000] transition-all duration-300"
+                  className="bg-white border-2 border-gray-200 rounded-xl p-4 hover:border-[#4B5320] transition-all duration-300"
                 >
                   <h4 className="text-[10px] font-bold text-gray-600 uppercase tracking-wide mb-2">
                     {stat.title}
                   </h4>
-                  <p className="text-3xl font-bold text-[#01B000] mb-2 font-[family-name:var(--font-plus-jakarta)]">
+                  <p className="text-3xl font-bold text-[#4B5320] mb-2 font-[family-name:var(--font-plus-jakarta)]">
                     {stat.value}
                   </p>
                   <p className="text-gray-600 text-sm leading-relaxed">
