@@ -9,8 +9,8 @@ export default function Header() {
 
   const menuItems = [
     { label: "Home", href: "/" },
-    { label: "Fleet", href: "/fleet" },
-    { label: "Akagera Game Drive", href: "/akagera-game-drive" },
+    { label: "Our Cars", href: "/fleet" },
+    
     { label: "How It Works", href: "/how-it-works" },
     { label: "Blog", href: "/blog" },
     { label: "About Us", href: "/about" },
