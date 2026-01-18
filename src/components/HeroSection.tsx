@@ -94,17 +94,7 @@ export default function HeroSection() {
         </div>
 
         {/* Car Image - Updated Banner */}
-        <div ref={imageRef} className="flex justify-center">
-          <Image
-            src="https://kigalicarhire.b-cdn.net/hero%20section%20cars.png"
-            alt="Premium Car Rental Fleet in Rwanda - Kigali Car Hire"
-            width={1200}
-            height={400}
-            className="w-full max-w-5xl h-auto rounded-2xl transition-transform duration-300 ease-out"
-            style={{ transform: `scale(${imageScale})`, transformOrigin: 'center center' }}
-            priority
-          />
-        </div>
+       
       </div>
     </section>
   );
