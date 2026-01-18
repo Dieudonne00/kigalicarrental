@@ -674,7 +674,7 @@ export default function CarDetailPage() {
                       Or book instantly via WhatsApp
                     </p>
                     <a
-                      href={`https://wa.me/250788892976?text=${encodeURIComponent(
+                      href={`https://wa.me/250796077321?text=${encodeURIComponent(
                         `Hi! I'm interested in renting the ${car?.name || "car"}.\n\nDetails:\n- Pickup: ${bookingData.pickupDate || "Not specified"}\n- Return: ${bookingData.returnDate || "Not specified"}\n- Duration: ${rentalQuantity} ${rentalDuration}\n- Estimated Cost: $${totalCost}\n\nCar: https://www.kigalicarhire.rw/cars/${carId}`
                       )}`}
                       target="_blank"
