@@ -132,7 +132,7 @@ export default function FleetPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-[#01B000] text-white font-bold rounded-lg hover:bg-[#019500] transition-all"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#4B5320] text-white font-bold rounded-lg hover:bg-[#3d441a] transition-all"
           >
             <svg
               className="w-5 h-5 mr-2"
@@ -166,7 +166,7 @@ export default function FleetPage() {
                   <select
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#4B5320] focus:outline-none text-gray-900"
                   >
                     {categories.map((cat) => (
                       <option key={cat} value={cat}>
@@ -184,7 +184,7 @@ export default function FleetPage() {
                   <select
                     value={selectedTransmission}
                     onChange={(e) => setSelectedTransmission(e.target.value)}
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#4B5320] focus:outline-none text-gray-900"
                   >
                     {transmissions.map((trans) => (
                       <option key={trans} value={trans}>
@@ -202,7 +202,7 @@ export default function FleetPage() {
                   <select
                     value={selectedSeats}
                     onChange={(e) => setSelectedSeats(e.target.value)}
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#4B5320] focus:outline-none text-gray-900"
                   >
                     {seatOptions.map((seat) => (
                       <option key={seat} value={seat}>
@@ -234,7 +234,7 @@ export default function FleetPage() {
                           setPriceRange([value, priceRange[1]]);
                         }
                       }}
-                      className="absolute w-full accent-[#01B000] pointer-events-auto"
+                      className="absolute w-full accent-[#4B5320] pointer-events-auto"
                       style={{ zIndex: priceRange[0] > maxPrice - 100 ? 5 : 3 }}
                     />
                     {/* Max slider */}
@@ -249,7 +249,7 @@ export default function FleetPage() {
                           setPriceRange([priceRange[0], value]);
                         }
                       }}
-                      className="absolute w-full accent-[#01B000] pointer-events-auto"
+                      className="absolute w-full accent-[#4B5320] pointer-events-auto"
                       style={{ zIndex: priceRange[1] < minPrice + 100 ? 5 : 4 }}
                     />
                     {/* Spacing div */}
@@ -261,7 +261,7 @@ export default function FleetPage() {
               {/* Results Count */}
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <p className="text-sm text-gray-600">
-                  Showing <span className="font-bold text-[#01B000]">{filteredCars.length}</span> of{" "}
+                  Showing <span className="font-bold text-[#4B5320]">{filteredCars.length}</span> of{" "}
                   <span className="font-bold">{cars.length}</span> vehicles
                 </p>
               </div>
@@ -284,7 +284,7 @@ export default function FleetPage() {
         {/* Loading State */}
         {loading && (
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#01B000] mx-auto"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4B5320] mx-auto"></div>
             <p className="mt-4 text-gray-600">Loading vehicles...</p>
           </div>
         )}
@@ -307,7 +307,7 @@ export default function FleetPage() {
             <p className="text-gray-600 mb-4">Try adjusting your filters to see more results.</p>
             <button
               onClick={resetFilters}
-              className="px-6 py-2 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] transition-all"
+              className="px-6 py-2 bg-[#4B5320] text-white rounded-lg font-bold hover:bg-[#3d441a] transition-all"
             >
               Clear Filters
             </button>
@@ -321,7 +321,7 @@ export default function FleetPage() {
               <Link
                 key={car.id}
                 href={`/cars/${car.id}`}
-                className="group bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-[#01B000] transition-all hover:shadow-lg"
+                className="group bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-[#4B5320] transition-all hover:shadow-lg"
               >
                 {/* Car Image */}
                 <div className="relative h-32 md:h-48 bg-gray-100 overflow-hidden">
@@ -347,7 +347,7 @@ export default function FleetPage() {
                     </div>
                   )}
                   {car.featured && (
-                    <div className="absolute top-1 md:top-2 right-1 md:right-2 bg-[#01B000] text-white px-1.5 md:px-3 py-0.5 md:py-1 rounded-full text-[9px] md:text-xs font-bold">
+                    <div className="absolute top-1 md:top-2 right-1 md:right-2 bg-[#4B5320] text-white px-1.5 md:px-3 py-0.5 md:py-1 rounded-full text-[9px] md:text-xs font-bold">
                       Featured
                     </div>
                   )}
@@ -359,7 +359,7 @@ export default function FleetPage() {
 
                 {/* Car Details */}
                 <div className="p-3 md:p-6">
-                  <h3 className="text-sm md:text-xl font-bold text-gray-900 mb-1 md:mb-2 group-hover:text-[#01B000] transition-colors line-clamp-1">
+                  <h3 className="text-sm md:text-xl font-bold text-gray-900 mb-1 md:mb-2 group-hover:text-[#4B5320] transition-colors line-clamp-1">
                     {car.name}
                   </h3>
 
@@ -422,10 +422,10 @@ export default function FleetPage() {
                   {/* Price */}
                   <div className="flex items-baseline justify-between pt-2 md:pt-4 border-t border-gray-200">
                     <div>
-                      <span className="text-base md:text-2xl font-bold text-[#01B000]">${car.dailyRate}</span>
+                      <span className="text-base md:text-2xl font-bold text-[#4B5320]">${car.dailyRate}</span>
                       <span className="text-[10px] md:text-sm text-gray-600">/day</span>
                     </div>
-                    <div className="text-[#01B000] group-hover:translate-x-1 transition-transform">
+                    <div className="text-[#4B5320] group-hover:translate-x-1 transition-transform">
                       <svg
                         className="w-4 h-4 md:w-6 md:h-6"
                         fill="none"
@@ -457,7 +457,7 @@ export default function FleetPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-3 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] transition-all"
+                className="inline-flex items-center justify-center px-8 py-3 bg-[#4B5320] text-white rounded-lg font-bold hover:bg-[#3d441a] transition-all"
               >
                 <svg
                   className="w-5 h-5 mr-2"
@@ -474,7 +474,7 @@ export default function FleetPage() {
               </Link>
               <a
                 href="tel:+250788892976"
-                className="inline-flex items-center justify-center px-8 py-3 border-2 border-[#01B000] text-[#01B000] rounded-lg font-bold hover:bg-[#01B000] hover:text-white transition-all"
+                className="inline-flex items-center justify-center px-8 py-3 border-2 border-[#4B5320] text-[#4B5320] rounded-lg font-bold hover:bg-[#4B5320] hover:text-white transition-all"
               >
                 <svg
                   className="w-5 h-5 mr-2"
