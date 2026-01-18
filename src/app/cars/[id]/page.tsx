@@ -255,7 +255,7 @@ export default function CarDetailPage() {
           </h1>
           <Link
             href="/"
-            className="text-[#01B000] hover:underline font-bold"
+            className="text-[#4B5320] hover:underline font-bold"
           >
             Go back home
           </Link>
@@ -271,7 +271,7 @@ export default function CarDetailPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="mb-6">
-          <Link href="/" className="text-gray-600 hover:text-[#01B000]">
+          <Link href="/" className="text-gray-600 hover:text-[#4B5320]">
             Home
           </Link>
           <span className="mx-2 text-gray-400">/</span>
@@ -299,7 +299,7 @@ export default function CarDetailPage() {
                     </span>
                   )}
                   {car.featured && (
-                    <span className="inline-block px-4 py-2 bg-[#01B000] text-white rounded-full text-sm font-bold">
+                    <span className="inline-block px-4 py-2 bg-[#4B5320] text-white rounded-full text-sm font-bold">
                       Featured
                     </span>
                   )}
@@ -315,7 +315,7 @@ export default function CarDetailPage() {
                       onClick={() => setSelectedImage(index)}
                       className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
                         selectedImage === index
-                          ? "border-[#01B000]"
+                          ? "border-[#4B5320]"
                           : "border-gray-200 hover:border-gray-300"
                       }`}
                     >
@@ -346,14 +346,14 @@ export default function CarDetailPage() {
                 </h2>
                 <div className="flex flex-wrap gap-4">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-2xl font-bold text-[#01B000]">
+                    <span className="text-2xl font-bold text-[#4B5320]">
                       ${car.dailyRate}
                     </span>
                     <span className="text-gray-600">/day</span>
                   </div>
                   {car.weeklyRate && (
                     <div className="flex items-baseline gap-2">
-                      <span className="text-xl font-bold text-[#01B000]">
+                      <span className="text-xl font-bold text-[#4B5320]">
                         ${car.weeklyRate}
                       </span>
                       <span className="text-gray-600">/week</span>
@@ -361,7 +361,7 @@ export default function CarDetailPage() {
                   )}
                   {car.monthlyRate && (
                     <div className="flex items-baseline gap-2">
-                      <span className="text-xl font-bold text-[#01B000]">
+                      <span className="text-xl font-bold text-[#4B5320]">
                         ${car.monthlyRate}
                       </span>
                       <span className="text-gray-600">/month</span>
@@ -388,7 +388,7 @@ export default function CarDetailPage() {
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <svg
-                      className="w-5 h-5 text-[#01B000]"
+                      className="w-5 h-5 text-[#4B5320]"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -408,7 +408,7 @@ export default function CarDetailPage() {
 
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <svg
-                      className="w-5 h-5 text-[#01B000]"
+                      className="w-5 h-5 text-[#4B5320]"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -428,7 +428,7 @@ export default function CarDetailPage() {
 
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <svg
-                      className="w-5 h-5 text-[#01B000]"
+                      className="w-5 h-5 text-[#4B5320]"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -446,7 +446,7 @@ export default function CarDetailPage() {
 
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <svg
-                      className="w-5 h-5 text-[#01B000]"
+                      className="w-5 h-5 text-[#4B5320]"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -467,7 +467,7 @@ export default function CarDetailPage() {
                   {car.mileage && (
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <svg
-                        className="w-5 h-5 text-[#01B000]"
+                        className="w-5 h-5 text-[#4B5320]"
                         fill="none"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -475,7 +475,7 @@ export default function CarDetailPage() {
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                       >
-                        <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                       </svg>
                       <div>
                         <p className="text-xs text-gray-500">Mileage</p>
@@ -486,7 +486,7 @@ export default function CarDetailPage() {
 
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <svg
-                      className="w-5 h-5 text-[#01B000]"
+                      className="w-5 h-5 text-[#4B5320]"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -525,7 +525,7 @@ export default function CarDetailPage() {
                   disabled={!car.available}
                   className={`w-full py-3 rounded-lg font-bold text-white transition-all ${
                     car.available
-                      ? "bg-[#01B000] hover:bg-[#019500]"
+                      ? "bg-[#4B5320] hover:bg-[#3a4218]"
                       : "bg-gray-400 cursor-not-allowed"
                   }`}
                 >
@@ -543,7 +543,7 @@ export default function CarDetailPage() {
                       value={bookingData.customerName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#4B5320] focus:outline-none text-gray-900"
                     />
                   </div>
 
@@ -557,7 +557,7 @@ export default function CarDetailPage() {
                       value={bookingData.customerEmail}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#4B5320] focus:outline-none text-gray-900"
                     />
                   </div>
 
@@ -571,7 +571,7 @@ export default function CarDetailPage() {
                       value={bookingData.customerPhone}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#4B5320] focus:outline-none text-gray-900"
                     />
                   </div>
 
@@ -586,7 +586,7 @@ export default function CarDetailPage() {
                       onChange={handleInputChange}
                       min={new Date().toISOString().split("T")[0]}
                       required
-                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#4B5320] focus:outline-none text-gray-900"
                     />
                   </div>
 
@@ -598,7 +598,7 @@ export default function CarDetailPage() {
                       <select
                         value={rentalDuration}
                         onChange={(e) => setRentalDuration(e.target.value)}
-                        className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                        className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#4B5320] focus:outline-none text-gray-900"
                         required
                       >
                         <option value="daily">Daily</option>
@@ -610,7 +610,7 @@ export default function CarDetailPage() {
                         min="1"
                         value={rentalQuantity}
                         onChange={(e) => setRentalQuantity(parseInt(e.target.value) || 1)}
-                        className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                        className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#4B5320] focus:outline-none text-gray-900"
                         required
                       />
                     </div>
@@ -634,7 +634,7 @@ export default function CarDetailPage() {
                       value={bookingData.specialRequests}
                       onChange={handleInputChange}
                       rows={3}
-                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#4B5320] focus:outline-none text-gray-900"
                     />
                   </div>
 
@@ -644,7 +644,7 @@ export default function CarDetailPage() {
                         <span className="text-lg font-bold text-gray-900">
                           Total Cost
                         </span>
-                        <span className="text-2xl font-bold text-[#01B000]">
+                        <span className="text-2xl font-bold text-[#4B5320]">
                           ${totalCost.toFixed(2)}
                         </span>
                       </div>
@@ -662,7 +662,7 @@ export default function CarDetailPage() {
                     <button
                       type="submit"
                       disabled={bookingLoading}
-                      className="flex-1 py-3 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] transition-all disabled:opacity-50"
+                      className="flex-1 py-3 bg-[#4B5320] text-white rounded-lg font-bold hover:bg-[#3a4218] transition-all disabled:opacity-50"
                     >
                       {bookingLoading ? "Submitting..." : "Submit Booking"}
                     </button>
