@@ -24,7 +24,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="https://drive.google.com/file/d/1CmPF98BXPfGiBoHL_oKkMdxXJPc800kq/view?usp=sharing"
+              src="https://kigalicarrental.b-cdn.net/mylogo-removebg-preview.png"
               alt="Kigali Car Hire Logo"
               width={120}
               height={40}
