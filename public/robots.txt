@@ -5,4 +5,4 @@ Allow: /
 
 
 # Sitemap location
-Sitemap: https://www.kigalicarhire.rw/sitemap.xml
+Sitemap: https://www.kigalicarrental.site/sitemap.xml
