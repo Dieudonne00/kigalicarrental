@@ -4,7 +4,7 @@ import nodemailer from "nodemailer";
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "kigalicarhire1990@gmail.com",
+    user: "dieudufinnovation@gmail.com",
     pass: "nsnc rinn ksij kbar",
   },
 });
@@ -45,8 +45,8 @@ export async function sendBookingNotificationToManager(
 ) {
   try {
     const mailOptions = {
-      from: "kigalicarhire1990@gmail.com",
-      to: "kigalicarhire1990@gmail.com",
+      from: "kigalicarrentals2004@gmail.com",
+      to: "dieudufinnovation@gmail.com",
       subject: `New Booking Request - ${bookingData.carName}`,
       html: `
         <!DOCTYPE html>
@@ -230,8 +230,8 @@ export async function sendContactFormNotification(data: {
 }) {
   try {
     const mailOptions = {
-      from: "kigalicarhire1990@gmail.com",
-      to: "kigalicarhire1990@gmail.com",
+      from: "kigalicarrentals2004@gmail.com",
+      to: "dieudufinnovation@gmail.com",
       subject: `New Contact Form Submission from ${data.name}`,
       html: `
         <!DOCTYPE html>
@@ -347,8 +347,8 @@ export async function sendBookingRequestNotificationToManager(data: {
 }) {
   try {
     const mailOptions = {
-      from: "kigalicarhire1990@gmail.com",
-      to: "kigalicarhire1990@gmail.com",
+      from: "kigalicarrentals2004@gmail.com",
+      to: "dieudufinnovation@gmail.com",
       subject: `New Booking Request from ${data.fullName}`,
       html: `
         <!DOCTYPE html>
@@ -567,7 +567,7 @@ export async function sendStatusUpdateToCustomer(
     const statusInfo = getStatusInfo(statusData.newStatus);
 
     const mailOptions = {
-      from: "kigalicarhire1990@gmail.com",
+      from: "kigalicarrentals2004@gmail.com",
       to: statusData.customerEmail,
       subject: `${statusInfo.title} - ${statusData.carName}`,
       html: `
