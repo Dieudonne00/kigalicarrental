@@ -1,18 +1,16 @@
 import nodemailer from "nodemailer";
-import { sendBookingNotificationToManager } from "@/lib/email";
 
-
-// ✅ Gmail transporter (ONLY one email)
+// ================== TRANSPORTER ==================
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "kigalicarrentals2004@gmail.com",
-    pass: "Kigalicarrentals@2020!", // <-- Put real Gmail app password
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS, // Gmail App Password
   },
 });
 
 // ================= TYPES =================
-interface BookingEmailData {
+export interface BookingEmailData {
   bookingId: string;
   customerName: string;
   customerEmail: string;
@@ -32,8 +30,8 @@ interface BookingEmailData {
 export async function sendBookingNotificationToManager(data: BookingEmailData) {
   try {
     await transporter.sendMail({
-      from: "kigalicarrentals2004@gmail.com",
-      to: "kigalicarrentals2004@gmail.com",
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_ADMIN,
       subject: `🚗 New Booking - ${data.carName}`,
       html: `
         <h2>New Booking Received</h2>
@@ -57,7 +55,7 @@ export async function sendBookingNotificationToManager(data: BookingEmailData) {
   }
 }
 
-// ================= CONTACT FORM EMAIL =================
+// ================= CONTACT FORM =================
 export async function sendContactFormNotification(data: {
   name: string;
   email: string;
@@ -66,8 +64,8 @@ export async function sendContactFormNotification(data: {
 }) {
   try {
     await transporter.sendMail({
-      from: "kigalicarrentals2004@gmail.com",
-      to: "kigalicarrentals2004@gmail.com",
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_ADMIN,
       subject: `📩 Contact Form - ${data.name}`,
       html: `
         <h2>New Contact Message</h2>
@@ -84,15 +82,15 @@ export async function sendContactFormNotification(data: {
   }
 }
 
-// ================= STATUS UPDATE EMAIL TO CUSTOMER =================
+// ================= STATUS UPDATE TO CUSTOMER =================
 export async function sendStatusUpdateToCustomer(data: any) {
   try {
     await transporter.sendMail({
-      from: "kigalicarrentals2004@gmail.com",
+      from: process.env.EMAIL_USER,
       to: data.customerEmail,
       subject: `Booking Status Updated - ${data.carName}`,
       html: `
-        <h2>Your Booking Status: ${data.newStatus}</h2>
+        <h2>Status: ${data.newStatus}</h2>
         <p>Hello ${data.customerName},</p>
         <p>Your booking for <b>${data.carName}</b> is now <b>${data.newStatus}</b>.</p>
         <p>Pickup: ${data.pickupDate}</p>
@@ -102,8 +100,9 @@ export async function sendStatusUpdateToCustomer(data: any) {
       `,
     });
 
-    console.log("✅ Status email sent to customer");
+    console.log("✅ Status email sent");
   } catch (err) {
     console.error("❌ Status email failed:", err);
   }
 }
+
