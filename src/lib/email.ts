@@ -1,4 +1,6 @@
 import nodemailer from "nodemailer";
+import { sendBookingNotificationToManager } from "@/lib/email";
+
 
 // ✅ Gmail transporter (ONLY one email)
 const transporter = nodemailer.createTransport({
