@@ -1,4 +1,13 @@
 import { NextResponse } from "next/server";
+import { v2 as cloudinary } from 'cloudinary';
+
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || 'dxn12qcje',
+  api_key: process.env.CLOUDINARY_API_KEY || '636422866527858',
+  api_secret: process.env.CLOUDINARY_API_SECRET || 'ZyNMrPei3OH-U0eOxWSTvysypj0',
+  secure: true
+});
 
 export async function POST(request: Request) {
   try {
@@ -9,59 +18,47 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
-    // Bunny CDN configuration
-    const BUNNY_STORAGE_ZONE = process.env.BUNNY_STORAGE_ZONE || "kigalicarhire";
-    const BUNNY_API_KEY = process.env.BUNNY_API_KEY;
-    const BUNNY_HOSTNAME = process.env.BUNNY_HOSTNAME || "kigalicarhire.b-cdn.net";
-
     console.log("Upload request received for file:", file.name);
-    console.log("BUNNY_API_KEY exists:", !!BUNNY_API_KEY);
-    console.log("BUNNY_STORAGE_ZONE:", BUNNY_STORAGE_ZONE);
-    console.log("BUNNY_HOSTNAME:", BUNNY_HOSTNAME);
 
-    if (!BUNNY_API_KEY) {
-      console.error("Bunny CDN API key is not configured");
-      return NextResponse.json(
-        { error: "Bunny CDN API key not configured. Please add BUNNY_API_KEY to your .env file." },
-        { status: 500 }
-      );
-    }
+    // Convert file to buffer
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+
+    // Convert buffer to base64 for Cloudinary
+    const base64String = `data:${file.type};base64,${buffer.toString('base64')}`;
 
     // Generate unique filename
     const timestamp = Date.now();
     const filename = `${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
-    const uploadPath = `cars/${filename}`;
 
-    // Upload to Bunny CDN
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-
-    const uploadUrl = `https://storage.bunnycdn.com/${BUNNY_STORAGE_ZONE}/${uploadPath}`;
-
-    console.log("Uploading to URL:", uploadUrl);
-
-    const uploadResponse = await fetch(uploadUrl, {
-      method: "PUT",
-      headers: {
-        AccessKey: BUNNY_API_KEY,
-        "Content-Type": file.type,
-      },
-      body: buffer,
+    // Upload to Cloudinary
+    const uploadResult = await new Promise<any>((resolve, reject) => {
+      cloudinary.uploader.upload(
+        base64String,
+        {
+          folder: "cars",
+          public_id: filename.split('.')[0], // Remove extension
+          resource_type: "auto",
+          overwrite: false,
+          unique_filename: true
+        },
+        (error, result) => {
+          if (error) reject(error);
+          else resolve(result);
+        }
+      );
     });
 
-    console.log("Upload response status:", uploadResponse.status);
+    console.log("Upload successful. Cloudinary URL:", uploadResult.secure_url);
 
-    if (!uploadResponse.ok) {
-      const errorText = await uploadResponse.text();
-      console.error("Bunny CDN upload failed:", errorText);
-      throw new Error(`Failed to upload to Bunny CDN: ${uploadResponse.status} - ${errorText}`);
-    }
+    return NextResponse.json(
+      { 
+        url: uploadResult.secure_url,
+        publicId: uploadResult.public_id 
+      }, 
+      { status: 200 }
+    );
 
-    // Return the CDN URL
-    const cdnUrl = `https://${BUNNY_HOSTNAME}/${uploadPath}`;
-    console.log("Upload successful. CDN URL:", cdnUrl);
-
-    return NextResponse.json({ url: cdnUrl }, { status: 200 });
   } catch (error) {
     console.error("Upload error:", error);
     return NextResponse.json(
