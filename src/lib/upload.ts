@@ -3,12 +3,14 @@ import { v2 as cloudinary } from 'cloudinary';
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME || 'dxn12qcje',
   api_key: process.env.CLOUDINARY_API_KEY || '636422866527858',
-  api_secret: process.env.CLOUDINARY_API_SECRET || '',
+  api_secret: process.env.CLOUDINARY_API_SECRET || 'ZyNMrPei3OH-U0eOxWSTvysypj0',
   secure: true,
 });
 
-cloudinary.uploader.upload(
-  `data:image/jpeg;base64,${Buffer.from(fileBuffer).toString('base64')}`,
+export async function uploadToCloudinary(
+  fileBuffer: Buffer | ArrayBuffer,
+  folder: string = 'cars'
+): Promise<{ url: string; publicId: string }> {
   try {
     // Convert buffer to base64 string
     let buffer: Buffer;
@@ -26,10 +28,6 @@ cloudinary.uploader.upload(
         { 
           folder, 
           resource_type: 'auto',
-          // You might want to add these options for better file handling:
-          // use_filename: true,
-          // unique_filename: false,
-          // overwrite: true
         },
         (error, result) => {
           if (error) reject(error);
