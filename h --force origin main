@@ -1,0 +1,64 @@
+* [33m99d1f87[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Add gitignore for env, build and node files
+* [33m91c55b7[m Remove temporary backup files
+* [33m5968698[m Add cloudinary dependency
+* [33m64a6cdf[m Fix booking email notification placement and TS build error
+[31m|[m * [33m89d1c3f[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Update package.json
+[31m|[m * [33mda36ff7[m Update route.ts
+[31m|[m[31m/[m  
+* [33mc44fc56[m Update route.ts
+* [33m96bd9ce[m Update route.ts
+* [33m4e00516[m Delete src/app/api/upload/BUNNY.env
+* [33m730f443[m Update route.ts
+* [33m5e1dce0[m Update route.ts
+* [33m2233dd3[m Create upload.ts
+* [33mf1ba08b[m Create cloudinary.ts
+[32m|[m *   [33medbe6e3[m[33m ([m[1;35mrefs/stash[m[33m)[m On main: temp stash before rebase
+[32m|[m [33m|[m[34m\[m  
+[32m|[m [33m|[m * [33me382ac0[m index on main: 0a52afb Remove temporary backup files
+[32m|[m [33m|[m[33m/[m  
+[32m|[m * [33m0a52afb[m Remove temporary backup files
+[32m|[m * [33m2629653[m Fix cloudinary dependency and email import
+[32m|[m * [33m5834a55[m Fix booking email notification placement and TS build error
+[32m|[m[32m/[m  
+* [33m8dfe5de[m Update email.ts
+* [33m4e9d100[m Update email.ts
+* [33mf2a7e7b[m Update email.ts
+* [33m9be49f8[m Update email.ts
+* [33m15eabfa[m Update sitemap.ts
+* [33m5f965df[m Add files via upload
+* [33m033d4e1[m Update robots.txt
+* [33mcf5ebf1[m Add files via upload
+* [33m33a17ab[m Update page.tsx
+* [33m9036f76[m Update ServicesSection.tsx
+* [33mde2a317[m Update AboutSection.tsx
+* [33maabef6e[m Update page.tsx
+* [33m02ac936[m Update page.tsx
+* [33m8dda991[m Delete src/app/icon.jpg
+* [33m4d9beb5[m Update layout.tsx
+* [33me954b70[m Update Header.tsx
+* [33m8a8a4d7[m Update FeaturedFleet.tsx
+* [33me145abd[m Update page.tsx
+* [33m6c21957[m Update HeroSection.tsx
+* [33m8afa431[m Update HeroSection.tsx
+* [33m3f48f6e[m Update page.tsx
+* [33m3eb14d4[m Update Footer.tsx
+* [33mf63101e[m Update Header.tsx
+* [33m91b7f46[m Update Header.tsx
+* [33m24466cd[m Update Header.tsx
+* [33m0c07cf1[m Update Footer.tsx
+* [33m966a78c[m Update Footer.tsx
+* [33m2d5c56f[m Update page.tsx
+* [33m23cf4d7[m Update page.tsx
+* [33m7daab02[m Update page.tsx
+* [33mf2e282f[m Update page.tsx
+* [33m69a049c[m Update page.tsx
+* [33m6133b2e[m Update page.tsx
+* [33m085f906[m Update ServicesSection.tsx
+* [33mf7b3cb4[m Update WhatsAppButton.tsx
+* [33m562284a[m Update Footer.tsx
+* [33mee6dc92[m Update AboutSection.tsx
+* [33md09cca5[m Update robots.txt
+* [33mc7cac15[m Update README.md
+* [33m4df5838[m Add files via upload
+* [33ma1e008e[m Deploy unzipped website files
+* [33mc0b2ee1[m Add files via upload

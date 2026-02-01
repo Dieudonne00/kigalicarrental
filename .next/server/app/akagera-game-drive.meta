@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/akagera-game-drive/layout,_N_T_/akagera-game-drive/page,_N_T_/akagera-game-drive"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/akagera-game-drive/__PAGE__",
+    "/akagera-game-drive",
+    "/_index",
+    "/_head"
+  ]
+}
