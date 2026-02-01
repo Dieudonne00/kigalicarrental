@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
-import { sendBookingRequestNotificationToManager } from "@/lib/email";
+import { sendBookingNotificationToManager } from "@/lib/email";
+
 
 const prisma = new PrismaClient();
 
