@@ -116,7 +116,7 @@ export default function FleetPage() {
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://kigalicarhire.b-cdn.net/cars/1763129079992-2022-toyota-rav-4-prime-interior-softex-carprousa-1404x1112.webp)' }}
+          style={{ backgroundImage: 'url(https://res.cloudinary.com/dxn12qcje/image/upload/cars/1763129079992-2022-toyota-rav-4-prime-interior-softex-carprousa-1404x1112.webp)' }}
         >
           <div className="absolute inset-0 bg-black/50"></div>
         </div>

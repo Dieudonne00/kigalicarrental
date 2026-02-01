@@ -118,7 +118,7 @@ export default function ManagerSidebar() {
           <div className="p-6 border-b-2 border-gray-200">
             <Link href="/manager/dashboard" className="flex items-center">
               <Image
-                src="https://kigalicarhire.b-cdn.net/kigalicarhire.png"
+                src="https://res.cloudinary.com/dxn12qcje/image/upload/kigalicarhire.png"
                 alt="Kigali Car Hire"
                 width={120}
                 height={40}

@@ -41,7 +41,7 @@ export default function HeroSection() {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(https://kigalicarhire.b-cdn.net/kgl%20.png)' }}
+        style={{ backgroundImage: 'url(https://res.cloudinary.com/dxn12qcje/image/upload/kgl%20.png)' }}
       />
 
       {/* White Overlay - 85% opacity for subtle background */}

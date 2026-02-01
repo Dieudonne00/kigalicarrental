@@ -50,7 +50,7 @@ export default function AkageraGameDrivePage() {
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://kigalicarhire.b-cdn.net/game-drive-akagera.jpg)' }}
+          style={{ backgroundImage: 'url(https://res.cloudinary.com/dxn12qcje/image/upload/game-drive-akagera.jpg)' }}
         >
           <div className="absolute inset-0 bg-black/50"></div>
         </div>

@@ -32,7 +32,7 @@ export default function BlogPage() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url(https://kigalicarhire.b-cdn.net/cars/1763129080028-2022-toyota-rav-4-prime-wheels-red-carprousa-1404x1112.webp)",
+              "url(https://res.cloudinary.com/dxn12qcje/image/upload/cars/1763129080028-2022-toyota-rav-4-prime-wheels-red-carprousa-1404x1112.webp)",
           }}
         >
           <div className="absolute inset-0 bg-black/65"></div>

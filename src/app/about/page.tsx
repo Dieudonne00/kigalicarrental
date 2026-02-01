@@ -7,7 +7,7 @@ export default function AboutPage() {
       <section className="relative min-h-[400px] md:min-h-[600px] flex items-center justify-center overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://kigalicarhire.b-cdn.net/cars/1763129080028-2022-toyota-rav-4-prime-wheels-red-carprousa-1404x1112.webp)' }}
+          style={{ backgroundImage: 'url(https://res.cloudinary.com/dxn12qcje/image/upload/cars/1763129080028-2022-toyota-rav-4-prime-wheels-red-carprousa-1404x1112.webp)' }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
         </div>
@@ -51,7 +51,7 @@ export default function AboutPage() {
           <div className="relative h-[400px] rounded-2xl overflow-hidden">
             <div
               className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: 'url(https://kigalicarhire.b-cdn.net/cars/20240215_the-all_new-landcruiser-prado_2024_v2.webp)' }}
+              style={{ backgroundImage: 'url(https://res.cloudinary.com/dxn12qcje/image/upload/cars/20240215_the-all_new-landcruiser-prado_2024_v2.webp)' }}
             />
           </div>
         </div>

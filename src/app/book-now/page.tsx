@@ -107,7 +107,7 @@ export default function BookNowPage() {
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://kigalicarhire.b-cdn.net/cars/2024-toyota-land-cruiser-164-6616f45021cc9.avif)' }}
+          style={{ backgroundImage: 'url(https://res.cloudinary.com/dxn12qcje/image/upload/cars/2024-toyota-land-cruiser-164-6616f45021cc9.avif)' }}
         >
           <div className="absolute inset-0 bg-black/60"></div>
         </div>

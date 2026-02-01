@@ -46,7 +46,7 @@ export default function ManagerLogin() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <Image
-            src="https://kigalicarhire.b-cdn.net/kigalicarhire.png"
+            src="https://res.cloudinary.com/dxn12qcje/image/upload/kigalicarhire.png"
             alt="Kigali Car Hire Logo"
             width={180}
             height={60}

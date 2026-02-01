@@ -117,7 +117,7 @@ export default function HowItWorksPage() {
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://kigalicarhire.b-cdn.net/cars/1763129080013-2022-toyota-rav-4-prime-panoramic-carprousa-1404x1112.webp)' }}
+          style={{ backgroundImage: 'url(https://res.cloudinary.com/dxn12qcje/image/upload/cars/1763129080013-2022-toyota-rav-4-prime-panoramic-carprousa-1404x1112.webp)' }}
         >
           <div className="absolute inset-0 bg-black/50"></div>
         </div>

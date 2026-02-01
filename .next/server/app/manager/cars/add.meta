@@ -1,0 +1,17 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/manager/layout,_N_T_/manager/cars/layout,_N_T_/manager/cars/add/layout,_N_T_/manager/cars/add/page,_N_T_/manager/cars/add"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/manager/cars/add/__PAGE__",
+    "/manager/cars/add",
+    "/manager/cars",
+    "/manager",
+    "/_index",
+    "/_head"
+  ]
+}
