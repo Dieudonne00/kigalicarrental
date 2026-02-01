@@ -131,3 +131,4 @@ This project is private and proprietary.
 For support, email support@kigalicarhire.com
  
 Triggering Vercel build with cloudinary fix
+ 
