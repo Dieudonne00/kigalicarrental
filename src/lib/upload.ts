@@ -7,10 +7,8 @@ cloudinary.config({
   secure: true,
 });
 
-export async function uploadToCloudinary(
-  fileBuffer: Buffer | ArrayBuffer,
-  folder: string = 'cars'
-): Promise<{ url: string; publicId: string }> {
+cloudinary.uploader.upload(
+  `data:image/jpeg;base64,${Buffer.from(fileBuffer).toString('base64')}`,
   try {
     // Convert buffer to base64 string
     let buffer: Buffer;
