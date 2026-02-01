@@ -11,41 +11,33 @@ export async function uploadToCloudinary(
   fileBuffer: Buffer | ArrayBuffer,
   folder: string = 'cars'
 ): Promise<{ url: string; publicId: string }> {
-  try {
-    // Convert buffer to base64 string
-    let buffer: Buffer;
-    if (fileBuffer instanceof Buffer) {
-      buffer = fileBuffer;
-    } else {
-      buffer = Buffer.from(fileBuffer);
-    }
+  return new Promise((resolve, reject) => {
+    // Convert to Buffer first
+    const buffer = Buffer.from(
+      fileBuffer instanceof Buffer ? fileBuffer : new Uint8Array(fileBuffer as ArrayBuffer)
+    );
     
     const base64String = `data:image/jpeg;base64,${buffer.toString('base64')}`;
     
-    return new Promise((resolve, reject) => {
-      cloudinary.uploader.upload(
-        base64String, // Pass base64 string instead of buffer
-        { 
-          folder, 
-          resource_type: 'auto',
-        },
-        (error, result) => {
-          if (error) reject(error);
-          else if (result) {
-            resolve({
-              url: result.secure_url,
-              publicId: result.public_id,
-            });
-          } else {
-            reject(new Error('Upload failed: No result returned'));
-          }
+    cloudinary.uploader.upload(
+      base64String,
+      { 
+        folder, 
+        resource_type: 'auto',
+      },
+      (error, result) => {
+        if (error) reject(error);
+        else if (result) {
+          resolve({
+            url: result.secure_url,
+            publicId: result.public_id,
+          });
+        } else {
+          reject(new Error('Upload failed: No result returned'));
         }
-      );
-    });
-  } catch (error) {
-    console.error('Error converting buffer to base64:', error);
-    throw error;
-  }
+      }
+    );
+  });
 }
 
 export async function deleteFromCloudinary(publicId: string): Promise<void> {
@@ -61,4 +53,3 @@ export async function deleteFromCloudinary(publicId: string): Promise<void> {
     );
   });
 }
-
