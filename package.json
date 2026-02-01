@@ -16,10 +16,10 @@
     "@tiptap/react": "^3.10.7",
     "@tiptap/starter-kit": "^3.10.7",
     "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.9.0",
     "date-fns": "^4.1.0",
     "dotenv": "^17.2.3",
     "next": "latest",
-
     "next-seo": "^7.0.1",
     "nodemailer": "^7.0.10",
     "prisma": "^6.19.0",
