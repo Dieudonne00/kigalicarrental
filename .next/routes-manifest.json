@@ -20,8 +20,95 @@
     "afterFiles": [],
     "fallback": []
   },
-  "dynamicRoutes": [],
+  "dynamicRoutes": [
+    {
+      "page": "/api/blogs/[slug]",
+      "regex": "^/api/blogs/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/api/blogs/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/booking-requests/[id]",
+      "regex": "^/api/booking\\-requests/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/booking\\-requests/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/cars/[id]",
+      "regex": "^/api/cars/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/cars/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/contact/[id]",
+      "regex": "^/api/contact/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/contact/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/manager/blogs/[id]",
+      "regex": "^/api/manager/blogs/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/manager/blogs/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/api/manager/cars/[id]",
+      "regex": "^/api/manager/cars/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/api/manager/cars/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/blog/[slug]",
+      "regex": "^/blog/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/blog/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/cars/[id]",
+      "regex": "^/cars/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/cars/(?<nxtPid>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/manager/blogs/[id]/edit",
+      "regex": "^/manager/blogs/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/manager/blogs/(?<nxtPid>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/manager/cars/[id]/edit",
+      "regex": "^/manager/cars/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/manager/cars/(?<nxtPid>[^/]+?)/edit(?:/)?$"
+    }
+  ],
   "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
     {
       "page": "/_global-error",
       "regex": "^/_global\\-error(?:/)?$",
@@ -33,6 +120,102 @@
       "regex": "^/_not\\-found(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/about",
+      "regex": "^/about(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about(?:/)?$"
+    },
+    {
+      "page": "/akagera-game-drive",
+      "regex": "^/akagera\\-game\\-drive(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/akagera\\-game\\-drive(?:/)?$"
+    },
+    {
+      "page": "/api/blogs",
+      "regex": "^/api/blogs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/blogs(?:/)?$"
+    },
+    {
+      "page": "/api/booking-requests",
+      "regex": "^/api/booking\\-requests(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/booking\\-requests(?:/)?$"
+    },
+    {
+      "page": "/api/bookings",
+      "regex": "^/api/bookings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/bookings(?:/)?$"
+    },
+    {
+      "page": "/api/cars",
+      "regex": "^/api/cars(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/cars(?:/)?$"
+    },
+    {
+      "page": "/api/contact",
+      "regex": "^/api/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/contact(?:/)?$"
+    },
+    {
+      "page": "/api/delete-image",
+      "regex": "^/api/delete\\-image(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/delete\\-image(?:/)?$"
+    },
+    {
+      "page": "/api/manager/blogs",
+      "regex": "^/api/manager/blogs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/manager/blogs(?:/)?$"
+    },
+    {
+      "page": "/api/manager/bookings",
+      "regex": "^/api/manager/bookings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/manager/bookings(?:/)?$"
+    },
+    {
+      "page": "/api/manager/cars",
+      "regex": "^/api/manager/cars(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/manager/cars(?:/)?$"
+    },
+    {
+      "page": "/api/manager/login",
+      "regex": "^/api/manager/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/manager/login(?:/)?$"
+    },
+    {
+      "page": "/api/manager/logout",
+      "regex": "^/api/manager/logout(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/manager/logout(?:/)?$"
+    },
+    {
+      "page": "/api/upload",
+      "regex": "^/api/upload(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/upload(?:/)?$"
+    },
+    {
+      "page": "/blog",
+      "regex": "^/blog(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/blog(?:/)?$"
+    },
+    {
+      "page": "/book-now",
+      "regex": "^/book\\-now(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/book\\-now(?:/)?$"
     },
     {
       "page": "/car-rental-kigali",
@@ -47,10 +230,94 @@
       "namedRegex": "^/car\\-rental\\-rwanda(?:/)?$"
     },
     {
+      "page": "/contact",
+      "regex": "^/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contact(?:/)?$"
+    },
+    {
+      "page": "/fleet",
+      "regex": "^/fleet(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/fleet(?:/)?$"
+    },
+    {
+      "page": "/how-it-works",
+      "regex": "^/how\\-it\\-works(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/how\\-it\\-works(?:/)?$"
+    },
+    {
       "page": "/kigali-airport-car-rental",
       "regex": "^/kigali\\-airport\\-car\\-rental(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/kigali\\-airport\\-car\\-rental(?:/)?$"
+    },
+    {
+      "page": "/manager/blogs",
+      "regex": "^/manager/blogs(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/manager/blogs(?:/)?$"
+    },
+    {
+      "page": "/manager/blogs/add",
+      "regex": "^/manager/blogs/add(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/manager/blogs/add(?:/)?$"
+    },
+    {
+      "page": "/manager/booking-requests",
+      "regex": "^/manager/booking\\-requests(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/manager/booking\\-requests(?:/)?$"
+    },
+    {
+      "page": "/manager/bookings",
+      "regex": "^/manager/bookings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/manager/bookings(?:/)?$"
+    },
+    {
+      "page": "/manager/cars",
+      "regex": "^/manager/cars(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/manager/cars(?:/)?$"
+    },
+    {
+      "page": "/manager/cars/add",
+      "regex": "^/manager/cars/add(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/manager/cars/add(?:/)?$"
+    },
+    {
+      "page": "/manager/dashboard",
+      "regex": "^/manager/dashboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/manager/dashboard(?:/)?$"
+    },
+    {
+      "page": "/manager/login",
+      "regex": "^/manager/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/manager/login(?:/)?$"
+    },
+    {
+      "page": "/manager/messages",
+      "regex": "^/manager/messages(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/manager/messages(?:/)?$"
+    },
+    {
+      "page": "/manager/settings",
+      "regex": "^/manager/settings(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/manager/settings(?:/)?$"
+    },
+    {
+      "page": "/sitemap.xml",
+      "regex": "^/sitemap\\.xml(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sitemap\\.xml(?:/)?$"
     }
   ],
   "dataRoutes": [],
