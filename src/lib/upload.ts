@@ -12,10 +12,10 @@ export async function uploadToCloudinary(
   folder: string = 'cars'
 ): Promise<{ url: string; publicId: string }> {
   return new Promise((resolve, reject) => {
-    // Convert to Buffer first
-    const buffer = Buffer.from(
-      fileBuffer instanceof Buffer ? fileBuffer : new Uint8Array(fileBuffer as ArrayBuffer)
-    );
+    // FIX: Convert ArrayBuffer properly
+    const buffer = fileBuffer instanceof Buffer 
+      ? fileBuffer 
+      : Buffer.from(new Uint8Array(fileBuffer as ArrayBuffer));
     
     const base64String = `data:image/jpeg;base64,${buffer.toString('base64')}`;
     
