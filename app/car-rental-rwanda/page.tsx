@@ -1,74 +1,93 @@
-import { NextSeo } from 'next-seo'
 import Link from 'next/link'
+
+export const metadata = {
+  title: 'Car Rental Rwanda | Best Prices 2024 | KigaliCarRental',
+  description: 'Book car rental in Rwanda at best prices. Toyota RAV4, Prado, Sedans available. Airport pickup, 24/7 support. Rent a car in Rwanda today!',
+  keywords: 'car rental Rwanda, rent a car Rwanda, car hire Rwanda, Rwanda car rental, 4x4 rental Rwanda, Kigali car rental',
+}
 
 export default function CarRentalRwanda() {
   return (
-    <>
-      <NextSeo
-        title="Car Rental Rwanda | Best Prices & Fleet 2024 | KigaliCarRental"
-        description="Looking for car rental in Rwanda? We offer affordable cars with airport pickup in Kigali. Toyota RAV4, Prado, Sedans. Book online for best rates in Rwanda."
-        canonical="https://www.kigalicarrental.site/car-rental-rwanda"
-        openGraph={{
-          url: 'https://www.kigalicarrental.site/car-rental-rwanda',
-          title: 'Car Rental Rwanda | Best Prices & Fleet 2024',
-          description: 'Affordable car rental in Rwanda with airport pickup service.',
-        }}
-      />
-      
+    <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl font-bold mb-6 text-center">Car Rental in Rwanda - Best Prices 2024</h1>
-        
-        <div className="max-w-4xl mx-auto">
-          <p className="text-lg mb-6">
-            Welcome to the best car rental service in Rwanda! We offer a wide range of vehicles 
-            at competitive prices for your travel needs across Rwanda. Whether you're visiting 
-            Kigali, Musanze, or exploring Volcanoes National Park, we have the perfect car for you.
+        {/* Hero Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Car Rental in Rwanda - Best Prices 2024
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Find the perfect car for your Rwandan adventure. From Kigali city tours to Volcanoes National Park safaris.
           </p>
-          
-          <div className="grid md:grid-cols-2 gap-8 my-10">
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h2 className="text-2xl font-bold mb-4">Why Choose Us in Rwanda?</h2>
-              <ul className="space-y-3">
-                <li>✓ Kigali Airport pickup & dropoff</li>
-                <li>✓ 24/7 Rwanda customer support</li>
-                <li>✓ Prices in Rwandan Francs (RWF)</li>
-                <li>✓ Mobile money payments (MTN, Airtel)</li>
-                <li>✓ Rwandan driver's license accepted</li>
-                <li>✓ Full insurance coverage</li>
-              </ul>
+        </div>
+
+        {/* Why Choose Us */}
+        <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+            Why Rent With Us in Rwanda?
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="text-4xl mb-4">🚗</div>
+              <h3 className="text-xl font-bold mb-2">Large Fleet</h3>
+              <p className="text-gray-600">Toyota RAV4, Prado, Sedans, 4x4 for all terrains</p>
             </div>
-            
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h2 className="text-2xl font-bold mb-4">Popular Destinations</h2>
-              <ul className="space-y-3">
-                <li>• Kigali City car rental</li>
-                <li>• Musanze (Ruhengeri) 4x4 rental</li>
-                <li>• Huye (Butare) car hire</li>
-                <li>• Rubavu (Gisenyi) beach cars</li>
-                <li>• Volcanoes National Park safari</li>
-                <li>• Akagera National Park tours</li>
-              </ul>
+            <div className="text-center">
+              <div className="text-4xl mb-4">💰</div>
+              <h3 className="text-xl font-bold mb-2">Best Prices</h3>
+              <p className="text-gray-600">Competitive rates in Rwandan Francs (RWF)</p>
             </div>
-          </div>
-          
-          <div className="mt-12">
-            <h2 className="text-3xl font-bold mb-6">Our Rwanda Car Fleet</h2>
-            <p className="mb-8">
-              From economy cars for city driving to 4x4 vehicles for mountain adventures, 
-              we have the right car for your Rwandan journey.
-            </p>
-            
-            <div className="text-center mt-8">
-              <Link 
-                href="/cars" 
-                className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700"
-              >
-                View All Cars Available in Rwanda
-              </Link>
+            <div className="text-center">
+              <div className="text-4xl mb-4">🏢</div>
+              <h3 className="text-xl font-bold mb-2">Local Company</h3>
+              <p className="text-gray-600">Rwandan-owned, understanding local needs</p>
             </div>
           </div>
         </div>
+
+        {/* Popular Destinations */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+            Popular Rwanda Destinations
+          </h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { name: 'Kigali City', desc: 'Business & city exploration' },
+              { name: 'Musanze', desc: 'Volcanoes National Park access' },
+              { name: 'Huye (Butare)', desc: 'Cultural heritage sites' },
+              { name: 'Rubavu (Gisenyi)', desc: 'Lake Kivu beaches' },
+              { name: 'Nyungwe Forest', desc: 'Canopy walk & chimpanzees' },
+              { name: 'Akagera Park', desc: 'Safari & wildlife viewing' },
+            ].map((place, idx) => (
+              <div key={idx} className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+                <h3 className="text-xl font-bold mb-2">{place.name}</h3>
+                <p className="text-gray-600">{place.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="text-center bg-blue-600 text-white p-8 rounded-2xl">
+          <h2 className="text-3xl font-bold mb-4">Ready to Explore Rwanda?</h2>
+          <p className="text-xl mb-6 max-w-2xl mx-auto">
+            Book your car today and get 10% off for online bookings
+          </p>
+          <div className="space-x-4">
+            <Link
+              href="/cars"
+              className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg text-lg font-bold hover:bg-gray-100"
+            >
+              View Available Cars
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-block border-2 border-white text-white px-8 py-3 rounded-lg text-lg font-bold hover:bg-white hover:text-blue-600"
+            >
+              Contact Us
+            </Link>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   )
 }

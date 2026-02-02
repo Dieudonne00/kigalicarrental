@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"ViewportBoundary"]
+3:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"MetadataBoundary"]
+4:"$Sreact.suspense"
+0:{"buildId":"GvGZKLKslXjV7mF0uJmkH","rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Car Rental Kigali | Airport Pickup & Best Deals | KigaliCarRental"}],["$","meta","1",{"name":"description","content":"Need a car in Kigali? Best car rental deals with airport pickup. Toyota RAV4, Prado, Sedans. Book your Kigali car rental online today."}],["$","meta","2",{"name":"keywords","content":"car rental Kigali, Kigali car hire, rent a car Kigali, Kigali airport car rental, car hire Kigali airport"}]]}]}]}],null]}],"loading":null,"isPartial":false}

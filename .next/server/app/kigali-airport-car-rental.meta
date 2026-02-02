@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/kigali-airport-car-rental/layout,_N_T_/kigali-airport-car-rental/page,_N_T_/kigali-airport-car-rental"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/kigali-airport-car-rental/__PAGE__",
+    "/kigali-airport-car-rental",
+    "/_index",
+    "/_head"
+  ]
+}
