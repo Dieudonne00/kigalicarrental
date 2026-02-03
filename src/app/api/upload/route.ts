@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 
-// 🔴 TEMP CONFIG – CHANGE LATER
+// 🔥 THIS FIXES THE ISSUE
+export const runtime = "nodejs";
+
+// TEMP CONFIG – change later
 cloudinary.config({
   cloud_name: "dxn12qcje",
   api_key: "636422866527858",
@@ -21,22 +24,19 @@ export async function POST(request: Request) {
       );
     }
 
-    // Convert file → base64
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
     const base64 = `data:${file.type};base64,${buffer.toString("base64")}`;
 
-    // Upload to Cloudinary
     const result = await cloudinary.uploader.upload(base64, {
       folder: "cars",
       resource_type: "image",
     });
 
-    // ✅ RETURN WHAT FRONTEND NEEDS
     return NextResponse.json({
       success: true,
-      imageUrl: result.secure_url, // USE THIS TO DISPLAY
-      publicId: result.public_id,  // USE THIS TO DELETE
+      imageUrl: result.secure_url,
+      publicId: result.public_id,
     });
   } catch (error) {
     console.error("Upload error:", error);
@@ -46,4 +46,3 @@ export async function POST(request: Request) {
     );
   }
 }
-
