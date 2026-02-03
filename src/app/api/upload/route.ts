@@ -20,15 +20,16 @@ export async function POST(request: Request) {
 
     console.log("Upload request received for file:", file.name);
 
-    // Convert file to buffer then base64 for Cloudinary
+    // Convert file to buffer
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
+
+    // Convert buffer to base64 for Cloudinary
     const base64String = `data:${file.type};base64,${buffer.toString('base64')}`;
 
     // Generate unique filename
     const timestamp = Date.now();
-    const originalName = file.name.replace(/[^a-zA-Z0-9.-]/g, "_");
-    const filename = `${timestamp}-${originalName}`;
+    const filename = `${timestamp}-${file.name.replace(/[^a-zA-Z0-9.-]/g, "_")}`;
 
     // Upload to Cloudinary
     const uploadResult = await new Promise<any>((resolve, reject) => {
