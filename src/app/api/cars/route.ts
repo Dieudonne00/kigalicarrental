@@ -9,7 +9,7 @@ export async function GET(request: Request) {
 
     // Build query
     const where: any = {
-      available: true, // Only show available cars publicly
+      available: true,
     };
 
     if (featured === "true") {
@@ -22,15 +22,29 @@ export async function GET(request: Request) {
 
     const cars = await prisma.car.findMany({
       where,
-      orderBy: {
-        createdAt: "desc",
-      },
-      include: {
+      select: { // ✅ CHANGED from 'include' to 'select' for specific fields
+        id: true,
+        name: true,
+        brand: true,
+        model: true,
+        year: true,
+        category: true,
+        transmission: true,
+        seats: true,
+        fuelType: true,
+        dailyRate: true,
+        weeklyRate: true,
+        monthlyRate: true,
+        imageUrl: true, // ✅ ADD THIS LINE - CRITICAL
+        featured: true,
+        gameDrive: true,
+        createdAt: true,
+        // Include bookings for active booking check
         bookings: {
           where: {
             status: "confirmed",
             returnDate: {
-              gte: new Date(), // Only current/future bookings
+              gte: new Date(),
             },
           },
           select: {
@@ -38,16 +52,44 @@ export async function GET(request: Request) {
           },
         },
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     });
+
+    // Debug log to see what's being returned
+    console.log(`Fetched ${cars.length} cars`);
+    if (cars.length > 0) {
+      console.log("First car fields:", Object.keys(cars[0]));
+      console.log("First car imageUrl:", cars[0].imageUrl);
+    }
 
     // Add hasActiveBooking flag to each car
     const carsWithBookingStatus = cars.map((car: any) => ({
-      ...car,
+      id: car.id,
+      name: car.name,
+      brand: car.brand,
+      model: car.model,
+      year: car.year,
+      category: car.category,
+      transmission: car.transmission,
+      seats: car.seats,
+      fuelType: car.fuelType,
+      dailyRate: car.dailyRate,
+      weeklyRate: car.weeklyRate,
+      monthlyRate: car.monthlyRate,
+      imageUrl: car.imageUrl || null, // ✅ Ensure imageUrl is included
       hasActiveBooking: car.bookings.length > 0,
-      bookings: undefined, // Remove bookings array from response
     }));
 
-    return NextResponse.json({ cars: carsWithBookingStatus }, { status: 200 });
+    return NextResponse.json({ 
+      cars: carsWithBookingStatus,
+      meta: {
+        total: cars.length,
+        featured: featured === "true",
+        gameDrive: gameDrive === "true"
+      }
+    }, { status: 200 });
   } catch (error) {
     console.error("Error fetching cars:", error);
     return NextResponse.json(
