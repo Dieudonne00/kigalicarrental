@@ -111,9 +111,9 @@ export default function Header() {
   // ADDITIONAL KEYWORD-RICH LINKS
   const quickLinks = [
     { label: "Last Minute Deals", href: "/deals/last-minute", badge: "HOT" },
-    { label: "Weekly Specials", href: "/deals/weekly", badge: "SAVE 10%" },
-    { label: "Monthly Rental", href: "/long-term/monthly" },
-    { label: "Safari Packages", href: "/safari/packages" },
+    { label: "Weekly Specials", href: "/deals/weekly"},
+    { label: "Monthly Rental", href: "/long-term/monthly" , badge: "SAVE 15%" },
+    
   ];
 
   return (
