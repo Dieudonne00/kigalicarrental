@@ -5,398 +5,279 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Header() {
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // COMPREHENSIVE CAR RENTAL MENU WITH 10+ SUBS EACH
-  const menuStructure = [
-    {
-      label: "Car Fleet",
+  // YOUR ACTUAL CONTACT INFO
+  const contactInfo = {
+    phone: "+250 788 888 026",
+    whatsapp: "+250 788 888 026",
+    email: "kigalicarrentals2004@gmail.com",
+    address: "Kigali, Rwanda"
+  };
+
+  // CAR RENTAL KEYWORD-RICH MENU STRUCTURE
+  const menuItems = [
+    { 
+      label: "Home", 
+      href: "/",
+      keywords: ["car rental Rwanda", "Kigali car hire", "vehicle rental service"]
+    },
+    { 
+      label: "Our Cars", 
       href: "/fleet",
       submenus: [
-        { label: "Economy Cars", href: "/fleet/economy", keywords: ["budget car hire", "cheap car rental", "affordable vehicles"] },
-        { label: "SUV Rentals", href: "/fleet/suvs", keywords: ["4x4 rental", "family SUV hire", "off-road vehicles"] },
-        { label: "Luxury Vehicles", href: "/fleet/luxury", keywords: ["premium car hire", "luxury sedan rental", "executive cars"] },
-        { label: "7-Seater MPVs", href: "/fleet/7-seaters", keywords: ["family van rental", "people carrier hire", "group transport"] },
-        { label: "Hybrid & Electric", href: "/fleet/eco-friendly", keywords: ["EV rental Kigali", "hybrid car hire", "electric vehicles"] },
-        { label: "4x4 Safari Vehicles", href: "/fleet/safari", keywords: ["safari car rental", "game drive vehicles", "Akagera tours"] },
-        { label: "Business Rentals", href: "/fleet/business", keywords: ["corporate car hire", "business vehicle rental", "company cars"] },
-        { label: "Long Term Leasing", href: "/fleet/long-term", keywords: ["monthly car rental", "extended lease", "long term hire"] },
-        { label: "Latest Models 2024", href: "/fleet/new-models", keywords: ["new car rental", "2024 vehicles", "latest fleet"] },
-        { label: "Compare Vehicles", href: "/fleet/compare", keywords: ["car comparison", "vehicle specs", "rental options"] },
+        { label: "Toyota RAV4", href: "/fleet/toyota-rav4", keywords: ["RAV4 rental Kigali", "SUV hire Rwanda", "Toyota car rental"] },
+        { label: "Land Cruiser Prado", href: "/fleet/land-cruiser", keywords: ["Prado rental", "4x4 hire Rwanda", "Land Cruiser safari"] },
+        { label: "Toyota Hiace", href: "/fleet/toyota-hiace", keywords: ["Hiace van rental", "group transport", "minibus hire"] },
+        { label: "Hilux Pickup", href: "/fleet/hilux", keywords: ["pickup truck rental", "Hilux 4x4", "utility vehicle hire"] },
+        { label: "Economy Cars", href: "/fleet/economy", keywords: ["budget car rental", "cheap car hire", "affordable vehicles"] },
+        { label: "Luxury Sedans", href: "/fleet/luxury", keywords: ["premium car rental", "executive vehicles", "VIP transport"] },
+        { label: "7-Seater SUVs", href: "/fleet/7-seater", keywords: ["family SUV rental", "people carrier", "group travel"] },
+        { label: "4x4 Safari Vehicles", href: "/fleet/safari", keywords: ["safari car rental", "game drive vehicles", "Akagera transport"] },
+        { label: "Hybrid Cars", href: "/fleet/hybrid", keywords: ["fuel efficient rental", "eco-friendly cars", "hybrid vehicle hire"] },
+        { label: "All Vehicles", href: "/fleet/all", keywords: ["complete fleet", "all car models", "vehicle selection"] }
       ]
     },
-    {
-      label: "Destinations",
-      href: "/destinations",
+    { 
+      label: "How It Works", 
+      href: "/how-it-works",
       submenus: [
-        { label: "Kigali Airport Pickup", href: "/destinations/kigali-airport", keywords: ["KGL airport rental", "airport car hire"] },
-        { label: "City Center Rentals", href: "/destinations/kigali-city", keywords: ["downtown car rental", "city center pickup"] },
-        { label: "Volcanoes National Park", href: "/destinations/volcanoes", keywords: ["gorilla trekking transport", "Musanze car hire"] },
-        { label: "Akagera Game Drives", href: "/destinations/akagera", keywords: ["safari vehicle rental", "game park transport"] },
-        { label: "Nyungwe Forest", href: "/destinations/nyungwe", keywords: ["canopy walk transport", "rainforest tours"] },
-        { label: "Lake Kivu", href: "/destinations/lake-kivu", keywords: ["beach resort transport", "Gisenyi car hire"] },
-        { label: "Cross-Border Trips", href: "/destinations/cross-border", keywords: ["Uganda Rwanda border", "DRC transport"] },
-        { label: "Business Districts", href: "/destinations/business", keywords: ["Kacyiru rental", "Nyarutarama car hire"] },
-        { label: "Event Transport", href: "/destinations/events", keywords: ["conference transport", "wedding car rental"] },
-        { label: "Hotel Pickup Services", href: "/destinations/hotels", keywords: ["hotel car delivery", "accommodation transport"] },
+        { label: "Booking Process", href: "/how-it-works/booking", keywords: ["how to rent car", "reservation steps", "booking procedure"] },
+        { label: "Requirements", href: "/how-it-works/requirements", keywords: ["driver license Rwanda", "rental criteria", "documents needed"] },
+        { label: "Payment Methods", href: "/how-it-works/payment", keywords: ["car rental payment", "mobile money", "credit card accepted"] },
+        { label: "Pickup & Return", href: "/how-it-works/pickup", keywords: ["vehicle delivery", "Kigali pickup", "return process"] },
+        { label: "Insurance Options", href: "/how-it-works/insurance", keywords: ["car rental insurance", "coverage plans", "protection options"] },
+        { label: "Fuel Policy", href: "/how-it-works/fuel", keywords: ["fuel rental policy", "petrol diesel", "refueling instructions"] },
+        { label: "Driver Options", href: "/how-it-works/driver", keywords: ["with driver hire", "self drive", "chauffeur service"] },
+        { label: "Cross Border", href: "/how-it-works/cross-border", keywords: ["Uganda Rwanda border", "international travel", "East Africa rental"] },
+        { label: "Long Term Rental", href: "/how-it-works/long-term", keywords: ["monthly car hire", "extended rental", "lease options"] },
+        { label: "FAQ", href: "/how-it-works/faq", keywords: ["frequently asked questions", "rental queries", "help center"] }
       ]
     },
-    {
-      label: "Services",
-      href: "/services",
+    { 
+      label: "Blog", 
+      href: "/blog",
       submenus: [
-        { label: "Airport Transfers", href: "/services/airport-transfers", keywords: ["KGL airport taxi", "meet and greet"] },
-        { label: "Chauffeur Service", href: "/services/chauffeur", keywords: ["driver hire Rwanda", "professional chauffeur"] },
-        { label: "Corporate Accounts", href: "/services/corporate", keywords: ["business car rental", "company accounts"] },
-        { label: "Wedding Car Hire", href: "/services/weddings", keywords: ["bridal cars", "wedding transport"] },
-        { label: "Tour Packages", href: "/services/tours", keywords: ["guided tours Rwanda", "sightseeing packages"] },
-        { label: "One-Way Rentals", href: "/services/one-way", keywords: ["different location return", "flexible drop-off"] },
-        { label: "24/7 Roadside Assistance", href: "/services/roadside", keywords: ["breakdown service", "emergency support"] },
-        { label: "Child Seat Rentals", href: "/services/child-seats", keywords: ["baby car seats", "child safety"] },
-        { label: "GPS Navigation", href: "/services/gps", keywords: ["satellite navigation", "Rwanda maps"] },
-        { label: "Insurance Options", href: "/services/insurance", keywords: ["car rental insurance", "coverage plans"] },
+        { label: "Travel Tips Rwanda", href: "/blog/travel-tips", keywords: ["Rwanda travel guide", "tourist information", "visit Rwanda"] },
+        { label: "Road Safety", href: "/blog/road-safety", keywords: ["driving in Rwanda", "road conditions", "safety guidelines"] },
+        { label: "Car Maintenance", href: "/blog/maintenance", keywords: ["vehicle care", "car maintenance tips", "rental vehicle care"] },
+        { label: "Tourist Attractions", href: "/blog/attractions", keywords: ["places to visit Rwanda", "gorilla trekking", "national parks"] },
+        { label: "Event Transport", href: "/blog/events", keywords: ["conference transport", "wedding cars", "event vehicle hire"] },
+        { label: "Business Travel", href: "/blog/business", keywords: ["corporate transport", "business car rental", "executive travel"] },
+        { label: "Safari Guides", href: "/blog/safari", keywords: ["Akagera National Park", "Volcanoes National Park", "safari planning"] },
+        { label: "Cost Saving Tips", href: "/blog/saving-tips", keywords: ["budget car rental", "money saving", "affordable travel"] },
+        { label: "Seasonal Deals", href: "/blog/deals", keywords: ["special offers", "discount periods", "promotional rates"] },
+        { label: "Customer Stories", href: "/blog/stories", keywords: ["client experiences", "rental reviews", "testimonials"] }
       ]
     },
-    {
-      label: "Booking",
-      href: "/booking",
-      submenus: [
-        { label: "Instant Online Booking", href: "/book-now", keywords: ["reserve car online", "quick booking"] },
-        { label: "Modify Reservation", href: "/booking/modify", keywords: ["change booking", "update rental"] },
-        { label: "Cancellation Policy", href: "/booking/cancellation", keywords: ["free cancellation", "refund policy"] },
-        { label: "Payment Options", href: "/booking/payment", keywords: ["credit card rental", "mobile money"] },
-        { label: "Special Offers", href: "/booking/deals", keywords: ["discount car rental", "promotional rates"] },
-        { label: "Group Discounts", href: "/booking/group", keywords: ["multiple car discount", "bulk rental"] },
-        { label: "Long Term Rates", href: "/booking/long-term", keywords: ["monthly discounts", "extended rental"] },
-        { label: "Fuel Policy", href: "/booking/fuel", keywords: ["full-to-full", "fuel options"] },
-        { label: "Driver Requirements", href: "/booking/requirements", keywords: ["license needed", "rental criteria"] },
-        { label: "Booking FAQ", href: "/booking/faq", keywords: ["rental questions", "booking help"] },
-      ]
-    },
-    {
-      label: "About",
+    { 
+      label: "About Us", 
       href: "/about",
       submenus: [
-        { label: "Company Overview", href: "/about/company", keywords: ["Kigali Car Hire story", "our mission"] },
-        { label: "Management Team", href: "/about/team", keywords: ["experienced staff", "professional team"] },
-        { label: "Customer Reviews", href: "/about/reviews", keywords: ["client testimonials", "rental feedback"] },
-        { label: "Safety Standards", href: "/about/safety", keywords: ["vehicle maintenance", "safety checks"] },
-        { label: "Environmental Policy", href: "/about/environment", keywords: ["green car rental", "eco-friendly"] },
-        { label: "Community Projects", href: "/about/community", keywords: ["Rwanda tourism support", "local projects"] },
-        { label: "Awards & Recognition", href: "/about/awards", keywords: ["best car rental", "industry awards"] },
-        { label: "Partnerships", href: "/about/partners", keywords: ["hotel partnerships", "travel agencies"] },
-        { label: "Careers", href: "/about/careers", keywords: ["join our team", "employment"] },
-        { label: "Contact Offices", href: "/about/contact", keywords: ["Kigali office location", "contact details"] },
+        { label: "Our Company", href: "/about/company", keywords: ["Kigali Car Rentals story", "about our business", "company history"] },
+        { label: "Our Team", href: "/about/team", keywords: ["experienced staff", "professional drivers", "management team"] },
+        { label: "Our Fleet", href: "/about/fleet", keywords: ["vehicle collection", "car models available", "fleet details"] },
+        { label: "Safety Standards", href: "/about/safety", keywords: ["vehicle maintenance", "safety checks", "reliable cars"] },
+        { label: "Customer Reviews", href: "/about/reviews", keywords: ["client feedback", "testimonials", "satisfied customers"] },
+        { label: "Contact Us", href: "/about/contact", keywords: ["get in touch", "contact details", "office location"] },
+        { label: "Careers", href: "/about/careers", keywords: ["job opportunities", "join our team", "employment"] },
+        { label: "Partners", href: "/about/partners", keywords: ["hotel partnerships", "travel agencies", "business partners"] },
+        { label: "Terms & Conditions", href: "/about/terms", keywords: ["rental agreement", "terms of service", "policy"] },
+        { label: "Privacy Policy", href: "/about/privacy", keywords: ["data protection", "privacy terms", "information security"] }
       ]
     },
-    {
-      label: "Resources",
-      href: "/resources",
+    { 
+      label: "Contact", 
+      href: "/contact",
       submenus: [
-        { label: "Rwanda Driving Guide", href: "/resources/driving-guide", keywords: ["driving in Rwanda", "road rules"] },
-        { label: "Tourist Attractions", href: "/resources/attractions", keywords: ["places to visit", "Rwanda tourism"] },
-        { label: "Road Trip Planner", href: "/resources/road-trips", keywords: ["itinerary planning", "route maps"] },
-        { label: "Weather & Best Time", href: "/resources/weather", keywords: ["Rwanda seasons", "travel timing"] },
-        { label: "Currency & Costs", href: "/resources/costs", keywords: ["Rwandan francs", "travel budget"] },
-        { label: "Visa Requirements", href: "/resources/visa", keywords: ["entry requirements", "travel documents"] },
-        { label: "Emergency Numbers", href: "/resources/emergency", keywords: ["police ambulance", "emergency contacts"] },
-        { label: "Car Rental Glossary", href: "/resources/glossary", keywords: ["rental terms", "industry vocabulary"] },
-        { label: "Travel Blog", href: "/blog", keywords: ["Rwanda travel tips", "car hire advice"] },
-        { label: "News & Updates", href: "/resources/news", keywords: ["industry news", "company updates"] },
+        { label: "Phone Booking", href: "tel:+250788888026", keywords: ["call to book", "phone reservation", "telephone booking"] },
+        { label: "WhatsApp", href: "https://wa.me/250788888026", keywords: ["WhatsApp booking", "message to book", "instant chat"] },
+        { label: "Email Inquiry", href: "mailto:kigalicarrentals@gmail.com", keywords: ["email booking", "send inquiry", "email contact"] },
+        { label: "Office Location", href: "/contact/location", keywords: ["Kigali office", "physical address", "visit us"] },
+        { label: "Airport Pickup", href: "/contact/airport", keywords: ["KGL airport pickup", "airport meeting", "arrival service"] },
+        { label: "Hotel Delivery", href: "/contact/hotel", keywords: ["hotel pickup", "accommodation delivery", "hotel service"] },
+        { label: "Emergency Contact", href: "/contact/emergency", keywords: ["24/7 support", "breakdown assistance", "emergency help"] },
+        { label: "Feedback", href: "/contact/feedback", keywords: ["customer feedback", "suggestions", "comments"] },
+        { label: "Quote Request", href: "/contact/quote", keywords: ["get quotation", "price estimate", "cost calculation"] },
+        { label: "Live Chat", href: "/contact/chat", keywords: ["instant chat", "online support", "real-time help"] }
       ]
     },
-  ];
-
-  // ADDITIONAL KEYWORD-RICH LINKS
-  const quickLinks = [
-    { label: "Last Minute Deals", href: "/deals/last-minute", badge: "HOT" },
-    { label: "Weekly Specials", href: "/deals/weekly", badge: "SAVE 20%" },
-    { label: "Monthly Rental", href: "/long-term/monthly" },
-    { label: "Safari Packages", href: "/safari/packages" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-lg">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
       <div className="max-w-7xl mx-auto">
-        {/* TOP BAR - Promotions & Contact */}
-        <div className="hidden md:flex justify-between items-center py-2 border-b border-gray-100 mb-3">
-          <div className="flex items-center gap-6 text-sm">
-            <div className="flex items-center gap-2">
-              <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-bold">24/7</span>
-              <span className="text-gray-700">24/7 Customer Support</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold">FREE</span>
-              <span className="text-gray-700">Free Cancellation</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-bold">BEST</span>
-              <span className="text-gray-700">Best Price Guarantee</span>
-            </div>
+        {/* TOP CONTACT BAR - YOUR ACTUAL INFO */}
+        <div className="hidden md:flex justify-between items-center bg-[#4B5320] text-white px-6 py-2 rounded-t-lg text-sm mb-1">
+          <div className="flex items-center gap-6">
+            <a href={`tel:${contactInfo.phone}`} className="flex items-center gap-2 hover:text-gray-200">
+              📞 {contactInfo.phone}
+            </a>
+            <a href={`https://wa.me/${contactInfo.whatsapp.replace(/\s+/g, '')}`} className="flex items-center gap-2 hover:text-gray-200">
+              💬 WhatsApp: {contactInfo.whatsapp}
+            </a>
+            <a href={`mailto:${contactInfo.email}`} className="flex items-center gap-2 hover:text-gray-200">
+              ✉️ {contactInfo.email}
+            </a>
           </div>
-          
-          <div className="flex items-center gap-4">
-            <a href="tel:+250788123456" className="text-gray-700 hover:text-[#4B5320] font-medium">
-              📞 +250 788 123 456
-            </a>
-            <a href="mailto:book@kigalicarhire.com" className="text-gray-700 hover:text-[#4B5320] font-medium">
-              ✉️ book@kigalicarhire.com
-            </a>
+          <div className="text-sm">
+            🕒 24/7 Available • Cancellation Available
           </div>
         </div>
 
-        {/* MAIN NAVIGATION */}
-        <nav className="flex items-center justify-between">
-          {/* LOGO WITH SEO TEXT */}
-          <Link href="/" className="flex items-center gap-3">
+        {/* MAIN NAVIGATION - YOUR ORIGINAL DESIGN */}
+        <nav className="bg-white/95 backdrop-blur-sm rounded-full border-2 border-gray-200 px-6 py-3 flex items-center justify-between">
+          {/* Logo - KEPT YOUR EXACT STYLE */}
+          <Link href="/" className="flex items-center">
             <Image
               src="https://res.cloudinary.com/dxn12qcje/image/upload/v1770132530/mylogo-removebg-preview_mpcp0n.png"
-              alt="Kigali Car Hire - Best Car Rental in Rwanda | Airport Pickup | SUV & 4x4 Rental"
-              width={140}
-              height={50}
-              className="h-12 w-auto"
+              alt="Kigali Car Rentals - Best Car Hire in Rwanda | SUV Rental | Airport Pickup | 4x4 Vehicles"
+              width={120}
+              height={40}
+              className="h-10 w-auto"
               priority
-              title="Kigali Car Rental - Luxury & Economy Vehicles"
             />
-            <div className="hidden lg:block">
-              <div className="text-sm font-bold text-[#4B5320]">KIGALI CAR HIRE</div>
-              <div className="text-xs text-gray-600">Premium Car Rental Service in Rwanda</div>
-            </div>
           </Link>
 
-          {/* DESKTOP MEGA MENU */}
-          <div className="hidden xl:flex items-center gap-1">
-            {menuStructure.map((menu) => (
-              <div
-                key={menu.label}
-                className="relative group"
-                onMouseEnter={() => setActiveMenu(menu.label)}
-                onMouseLeave={() => setActiveMenu(null)}
-              >
+          {/* Desktop Navigation - ENHANCED WITH SUBMENUS */}
+          <ul className="hidden lg:flex items-center gap-8">
+            {menuItems.map((item) => (
+              <li key={item.href} className="relative group">
                 <Link
-                  href={menu.href}
-                  className="px-4 py-3 text-gray-800 hover:text-[#4B5320] font-semibold hover:bg-gray-50 rounded-lg transition-colors flex items-center gap-1"
-                  title={`${menu.label} - Car Rental Services Rwanda`}
+                  href={item.href}
+                  className="text-gray-700 hover:text-[#4B5320] transition-colors font-bold py-2"
+                  title={item.keywords?.join(" • ")}
                 >
-                  {menu.label}
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
+                  {item.label}
+                  {item.submenus && (
+                    <span className="ml-1 text-xs">▼</span>
+                  )}
                 </Link>
-
-                {/* MEGA SUBMENU */}
-                {activeMenu === menu.label && (
-                  <div className="absolute left-0 top-full pt-2 w-screen max-w-4xl">
-                    <div className="bg-white rounded-xl shadow-2xl border border-gray-200 p-6 grid grid-cols-2 gap-6">
-                      <div className="space-y-4">
-                        <h3 className="font-bold text-lg text-[#4B5320] border-b pb-2">
-                          {menu.label} Services
-                        </h3>
-                        {menu.submenus.slice(0, 5).map((sub) => (
-                          <Link
-                            key={sub.href}
-                            href={sub.href}
-                            className="block p-3 hover:bg-gray-50 rounded-lg transition-colors group/sub"
-                            title={sub.keywords?.join(", ")}
-                          >
-                            <div className="font-medium text-gray-800 group-hover/sub:text-[#4B5320]">
-                              {sub.label}
-                            </div>
-                            <div className="text-xs text-gray-500 mt-1">
-                              {sub.keywords?.slice(0, 2).join(" • ")}
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                      <div className="space-y-4">
-                        <h3 className="font-bold text-lg text-[#4B5320] border-b pb-2">
-                          More Options
-                        </h3>
-                        {menu.submenus.slice(5, 10).map((sub) => (
-                          <Link
-                            key={sub.href}
-                            href={sub.href}
-                            className="block p-3 hover:bg-gray-50 rounded-lg transition-colors group/sub"
-                            title={sub.keywords?.join(", ")}
-                          >
-                            <div className="font-medium text-gray-800 group-hover/sub:text-[#4B5320]">
-                              {sub.label}
-                            </div>
-                            <div className="text-xs text-gray-500 mt-1">
-                              {sub.keywords?.slice(0, 2).join(" • ")}
-                            </div>
-                          </Link>
-                        ))}
-                        {/* FEATURED OFFER */}
-                        <div className="mt-6 p-4 bg-gradient-to-r from-[#4B5320] to-green-800 rounded-lg text-white">
-                          <div className="font-bold">SPECIAL OFFER</div>
-                          <div className="text-sm">Book 7+ days get 15% discount</div>
-                          <Link
-                            href="/deals/long-term"
-                            className="inline-block mt-2 bg-white text-[#4B5320] px-4 py-1 rounded text-sm font-bold"
-                          >
-                            Claim Offer →
-                          </Link>
-                        </div>
-                      </div>
+                
+                {/* SUBMENU DROPDOWN */}
+                {item.submenus && (
+                  <div className="absolute left-0 top-full pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <div className="bg-white rounded-lg shadow-xl border border-gray-200 py-2">
+                      {item.submenus.map((sub) => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-[#4B5320] text-sm border-b border-gray-100 last:border-b-0"
+                          title={sub.keywords?.join(" • ")}
+                        >
+                          <div className="font-medium">{sub.label}</div>
+                          <div className="text-xs text-gray-500 mt-1 truncate">
+                            {sub.keywords?.slice(0, 2).join(" • ")}
+                          </div>
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 )}
-              </div>
+              </li>
             ))}
+          </ul>
+
+          {/* CTA Button - Desktop - YOUR ORIGINAL STYLE */}
+          <div className="hidden lg:block">
+            <Link
+              href="/book-now"
+              className="bg-[#4B5320] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#3a4218] transition-colors"
+              title="Book Car Rental Online - Instant Confirmation - Kigali Car Rentals"
+            >
+              Book Now
+            </Link>
           </div>
 
-          {/* QUICK ACTIONS & BOOKING */}
-          <div className="hidden lg:flex items-center gap-4">
-            <div className="flex gap-2">
-              {quickLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg font-medium"
-                >
-                  {link.label}
-                  {link.badge && (
-                    <span className="ml-1 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded">
-                      {link.badge}
-                    </span>
-                  )}
-                </Link>
-              ))}
-            </div>
-            
-            <div className="relative">
-              <Link
-                href="/book-now"
-                className="bg-gradient-to-r from-[#4B5320] to-green-700 text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-shadow flex items-center gap-2"
-                title="Book Car Rental Online - Instant Confirmation"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                BOOK NOW
-              </Link>
-              <div className="absolute -bottom-6 left-0 right-0 text-center text-xs text-gray-500">
-                Instant Confirmation
-              </div>
-            </div>
-          </div>
-
-          {/* MOBILE MENU BUTTON */}
+          {/* Mobile Menu Button - KEPT YOUR EXACT STYLE */}
           <button
-            className="xl:hidden p-3 bg-gray-100 rounded-lg"
+            className="lg:hidden p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle mobile menu"
+            aria-label="Toggle menu"
           >
-            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-6 h-6 text-gray-700"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
               {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
         </nav>
 
-        {/* MOBILE MEGA MENU */}
+        {/* Mobile Menu - ENHANCED WITH SUBMENUS */}
         {isMobileMenuOpen && (
-          <div className="xl:hidden mt-4 bg-white rounded-2xl border border-gray-200 shadow-xl p-4 max-h-[80vh] overflow-y-auto">
-            {/* QUICK ACTIONS MOBILE */}
-            <div className="grid grid-cols-2 gap-2 mb-6">
-              {quickLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="p-3 bg-gray-50 rounded-lg text-center hover:bg-gray-100"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <div className="font-medium text-sm">{link.label}</div>
-                  {link.badge && (
-                    <div className="text-xs text-red-600 font-bold mt-1">{link.badge}</div>
-                  )}
-                </Link>
-              ))}
+          <div className="lg:hidden mt-2 bg-white/95 backdrop-blur-sm rounded-3xl border-2 border-gray-200 p-6">
+            {/* MOBILE CONTACT INFO */}
+            <div className="mb-6 p-4 bg-gray-50 rounded-xl">
+              <div className="space-y-2">
+                <a href={`tel:${contactInfo.phone}`} className="block text-gray-700 font-bold">
+                  📞 {contactInfo.phone}
+                </a>
+                <a href={`https://wa.me/${contactInfo.whatsapp.replace(/\s+/g, '')}`} className="block text-gray-700">
+                  💬 WhatsApp: {contactInfo.whatsapp}
+                </a>
+                <a href={`mailto:${contactInfo.email}`} className="block text-gray-700">
+                  ✉️ {contactInfo.email}
+                </a>
+              </div>
+              <div className="mt-3 text-sm text-gray-600">
+                🕒 24/7 Available • Cancellation Available
+              </div>
             </div>
 
-            {/* MOBILE MENU ITEMS */}
-            <div className="space-y-2">
-              {menuStructure.map((menu) => (
-                <div key={menu.label} className="border-b border-gray-100 pb-2">
+            <ul className="flex flex-col gap-4">
+              {menuItems.map((item) => (
+                <div key={item.href}>
                   <Link
-                    href={menu.href}
-                    className="flex justify-between items-center p-3 hover:bg-gray-50 rounded-lg"
+                    href={item.href}
+                    className="text-gray-700 hover:text-[#4B5320] transition-colors font-bold block py-2"
                     onClick={() => setIsMobileMenuOpen(false)}
+                    title={item.keywords?.join(" • ")}
                   >
-                    <span className="font-bold text-gray-800">{menu.label}</span>
-                    <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+                    {item.label}
                   </Link>
                   
-                  {/* MOBILE SUBMENU */}
-                  <div className="pl-4 grid grid-cols-2 gap-2 mt-2">
-                    {menu.submenus.slice(0, 4).map((sub) => (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        className="p-2 text-sm bg-gray-50 hover:bg-gray-100 rounded"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        title={sub.keywords?.join(", ")}
-                      >
-                        {sub.label}
-                      </Link>
-                    ))}
-                  </div>
+                  {/* MOBILE SUBMENUS */}
+                  {item.submenus && (
+                    <div className="ml-4 mt-2 mb-4 grid grid-cols-2 gap-2">
+                      {item.submenus.map((sub) => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          className="text-sm text-gray-600 hover:text-[#4B5320] bg-gray-50 p-2 rounded"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          title={sub.keywords?.join(" • ")}
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
-            </div>
-
-            {/* MOBILE CTA */}
-            <div className="mt-6 p-4 bg-gradient-to-r from-[#4B5320] to-green-700 rounded-xl text-white">
-              <div className="text-center">
-                <div className="font-bold text-lg">Ready to Book?</div>
-                <div className="text-sm opacity-90 mt-1">Best Rates Guaranteed</div>
+              
+              <li className="pt-2">
                 <Link
                   href="/book-now"
-                  className="inline-block mt-3 bg-white text-[#4B5320] px-6 py-2 rounded-lg font-bold"
+                  className="bg-[#4B5320] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#3a4218] transition-colors block text-center"
                   onClick={() => setIsMobileMenuOpen(false)}
+                  title="Book Car Rental Online - Instant Confirmation"
                 >
-                  Reserve Your Car
+                  Book Now
                 </Link>
-              </div>
-            </div>
-
-            {/* CONTACT INFO MOBILE */}
-            <div className="mt-6 pt-4 border-t border-gray-200">
-              <div className="text-center text-sm text-gray-600">
-                <div className="font-bold">24/7 Support</div>
-                <a href="tel:+250788123456" className="block mt-1 text-gray-800 font-bold">
-                  +250 788 123 456
-                </a>
-                <a href="mailto:book@kigalicarhire.com" className="block mt-1 text-gray-800">
-                  book@kigalicarhire.com
-                </a>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         )}
-
-        {/* BREADCRUMB/PROMO BAR */}
-        <div className="hidden md:flex justify-center mt-3">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-50 to-green-50 px-4 py-2 rounded-full border border-gray-200">
-            <span className="text-sm text-gray-700">
-              <span className="font-bold">Popular:</span>
-              <Link href="/fleet/suvs" className="ml-2 text-[#4B5320] hover:underline">SUV Rental</Link>
-              <span className="mx-2">•</span>
-              <Link href="/destinations/airport" className="text-[#4B5320] hover:underline">Airport Pickup</Link>
-              <span className="mx-2">•</span>
-              <Link href="/services/chauffeur" className="text-[#4B5320] hover:underline">Chauffeur Service</Link>
-              <span className="mx-2">•</span>
-              <Link href="/deals/weekly" className="text-red-600 hover:underline font-bold">Weekly Deals</Link>
-            </span>
-          </div>
-        </div>
       </div>
     </header>
   );
