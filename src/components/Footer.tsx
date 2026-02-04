@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-block mb-4">
               <Image
-                src="https://res.cloudinary.com/dxn12qcje/image/upload/mylogo-removebg-preview.png"
+                src="https://res.cloudinary.com/dxn12qcje/image/upload/v1770132530/mylogo-removebg-preview_mpcp0n.png"
                 alt="Kigali Car Rental Logo"
                 width={140}
                 height={46}
