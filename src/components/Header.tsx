@@ -111,7 +111,7 @@ export default function Header() {
   // ADDITIONAL KEYWORD-RICH LINKS
   const quickLinks = [
     { label: "Last Minute Deals", href: "/deals/last-minute", badge: "HOT" },
-    { label: "Weekly Specials", href: "/deals/weekly", badge: "SAVE 20%" },
+    { label: "Weekly Specials", href: "/deals/weekly", badge: "SAVE 10%" },
     { label: "Monthly Rental", href: "/long-term/monthly" },
     { label: "Safari Packages", href: "/safari/packages" },
   ];
@@ -128,7 +128,7 @@ export default function Header() {
             </div>
             <div className="flex items-center gap-2">
               <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold">FREE</span>
-              <span className="text-gray-700">Free Cancellation</span>
+              <span className="text-gray-700">Free Delivary</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-bold">BEST</span>
@@ -159,11 +159,7 @@ export default function Header() {
               priority
               title="Kigali Car Rental - Luxury & Economy Vehicles"
             />
-            <div className="hidden lg:block">
-              <div className="text-sm font-bold text-[#4B5320]">KIGALI CAR HIRE</div>
-              <div className="text-xs text-gray-600">Premium Car Rental Service in Rwanda</div>
-            </div>
-          </Link>
+            
 
           {/* DESKTOP MEGA MENU */}
           <div className="hidden xl:flex items-center gap-1">
