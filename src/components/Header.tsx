@@ -64,7 +64,7 @@ export default function Header() {
       submenus: [
         { label: "Instant Online Booking", href: "/book-now", keywords: ["reserve car online", "quick booking"] },
         { label: "Modify Reservation", href: "/booking/modify", keywords: ["change booking", "update rental"] },
-        { label: "Cancellation Policy", href: "/booking/cancellation", keywords: ["free cancellation", "refund policy"] },
+        { label: "Cancellation Policy", href: "/booking/cancellation", keywords: ["cancellation available", "refund policy"] },
         { label: "Payment Options", href: "/booking/payment", keywords: ["credit card rental", "mobile money"] },
         { label: "Special Offers", href: "/booking/deals", keywords: ["discount car rental", "promotional rates"] },
         { label: "Group Discounts", href: "/booking/group", keywords: ["multiple car discount", "bulk rental"] },
@@ -128,7 +128,7 @@ export default function Header() {
             </div>
             <div className="flex items-center gap-2">
               <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold">FREE</span>
-              <span className="text-gray-700">Free Delivary</span>
+              <span className="text-gray-700">Free Delivery</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-bold">BEST</span>
@@ -137,10 +137,10 @@ export default function Header() {
           </div>
           
           <div className="flex items-center gap-4">
-            <a href="tel:+250788123456" className="text-gray-700 hover:text-[#4B5320] font-medium">
-               +250 796 077 321
+            <a href="tel:+250796077321" className="text-gray-700 hover:text-[#4B5320] font-medium">
+              +250 796 077 321
             </a>
-            <a href="mailto:book@kigalicarhire.com" className="text-gray-700 hover:text-[#4B5320] font-medium">
+            <a href="mailto:kigalicarrentals2004@gmail.com" className="text-gray-700 hover:text-[#4B5320] font-medium">
               kigalicarrentals2004@gmail.com
             </a>
           </div>
@@ -148,7 +148,7 @@ export default function Header() {
 
         {/* MAIN NAVIGATION */}
         <nav className="flex items-center justify-between">
-          {/* LOGO WITH SEO TEXT */}
+          {/* LOGO WITH SEO TEXT - FIXED: Added closing </Link> tag */}
           <Link href="/" className="flex items-center gap-3">
             <Image
               src="https://res.cloudinary.com/dxn12qcje/image/upload/v1770132530/mylogo-removebg-preview_mpcp0n.png"
@@ -157,9 +157,8 @@ export default function Header() {
               height={50}
               className="h-12 w-auto"
               priority
-              
             />
-            
+          </Link>
 
           {/* DESKTOP MEGA MENU */}
           <div className="hidden xl:flex items-center gap-1">
@@ -273,7 +272,6 @@ export default function Header() {
                 </svg>
                 BOOK NOW
               </Link>
-             
             </div>
           </div>
 
@@ -365,19 +363,16 @@ export default function Header() {
             <div className="mt-6 pt-4 border-t border-gray-200">
               <div className="text-center text-sm text-gray-600">
                 <div className="font-bold">24/7 Support</div>
-                <a href="tel:+250788123456" className="block mt-1 text-gray-800 font-bold">
+                <a href="tel:+250796077321" className="block mt-1 text-gray-800 font-bold">
                   +250 796 077 321
                 </a>
-                <a href="mailto:book@kigalicarhire.com" className="block mt-1 text-gray-800">
+                <a href="mailto:kigalicarrentals2004@gmail.com" className="block mt-1 text-gray-800">
                   kigalicarrentals2004@gmail.com
                 </a>
               </div>
             </div>
           </div>
         )}
-
-        {/* BREADCRUMB/PROMO BAR */}
-        
       </div>
     </header>
   );
