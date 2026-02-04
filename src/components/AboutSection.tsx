@@ -90,14 +90,7 @@ export default function AboutSection() {
               </div>
             </div>
 
-            {/* Location & Contact */}
-            
-
-
-             
-            </div>
-          </div>
-        </div>
+          
 
         {/* Trust Badges */}
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
