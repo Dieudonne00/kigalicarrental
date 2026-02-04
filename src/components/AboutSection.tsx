@@ -91,41 +91,10 @@ export default function AboutSection() {
             </div>
 
             {/* Location & Contact */}
-            <div className="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-[#4B5320] rounded-full flex items-center justify-center">
-                  <span className="text-white text-xl">📍</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 text-lg">Visit Our Office</h4>
-                  <p className="text-gray-600">Kigali, Rwanda</p>
-                </div>
-              </div>
+            
 
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <span className="text-gray-500">📞</span>
-                  <a href="tel:+250796077321" className="text-gray-700 hover:text-[#4B5320] font-medium">
-                    +250 796 077 321
-                  </a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-gray-500">✉️</span>
-                  <a href="mailto:kigalicarrentals2004@gmail.com" className="text-gray-700 hover:text-[#4B5320]">
-                    kigalicarrentals2004@gmail.com
-                  </a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-gray-500">🕒</span>
-                  <span className="text-gray-700">Mon-Sun: 7:00 AM - 10:00 PM</span>
-                </div>
-              </div>
 
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <p className="text-sm text-gray-600">
-                  We serve all of Rwanda including Kigali, Musanze, Gisenyi, and Akagera National Park.
-                </p>
-              </div>
+             
             </div>
           </div>
         </div>
