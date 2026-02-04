@@ -138,10 +138,10 @@ export default function Header() {
           
           <div className="flex items-center gap-4">
             <a href="tel:+250788123456" className="text-gray-700 hover:text-[#4B5320] font-medium">
-              📞 +250 788 123 456
+               +250 796 077 321
             </a>
             <a href="mailto:book@kigalicarhire.com" className="text-gray-700 hover:text-[#4B5320] font-medium">
-              ✉️ book@kigalicarhire.com
+              kigalicarrentals2004@gmail.com
             </a>
           </div>
         </div>
@@ -157,7 +157,7 @@ export default function Header() {
               height={50}
               className="h-12 w-auto"
               priority
-              title="Kigali Car Rental - Luxury & Economy Vehicles"
+              
             />
             
 
@@ -366,10 +366,10 @@ export default function Header() {
               <div className="text-center text-sm text-gray-600">
                 <div className="font-bold">24/7 Support</div>
                 <a href="tel:+250788123456" className="block mt-1 text-gray-800 font-bold">
-                  +250 788 123 456
+                  +250 796 077 321
                 </a>
                 <a href="mailto:book@kigalicarhire.com" className="block mt-1 text-gray-800">
-                  book@kigalicarhire.com
+                  kigalicarrentals2004@gmail.com
                 </a>
               </div>
             </div>
@@ -377,20 +377,7 @@ export default function Header() {
         )}
 
         {/* BREADCRUMB/PROMO BAR */}
-        <div className="hidden md:flex justify-center mt-3">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-50 to-green-50 px-4 py-2 rounded-full border border-gray-200">
-            <span className="text-sm text-gray-700">
-              <span className="font-bold">Popular:</span>
-              <Link href="/fleet/suvs" className="ml-2 text-[#4B5320] hover:underline">SUV Rental</Link>
-              <span className="mx-2">•</span>
-              <Link href="/destinations/airport" className="text-[#4B5320] hover:underline">Airport Pickup</Link>
-              <span className="mx-2">•</span>
-              <Link href="/services/chauffeur" className="text-[#4B5320] hover:underline">Chauffeur Service</Link>
-              <span className="mx-2">•</span>
-              <Link href="/deals/weekly" className="text-red-600 hover:underline font-bold">Weekly Deals</Link>
-            </span>
-          </div>
-        </div>
+        
       </div>
     </header>
   );
