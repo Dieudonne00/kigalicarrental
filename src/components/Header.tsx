@@ -366,7 +366,7 @@ export default function Header() {
                 <a href="tel:+250796077321" className="block mt-1 text-gray-800 font-bold">
                   +250 796 077 321
                 </a>
-                <a href="mailto:kigalicarrentals2004@gmail.com" className="block mt-1 text-gray-800">
+                <a href="mailto:booking@carrentalinkigali.com" className="block mt-1 text-gray-800">
                   booking@carrentalinkigali.com
                 </a>
               </div>
