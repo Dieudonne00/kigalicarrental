@@ -43,7 +43,7 @@ export default function Header() {
       ]
     },
     {
-      label: "4X4 & SAFARI RENTALS",
+      label: "SAFARI RENTALS",
       href: "/4x4-car-rental-rwanda",
       submenus: [
         { label: "4x4 Car Rental Rwanda", href: "/4x4-car-rental-rwanda", keywords: ["four-wheel drive", "off-road rental"] },
@@ -91,7 +91,7 @@ export default function Header() {
       ]
     },
     {
-      label: "TRAVEL INFO & BLOG",
+      label: "TRAVEL & BLOG",
       href: "/driving-in-rwanda-guide",
       submenus: [
         { label: "Driving in Rwanda Guide", href: "/driving-in-rwanda-guide", keywords: ["road rules Rwanda", "driving regulations"] },
