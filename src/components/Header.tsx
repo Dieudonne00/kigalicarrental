@@ -11,7 +11,7 @@ export default function Header() {
   // COMPREHENSIVE CAR RENTAL MENU WITH 10+ SUBS EACH
   const menuStructure = [
     {
-      label: "CAR RENTAL IN RWANDA",
+      label: "CAR RENTAL",
       href: "/car-hire-rwanda",
       submenus: [
         { label: "Car Hire Rwanda", href: "/car-hire-rwanda", keywords: ["car rental Rwanda", "vehicle hire Rwanda"] },
@@ -27,7 +27,7 @@ export default function Header() {
       ]
     },
     {
-      label: "SELF DRIVE & DRIVER SERVICES",
+      label: "SELF DRIVE & DRIVER",
       href: "/self-drive-rwanda",
       submenus: [
         { label: "Self Drive Rwanda", href: "/self-drive-rwanda", keywords: ["drive yourself Rwanda", "independent travel"] },
@@ -59,7 +59,7 @@ export default function Header() {
       ]
     },
     {
-      label: "AIRPORT & CITY SERVICES",
+      label: "AIRPORT & CITY",
       href: "/kigali-airport-transfer",
       submenus: [
         { label: "Kigali Airport Transfer", href: "/kigali-airport-transfer", keywords: ["airport taxi", "airport shuttle"] },
@@ -111,7 +111,7 @@ export default function Header() {
   // ADDITIONAL KEYWORD-RICH LINKS
   const quickLinks = [
     { label: "Last Minute Deals", href: "/deals/last-minute", badge: "HOT" },
-    { label: "Weekly Specials", href: "/deals/weekly"},
+    
     { label: "Monthly Rental", href: "/long-term/monthly" , badge: "SAVE 15%" },
     
   ];
