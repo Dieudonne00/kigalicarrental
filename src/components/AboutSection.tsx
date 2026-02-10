@@ -89,10 +89,12 @@ export default function AboutSection() {
                 </div>
               </div>
             </div>
+            
+            {/* This closing div was missing - for the Right Column */}
+          </div>
+        </div> {/* This closes the main grid */}
 
-          
-
-        {/* Trust Badges */}
+        {/* Trust Badges - Now correctly outside the main grid */}
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="text-center">
             <div className="text-3xl font-bold text-[#4B5320] mb-2">10+</div>
