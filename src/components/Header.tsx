@@ -115,30 +115,30 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3 bg-gradient-to-b from-[#1a1e0b] to-[#2a3315] shadow-xl border-b border-[#5a6b2c]/30">
+    <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-lg">
       <div className="max-w-7xl mx-auto">
         {/* TOP BAR - Promotions & Contact */}
-        <div className="hidden md:flex justify-between items-center py-2 border-b border-[#6b7c3a]/30 mb-3">
+        <div className="hidden md:flex justify-between items-center py-2 border-b border-gray-100 mb-3">
           <div className="flex items-center gap-6 text-sm">
             <div className="flex items-center gap-2">
-              <span className="bg-[#f5b042] text-[#1a1e0b] px-2 py-1 rounded text-xs font-bold">24/7</span>
-              <span className="text-white/90 font-medium">24/7 Customer Support</span>
+              <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-bold">24/7</span>
+              <span className="text-gray-700">24/7 Customer Support</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="bg-[#4a9b9b] text-white px-2 py-1 rounded text-xs font-bold">FREE</span>
-              <span className="text-white/90 font-medium">Free Delivery</span>
+              <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold">FREE</span>
+              <span className="text-gray-700">Free Delivery</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="bg-[#d4a373] text-[#1a1e0b] px-2 py-1 rounded text-xs font-bold">BEST</span>
-              <span className="text-white/90 font-medium">Best Price Guarantee</span>
+              <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-bold">BEST</span>
+              <span className="text-gray-700">Best Price Guarantee</span>
             </div>
           </div>
           
           <div className="flex items-center gap-4">
-            <a href="tel:+250796077321" className="text-white/90 hover:text-[#f5b042] font-medium transition-colors">
+            <a href="tel:+250796077321" className="text-gray-700 hover:text-[#4B5320] font-medium">
               +250 796 077 321
             </a>
-            <a href="mailto:kigalicarrentals2004@gmail.com" className="text-white/90 hover:text-[#f5b042] font-medium transition-colors">
+            <a href="mailto:kigalicarrentals2004@gmail.com" className="text-gray-700 hover:text-[#4B5320] font-medium">
               kigalicarrentals2004@gmail.com
             </a>
           </div>
@@ -148,16 +148,14 @@ export default function Header() {
         <nav className="flex items-center justify-between">
           {/* LOGO WITH SEO TEXT */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="bg-white/95 p-1 rounded-lg shadow-md">
-              <Image
-                src="https://res.cloudinary.com/dxn12qcje/image/upload/v1770132530/mylogo-removebg-preview_mpcp0n.png"
-                alt="Kigali Car Hire - Best Car Rental in Rwanda | Airport Pickup | SUV & 4x4 Rental"
-                width={140}
-                height={50}
-                className="h-12 w-auto"
-                priority
-              />
-            </div>
+            <Image
+              src="https://res.cloudinary.com/dxn12qcje/image/upload/v1770132530/mylogo-removebg-preview_mpcp0n.png"
+              alt="Kigali Car Hire - Best Car Rental in Rwanda | Airport Pickup | SUV & 4x4 Rental"
+              width={140}
+              height={50}
+              className="h-12 w-auto"
+              priority
+            />
           </Link>
 
           {/* DESKTOP MEGA MENU */}
@@ -171,7 +169,7 @@ export default function Header() {
               >
                 <Link
                   href={menu.href}
-                  className="px-4 py-3 text-white/95 hover:text-[#f5b042] font-semibold hover:bg-white/10 rounded-lg transition-all flex items-center gap-1"
+                  className="px-4 py-3 text-gray-800 hover:text-[#4B5320] font-semibold hover:bg-gray-50 rounded-lg transition-colors flex items-center gap-1"
                   title={`${menu.label} - Car Rental Services Rwanda`}
                 >
                   {menu.label}
@@ -183,53 +181,53 @@ export default function Header() {
                 {/* MEGA SUBMENU */}
                 {activeMenu === menu.label && (
                   <div className="absolute left-0 top-full pt-2 w-screen max-w-4xl">
-                    <div className="bg-[#1a1e0b] rounded-xl shadow-2xl border border-[#5a6b2c] p-6 grid grid-cols-2 gap-6">
+                    <div className="bg-white rounded-xl shadow-2xl border border-gray-200 p-6 grid grid-cols-2 gap-6">
                       <div className="space-y-4">
-                        <h3 className="font-bold text-lg text-[#f5b042] border-b border-[#5a6b2c] pb-2">
+                        <h3 className="font-bold text-lg text-[#4B5320] border-b pb-2">
                           {menu.label} Services
                         </h3>
                         {menu.submenus.slice(0, 5).map((sub) => (
                           <Link
                             key={sub.href}
                             href={sub.href}
-                            className="block p-3 hover:bg-[#2a3315] rounded-lg transition-colors group/sub"
+                            className="block p-3 hover:bg-gray-50 rounded-lg transition-colors group/sub"
                             title={sub.keywords?.join(", ")}
                           >
-                            <div className="font-medium text-white/95 group-hover/sub:text-[#f5b042]">
+                            <div className="font-medium text-gray-800 group-hover/sub:text-[#4B5320]">
                               {sub.label}
                             </div>
-                            <div className="text-xs text-white/60 mt-1">
+                            <div className="text-xs text-gray-500 mt-1">
                               {sub.keywords?.slice(0, 2).join(" • ")}
                             </div>
                           </Link>
                         ))}
                       </div>
                       <div className="space-y-4">
-                        <h3 className="font-bold text-lg text-[#f5b042] border-b border-[#5a6b2c] pb-2">
+                        <h3 className="font-bold text-lg text-[#4B5320] border-b pb-2">
                           More Options
                         </h3>
                         {menu.submenus.slice(5, 10).map((sub) => (
                           <Link
                             key={sub.href}
                             href={sub.href}
-                            className="block p-3 hover:bg-[#2a3315] rounded-lg transition-colors group/sub"
+                            className="block p-3 hover:bg-gray-50 rounded-lg transition-colors group/sub"
                             title={sub.keywords?.join(", ")}
                           >
-                            <div className="font-medium text-white/95 group-hover/sub:text-[#f5b042]">
+                            <div className="font-medium text-gray-800 group-hover/sub:text-[#4B5320]">
                               {sub.label}
                             </div>
-                            <div className="text-xs text-white/60 mt-1">
+                            <div className="text-xs text-gray-500 mt-1">
                               {sub.keywords?.slice(0, 2).join(" • ")}
                             </div>
                           </Link>
                         ))}
                         {/* FEATURED OFFER */}
-                        <div className="mt-6 p-4 bg-gradient-to-r from-[#f5b042] to-[#d4a373] rounded-lg text-[#1a1e0b]">
+                        <div className="mt-6 p-4 bg-gradient-to-r from-[#4B5320] to-green-800 rounded-lg text-white">
                           <div className="font-bold">SPECIAL OFFER</div>
-                          <div className="text-sm font-medium">Book 7+ days get 15% discount</div>
+                          <div className="text-sm">Book 7+ days get 15% discount</div>
                           <Link
                             href="/deals/long-term"
-                            className="inline-block mt-2 bg-[#1a1e0b] text-white px-4 py-1 rounded text-sm font-bold hover:bg-[#2a3315] transition-colors"
+                            className="inline-block mt-2 bg-white text-[#4B5320] px-4 py-1 rounded text-sm font-bold"
                           >
                             Claim Offer →
                           </Link>
@@ -249,11 +247,11 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-3 py-1.5 text-sm bg-white/10 hover:bg-white/20 text-white/95 rounded-lg font-medium transition-colors"
+                  className="px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg font-medium"
                 >
                   {link.label}
                   {link.badge && (
-                    <span className="ml-1 bg-[#f5b042] text-[#1a1e0b] text-xs px-1.5 py-0.5 rounded font-bold">
+                    <span className="ml-1 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded">
                       {link.badge}
                     </span>
                   )}
@@ -264,7 +262,7 @@ export default function Header() {
             <div className="relative">
               <Link
                 href="/book-now"
-                className="bg-gradient-to-r from-[#f5b042] to-[#e3a030] text-[#1a1e0b] px-6 py-3 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(245,176,66,0.5)] transition-all flex items-center gap-2"
+                className="bg-gradient-to-r from-[#4B5320] to-green-700 text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-shadow flex items-center gap-2"
                 title="Book Car Rental Online - Instant Confirmation"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -277,11 +275,11 @@ export default function Header() {
 
           {/* MOBILE MENU BUTTON */}
           <button
-            className="xl:hidden p-3 bg-[#f5b042] text-[#1a1e0b] rounded-lg hover:bg-[#e3a030] transition-colors"
+            className="xl:hidden p-3 bg-gray-100 rounded-lg"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMobileMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -291,115 +289,85 @@ export default function Header() {
           </button>
         </nav>
 
-        {/* MOBILE MEGA MENU - COMPLETELY REDESIGNED FOR BETTER VISIBILITY */}
+        {/* MOBILE MEGA MENU - FIXED VISIBILITY ISSUE */}
         {isMobileMenuOpen && (
-          <div className="xl:hidden fixed inset-x-0 top-[88px] bottom-0 bg-[#1a1e0b] z-50 overflow-y-auto">
-            <div className="p-5 pb-20">
-              {/* QUICK ACTIONS MOBILE */}
-              <div className="grid grid-cols-2 gap-3 mb-6">
-                {quickLinks.map((link) => (
+          <div className="xl:hidden mt-4 bg-white rounded-2xl border border-gray-200 shadow-xl p-4 max-h-[80vh] overflow-y-auto">
+            {/* QUICK ACTIONS MOBILE */}
+            <div className="grid grid-cols-2 gap-2 mb-6">
+              {quickLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="p-3 bg-gray-50 rounded-lg text-center hover:bg-gray-100"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <div className="font-medium text-sm text-gray-900">{link.label}</div>
+                  {link.badge && (
+                    <div className="text-xs text-red-600 font-bold mt-1">{link.badge}</div>
+                  )}
+                </Link>
+              ))}
+            </div>
+
+            {/* MOBILE MENU ITEMS */}
+            <div className="space-y-2">
+              {menuStructure.map((menu) => (
+                <div key={menu.label} className="border-b border-gray-200 pb-2">
                   <Link
-                    key={link.href}
-                    href={link.href}
-                    className="p-4 bg-[#2a3315] rounded-xl text-center hover:bg-[#3a4520] transition-colors border border-[#5a6b2c]"
+                    href={menu.href}
+                    className="flex justify-between items-center p-3 hover:bg-gray-50 rounded-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <div className="font-bold text-white">{link.label}</div>
-                    {link.badge && (
-                      <div className="text-xs bg-[#f5b042] text-[#1a1e0b] font-bold px-2 py-1 rounded-full mt-2 inline-block">
-                        {link.badge}
-                      </div>
-                    )}
+                    <span className="font-bold text-gray-900">{menu.label}</span>
+                    <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
                   </Link>
-                ))}
-              </div>
-
-              {/* MOBILE MENU ACCORDIONS */}
-              <div className="space-y-3">
-                {menuStructure.map((menu, index) => (
-                  <div key={menu.label} className="bg-[#2a3315] rounded-xl border border-[#5a6b2c] overflow-hidden">
-                    {/* Menu Header */}
-                    <Link
-                      href={menu.href}
-                      className="flex justify-between items-center p-4 bg-[#1a1e0b]"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      <span className="font-bold text-white text-lg">{menu.label}</span>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs bg-[#f5b042] text-[#1a1e0b] px-2 py-1 rounded-full font-bold">
-                          {menu.submenus.length}
-                        </span>
-                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
-                    </Link>
-                    
-                    {/* Submenu Items - Full visibility */}
-                    <div className="p-4 grid grid-cols-2 gap-2">
-                      {menu.submenus.map((sub) => (
-                        <Link
-                          key={sub.href}
-                          href={sub.href}
-                          className="p-3 bg-[#1a1e0b] hover:bg-[#3a4520] rounded-lg transition-all border border-[#5a6b2c]/50 hover:border-[#f5b042] group"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          title={sub.keywords?.join(", ")}
-                        >
-                          <div className="font-medium text-white text-sm group-hover:text-[#f5b042]">
-                            {sub.label}
-                          </div>
-                          {sub.keywords && (
-                            <div className="text-xs text-white/60 mt-1 line-clamp-1">
-                              {sub.keywords[0]}
-                            </div>
-                          )}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* MOBILE CTA */}
-              <div className="mt-6 p-6 bg-gradient-to-r from-[#f5b042] to-[#d4a373] rounded-xl">
-                <div className="text-center">
-                  <div className="font-bold text-2xl text-[#1a1e0b]">Ready to Book?</div>
-                  <div className="text-[#1a1e0b] mt-2 font-medium">Best Rates Guaranteed</div>
-                  <Link
-                    href="/book-now"
-                    className="inline-block mt-4 bg-[#1a1e0b] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#2a3315] transition-colors w-full"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Reserve Your Car 🚗
-                  </Link>
-                </div>
-              </div>
-
-              {/* CONTACT INFO MOBILE */}
-              <div className="mt-6 pt-6 border-t border-[#5a6b2c]">
-                <div className="text-center">
-                  <div className="font-bold text-xl text-white">24/7 Customer Support</div>
-                  <div className="mt-4 space-y-3">
-                    <a href="tel:+250796077321" className="block text-[#f5b042] text-2xl font-bold hover:text-white transition-colors">
-                      +250 796 077 321
-                    </a>
-                    <a href="mailto:kigalicarrentals2004@gmail.com" className="block text-white/90 text-lg hover:text-[#f5b042] transition-colors">
-                      kigalicarrentals2004@gmail.com
-                    </a>
-                  </div>
-                  <div className="mt-4 text-white/70 text-sm">
-                    📍 Kigali, Rwanda • Available 24/7
+                  
+                  {/* MOBILE SUBMENU - FIXED TEXT COLOR */}
+                  <div className="pl-4 grid grid-cols-2 gap-2 mt-2">
+                    {menu.submenus.slice(0, 4).map((sub) => (
+                      <Link
+                        key={sub.href}
+                        href={sub.href}
+                        className="p-2 text-sm bg-gray-50 hover:bg-gray-100 rounded text-gray-900"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        title={sub.keywords?.join(", ")}
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
                   </div>
                 </div>
-              </div>
+              ))}
+            </div>
 
-              {/* Close Button */}
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="fixed bottom-5 left-5 right-5 bg-[#f5b042] text-[#1a1e0b] py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-[#e3a030] transition-colors"
-              >
-                CLOSE MENU ✕
-              </button>
+            {/* MOBILE CTA */}
+            <div className="mt-6 p-4 bg-gradient-to-r from-[#4B5320] to-green-700 rounded-xl text-white">
+              <div className="text-center">
+                <div className="font-bold text-lg">Ready to Book?</div>
+                <div className="text-sm opacity-90 mt-1">Best Rates Guaranteed</div>
+                <Link
+                  href="/book-now"
+                  className="inline-block mt-3 bg-white text-[#4B5320] px-6 py-2 rounded-lg font-bold"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Reserve Your Car
+                </Link>
+              </div>
+            </div>
+
+            {/* CONTACT INFO MOBILE - FIXED TEXT COLOR */}
+            <div className="mt-6 pt-4 border-t border-gray-200">
+              <div className="text-center text-sm">
+                <div className="font-bold text-gray-900">24/7 Support</div>
+                <a href="tel:+250796077321" className="block mt-1 text-gray-900 font-bold hover:text-[#4B5320]">
+                  +250 796 077 321
+                </a>
+                <a href="mailto:kigalicarrentals2004@gmail.com" className="block mt-1 text-gray-900 hover:text-[#4B5320]">
+                  kigalicarrentals2004@gmail.com
+                </a>
+              </div>
             </div>
           </div>
         )}
