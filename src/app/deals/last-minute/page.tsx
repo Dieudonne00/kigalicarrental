@@ -3,7 +3,29 @@
 
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { Car } from "@/types/car";
+
+// Define Car type locally to avoid import errors
+interface Car {
+  id: string;
+  name: string;
+  brand: string;
+  model: string;
+  year: number;
+  category: string;
+  transmission: string;
+  seats: number;
+  fuelType: string;
+  dailyRate: number;
+  weeklyRate?: number | null;
+  monthlyRate?: number | null;
+  imageUrl: string;
+  images?: string[];
+  originalRate?: number;
+  discount?: number;
+  lastMinuteAvailable?: boolean;
+  availableToday?: boolean;
+  availableTomorrow?: boolean;
+}
 
 export default function LastMinuteDeals() {
   const [cars, setCars] = useState<Car[]>([]);
@@ -29,8 +51,8 @@ export default function LastMinuteDeals() {
       fetchedCars = fetchedCars.map((car: Car) => ({
         ...car,
         originalRate: car.dailyRate,
-        dailyRate: Math.round(car.dailyRate * (Math.random() * 0.3 + 0.6)), // 30-40% off
-        discount: Math.floor(Math.random() * 30) + 20, // 20-50% off
+        dailyRate: Math.round(car.dailyRate * (Math.random() * 0.3 + 0.6)),
+        discount: Math.floor(Math.random() * 30) + 20,
         lastMinuteAvailable: true,
         availableToday: Math.random() > 0.3,
         availableTomorrow: Math.random() > 0.3,
@@ -92,7 +114,6 @@ export default function LastMinuteDeals() {
     }
     if (car.dailyRate < priceRange[0] || car.dailyRate > priceRange[1]) return false;
     
-    // Discount filters
     if (discountFilter === "20plus" && (car.discount || 0) < 20) return false;
     if (discountFilter === "30plus" && (car.discount || 0) < 30) return false;
     if (discountFilter === "40plus" && (car.discount || 0) < 40) return false;
@@ -120,7 +141,7 @@ export default function LastMinuteDeals() {
     priceRange[0] !== minPrice ||
     priceRange[1] !== maxPrice;
 
-  // Countdown timer for flash deals
+  // Countdown timer
   const [timeLeft, setTimeLeft] = useState({
     hours: 23,
     minutes: 59,
@@ -146,9 +167,8 @@ export default function LastMinuteDeals() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section - LAST MINUTE DEALS - ARMY GREEN */}
+      {/* Hero Section */}
       <section className="relative min-h-[550px] flex items-center justify-center overflow-hidden">
-        {/* Background Image - Urgent/Flash Sale vibe */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200)' }}
@@ -156,18 +176,16 @@ export default function LastMinuteDeals() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#4B5320]/95 to-[#3a4218]/95"></div>
         </div>
 
-        {/* Animated Flash Badges */}
         <div className="absolute top-10 left-10 animate-pulse">
           <div className="bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 shadow-lg">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-white"></span>
             </span>
-            LIVE • 27 ACTIVE DEALS
+            LIVE • {cars.length} ACTIVE DEALS
           </div>
         </div>
 
-        {/* Content */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-full text-sm font-bold mb-6 shadow-lg animate-bounce">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -185,7 +203,6 @@ export default function LastMinuteDeals() {
             Book today for immediate pickup in Kigali.
           </p>
           
-          {/* Countdown Timer */}
           <div className="flex flex-wrap justify-center gap-6 mb-10">
             <div className="bg-black/40 backdrop-blur-md rounded-xl px-6 py-4 border border-[#D0D98D]/30">
               <div className="text-4xl font-bold text-[#D0D98D]">{String(timeLeft.hours).padStart(2, '0')}</div>
@@ -218,13 +235,13 @@ export default function LastMinuteDeals() {
               <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              🔥 27 Hot Deals
+              🔥 {cars.length} Hot Deals
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Flash Sale Banner - Animated */}
+      {/* Flash Sale Banner */}
       <div className="bg-gradient-to-r from-red-600 to-red-700 py-3 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMzAgMzBtLTI4IDBhMjggMjggMCAxIDEgNTYgMCAyOCAyOCAwIDEgMS01NiAweiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC4xIi8+PC9zdmc+')] opacity-20"></div>
         <div className="max-w-7xl mx-auto px-4">
@@ -264,7 +281,7 @@ export default function LastMinuteDeals() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" id="deals">
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Left Sidebar - Last Minute Filters */}
+          {/* Left Sidebar - Filters */}
           <div className="lg:w-72 flex-shrink-0">
             <div className="bg-white rounded-xl border-2 border-[#4B5320]/20 p-6 sticky top-24 shadow-md">
               <div className="flex items-center gap-2 mb-6">
@@ -405,7 +422,6 @@ export default function LastMinuteDeals() {
                   </div>
                 </div>
 
-                {/* Urgency Message */}
                 <div className="bg-[#4B5320]/5 border border-[#4B5320]/20 rounded-lg p-3">
                   <p className="text-xs text-gray-600 flex items-center gap-2">
                     <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span>
@@ -414,7 +430,6 @@ export default function LastMinuteDeals() {
                 </div>
               </div>
 
-              {/* Results Count */}
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <p className="text-sm text-gray-600">
                   <span className="text-3xl font-bold text-[#4B5320]">{filteredCars.length}</span> hot deals
@@ -422,7 +437,6 @@ export default function LastMinuteDeals() {
                 <p className="text-xs text-gray-500 mt-1">Prices already discounted</p>
               </div>
 
-              {/* Clear Filters Button */}
               {hasActiveFilters && (
                 <button
                   onClick={resetFilters}
@@ -434,269 +448,260 @@ export default function LastMinuteDeals() {
             </div>
           </div>
 
-          {/* Right Content - Last Minute Deals Grid */}
+          {/* Right Content - Deals Grid */}
           <div className="flex-1">
-
-        {/* Loading State */}
-        {loading && (
-          <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4B5320] mx-auto"></div>
-            <p className="mt-4 text-gray-600">Finding the best deals for you...</p>
-          </div>
-        )}
-
-        {/* No Results */}
-        {!loading && filteredCars.length === 0 && (
-          <div className="text-center py-12 bg-white rounded-xl border-2 border-gray-200 shadow-md">
-            <svg
-              className="w-16 h-16 text-gray-400 mx-auto mb-4"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">No last minute deals match</h3>
-            <p className="text-gray-600 mb-4">Try adjusting filters or check back soon for new deals!</p>
-            <button
-              onClick={resetFilters}
-              className="px-6 py-2 bg-[#4B5320] text-white rounded-lg font-bold hover:bg-[#3a4218] transition-all"
-            >
-              View All Deals
-            </button>
-          </div>
-        )}
-
-        {/* Deals Grid */}
-        {!loading && filteredCars.length > 0 && (
-          <>
-            <div className="flex justify-between items-center mb-6">
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900">
-                  🔥 Last Minute Deals <span className="text-[#4B5320]">${priceRange[0]} - ${priceRange[1]}</span>
-                </h2>
-                <p className="text-sm text-gray-500 mt-1">Limited time offers • Book now</p>
+            {loading && (
+              <div className="text-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4B5320] mx-auto"></div>
+                <p className="mt-4 text-gray-600">Finding the best deals for you...</p>
               </div>
-              <div className="bg-red-100 text-red-800 px-4 py-2 rounded-lg text-sm font-bold animate-pulse">
-                {filteredCars.length} deals ending soon
-              </div>
-            </div>
-          
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-              {filteredCars.map((car) => (
-                <div
-                  key={car.id}
-                  className="group bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-[#4B5320] transition-all hover:shadow-xl relative"
+            )}
+
+            {!loading && filteredCars.length === 0 && (
+              <div className="text-center py-12 bg-white rounded-xl border-2 border-gray-200 shadow-md">
+                <svg
+                  className="w-16 h-16 text-gray-400 mx-auto mb-4"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  {/* DISCOUNT BANNER - ARMY GREEN */}
-                  <div className="absolute top-0 left-0 bg-[#4B5320] text-white px-4 py-2 rounded-br-xl z-10 font-bold shadow-lg">
-                    <span className="text-xl mr-1">{car.discount}%</span>
-                    <span className="text-xs">OFF</span>
+                  <path d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">No last minute deals match</h3>
+                <p className="text-gray-600 mb-4">Try adjusting filters or check back soon for new deals!</p>
+                <button
+                  onClick={resetFilters}
+                  className="px-6 py-2 bg-[#4B5320] text-white rounded-lg font-bold hover:bg-[#3a4218] transition-all"
+                >
+                  View All Deals
+                </button>
+              </div>
+            )}
+
+            {!loading && filteredCars.length > 0 && (
+              <>
+                <div className="flex justify-between items-center mb-6">
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-900">
+                      🔥 Last Minute Deals <span className="text-[#4B5320]">${priceRange[0]} - ${priceRange[1]}</span>
+                    </h2>
+                    <p className="text-sm text-gray-500 mt-1">Limited time offers • Book now</p>
+                  </div>
+                  <div className="bg-red-100 text-red-800 px-4 py-2 rounded-lg text-sm font-bold animate-pulse">
+                    {filteredCars.length} deals ending soon
+                  </div>
+                </div>
+              
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+                  {filteredCars.map((car) => (
+                    <div
+                      key={car.id}
+                      className="group bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-[#4B5320] transition-all hover:shadow-xl relative"
+                    >
+                      <div className="absolute top-0 left-0 bg-[#4B5320] text-white px-4 py-2 rounded-br-xl z-10 font-bold shadow-lg">
+                        <span className="text-xl mr-1">{car.discount}%</span>
+                        <span className="text-xs">OFF</span>
+                      </div>
+                      
+                      <div className="absolute top-0 right-0 bg-red-600 text-white px-4 py-2 rounded-bl-xl z-10 font-bold animate-pulse">
+                        ⚡ FLASH
+                      </div>
+
+                      <div className="relative h-48 bg-gray-100 overflow-hidden">
+                        {car.images && car.images.length > 0 ? (
+                          <img
+                            src={car.images[0]}
+                            alt={car.name}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        ) : car.imageUrl ? (
+                          <img
+                            src={car.imageUrl}
+                            alt={car.name}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <svg className="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                          </div>
+                        )}
+                        
+                        {car.availableToday ? (
+                          <div className="absolute bottom-3 left-3 bg-green-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
+                            <span className="relative flex h-2 w-2">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                              <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                            </span>
+                            AVAILABLE TODAY
+                          </div>
+                        ) : car.availableTomorrow ? (
+                          <div className="absolute bottom-3 left-3 bg-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                            AVAILABLE TOMORROW
+                          </div>
+                        ) : null}
+                        
+                        <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded-lg text-xs font-bold backdrop-blur-sm">
+                          {car.year}
+                        </div>
+                      </div>
+
+                      <div className="p-6">
+                        <div className="flex justify-between items-start mb-3">
+                          <div>
+                            <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#4B5320] transition-colors">
+                              {car.name}
+                            </h3>
+                            <p className="text-sm text-gray-500 mt-1">
+                              {car.brand} • {car.transmission} • {car.seats} seats
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="mb-4 py-3 border-y border-gray-100">
+                          <div className="flex items-baseline justify-between">
+                            <div>
+                              <div className="text-xs text-gray-500 mb-1">Deal Price</div>
+                              <div className="flex items-baseline gap-2">
+                                <span className="text-3xl font-bold text-[#4B5320]">${car.dailyRate}</span>
+                                <span className="text-sm text-gray-500">/day</span>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-xs text-gray-500 mb-1">Original</div>
+                              <div className="text-lg text-gray-400 line-through">${car.originalRate}</div>
+                              <div className="text-xs text-green-600 font-bold mt-1">
+                                Save ${(car.originalRate || 0) - car.dailyRate}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-3 mb-4 text-xs text-gray-600">
+                          <div className="flex items-center gap-1">
+                            <svg className="w-4 h-4 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            <span>{car.seats} seats</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <svg className="w-4 h-4 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                            <span className="capitalize">{car.transmission}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <svg className="w-4 h-4 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                            <span className="capitalize">{car.category}</span>
+                          </div>
+                        </div>
+
+                        <div className="mb-4">
+                          <div className="flex justify-between items-center text-xs mb-1">
+                            <span className="text-gray-600">Deal ending in:</span>
+                            <span className="font-bold text-red-600">24h</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-1.5">
+                            <div className="bg-[#4B5320] h-1.5 rounded-full" style={{ width: '65%' }}></div>
+                          </div>
+                          <div className="flex justify-between mt-1">
+                            <span className="text-xs text-gray-500">8 people viewing</span>
+                            <span className="text-xs text-gray-500">3 booked today</span>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-3">
+                          <Link
+                            href={`/book-now?car=${car.id}&deal=lastminute`}
+                            className="flex items-center justify-center px-4 py-3 bg-[#4B5320] text-white rounded-lg font-bold hover:bg-[#3a4218] transition-all text-sm border border-[#6B7F3A]/50"
+                          >
+                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Book Deal
+                          </Link>
+                          <Link
+                            href={`/cars/${car.id}`}
+                            className="flex items-center justify-center px-4 py-3 border-2 border-[#4B5320] text-[#4B5320] rounded-lg font-bold hover:bg-[#4B5320]/5 transition-all text-sm"
+                          >
+                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Details
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {!loading && filteredCars.length > 0 && (
+              <div className="mt-16">
+                <div className="bg-gradient-to-r from-[#4B5320] to-[#3a4218] rounded-2xl p-8 md:p-12 text-white border border-[#6B7F3A]/30">
+                  <div className="text-center mb-8">
+                    <div className="inline-block px-3 py-1 bg-[#D0D98D]/20 rounded-full text-xs font-bold mb-4 backdrop-blur-sm border border-[#D0D98D]/30 text-[#D0D98D]">
+                      ⚡ WHY LAST MINUTE?
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                      Save More When You Book Today
+                    </h2>
+                    <p className="text-white/90 max-w-2xl mx-auto">
+                      Vehicles need to move. We offer deep discounts on cars available for immediate pickup.
+                    </p>
                   </div>
                   
-                  {/* FLASH DEAL BADGE */}
-                  <div className="absolute top-0 right-0 bg-red-600 text-white px-4 py-2 rounded-bl-xl z-10 font-bold animate-pulse">
-                    ⚡ FLASH
-                  </div>
-
-                  {/* Car Image */}
-                  <div className="relative h-48 bg-gray-100 overflow-hidden">
-                    {car.images && car.images.length > 0 ? (
-                      <img
-                        src={car.images[0]}
-                        alt={car.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <svg className="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                    )}
-                    
-                    {/* AVAILABILITY BADGE */}
-                    {car.availableToday ? (
-                      <div className="absolute bottom-3 left-3 bg-green-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
-                        <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
-                        </span>
-                        AVAILABLE TODAY
-                      </div>
-                    ) : car.availableTomorrow ? (
-                      <div className="absolute bottom-3 left-3 bg-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
-                        AVAILABLE TOMORROW
-                      </div>
-                    ) : null}
-                    
-                    {/* YEAR BADGE */}
-                    <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded-lg text-xs font-bold backdrop-blur-sm">
-                      {car.year}
-                    </div>
-                  </div>
-
-                  {/* Car Details */}
-                  <div className="p-6">
-                    <div className="flex justify-between items-start mb-3">
-                      <div>
-                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#4B5320] transition-colors">
-                          {car.name}
-                        </h3>
-                        <p className="text-sm text-gray-500 mt-1">
-                          {car.brand} • {car.transmission} • {car.seats} seats
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Price with Discount */}
-                    <div className="mb-4 py-3 border-y border-gray-100">
-                      <div className="flex items-baseline justify-between">
-                        <div>
-                          <div className="text-xs text-gray-500 mb-1">Deal Price</div>
-                          <div className="flex items-baseline gap-2">
-                            <span className="text-3xl font-bold text-[#4B5320]">${car.dailyRate}</span>
-                            <span className="text-sm text-gray-500">/day</span>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-xs text-gray-500 mb-1">Original</div>
-                          <div className="text-lg text-gray-400 line-through">${car.originalRate}</div>
-                          <div className="text-xs text-green-600 font-bold mt-1">
-                            Save ${(car.originalRate || 0) - (car.dailyRate || 0)}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Specs Icons */}
-                    <div className="flex items-center gap-3 mb-4 text-xs text-gray-600">
-                      <div className="flex items-center gap-1">
-                        <svg className="w-4 h-4 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                        <span>{car.seats} seats</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <svg className="w-4 h-4 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                        <span className="capitalize">{car.transmission}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <svg className="w-4 h-4 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                        </svg>
-                        <span className="capitalize">{car.category}</span>
-                      </div>
-                    </div>
-
-                    {/* Urgency Indicator */}
-                    <div className="mb-4">
-                      <div className="flex justify-between items-center text-xs mb-1">
-                        <span className="text-gray-600">Deal ending in:</span>
-                        <span className="font-bold text-red-600">24h</span>
-                      </div>
-                      <div className="w-full bg-gray-200 rounded-full h-1.5">
-                        <div className="bg-[#4B5320] h-1.5 rounded-full" style={{ width: '65%' }}></div>
-                      </div>
-                      <div className="flex justify-between mt-1">
-                        <span className="text-xs text-gray-500">8 people viewing</span>
-                        <span className="text-xs text-gray-500">3 booked today</span>
-                      </div>
-                    </div>
-
-                    {/* Action Buttons */}
-                    <div className="grid grid-cols-2 gap-3">
-                      <Link
-                        href={`/book-now?car=${car.id}&deal=lastminute`}
-                        className="flex items-center justify-center px-4 py-3 bg-[#4B5320] text-white rounded-lg font-bold hover:bg-[#3a4218] transition-all text-sm border border-[#6B7F3A]/50"
-                      >
-                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 text-center">
+                      <div className="w-12 h-12 bg-[#D0D98D] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg className="w-6 h-6 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        Book Deal
-                      </Link>
-                      <Link
-                        href={`/cars/${car.id}`}
-                        className="flex items-center justify-center px-4 py-3 border-2 border-[#4B5320] text-[#4B5320] rounded-lg font-bold hover:bg-[#4B5320]/5 transition-all text-sm"
-                      >
-                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </div>
+                      <h3 className="text-xl font-bold mb-2">Same-Day Pickup</h3>
+                      <p className="text-white/80 text-sm">Drive away in 30 minutes. No waiting.</p>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 text-center">
+                      <div className="w-12 h-12 bg-[#D0D98D] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg className="w-6 h-6 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        Details
-                      </Link>
+                      </div>
+                      <h3 className="text-xl font-bold mb-2">Up to 50% Off</h3>
+                      <p className="text-white/80 text-sm">Deep discounts on select vehicles.</p>
+                    </div>
+                    <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 text-center">
+                      <div className="w-12 h-12 bg-[#D0D98D] rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg className="w-6 h-6 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-5m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-xl font-bold mb-2">No Deposit</h3>
+                      <p className="text-white/80 text-sm">Zero deposit required for last minute bookings.</p>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          </>
-        )}
-
-        {/* Why Last Minute Section */}
-        {!loading && filteredCars.length > 0 && (
-          <div className="mt-16">
-            <div className="bg-gradient-to-r from-[#4B5320] to-[#3a4218] rounded-2xl p-8 md:p-12 text-white border border-[#6B7F3A]/30">
-              <div className="text-center mb-8">
-                <div className="inline-block px-3 py-1 bg-[#D0D98D]/20 rounded-full text-xs font-bold mb-4 backdrop-blur-sm border border-[#D0D98D]/30 text-[#D0D98D]">
-                  ⚡ WHY LAST MINUTE?
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Save More When You Book Today
-                </h2>
-                <p className="text-white/90 max-w-2xl mx-auto">
-                  Vehicles need to move. We offer deep discounts on cars available for immediate pickup.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 text-center">
-                  <div className="w-12 h-12 bg-[#D0D98D] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-6 h-6 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                  
+                  <div className="text-center mt-8">
+                    <a
+                      href="tel:+250796077321"
+                      className="inline-flex items-center px-6 py-3 bg-white text-[#4B5320] rounded-lg font-bold hover:bg-gray-100 transition-all"
+                    >
+                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                      Call for Last Minute Deals
+                    </a>
                   </div>
-                  <h3 className="text-xl font-bold mb-2">Same-Day Pickup</h3>
-                  <p className="text-white/80 text-sm">Drive away in 30 minutes. No waiting.</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 text-center">
-                  <div className="w-12 h-12 bg-[#D0D98D] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-6 h-6 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">Up to 50% Off</h3>
-                  <p className="text-white/80 text-sm">Deep discounts on select vehicles.</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 text-center">
-                  <div className="w-12 h-12 bg-[#D0D98D] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-6 h-6 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-5m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">No Deposit</h3>
-                  <p className="text-white/80 text-sm">Zero deposit required for last minute bookings.</p>
                 </div>
               </div>
-              
-              <div className="text-center mt-8">
-                <a
-                  href="tel:+250796077321"
-                  className="inline-flex items-center px-6 py-3 bg-white text-[#4B5320] rounded-lg font-bold hover:bg-gray-100 transition-all"
-                >
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  Call for Last Minute Deals
-                </a>
-              </div>
-            </div>
-          </div>
-        )}
+            )}
           </div>
         </div>
       </div>
