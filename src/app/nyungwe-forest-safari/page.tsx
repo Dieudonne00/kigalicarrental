@@ -386,7 +386,7 @@ export default function NyungweForestSafari() {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Chimpanzee Tracking</h3>
-              <p className="text-gray-600 mb-4">3-day primate tracking adventure</p>
+              <p className="text-gray-600 mb-4">3-day  tracking adventure</p>
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-4xl font-bold text-[#4B5320]">$950</span>
                 <span className="text-gray-500">/person</span>
@@ -402,7 +402,7 @@ export default function NyungweForestSafari() {
                   <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Chimpanzee tracking permit
+                  Chimpanzee tracking permit not included
                 </li>
                 <li className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -414,13 +414,13 @@ export default function NyungweForestSafari() {
                   <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  2 nights accommodation
+                  Free soft drinks
                 </li>
                 <li className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Park entry fees included
+                  Park entry fees not included
                 </li>
               </ul>
               <Link
@@ -458,7 +458,7 @@ export default function NyungweForestSafari() {
                   <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Canopy walk entry fee
+                  Canopy walk entry fee not included
                 </li>
                 <li className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -470,7 +470,7 @@ export default function NyungweForestSafari() {
                   <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  1 night accommodation
+                  free soft drinks included 
                 </li>
                 <li className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -523,13 +523,13 @@ export default function NyungweForestSafari() {
                   <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  2 nights accommodation
+                  free soft drinks
                 </li>
                 <li className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Park entry fees
+                  Park entry fees not included
                 </li>
               </ul>
               <Link
