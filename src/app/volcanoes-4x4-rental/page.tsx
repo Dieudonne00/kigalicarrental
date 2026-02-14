@@ -465,7 +465,7 @@ export default function Volcanoes4x4Rental() {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Complete Trekking</h3>
-              <p className="text-gray-600 mb-4">3-day package with permit & accommodation</p>
+              <p className="text-gray-600 mb-4">3-day package</p>
               <div className="flex items-baseline gap-1 mb-6">
                 <span className="text-4xl font-bold text-[#4B5320]">$1,650</span>
                 <span className="text-gray-500">/person</span>
@@ -481,19 +481,19 @@ export default function Volcanoes4x4Rental() {
                   <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Gorilla permit included ($1,500 value)
+                  Gorilla permit not included ($1,500 value)
                 </li>
                 <li className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  2 nights Musanze accommodation
+                  free soft drinks 
                 </li>
                 <li className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  Park entry fees included
+                  Park entry fees not included
                 </li>
               </ul>
               <Link
