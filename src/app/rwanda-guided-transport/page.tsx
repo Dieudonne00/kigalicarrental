@@ -425,9 +425,9 @@ export default function RwandaGuidedTransport() {
                   </svg>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Gorilla Trekking</h3>
-                <p className="text-gray-600 mb-4">3-day guided gorilla trekking adventure</p>
+                <p className="text-gray-600 mb-4">2-day guided gorilla trekking adventure</p>
                 <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl font-bold text-[#4B5320]">$1,450</span>
+                  <span className="text-4xl font-bold text-[#4B5320]">$1,000</span>
                   <span className="text-gray-500">/person</span>
                 </div>
                 <ul className="space-y-3 mb-8 text-gray-600">
@@ -441,19 +441,19 @@ export default function RwandaGuidedTransport() {
                     <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    Gorilla permit included ($1,500 value)
+                    Gorilla permit not included ($1,500 value)
                   </li>
                   <li className="flex items-center gap-2">
                     <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    2 nights accommodation
+                    1 camping bag
                   </li>
                   <li className="flex items-center gap-2">
                     <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    All meals & park fees
+                    Soft drinks (water , juice) included
                   </li>
                 </ul>
                 <Link
@@ -477,7 +477,7 @@ export default function RwandaGuidedTransport() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Akagera Safari</h3>
                 <p className="text-gray-600 mb-4">2-day Big Five safari with expert guide</p>
                 <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl font-bold text-[#4B5320]">$850</span>
+                  <span className="text-4xl font-bold text-[#4B5320]">$1,050</span>
                   <span className="text-gray-500">/person</span>
                 </div>
                 <ul className="space-y-3 mb-8 text-gray-600">
@@ -503,7 +503,7 @@ export default function RwandaGuidedTransport() {
                     <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    Park fees & accommodation
+                    Soft drinks included
                   </li>
                 </ul>
                 <Link
@@ -522,9 +522,9 @@ export default function RwandaGuidedTransport() {
                   </svg>
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Nyungwe Chimpanzee</h3>
-                <p className="text-gray-600 mb-4">3-day primate tracking + canopy walk</p>
+                <p className="text-gray-600 mb-4">2-day primate tracking + canopy walk</p>
                 <div className="flex items-baseline gap-1 mb-6">
-                  <span className="text-4xl font-bold text-[#4B5320]">$950</span>
+                  <span className="text-4xl font-bold text-[#4B5320]">$1000</span>
                   <span className="text-gray-500">/person</span>
                 </div>
                 <ul className="space-y-3 mb-8 text-gray-600">
@@ -550,7 +550,7 @@ export default function RwandaGuidedTransport() {
                     <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    Accommodation & meals
+                    Soft drinks included
                   </li>
                 </ul>
                 <Link
