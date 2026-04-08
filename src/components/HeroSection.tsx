@@ -26,102 +26,187 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="bg-[#F8FAFC] pt-32 pb-20">
-      <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+    <section className="bg-[#F8FAFC] pt-24 pb-16 md:pt-28 md:pb-20">
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .hero-heading {
+          animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s backwards;
+        }
+
+        .hero-subtext {
+          animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s backwards;
+        }
+
+        .hero-buttons {
+          animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s backwards;
+        }
+
+        .hero-image {
+          animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s backwards;
+        }
+
+        .hero-stats {
+          animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s backwards;
+        }
+
+        .cta-primary {
+          background: #0B1F3A;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .cta-primary:hover {
+          background: #1E3A8A;
+          transform: translateY(-2px);
+          box-shadow: 0 12px 24px rgba(11, 31, 58, 0.2);
+        }
+
+        .cta-secondary {
+          border-color: #d1d5db;
+          color: #1f2937;
+          transition: all 0.3s ease;
+          position: relative;
+        }
+
+        .cta-secondary:hover {
+          border-color: #1E3A8A;
+          color: #1E3A8A;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 16px rgba(30, 58, 138, 0.1);
+        }
+
+        .stat-value {
+          color: #0B1F3A;
+        }
+
+        .stat-label {
+          color: #6b7280;
+        }
+      `}</style>
+
+      <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
         {/* LEFT CONTENT */}
         <div>
 
-          {/* HEADLINE */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-[#0B1F3A]">
+          {/* HEADLINE - COMPACT */}
+          <h1 className="hero-heading text-3xl sm:text-4xl lg:text-5xl font-black leading-tight text-[#0B1F3A]">
             Car Rental Kigali Rwanda – 
-            <span className="block text-[#1E3A8A]">
-              Cheap, Luxury & 4x4 Safari Vehicles
+            <span className="block text-[#1E3A8A] mt-2">
+              Cheap, Luxury & 4x4 Safari
             </span>
           </h1>
 
           {/* SUBTEXT */}
-          <p className="mt-6 text-lg text-gray-600 max-w-xl leading-relaxed">
-            Book reliable <strong>car rental in Kigali</strong> with flexible options —
-            <strong> self drive Rwanda</strong>, chauffeur services, and 
-            <strong> airport pickup at Kigali International Airport</strong>. 
-            Affordable pricing, fast booking, and trusted service.
+          <p className="hero-subtext mt-4 text-base sm:text-lg text-gray-700 max-w-lg leading-relaxed">
+            Book reliable <strong>car rental in Kigali</strong> with flexible options — <strong>self drive Rwanda</strong>, chauffeur services, and <strong>airport pickup at Kigali International Airport</strong>. Affordable pricing, fast booking, and trusted service.
           </p>
 
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-8">
+          {/* CTA BUTTONS */}
+          <div className="hero-buttons flex flex-col sm:flex-row gap-3 mt-7">
             <Link
               href="/book-now"
-              className="bg-[#0B1F3A] hover:bg-[#1E3A8A] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition"
+              className="cta-primary text-white px-7 py-3 rounded-lg font-bold text-base shadow-md hover:shadow-lg transition flex items-center justify-center gap-2 w-full sm:w-auto"
+              title="Book car rental in Kigali Rwanda - Reserve your vehicle"
             >
                Book Car Now
             </Link>
 
             <Link
               href="/fleet"
-              className="border border-gray-300 hover:border-[#1E3A8A] px-8 py-4 rounded-xl font-semibold text-gray-800 hover:text-[#1E3A8A] transition"
+              className="cta-secondary border-2 px-7 py-3 rounded-lg font-semibold text-base transition flex items-center justify-center gap-2 w-full sm:w-auto"
+              title="View available cars - Cheap car rental, luxury 4x4 safari vehicles Kigali"
             >
               View Available Cars
             </Link>
           </div>
 
-          {/* TRUST */}
-          <div className="grid grid-cols-3 gap-6 mt-10">
+          {/* TRUST SECTION */}
+          <div className="hero-stats grid grid-cols-3 gap-4 mt-10 pt-8 border-t border-gray-200">
             <div>
-              <div className="text-2xl font-bold text-[#0B1F3A]">500+</div>
-              <div className="text-sm text-gray-500">Bookings</div>
+              <div className="stat-value text-2xl font-bold">500+</div>
+              <div className="stat-label text-sm font-medium">Bookings</div>
             </div>
 
             <div>
-              <div className="text-2xl font-bold text-[#0B1F3A]">24/7</div>
-              <div className="text-sm text-gray-500">Support</div>
+              <div className="stat-value text-2xl font-bold">24/7</div>
+              <div className="stat-label text-sm font-medium">Support</div>
             </div>
 
             <div>
-              <div className="text-2xl font-bold text-[#0B1F3A]">4.9★</div>
-              <div className="text-sm text-gray-500">Rating</div>
+              <div className="stat-value text-2xl font-bold">4.9★</div>
+              <div className="stat-label text-sm font-medium">Rating</div>
             </div>
           </div>
         </div>
 
-        {/* RIGHT IMAGE */}
-        <div className="flex justify-center">
+        {/* RIGHT IMAGE - RAV4 */}
+        <div className="hero-image flex justify-center lg:justify-end">
           <div
             ref={imageRef}
             style={{ transform: `scale(${scale})` }}
             className="transition-transform duration-300 w-full max-w-md"
           >
-            <div className="rounded-2xl overflow-hidden shadow-2xl border">
-              <Image
-                src="https://res.cloudinary.com/dxn12qcje/image/upload/kgl%20.png"
-                alt="Car rental Kigali Rwanda - self drive, airport transfer, safari vehicles"
-                width={500}
-                height={500}
-                priority
-                className="w-full h-full object-cover"
-              />
+            <div className="rounded-2xl overflow-hidden shadow-2xl bg-white border border-gray-100">
+              <div className="bg-gradient-to-br from-blue-50 to-gray-50 p-6 flex items-center justify-center min-h-[400px]">
+                {/* High Quality RAV4 2025 Image */}
+                <Image
+                  src="https://toppng.com/uploads/preview/toyota-cars-png-transparent-background-photoshop-PNG-free-PNG-Images_481427_thumb.png"
+                  alt="2025 Toyota RAV4 - Car rental Kigali Rwanda self drive safari 4x4"
+                  width={500}
+                  height={400}
+                  priority
+                  className="w-full h-auto object-contain drop-shadow-lg"
+                  title="Toyota RAV4 2025 - Premium SUV for car rental in Kigali Rwanda"
+                />
+              </div>
+
+              {/* INFO BADGE */}
+              <div className="bg-white px-5 py-4 border-t border-gray-100">
+                <div className="text-sm font-bold text-[#0B1F3A]">
+                  Toyota RAV4 2025
+                </div>
+                <div className="text-xs text-gray-600 mt-1">
+                  Luxury 4x4 Safari & Self-Drive Available
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* BOTTOM CONTACT SEO BOOST */}
-      <div className="mt-20 text-center border-t pt-10">
-        <p className="text-gray-600 text-sm">
-          Cheap Car Rental Kigali • Luxury 4x4 Rwanda • Self Drive Rwanda • Airport Pickup Kigali
+      {/* BOTTOM SEO & CONTACT */}
+      <div className="mt-16 pt-12 border-t border-gray-200 text-center max-w-7xl mx-auto px-4">
+        <p className="text-gray-700 text-sm font-medium mb-6">
+          <strong>Cheap Car Rental Kigali</strong> • <strong>Luxury 4x4 Rwanda</strong> • <strong>Self Drive Rwanda</strong> • <strong>Airport Pickup Kigali</strong>
         </p>
 
-        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-4">
+        <div className="flex flex-col sm:flex-row justify-center gap-6 items-center">
           <a
             href="tel:+250787619387"
-            className="text-[#1E3A8A] font-bold"
+            className="text-[#1E3A8A] font-bold text-base hover:text-[#0B1F3A] transition"
+            title="Call Kigali Car Hire for car rental booking"
           >
              +250 787 619 387
           </a>
 
+          <span className="hidden sm:block text-gray-300">|</span>
+
           <a
             href="mailto:booking@carrentalinkigali.com"
-            className="text-[#1E3A8A] font-bold"
+            className="text-[#1E3A8A] font-bold text-base hover:text-[#0B1F3A] transition"
+            title="Email booking inquiry for car rental Kigali"
           >
              booking@carrentalinkigali.com
           </a>
