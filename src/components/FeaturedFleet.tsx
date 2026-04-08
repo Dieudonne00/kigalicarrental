@@ -49,7 +49,7 @@ export default function FeaturedFleet() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4B5320] mx-auto"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1E3A8A] mx-auto"></div>
             <p className="mt-4 text-gray-600">Loading featured fleet...</p>
           </div>
         </div>
@@ -105,7 +105,7 @@ export default function FeaturedFleet() {
           left: -100%;
           width: 100%;
           height: 3px;
-          background: linear-gradient(90deg, #4B5320, #3d441a);
+          background: linear-gradient(90deg, #0B1F3A, #1E3A8A);
           transition: left 0.3s ease;
           z-index: 10;
         }
@@ -115,13 +115,13 @@ export default function FeaturedFleet() {
         }
 
         .car-card:hover {
-          border-color: #4B5320;
-          box-shadow: 0 12px 32px rgba(75, 83, 32, 0.15);
+          border-color: #1E3A8A;
+          box-shadow: 0 12px 32px rgba(30, 58, 138, 0.15);
           transform: translateY(-4px);
         }
 
         .featured-badge {
-          background: linear-gradient(135deg, #3d441a 0%, #4B5320 100%);
+          background: linear-gradient(135deg, #0B1F3A 0%, #1E3A8A 100%);
           font-weight: 700;
           font-size: 10px;
           letter-spacing: 0.5px;
@@ -164,7 +164,7 @@ export default function FeaturedFleet() {
         .spec-icon {
           width: 12px;
           height: 12px;
-          color: #4B5320;
+          color: #1E3A8A;
           flex-shrink: 0;
         }
 
@@ -184,7 +184,7 @@ export default function FeaturedFleet() {
         .price-amount {
           font-size: 20px;
           font-weight: 700;
-          color: #4B5320;
+          color: #0B1F3A;
         }
 
         @media (min-width: 768px) {
@@ -205,7 +205,7 @@ export default function FeaturedFleet() {
         }
 
         .view-details-btn {
-          background: #4B5320;
+          background: #0B1F3A;
           color: white;
           font-weight: 700;
           transition: all 0.3s ease;
@@ -214,13 +214,13 @@ export default function FeaturedFleet() {
         }
 
         .view-details-btn:hover {
-          background: #3d441a;
+          background: #1E3A8A;
           transform: translateY(-2px);
-          box-shadow: 0 8px 16px rgba(75, 83, 32, 0.2);
+          box-shadow: 0 8px 16px rgba(11, 31, 58, 0.2);
         }
 
         .view-all-link {
-          color: #4B5320;
+          color: #0B1F3A;
           font-weight: 700;
           transition: all 0.3s ease;
           display: inline-flex;
@@ -229,7 +229,7 @@ export default function FeaturedFleet() {
         }
 
         .view-all-link:hover {
-          color: #3d441a;
+          color: #1E3A8A;
           transform: translateX(4px);
         }
       `}</style>
@@ -255,7 +255,7 @@ export default function FeaturedFleet() {
                 className="fleet-card car-card rounded-xl overflow-hidden block group"
               >
                 {/* CAR IMAGE */}
-                <div className="relative h-32 md:h-48 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+                <div className="relative h-32 md:h-48 bg-gradient-to-br from-blue-50 to-gray-50 overflow-hidden">
                   {car.images && car.images.length > 0 ? (
                     <img
                       src={car.images[0]}
@@ -293,14 +293,14 @@ export default function FeaturedFleet() {
 
                   {/* YEAR BADGE */}
                   <div className="absolute bottom-2 left-2 z-20">
-                    <span className="inline-block px-2 md:px-3 py-0.5 bg-white/90 text-[#4B5320] rounded-full text-[9px] md:text-xs font-bold">
+                    <span className="inline-block px-2 md:px-3 py-0.5 bg-white/90 text-[#0B1F3A] rounded-full text-[9px] md:text-xs font-bold">
                       {car.year}
                     </span>
                   </div>
 
                   {/* CATEGORY TAG */}
                   <div className="absolute bottom-2 right-2 z-20">
-                    <span className="inline-block px-2 md:px-3 py-0.5 bg-white/90 text-[#4B5320] rounded-full text-[9px] md:text-xs font-bold capitalize">
+                    <span className="inline-block px-2 md:px-3 py-0.5 bg-white/90 text-[#0B1F3A] rounded-full text-[9px] md:text-xs font-bold capitalize">
                       {car.category}
                     </span>
                   </div>
@@ -309,7 +309,7 @@ export default function FeaturedFleet() {
                 {/* CAR INFO */}
                 <div className="p-3 md:p-4 lg:p-5">
                   {/* NAME */}
-                  <h3 className="text-sm md:text-lg lg:text-xl font-black text-[#0B1F3A] mb-0.5 md:mb-1 line-clamp-1 group-hover:text-[#4B5320] transition-colors">
+                  <h3 className="text-sm md:text-lg lg:text-xl font-black text-[#0B1F3A] mb-0.5 md:mb-1 line-clamp-1 group-hover:text-[#1E3A8A] transition-colors">
                     {car.name}
                   </h3>
                   <p className="text-[10px] md:text-xs lg:text-sm text-gray-600 mb-2 md:mb-3 line-clamp-1 font-medium">
@@ -380,7 +380,7 @@ export default function FeaturedFleet() {
         <div className="text-center mt-12 md:mt-16">
           <Link
             href="/cars"
-            className="view-all-link text-lg hover:text-[#3d441a]"
+            className="view-all-link text-lg"
             title="View all car rentals available in Kigali Rwanda - Cheap, Luxury & 4x4 Safari"
           >
             View All Cars
