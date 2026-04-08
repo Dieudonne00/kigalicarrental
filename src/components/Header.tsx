@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { imageUrl } from "@/lib/images";
 import { useState } from "react";
+
+// Hardcoded image path - make sure your logo is in /public folder
+// If your logo is elsewhere, adjust this path or create the imageUrl function
+const LOGO_PATH = "/mylogo-removebg-preview_mpcp0n.png";
 
 export default function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -78,11 +81,12 @@ export default function Header() {
           {/* LOGO */}
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src={imageUrl("mylogo-removebg-preview_mpcp0n.png")}
+              src={LOGO_PATH}
               alt="Kigali Car Rental Rwanda - Best Car Hire Kigali Airport"
               width={140}
               height={50}
               className="h-10 w-auto"
+              priority
             />
           </Link>
 
@@ -133,6 +137,7 @@ export default function Header() {
           <button
             className="lg:hidden text-white"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
           >
             ☰
           </button>
@@ -168,6 +173,7 @@ export default function Header() {
             <Link
               href="/book-now"
               className="block text-center bg-blue-600 text-white py-3 rounded-lg font-bold"
+              onClick={() => setMobileOpen(false)}
             >
               Book Your Car
             </Link>
