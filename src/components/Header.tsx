@@ -290,11 +290,11 @@ export default function Header() {
             <Link
               href="/"
               className="flex-shrink-0 group"
-              title="Kigali Car Hire - Car Rental Rwanda Kigali Airport Transfer Safari 4x4"
+              title="Kigali Car Rental - Car Rental Rwanda Kigali Airport Transfer Safari 4x4"
             >
               <div className="flex flex-col gap-0.5">
                 <span className="text-lg lg:text-2xl font-black bg-gradient-to-r from-blue-900 via-blue-700 to-red-600 bg-clip-text text-transparent transition-all duration-300 group-hover:tracking-tight">
-                  Kigali Car Hire
+                  Kigali Car Rentals
                 </span>
                 <span className="text-[9px] lg:text-[10px] text-gray-500 uppercase font-semibold tracking-wider">
                   Car Rental • Safari • Airport Transfer Rwanda
