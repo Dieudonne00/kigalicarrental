@@ -101,7 +101,6 @@ export default function FleetPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="relative min-h-[500px] flex items-center justify-center overflow-hidden">
-        {/* ✅ CHANGED: BunnyCDN → cPanel */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(https://carrentalinkigali.com/images/cars/hero-fleet.webp)' }}
@@ -119,7 +118,7 @@ export default function FleetPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-[#01B000] text-white font-bold rounded-lg hover:bg-[#019500] transition-all"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#0B1F3A] text-white font-bold rounded-lg hover:bg-[#1E3A8A] transition-all"
           >
             <svg className="w-5 h-5 mr-2" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
               <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -139,7 +138,7 @@ export default function FleetPage() {
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Category</label>
-                  <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900">
+                  <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)} className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1E3A8A] focus:outline-none text-gray-900">
                     {categories.map((cat) => (
                       <option key={cat} value={cat}>{cat.charAt(0).toUpperCase() + cat.slice(1)}</option>
                     ))}
@@ -148,7 +147,7 @@ export default function FleetPage() {
 
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Transmission</label>
-                  <select value={selectedTransmission} onChange={(e) => setSelectedTransmission(e.target.value)} className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900">
+                  <select value={selectedTransmission} onChange={(e) => setSelectedTransmission(e.target.value)} className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1E3A8A] focus:outline-none text-gray-900">
                     {transmissions.map((trans) => (
                       <option key={trans} value={trans}>{trans.charAt(0).toUpperCase() + trans.slice(1)}</option>
                     ))}
@@ -157,7 +156,7 @@ export default function FleetPage() {
 
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">Seats</label>
-                  <select value={selectedSeats} onChange={(e) => setSelectedSeats(e.target.value)} className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900">
+                  <select value={selectedSeats} onChange={(e) => setSelectedSeats(e.target.value)} className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1E3A8A] focus:outline-none text-gray-900">
                     {seatOptions.map((seat) => (
                       <option key={seat} value={seat}>{seat === "all" ? "All" : `${seat} Seats`}</option>
                     ))}
@@ -173,11 +172,11 @@ export default function FleetPage() {
                   <div className="relative">
                     <input type="range" min={minPrice} max={maxPrice} value={priceRange[0]}
                       onChange={(e) => { const value = parseInt(e.target.value); if (value < priceRange[1]) setPriceRange([value, priceRange[1]]); }}
-                      className="absolute w-full accent-[#01B000] pointer-events-auto"
+                      className="absolute w-full accent-[#1E3A8A] pointer-events-auto"
                       style={{ zIndex: priceRange[0] > maxPrice - 100 ? 5 : 3 }} />
                     <input type="range" min={minPrice} max={maxPrice} value={priceRange[1]}
                       onChange={(e) => { const value = parseInt(e.target.value); if (value > priceRange[0]) setPriceRange([priceRange[0], value]); }}
-                      className="absolute w-full accent-[#01B000] pointer-events-auto"
+                      className="absolute w-full accent-[#1E3A8A] pointer-events-auto"
                       style={{ zIndex: priceRange[1] < minPrice + 100 ? 5 : 4 }} />
                     <div className="h-6"></div>
                   </div>
@@ -186,7 +185,7 @@ export default function FleetPage() {
 
               <div className="mt-6 pt-6 border-t border-gray-200">
                 <p className="text-sm text-gray-600">
-                  Showing <span className="font-bold text-[#01B000]">{filteredCars.length}</span> of{" "}
+                  Showing <span className="font-bold text-[#1E3A8A]">{filteredCars.length}</span> of{" "}
                   <span className="font-bold">{cars.length}</span> vehicles
                 </p>
               </div>
@@ -203,7 +202,7 @@ export default function FleetPage() {
           <div className="flex-1">
             {loading && (
               <div className="text-center py-12">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#01B000] mx-auto"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1E3A8A] mx-auto"></div>
                 <p className="mt-4 text-gray-600">Loading vehicles...</p>
               </div>
             )}
@@ -215,14 +214,14 @@ export default function FleetPage() {
                 </svg>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">No vehicles found</h3>
                 <p className="text-gray-600 mb-4">Try adjusting your filters to see more results.</p>
-                <button onClick={resetFilters} className="px-6 py-2 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] transition-all">Clear Filters</button>
+                <button onClick={resetFilters} className="px-6 py-2 bg-[#0B1F3A] text-white rounded-lg font-bold hover:bg-[#1E3A8A] transition-all">Clear Filters</button>
               </div>
             )}
 
             {!loading && filteredCars.length > 0 && (
               <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
                 {filteredCars.map((car) => (
-                  <Link key={car.id} href={`/cars/${car.id}`} className="group bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-[#01B000] transition-all hover:shadow-lg">
+                  <Link key={car.id} href={`/cars/${car.id}`} className="group bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-[#1E3A8A] transition-all hover:shadow-lg">
                     <div className="relative h-32 md:h-48 bg-gray-100 overflow-hidden">
                       {car.images && car.images.length > 0 ? (
                         <img src={car.images[0]} alt={car.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
@@ -234,13 +233,13 @@ export default function FleetPage() {
                         </div>
                       )}
                       {car.featured && (
-                        <div className="absolute top-1 md:top-2 right-1 md:right-2 bg-[#01B000] text-white px-1.5 md:px-3 py-0.5 md:py-1 rounded-full text-[9px] md:text-xs font-bold">Featured</div>
+                        <div className="absolute top-1 md:top-2 right-1 md:right-2 bg-[#0B1F3A] text-white px-1.5 md:px-3 py-0.5 md:py-1 rounded-full text-[9px] md:text-xs font-bold">Featured</div>
                       )}
                       <div className="absolute top-1 md:top-2 left-1 md:left-2 bg-white/90 text-gray-900 px-1.5 md:px-3 py-0.5 md:py-1 rounded-full text-[9px] md:text-xs font-bold">{car.year}</div>
                     </div>
 
                     <div className="p-3 md:p-6">
-                      <h3 className="text-sm md:text-xl font-bold text-gray-900 mb-1 md:mb-2 group-hover:text-[#01B000] transition-colors line-clamp-1">{car.name}</h3>
+                      <h3 className="text-sm md:text-xl font-bold text-gray-900 mb-1 md:mb-2 group-hover:text-[#1E3A8A] transition-colors line-clamp-1">{car.name}</h3>
 
                       <div className="grid grid-cols-3 gap-1 md:gap-2 mb-2 md:mb-4">
                         <div className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-sm text-gray-600">
@@ -266,10 +265,10 @@ export default function FleetPage() {
 
                       <div className="flex items-baseline justify-between pt-2 md:pt-4 border-t border-gray-200">
                         <div>
-                          <span className="text-base md:text-2xl font-bold text-[#01B000]">${car.dailyRate}</span>
+                          <span className="text-base md:text-2xl font-bold text-[#0B1F3A]">${car.dailyRate}</span>
                           <span className="text-[10px] md:text-sm text-gray-600">/day</span>
                         </div>
-                        <div className="text-[#01B000] group-hover:translate-x-1 transition-transform">
+                        <div className="text-[#1E3A8A] group-hover:translate-x-1 transition-transform">
                           <svg className="w-4 h-4 md:w-6 md:h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 5l7 7-7 7" /></svg>
                         </div>
                       </div>
@@ -284,13 +283,13 @@ export default function FleetPage() {
                 <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Can't Find What You're Looking For?</h2>
                 <p className="text-gray-600 mb-6 max-w-2xl mx-auto">Contact us for special requests, long-term rentals, or custom packages tailored to your needs.</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/contact" className="inline-flex items-center justify-center px-8 py-3 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] transition-all">
+                  <Link href="/contact" className="inline-flex items-center justify-center px-8 py-3 bg-[#0B1F3A] text-white rounded-lg font-bold hover:bg-[#1E3A8A] transition-all">
                     <svg className="w-5 h-5 mr-2" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                     Contact Us
                   </Link>
-                  <a href="tel:+250788892976" className="inline-flex items-center justify-center px-8 py-3 border-2 border-[#01B000] text-[#01B000] rounded-lg font-bold hover:bg-[#01B000] hover:text-white transition-all">
+                  <a href="tel:+250787619387" className="inline-flex items-center justify-center px-8 py-3 border-2 border-[#0B1F3A] text-[#0B1F3A] rounded-lg font-bold hover:bg-[#0B1F3A] hover:text-white transition-all">
                     <svg className="w-5 h-5 mr-2" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                    Call +250 788 892 976
+                    Call +250 787 619 387
                   </a>
                 </div>
               </div>
