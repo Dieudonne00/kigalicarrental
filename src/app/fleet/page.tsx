@@ -1,340 +1,272 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Car } from "@/types/car";
 
-export default function FleetPage() {
+interface Car {
+  id: string;
+  name: string;
+  brand: string;
+  model: string;
+  year: number;
+  category: string;
+  transmission: string;
+  seats: number;
+  fuelType: string;
+  dailyRate: number;
+  weeklyRate?: number | null;
+  monthlyRate?: number | null;
+  images: string[];
+  featured?: boolean;
+  hasActiveBooking?: boolean;
+}
+
+export default function FeaturedFleet() {
   const [cars, setCars] = useState<Car[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [selectedTransmission, setSelectedTransmission] = useState<string>("all");
-  const [selectedSeats, setSelectedSeats] = useState<string>("all");
-  const [yearRange, setYearRange] = useState<[number, number]>([0, 0]);
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 0]);
 
   useEffect(() => {
-    fetchCars();
+    const fetchFeaturedCars = async () => {
+      try {
+        const response = await fetch("/api/cars?featured=true");
+        const data = await response.json();
+        
+        if (data.cars && Array.isArray(data.cars)) {
+          setCars(data.cars);
+        }
+      } catch (error) {
+        console.error("Error:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFeaturedCars();
   }, []);
 
-  const fetchCars = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch("/api/cars");
-      const data = await response.json();
-      const fetchedCars = data.cars || [];
-      setCars(fetchedCars);
-
-      // Set initial year range based on available cars
-      if (fetchedCars.length > 0) {
-        const years = fetchedCars.map((car: Car) => car.year);
-        const minYear = Math.min(...years);
-        const maxYear = Math.max(...years);
-        setYearRange([minYear, maxYear]);
-
-        // Set initial price range based on available cars
-        const prices = fetchedCars.map((car: Car) => car.dailyRate);
-        const minPrice = Math.min(...prices);
-        const maxPrice = Math.max(...prices);
-        setPriceRange([minPrice, maxPrice]);
-      }
-    } catch (error) {
-      console.error("Error fetching cars:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Calculate min and max values from all cars
-  const { minYear, maxYear, minPrice, maxPrice } = useMemo(() => {
-    if (cars.length === 0) return { minYear: 2000, maxYear: 2025, minPrice: 0, maxPrice: 500 };
-
-    const years = cars.map((car) => car.year);
-    const prices = cars.map((car) => car.dailyRate);
-
-    return {
-      minYear: Math.min(...years),
-      maxYear: Math.max(...years),
-      minPrice: Math.min(...prices),
-      maxPrice: Math.max(...prices),
-    };
-  }, [cars]);
-
-  // Get unique values for filters
-  const { categories, transmissions, seatOptions } = useMemo(() => {
-    const uniqueCategories = Array.from(new Set(cars.map((car) => car.category)));
-    const uniqueTransmissions = Array.from(new Set(cars.map((car) => car.transmission)));
-    const uniqueSeats = Array.from(new Set(cars.map((car) => car.seats))).sort((a, b) => a - b);
-
-    return {
-      categories: ["all", ...uniqueCategories],
-      transmissions: ["all", ...uniqueTransmissions],
-      seatOptions: ["all", ...uniqueSeats.map(String)],
-    };
-  }, [cars]);
-
-  // Filter cars based on selected filters
-  const filteredCars = cars.filter((car) => {
-    if (selectedCategory !== "all" && car.category !== selectedCategory) {
-      return false;
-    }
-    if (selectedTransmission !== "all" && car.transmission !== selectedTransmission) {
-      return false;
-    }
-    if (selectedSeats !== "all") {
-      const seats = parseInt(selectedSeats);
-      if (car.seats !== seats) return false;
-    }
-    // Price filter
-    if (car.dailyRate < priceRange[0] || car.dailyRate > priceRange[1]) {
-      return false;
-    }
-    return true;
-  });
-
-  const resetFilters = () => {
-    setSelectedCategory("all");
-    setSelectedTransmission("all");
-    setSelectedSeats("all");
-    if (cars.length > 0) {
-      const prices = cars.map((car) => car.dailyRate);
-      setPriceRange([Math.min(...prices), Math.max(...prices)]);
-    }
-  };
-
-  const hasActiveFilters =
-    selectedCategory !== "all" ||
-    selectedTransmission !== "all" ||
-    selectedSeats !== "all" ||
-    priceRange[0] !== minPrice ||
-    priceRange[1] !== maxPrice;
-
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative min-h-[500px] flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://res.cloudinary.com/dxn12qcje/image/upload/cars/1763129079992-2022-toyota-rav-4-prime-interior-softex-carprousa-1404x1112.webp)' }}
-        >
-          <div className="absolute inset-0 bg-black/50"></div>
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-[family-name:var(--font-plus-jakarta)]">
-            Our Fleet
-          </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
-            Choose from our diverse collection of premium vehicles. From compact sedans to luxury SUVs,
-            we have the perfect car for your journey in Rwanda.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-[#4B5320] text-white font-bold rounded-lg hover:bg-[#3d441a] transition-all"
-          >
-            <svg
-              className="w-5 h-5 mr-2"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Need Help? Contact Us
-          </Link>
+  if (loading) {
+    return (
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4B5320] mx-auto"></div>
+            <p className="mt-4 text-gray-600">Loading featured fleet...</p>
+          </div>
         </div>
       </section>
+    );
+  }
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Left Sidebar - Filters */}
-          <div className="lg:w-64 flex-shrink-0">
-            <div className="bg-white rounded-xl border-2 border-gray-200 p-6 sticky top-4">
-              <h2 className="text-xl font-bold text-gray-900 mb-6">Filter Vehicles</h2>
+  if (cars.length === 0) {
+    return null;
+  }
 
-              <div className="space-y-6">
-                {/* Category Filter */}
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
-                    Category
-                  </label>
-                  <select
-                    value={selectedCategory}
-                    onChange={(e) => setSelectedCategory(e.target.value)}
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#4B5320] focus:outline-none text-gray-900"
-                  >
-                    {categories.map((cat) => (
-                      <option key={cat} value={cat}>
-                        {cat.charAt(0).toUpperCase() + cat.slice(1)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+  return (
+    <section className="py-16 md:py-20 bg-[#F8FAFC]">
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
 
-                {/* Transmission Filter */}
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
-                    Transmission
-                  </label>
-                  <select
-                    value={selectedTransmission}
-                    onChange={(e) => setSelectedTransmission(e.target.value)}
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#4B5320] focus:outline-none text-gray-900"
-                  >
-                    {transmissions.map((trans) => (
-                      <option key={trans} value={trans}>
-                        {trans.charAt(0).toUpperCase() + trans.slice(1)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+        .fleet-heading {
+          animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+        }
 
-                {/* Seats Filter */}
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
-                    Seats
-                  </label>
-                  <select
-                    value={selectedSeats}
-                    onChange={(e) => setSelectedSeats(e.target.value)}
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#4B5320] focus:outline-none text-gray-900"
-                  >
-                    {seatOptions.map((seat) => (
-                      <option key={seat} value={seat}>
-                        {seat === "all" ? "All" : `${seat} Seats`}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+        .fleet-card {
+          animation: fadeInUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+        }
 
-                {/* Price Range Filter */}
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
-                    Price Range
-                  </label>
-                  <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
-                    <span>${priceRange[0]}</span>
-                    <span>${priceRange[1]}</span>
-                  </div>
-                  <div className="relative">
-                    {/* Min slider */}
-                    <input
-                      type="range"
-                      min={minPrice}
-                      max={maxPrice}
-                      value={priceRange[0]}
-                      onChange={(e) => {
-                        const value = parseInt(e.target.value);
-                        if (value < priceRange[1]) {
-                          setPriceRange([value, priceRange[1]]);
-                        }
-                      }}
-                      className="absolute w-full accent-[#4B5320] pointer-events-auto"
-                      style={{ zIndex: priceRange[0] > maxPrice - 100 ? 5 : 3 }}
-                    />
-                    {/* Max slider */}
-                    <input
-                      type="range"
-                      min={minPrice}
-                      max={maxPrice}
-                      value={priceRange[1]}
-                      onChange={(e) => {
-                        const value = parseInt(e.target.value);
-                        if (value > priceRange[0]) {
-                          setPriceRange([priceRange[0], value]);
-                        }
-                      }}
-                      className="absolute w-full accent-[#4B5320] pointer-events-auto"
-                      style={{ zIndex: priceRange[1] < minPrice + 100 ? 5 : 4 }}
-                    />
-                    {/* Spacing div */}
-                    <div className="h-6"></div>
-                  </div>
-                </div>
-              </div>
+        .fleet-card:nth-child(1) { animation-delay: 0.1s; }
+        .fleet-card:nth-child(2) { animation-delay: 0.2s; }
+        .fleet-card:nth-child(3) { animation-delay: 0.3s; }
+        .fleet-card:nth-child(4) { animation-delay: 0.4s; }
+        .fleet-card:nth-child(5) { animation-delay: 0.5s; }
+        .fleet-card:nth-child(6) { animation-delay: 0.6s; }
 
-              {/* Results Count */}
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <p className="text-sm text-gray-600">
-                  Showing <span className="font-bold text-[#4B5320]">{filteredCars.length}</span> of{" "}
-                  <span className="font-bold">{cars.length}</span> vehicles
-                </p>
-              </div>
+        .car-card {
+          background: white;
+          border: 2px solid #e5e7eb;
+          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          position: relative;
+          overflow: hidden;
+        }
 
-              {/* Clear Filters Button */}
-              {hasActiveFilters && (
-                <button
-                  onClick={resetFilters}
-                  className="w-full mt-4 px-4 py-2 border-2 border-gray-300 text-gray-700 rounded-lg font-bold hover:bg-gray-50 transition-all"
-                >
-                  Clear Filters
-                </button>
-              )}
-            </div>
-          </div>
+        .car-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 3px;
+          background: linear-gradient(90deg, #4B5320, #3d441a);
+          transition: left 0.3s ease;
+          z-index: 10;
+        }
 
-          {/* Right Content - Cars Grid */}
-          <div className="flex-1">
+        .car-card:hover::before {
+          left: 100%;
+        }
 
-        {/* Loading State */}
-        {loading && (
-          <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4B5320] mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading vehicles...</p>
-          </div>
-        )}
+        .car-card:hover {
+          border-color: #4B5320;
+          box-shadow: 0 12px 32px rgba(75, 83, 32, 0.15);
+          transform: translateY(-4px);
+        }
 
-        {/* No Results */}
-        {!loading && filteredCars.length === 0 && (
-          <div className="text-center py-12">
-            <svg
-              className="w-16 h-16 text-gray-400 mx-auto mb-4"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">No vehicles found</h3>
-            <p className="text-gray-600 mb-4">Try adjusting your filters to see more results.</p>
-            <button
-              onClick={resetFilters}
-              className="px-6 py-2 bg-[#4B5320] text-white rounded-lg font-bold hover:bg-[#3d441a] transition-all"
-            >
-              Clear Filters
-            </button>
-          </div>
-        )}
+        .featured-badge {
+          background: linear-gradient(135deg, #3d441a 0%, #4B5320 100%);
+          font-weight: 700;
+          font-size: 10px;
+          letter-spacing: 0.5px;
+        }
 
-        {/* Car Grid - 2 columns on mobile */}
-        {!loading && filteredCars.length > 0 && (
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
-            {filteredCars.map((car) => (
+        .booked-badge {
+          background: linear-gradient(135deg, #D97706 0%, #B45309 100%);
+          font-weight: 700;
+          font-size: 10px;
+          letter-spacing: 0.5px;
+        }
+
+        .car-specs {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.375rem;
+        }
+
+        @media (min-width: 768px) {
+          .car-specs {
+            gap: 0.75rem;
+          }
+        }
+
+        .spec-item {
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+          color: #6b7280;
+          font-size: 10px;
+        }
+
+        @media (min-width: 768px) {
+          .spec-item {
+            font-size: 14px;
+            gap: 0.375rem;
+          }
+        }
+
+        .spec-icon {
+          width: 12px;
+          height: 12px;
+          color: #4B5320;
+          flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+          .spec-icon {
+            width: 16px;
+            height: 16px;
+          }
+        }
+
+        .price-section {
+          display: flex;
+          align-items: baseline;
+          gap: 0.25rem;
+        }
+
+        .price-amount {
+          font-size: 20px;
+          font-weight: 700;
+          color: #4B5320;
+        }
+
+        @media (min-width: 768px) {
+          .price-amount {
+            font-size: 24px;
+          }
+        }
+
+        .price-period {
+          font-size: 10px;
+          color: #9ca3af;
+        }
+
+        @media (min-width: 768px) {
+          .price-period {
+            font-size: 13px;
+          }
+        }
+
+        .view-details-btn {
+          background: #4B5320;
+          color: white;
+          font-weight: 700;
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .view-details-btn:hover {
+          background: #3d441a;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 16px rgba(75, 83, 32, 0.2);
+        }
+
+        .view-all-link {
+          color: #4B5320;
+          font-weight: 700;
+          transition: all 0.3s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .view-all-link:hover {
+          color: #3d441a;
+          transform: translateX(4px);
+        }
+      `}</style>
+
+      <div className="container mx-auto px-4">
+        {/* SECTION HEADING */}
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="fleet-heading text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B1F3A] mb-3 md:mb-4">
+            Featured Fleet
+          </h2>
+          <p className="text-base md:text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
+            Explore our premium selection of <strong>cheap car rental</strong>, <strong>luxury SUVs</strong>, and <strong>4x4 safari vehicles</strong> available for self-drive or chauffeur service in Kigali Rwanda.
+          </p>
+        </div>
+
+        {/* CARS GRID */}
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-6">
+            {cars.map((car) => (
               <Link
                 key={car.id}
                 href={`/cars/${car.id}`}
-                className="group bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-[#4B5320] transition-all hover:shadow-lg"
+                className="fleet-card car-card rounded-xl overflow-hidden block group"
               >
-                {/* Car Image */}
-                <div className="relative h-32 md:h-48 bg-gray-100 overflow-hidden">
+                {/* CAR IMAGE */}
+                <div className="relative h-32 md:h-48 bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
                   {car.images && car.images.length > 0 ? (
                     <img
                       src={car.images[0]}
-                      alt={car.name}
+                      alt={`${car.brand} ${car.model} - Car rental Kigali Rwanda`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      title={`${car.name} - ${car.category} Car Rental in Kigali Rwanda`}
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center">
+                    <div className="w-full h-full flex items-center justify-center bg-gray-100">
                       <svg
-                        className="w-16 h-16 text-gray-400"
+                        className="w-12 h-12 md:w-16 md:h-16 text-gray-400"
                         fill="none"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -346,155 +278,118 @@ export default function FleetPage() {
                       </svg>
                     </div>
                   )}
-                  {car.featured && (
-                    <div className="absolute top-1 md:top-2 right-1 md:right-2 bg-[#4B5320] text-white px-1.5 md:px-3 py-0.5 md:py-1 rounded-full text-[9px] md:text-xs font-bold">
+
+                  {/* BADGES */}
+                  <div className="absolute top-2 md:top-3 right-2 md:right-3 z-20 flex gap-1 md:gap-2">
+                    {car.hasActiveBooking && (
+                      <span className="booked-badge inline-block px-2 md:px-3 py-1 text-white rounded-full">
+                        Booked
+                      </span>
+                    )}
+                    <span className="featured-badge inline-block px-2 md:px-3 py-1 text-white rounded-full">
                       Featured
-                    </div>
-                  )}
-                  {/* Year Badge */}
-                  <div className="absolute top-1 md:top-2 left-1 md:left-2 bg-white/90 text-gray-900 px-1.5 md:px-3 py-0.5 md:py-1 rounded-full text-[9px] md:text-xs font-bold">
-                    {car.year}
-                  </div>
-                </div>
-
-                {/* Car Details */}
-                <div className="p-3 md:p-6">
-                  <h3 className="text-sm md:text-xl font-bold text-gray-900 mb-1 md:mb-2 group-hover:text-[#4B5320] transition-colors line-clamp-1">
-                    {car.name}
-                  </h3>
-
-                  {/* Specs */}
-                  <div className="grid grid-cols-3 gap-1 md:gap-2 mb-2 md:mb-4">
-                    <div className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-sm text-gray-600">
-                      <svg
-                        className="w-3 h-3 md:w-4 md:h-4"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                      </svg>
-                      <span className="hidden md:inline">{car.seats} Seats</span>
-                      <span className="md:hidden">{car.seats}</span>
-                    </div>
-                    <div className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-sm text-gray-600">
-                      <svg
-                        className="w-3 h-3 md:w-4 md:h-4"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
-                      <span className="hidden md:inline">{car.transmission}</span>
-                      <span className="md:hidden capitalize">{car.transmission.substring(0, 4)}</span>
-                    </div>
-                    <div className="flex items-center gap-0.5 md:gap-1 text-[10px] md:text-sm text-gray-600">
-                      <svg
-                        className="w-3 h-3 md:w-4 md:h-4"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                      </svg>
-                      <span className="hidden md:inline capitalize">{car.fuelType}</span>
-                      <span className="md:hidden capitalize">{car.fuelType.substring(0, 3)}</span>
-                    </div>
-                  </div>
-
-                  {/* Category Badge */}
-                  <div className="mb-2 md:mb-4">
-                    <span className="inline-block px-2 md:px-3 py-0.5 md:py-1 bg-gray-100 text-gray-700 rounded-full text-[9px] md:text-xs font-bold">
-                      {car.category}
                     </span>
                   </div>
 
-                  {/* Price */}
-                  <div className="flex items-baseline justify-between pt-2 md:pt-4 border-t border-gray-200">
-                    <div>
-                      <span className="text-base md:text-2xl font-bold text-[#4B5320]">${car.dailyRate}</span>
-                      <span className="text-[10px] md:text-sm text-gray-600">/day</span>
-                    </div>
-                    <div className="text-[#4B5320] group-hover:translate-x-1 transition-transform">
-                      <svg
-                        className="w-4 h-4 md:w-6 md:h-6"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path d="M9 5l7 7-7 7" />
+                  {/* YEAR BADGE */}
+                  <div className="absolute bottom-2 left-2 z-20">
+                    <span className="inline-block px-2 md:px-3 py-0.5 bg-white/90 text-[#4B5320] rounded-full text-[9px] md:text-xs font-bold">
+                      {car.year}
+                    </span>
+                  </div>
+
+                  {/* CATEGORY TAG */}
+                  <div className="absolute bottom-2 right-2 z-20">
+                    <span className="inline-block px-2 md:px-3 py-0.5 bg-white/90 text-[#4B5320] rounded-full text-[9px] md:text-xs font-bold capitalize">
+                      {car.category}
+                    </span>
+                  </div>
+                </div>
+
+                {/* CAR INFO */}
+                <div className="p-3 md:p-4 lg:p-5">
+                  {/* NAME */}
+                  <h3 className="text-sm md:text-lg lg:text-xl font-black text-[#0B1F3A] mb-0.5 md:mb-1 line-clamp-1 group-hover:text-[#4B5320] transition-colors">
+                    {car.name}
+                  </h3>
+                  <p className="text-[10px] md:text-xs lg:text-sm text-gray-600 mb-2 md:mb-3 line-clamp-1 font-medium">
+                    {car.brand} {car.model}
+                  </p>
+
+                  {/* SPECIFICATIONS */}
+                  <div className="car-specs mb-2 md:mb-4">
+                    {/* TRANSMISSION */}
+                    <div className="spec-item">
+                      <svg className="spec-icon" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                       </svg>
+                      <span className="capitalize hidden md:inline">{car.transmission}</span>
+                      <span className="capitalize md:hidden">{car.transmission.substring(0, 4)}</span>
                     </div>
+
+                    {/* SEATS */}
+                    <div className="spec-item">
+                      <svg className="spec-icon" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                      <span>{car.seats} <span className="hidden md:inline">Seats</span></span>
+                    </div>
+
+                    {/* FUEL */}
+                    <div className="spec-item">
+                      <svg className="spec-icon" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                      <span className="capitalize hidden md:inline">{car.fuelType}</span>
+                      <span className="capitalize md:hidden">{car.fuelType.substring(0, 3)}</span>
+                    </div>
+                  </div>
+
+                  {/* DIVIDER */}
+                  <div className="mb-2 md:mb-4 pt-2 md:pt-3 border-t border-gray-200" />
+
+                  {/* PRICING */}
+                  <div className="mb-3 md:mb-4">
+                    <div className="price-section">
+                      <span className="price-amount">${car.dailyRate}</span>
+                      <span className="price-period">/day</span>
+                    </div>
+                    {car.weeklyRate && (
+                      <div className="text-[9px] md:text-xs text-gray-500 mt-1">
+                        Weekly: ${car.weeklyRate}
+                      </div>
+                    )}
+                    {car.monthlyRate && (
+                      <div className="text-[9px] md:text-xs text-gray-500">
+                        Monthly: ${car.monthlyRate}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* CTA BUTTON */}
+                  <div className="view-details-btn block w-full text-center px-3 md:px-4 py-2 md:py-2.5 rounded-lg text-xs md:text-sm font-bold">
+                    View Details
                   </div>
                 </div>
               </Link>
             ))}
           </div>
-        )}
+        </div>
 
-        {/* CTA Section */}
-        {!loading && filteredCars.length > 0 && (
-          <div className="mt-16 bg-white rounded-xl border-2 border-gray-200 p-8 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-              Can't Find What You're Looking For?
-            </h2>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Contact us for special requests, long-term rentals, or custom packages tailored to your needs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center px-8 py-3 bg-[#4B5320] text-white rounded-lg font-bold hover:bg-[#3d441a] transition-all"
-              >
-                <svg
-                  className="w-5 h-5 mr-2"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                Contact Us
-              </Link>
-              <a
-                href="tel:+250796077321"
-                className="inline-flex items-center justify-center px-8 py-3 border-2 border-[#4B5320] text-[#4B5320] rounded-lg font-bold hover:bg-[#4B5320] hover:text-white transition-all"
-              >
-                <svg
-                  className="w-5 h-5 mr-2"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                Call +250 796 077 321
-              </a>
-            </div>
-          </div>
-        )}
-          </div>
+        {/* VIEW ALL CARS CTA */}
+        <div className="text-center mt-12 md:mt-16">
+          <Link
+            href="/cars"
+            className="view-all-link text-lg hover:text-[#3d441a]"
+            title="View all car rentals available in Kigali Rwanda - Cheap, Luxury & 4x4 Safari"
+          >
+            View All Cars
+            <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
