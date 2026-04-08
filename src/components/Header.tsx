@@ -18,23 +18,23 @@ export default function Header() {
     {
       label: "Car Rental",
       href: "/car-rental-kigali",
-      keywords: "Car Rental Kigali | Cheap & Luxury Rates Rwanda",
-      icon: "🚗",
+      keywords: "kigali car rentals | kigali car hire | rwanda car rental | kigali airport car rental | car rental near me",
+      icon: "",
       submenus: [
         {
           label: "Cheap Car Rental",
           href: "/cheap-car-rental-kigali",
-          keywords: "Budget-friendly car rental Kigali Rwanda",
+          keywords: "kigali car rentals | kigali car hire | rwanda car rental | kigali airport car rental | car rental near me",
         },
         {
           label: "Luxury Car Rental",
           href: "/luxury-car-rental-kigali",
-          keywords: "Premium luxury car hire Kigali Rwanda",
+          keywords: "kigali car rentals | kigali car hire | rwanda car rental | kigali airport car rental | car rental near me",
         },
         {
           label: "Self-Drive Rwanda",
           href: "/self-drive-rwanda",
-          keywords: "Self-drive car rental Rwanda tourism",
+          keywords: "kigali car rentals | kigali car hire | rwanda car rental | kigali airport car rental | car rental near me | rwanda car rental",
         },
         {
           label: "Car Hire Rwanda",
@@ -47,7 +47,7 @@ export default function Header() {
       label: "Safari 4x4",
       href: "/4x4-car-rental-rwanda",
       keywords: "4x4 Safari Car Rental Rwanda | Land Cruiser Prado",
-      icon: "🏔️",
+      icon: "",
       submenus: [
         {
           label: "Land Cruiser Rental",
@@ -70,7 +70,7 @@ export default function Header() {
       label: "Airport Transfer",
       href: "/kigali-airport-transfer",
       keywords: "Kigali Airport Transfer | 24/7 Pickup Service",
-      icon: "✈️",
+      icon: "",
       submenus: [
         {
           label: "Airport Pickup Service",
@@ -93,7 +93,7 @@ export default function Header() {
       label: "Travel Guides",
       href: "/driving-in-rwanda-guide",
       keywords: "Rwanda Travel Guide | Driving Tips & Cost",
-      icon: "📍",
+      icon: "",
       submenus: [
         {
           label: "Driving in Rwanda",
