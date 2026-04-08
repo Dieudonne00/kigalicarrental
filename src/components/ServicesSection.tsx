@@ -495,7 +495,7 @@ export default function ServicesSection() {
         {/* SEO KEYWORD FOOTER */}
         <div className="mt-16 md:mt-20 pt-12 md:pt-16 border-t border-gray-200 text-center">
           <p className="text-sm md:text-base text-gray-700 font-medium leading-relaxed">
-            <strong>Keywords:</strong> Car Rental Kigali • Cheap Car Rental Rwanda • Luxury 4x4 Safari Rental • Self-Drive Rwanda • 
+            <strong>Kigali car hire </strong> Car Rental Kigali • Cheap Car Rental Rwanda • Luxury 4x4 Safari Rental • Self-Drive Rwanda • 
             Airport Transfer Kigali • 24/7 Airport Pickup • Chauffeur Service Rwanda • Professional Drivers • Business Transport Kigali • 
             Group Car Rental • Wedding Car Rental • Corporate Fleet Rental Rwanda
           </p>
