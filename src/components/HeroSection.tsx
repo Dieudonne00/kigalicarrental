@@ -1,100 +1,131 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function HeroSection() {
-  const [imageScale, setImageScale] = useState(1);
+  const [scale, setScale] = useState(1);
   const imageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (imageRef.current) {
-        const rect = imageRef.current.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
+      if (!imageRef.current) return;
 
-        // Calculate how much of the image is visible in the viewport
-        const imageTop = rect.top;
-        const imageHeight = rect.height;
+      const rect = imageRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
 
-        // When image enters viewport from bottom, scale from 1 to 1.2
-        // When scrolling down, zoom in; when scrolling up, zoom out
-        if (imageTop < windowHeight && imageTop > -imageHeight) {
-          // Calculate scroll progress (0 to 1)
-          const scrollProgress = Math.max(0, Math.min(1, (windowHeight - imageTop) / (windowHeight + imageHeight)));
-          // Scale from 1 to 1.2 based on scroll progress
-          const scale = 1 + (scrollProgress * 0.2);
-          setImageScale(scale);
-        }
+      if (rect.top < windowHeight && rect.bottom > 0) {
+        const progress = (windowHeight - rect.top) / windowHeight;
+        setScale(1 + Math.min(progress * 0.08, 0.08));
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] bg-white overflow-hidden py-24">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(https://res.cloudinary.com/dxn12qcje/image/upload/kgl%20.png)' }}
-      />
+    <section className="bg-[#F8FAFC] pt-32 pb-20">
+      <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
 
-      {/* White Overlay - 85% opacity for subtle background */}
-      <div className="absolute inset-0 bg-white/[0.85]" />
+        {/* LEFT CONTENT */}
+        <div>
 
-      {/* Army Green Gradient - Top Right Corner */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3">
-        <div className="absolute inset-0 bg-gradient-to-bl from-[#4B5320]/15 via-[#4B5320]/8 to-transparent" />
-      </div>
-
-      {/* Glass Effect Gradient with Army Green on Right Side */}
-      <div className="absolute top-0 right-0 w-1/2 h-full">
-        <div className="absolute inset-0 bg-gradient-to-l from-[#4B5320]/12 via-[#4B5320]/6 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent backdrop-blur-sm" />
-      </div>
-
-      {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Heading and Description Section */}
-        <div className="text-center mb-8 pt-8 max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-[1.1] font-[family-name:var(--font-plus-jakarta)] tracking-tight">
-            Discover Rwanda with Confidence - Premium Car Rentals for Every Journey
+          {/* HEADLINE */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-[#0B1F3A]">
+            Car Rental Kigali Rwanda – 
+            <span className="block text-[#1E3A8A]">
+              Cheap, Luxury & 4x4 Safari Vehicles
+            </span>
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
-            Experience the Land of a Thousand Hills in comfort and style. Whether you're exploring Kigali's vibrant streets, 
-            embarking on a safari adventure, or traveling for business, our reliable fleet is ready for your Rwandan journey.
+
+          {/* SUBTEXT */}
+          <p className="mt-6 text-lg text-gray-600 max-w-xl leading-relaxed">
+            Book reliable <strong>car rental in Kigali</strong> with flexible options —
+            <strong> self drive Rwanda</strong>, chauffeur services, and 
+            <strong> airport pickup at Kigali International Airport</strong>. 
+            Affordable pricing, fast booking, and trusted service.
           </p>
 
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          {/* CTA */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-8">
             <Link
               href="/book-now"
-              className="w-full sm:w-auto bg-[#4B5320] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#3a4218] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
+              className="bg-[#0B1F3A] hover:bg-[#1E3A8A] text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition"
             >
-              <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-              </svg>
-              Reserve Your Car
+               Book Car Now
             </Link>
+
             <Link
               href="/fleet"
-              className="w-full sm:w-auto bg-white text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-50 transition-all border-2 border-gray-200 hover:border-[#4B5320] flex items-center justify-center gap-3"
+              className="border border-gray-300 hover:border-[#1E3A8A] px-8 py-4 rounded-xl font-semibold text-gray-800 hover:text-[#1E3A8A] transition"
             >
-              <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-              </svg>
-              Explore Our Fleet
+              View Available Cars
             </Link>
+          </div>
+
+          {/* TRUST */}
+          <div className="grid grid-cols-3 gap-6 mt-10">
+            <div>
+              <div className="text-2xl font-bold text-[#0B1F3A]">500+</div>
+              <div className="text-sm text-gray-500">Bookings</div>
+            </div>
+
+            <div>
+              <div className="text-2xl font-bold text-[#0B1F3A]">24/7</div>
+              <div className="text-sm text-gray-500">Support</div>
+            </div>
+
+            <div>
+              <div className="text-2xl font-bold text-[#0B1F3A]">4.9★</div>
+              <div className="text-sm text-gray-500">Rating</div>
+            </div>
           </div>
         </div>
 
-        {/* Car Image - Updated Banner */}
-       
+        {/* RIGHT IMAGE */}
+        <div className="flex justify-center">
+          <div
+            ref={imageRef}
+            style={{ transform: `scale(${scale})` }}
+            className="transition-transform duration-300 w-full max-w-md"
+          >
+            <div className="rounded-2xl overflow-hidden shadow-2xl border">
+              <Image
+                src="https://res.cloudinary.com/dxn12qcje/image/upload/kgl%20.png"
+                alt="Car rental Kigali Rwanda - self drive, airport transfer, safari vehicles"
+                width={500}
+                height={500}
+                priority
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* BOTTOM CONTACT SEO BOOST */}
+      <div className="mt-20 text-center border-t pt-10">
+        <p className="text-gray-600 text-sm">
+          Cheap Car Rental Kigali • Luxury 4x4 Rwanda • Self Drive Rwanda • Airport Pickup Kigali
+        </p>
+
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-4">
+          <a
+            href="tel:+250787619387"
+            className="text-[#1E3A8A] font-bold"
+          >
+             +250 787 619 387
+          </a>
+
+          <a
+            href="mailto:booking@carrentalinkigali.com"
+            className="text-[#1E3A8A] font-bold"
+          >
+             booking@carrentalinkigali.com
+          </a>
+        </div>
       </div>
     </section>
   );
