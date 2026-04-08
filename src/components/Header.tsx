@@ -264,20 +264,20 @@ export default function Header() {
               className="top-bar-contact hover:text-blue-300"
               title="Call Kigali Car Hire for car rental booking"
             >
-              📞 <span className="hidden sm:inline">+250</span> 787 619 387
+               <span className="hidden sm:inline">+250</span> 787 619 387
             </a>
             <a
               href="mailto:booking@carrentalinkigali.com"
               className="top-bar-contact hover:text-blue-300"
               title="Email car rental inquiries"
             >
-              ✉️ <span className="hidden sm:inline">booking@carrentalinkigali.com</span>
+               <span className="hidden sm:inline">booking@carrentalinkigali.com</span>
               <span className="sm:hidden">Email Us</span>
             </a>
           </div>
 
           <div className="text-center text-blue-200 text-[10px] lg:text-xs font-medium">
-            🚗 Premium Car Rental Kigali • Safari 4x4 • Self-Drive • Airport Pickup
+             Best Kigali Car Rental Company • Save Big 10% Off • Kigali car rentals • Self Drive & Airport Pickup Rwanda
           </div>
         </div>
       </div>
