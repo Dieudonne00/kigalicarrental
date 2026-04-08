@@ -1,15 +1,7 @@
-export const runtime = "nodejs";
-
 import { NextResponse } from "next/server";
-import { v2 as cloudinary } from "cloudinary";
-
-// Cloudinary config (temporary)
-cloudinary.config({
-  cloud_name: "dxn12qcje",
-  api_key: "636422866527858",
-  api_secret: "ZyNMrPei3OH-U0eOxWSTvysypj0",
-  secure: true,
-});
+import { writeFile, mkdir } from "fs/promises";
+import path from "path";
+import { existsSync } from "fs";
 
 export async function POST(request: Request) {
   try {
@@ -23,21 +15,36 @@ export async function POST(request: Request) {
       );
     }
 
-    // Convert file → buffer
+    // Create unique filename
+    const timestamp = Date.now();
+    const randomString = Math.random().toString(36).substring(7);
+    const originalName = file.name.replace(/\s/g, "-");
+    const fileName = `${timestamp}-${randomString}-${originalName}`;
+    
+    // All images go to myimages folder
+    const uploadDir = "myimages";
+    const publicDir = path.join(process.cwd(), "public", uploadDir);
+    
+    // Create directory if it doesn't exist
+    if (!existsSync(publicDir)) {
+      await mkdir(publicDir, { recursive: true });
+    }
+
+    // Full file path
+    const filePath = path.join(publicDir, fileName);
+    
+    // Convert file to buffer and save
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
-    const base64 = `data:${file.type};base64,${buffer.toString("base64")}`;
+    await writeFile(filePath, buffer);
 
-    // Upload to Cloudinary
-    const result = await cloudinary.uploader.upload(base64, {
-      folder: "cars",
-      resource_type: "image",
-    });
-
+    // Generate URL for the uploaded image
+    const imageUrl = `/${uploadDir}/${fileName}`;
+    
     return NextResponse.json(
       {
-        url: result.secure_url,
-        publicId: result.public_id,
+        url: imageUrl,
+        fileName: fileName,
       },
       { status: 200 }
     );
