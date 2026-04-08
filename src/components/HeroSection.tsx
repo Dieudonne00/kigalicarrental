@@ -162,23 +162,23 @@ export default function HeroSection() {
               <div className="bg-gradient-to-br from-blue-50 to-gray-50 p-6 flex items-center justify-center min-h-[400px]">
                 {/* High Quality RAV4 2025 Image */}
                 <Image
-                  src="https://toppng.com/uploads/preview/toyota-cars-png-transparent-background-photoshop-PNG-free-PNG-Images_481427_thumb.png"
-                  alt="2025 Toyota RAV4 - Car rental Kigali Rwanda self drive safari 4x4"
+                  src="https://www.vhv.rs/dpng/d/61-619307_2019-toyota-rav4-xle-black-hd-png-download.png"
+                  alt="Best Kigali Car Rental Company • Save Big 10% Off • Kigali car rentals • Self Drive rwanda"
                   width={500}
                   height={400}
                   priority
                   className="w-full h-auto object-contain drop-shadow-lg"
-                  title="Toyota RAV4 2025 - Premium SUV for car rental in Kigali Rwanda"
+                  title="Best Kigali Car Rental Company • Save Big 10% Off • Kigali car rentals • Self Drive & Airport Pickup Rwanda"
                 />
               </div>
 
               {/* INFO BADGE */}
               <div className="bg-white px-5 py-4 border-t border-gray-100">
                 <div className="text-sm font-bold text-[#0B1F3A]">
-                  Toyota RAV4 2025
+                   Save Big 10% Off
                 </div>
                 <div className="text-xs text-gray-600 mt-1">
-                  Luxury 4x4 Safari & Self-Drive Available
+                  Best Kigali Car Rental Company • Save Big 10% Off • Kigali car rentals • Self Drive & Airport Pickup Rwanda
                 </div>
               </div>
             </div>
