@@ -162,7 +162,7 @@ export default function HeroSection() {
               <div className="bg-gradient-to-br from-blue-50 to-gray-50 p-6 flex items-center justify-center min-h-[400px]">
                 {/* High Quality RAV4 2025 Image */}
                 <Image
-                  src="https://kigalicarrentals.com/wp-content/uploads/2021/02/toyotarav4.png"
+                  src="https://www.toyota.com.sa/-/media/feature/toyotaksa/vehicle/suv/rav4/2026/new-colors/available-on-all-grades-except-the-xse/urban-rock-1170x395.png?h=395&w=1170&la=en&hash=AE6B69709A426524FB01C6A1A8DDF92BD21FC2BD"
                   alt="Best Kigali Car Rental Company • Save Big 10% Off • Kigali car rentals • Self Drive rwanda"
                   width={500}
                   height={400}
