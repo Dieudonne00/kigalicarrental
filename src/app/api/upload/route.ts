@@ -1,7 +1,8 @@
+export const runtime = "nodejs";
 import { NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
-import { existsSync } from "fs";
+
+const CPANEL_UPLOAD_URL = "https://carrentalinkigali.com/upload.php";
+const CPANEL_SECRET_KEY = "aS7xJfu326";
 
 export async function POST(request: Request) {
   try {
@@ -9,49 +10,51 @@ export async function POST(request: Request) {
     const file = formData.get("file") as File | null;
 
     if (!file) {
-      return NextResponse.json(
-        { error: "No file provided" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
-    // Create unique filename
-    const timestamp = Date.now();
-    const randomString = Math.random().toString(36).substring(7);
-    const originalName = file.name.replace(/\s/g, "-");
-    const fileName = `${timestamp}-${randomString}-${originalName}`;
-    
-    // All images go to myimages folder
-    const uploadDir = "myimages";
-    const publicDir = path.join(process.cwd(), "public", uploadDir);
-    
-    // Create directory if it doesn't exist
-    if (!existsSync(publicDir)) {
-      await mkdir(publicDir, { recursive: true });
-    }
-
-    // Full file path
-    const filePath = path.join(publicDir, fileName);
-    
-    // Convert file to buffer and save
+    // Convert file to base64 and send as JSON — most reliable for server-to-server
     const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    await writeFile(filePath, buffer);
+    const base64 = Buffer.from(arrayBuffer).toString("base64");
 
-    // Generate URL for the uploaded image
-    const imageUrl = `/${uploadDir}/${fileName}`;
-    
-    return NextResponse.json(
-      {
-        url: imageUrl,
-        fileName: fileName,
+    const response = await fetch(CPANEL_UPLOAD_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-      { status: 200 }
-    );
+      body: JSON.stringify({
+        secret: CPANEL_SECRET_KEY,
+        file: base64,
+        name: file.name || "upload.jpg",
+        type: file.type || "image/jpeg",
+      }),
+    });
+
+    const rawText = await response.text();
+    console.log("cPanel response status:", response.status);
+    console.log("cPanel response body:", rawText);
+
+    if (!response.ok) {
+      throw new Error(`cPanel upload failed: ${response.status} - ${rawText}`);
+    }
+
+    let result;
+    try {
+      result = JSON.parse(rawText);
+    } catch {
+      throw new Error(`Invalid JSON from cPanel: ${rawText}`);
+    }
+
+    if (!result.url) {
+      throw new Error(`No URL returned: ${rawText}`);
+    }
+
+    return NextResponse.json({ url: result.url, publicId: result.filename }, { status: 200 });
+
   } catch (error) {
     console.error("Upload error:", error);
     return NextResponse.json(
-      { error: "Upload failed" },
+      { error: error instanceof Error ? error.message : "Upload failed" },
       { status: 500 }
     );
   }
