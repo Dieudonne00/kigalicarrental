@@ -17,6 +17,7 @@ interface Car {
   weeklyRate?: number | null;
   monthlyRate?: number | null;
   imageUrl: string;
+  hasActiveBooking?: boolean;
 }
 
 export default function FeaturedFleet() {
@@ -48,7 +49,7 @@ export default function FeaturedFleet() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1E3A8A] mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading vehicles...</p>
+            <p className="mt-4 text-gray-600">Loading featured fleet...</p>
           </div>
         </div>
       </section>
@@ -120,6 +121,13 @@ export default function FeaturedFleet() {
 
         .featured-badge {
           background: linear-gradient(135deg, #0B1F3A 0%, #1E3A8A 100%);
+          font-weight: 700;
+          font-size: 10px;
+          letter-spacing: 0.5px;
+        }
+
+        .booked-badge {
+          background: linear-gradient(135deg, #D97706 0%, #B45309 100%);
           font-weight: 700;
           font-size: 10px;
           letter-spacing: 0.5px;
@@ -253,8 +261,13 @@ export default function FeaturedFleet() {
                     title={`${car.name} - ${car.category} Car Rental in Kigali Rwanda`}
                   />
 
-                  {/* FEATURED BADGE */}
-                  <div className="absolute top-2 md:top-3 right-2 md:right-3 z-20">
+                  {/* BADGES */}
+                  <div className="absolute top-2 md:top-3 right-2 md:right-3 z-20 flex gap-1 md:gap-2">
+                    {car.hasActiveBooking && (
+                      <span className="booked-badge inline-block px-2 md:px-3 py-1 text-white rounded-full">
+                        Booked
+                      </span>
+                    )}
                     <span className="featured-badge inline-block px-2 md:px-3 py-1 text-white rounded-full">
                       Featured
                     </span>
@@ -319,6 +332,11 @@ export default function FeaturedFleet() {
                     {car.weeklyRate && (
                       <div className="text-[9px] md:text-xs text-gray-500 mt-1">
                         Weekly: ${car.weeklyRate}
+                      </div>
+                    )}
+                    {car.monthlyRate && (
+                      <div className="text-[9px] md:text-xs text-gray-500">
+                        Monthly: ${car.monthlyRate}
                       </div>
                     )}
                   </div>
