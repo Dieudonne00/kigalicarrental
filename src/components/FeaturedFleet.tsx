@@ -588,7 +588,7 @@ export default function FeaturedFleet() {
         {/* VIEW ALL CARS CTA */}
         <div className="text-center mt-12 md:mt-16">
           <Link
-            href="/cars"
+            href="/fleet"
             className="view-all-link text-lg"
             title="View all car rentals available in Kigali Rwanda - Cheap, Luxury & 4x4 Safari"
           >
