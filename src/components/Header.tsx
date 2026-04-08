@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { imageUrl } from "@/lib/images";
 import { useState, useEffect } from "react";
 
 export default function Header() {
@@ -111,8 +109,8 @@ export default function Header() {
 
   // FLASH DEALS & PROMOTIONS
   const flashDeals = [
-    { label: "🔥 LAST MINUTE DEAL", discount: "30% OFF", href: "/deals/last-minute", color: "from-red-600 to-orange-600" },
-    { label: "🎯 WEEKEND SPECIAL", discount: "20% OFF", href: "/deals/weekend", color: "from-purple-600 to-pink-600" },
+    { label: "🔥 LAST MINUTE", discount: "30% OFF", href: "/deals/last-minute", color: "from-red-600 to-orange-600" },
+    { label: "🎯 WEEKEND", discount: "20% OFF", href: "/deals/weekend", color: "from-purple-600 to-pink-600" },
     { label: "⭐ LONG TERM", discount: "15% OFF", href: "/long-term-car-rental-rwanda", color: "from-blue-600 to-cyan-600" },
   ];
 
@@ -126,7 +124,6 @@ export default function Header() {
       {/* TOP ALERT BAR - 10% OFF FLASH SALE */}
       <div className="bg-gradient-to-r from-red-600 via-orange-600 to-red-600 text-white overflow-hidden">
         <div className="relative">
-          {/* Animated background */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
           
           <div className="relative max-w-7xl mx-auto px-4 py-2.5">
@@ -162,24 +159,22 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4">
         {/* MAIN NAVIGATION */}
         <nav className="flex items-center justify-between">
-          {/* LOGO WITH SEO TEXT */}
+          {/* WORDMARK LOGO - TEXT BASED */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="relative">
-              <Image
-                src={imageUrl("mylogo-removebg-preview_mpcp0n.png")}
-                alt="Kigali Car Hire Rwanda - Best Car Rental Services | Airport Transfers | Safari 4x4 Rentals | Self Drive & Chauffeur Services"
-                width={150}
-                height={55}
-                className="h-12 w-auto transition-transform group-hover:scale-105"
-                priority
-              />
-            </div>
-            <div className="hidden lg:block border-l-2 border-gray-300 pl-3">
-              <div className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">
-                Since 2015
+            <div className="text-left">
+              <div className="flex items-center gap-2">
+                <div className="text-3xl">🚗</div>
+                <div>
+                  <div className="text-xl md:text-2xl font-black bg-gradient-to-r from-[#4B5320] to-green-700 bg-clip-text text-transparent">
+                    KIGALI CAR RENTALS
+                  </div>
+                  <div className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+                    Rwanda • East Africa
+                  </div>
+                </div>
               </div>
-              <div className="text-xs font-bold text-[#4B5320]">
-                Rwanda's #1 Car Rental
+              <div className="hidden lg:block text-[9px] text-gray-400 font-semibold tracking-wide mt-0.5">
+                BEST CAR HIRE SERVICES IN RWANDA | AIRPORT PICKUP | SELF DRIVE | SAFARI 4X4
               </div>
             </div>
           </Link>
@@ -291,7 +286,7 @@ export default function Header() {
                 className={`group relative overflow-hidden px-3 py-2 rounded-xl bg-gradient-to-r ${deal.color} text-white hover:shadow-lg transition-all duration-300`}
               >
                 <div className="relative z-10">
-                  <div className="text-[10px] font-bold uppercase tracking-wider">{deal.label}</div>
+                  <div className="text-[9px] font-bold uppercase tracking-wider">{deal.label}</div>
                   <div className="text-xs font-black">{deal.discount}</div>
                 </div>
                 <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition"></div>
@@ -368,7 +363,7 @@ export default function Header() {
                   className={`p-3 text-center rounded-xl bg-gradient-to-r ${deal.color} text-white`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <div className="text-[10px] font-bold">{deal.label}</div>
+                  <div className="text-[9px] font-bold">{deal.label}</div>
                   <div className="text-xs font-black">{deal.discount}</div>
                 </Link>
               ))}
