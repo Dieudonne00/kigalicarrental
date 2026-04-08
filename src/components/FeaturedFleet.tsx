@@ -16,7 +16,8 @@ interface Car {
   dailyRate: number;
   weeklyRate?: number | null;
   monthlyRate?: number | null;
-  imageUrl: string;
+  images: string[];
+  featured?: boolean;
   hasActiveBooking?: boolean;
 }
 
@@ -248,18 +249,35 @@ export default function FeaturedFleet() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 lg:gap-6">
             {cars.map((car) => (
-              <div
+              <Link
                 key={car.id}
-                className="fleet-card car-card rounded-xl overflow-hidden"
+                href={`/cars/${car.id}`}
+                className="fleet-card car-card rounded-xl overflow-hidden block group"
               >
                 {/* CAR IMAGE */}
-                <div className="relative h-32 md:h-48 bg-gradient-to-br from-blue-50 to-gray-50 overflow-hidden group">
-                  <img
-                    src={`https://carrentalinkigali.com/myimages/${car.imageUrl}`}
-                    alt={`${car.brand} ${car.model} - Car rental Kigali Rwanda`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    title={`${car.name} - ${car.category} Car Rental in Kigali Rwanda`}
-                  />
+                <div className="relative h-32 md:h-48 bg-gradient-to-br from-blue-50 to-gray-50 overflow-hidden">
+                  {car.images && car.images.length > 0 ? (
+                    <img
+                      src={car.images[0]}
+                      alt={`${car.brand} ${car.model} - Car rental Kigali Rwanda`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      title={`${car.name} - ${car.category} Car Rental in Kigali Rwanda`}
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center bg-gray-100">
+                      <svg
+                        className="w-12 h-12 md:w-16 md:h-16 text-gray-400"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                  )}
 
                   {/* BADGES */}
                   <div className="absolute top-2 md:top-3 right-2 md:right-3 z-20 flex gap-1 md:gap-2">
@@ -273,8 +291,15 @@ export default function FeaturedFleet() {
                     </span>
                   </div>
 
-                  {/* CATEGORY TAG */}
+                  {/* YEAR BADGE */}
                   <div className="absolute bottom-2 left-2 z-20">
+                    <span className="inline-block px-2 md:px-3 py-0.5 bg-white/90 text-[#0B1F3A] rounded-full text-[9px] md:text-xs font-bold">
+                      {car.year}
+                    </span>
+                  </div>
+
+                  {/* CATEGORY TAG */}
+                  <div className="absolute bottom-2 right-2 z-20">
                     <span className="inline-block px-2 md:px-3 py-0.5 bg-white/90 text-[#0B1F3A] rounded-full text-[9px] md:text-xs font-bold capitalize">
                       {car.category}
                     </span>
@@ -283,12 +308,12 @@ export default function FeaturedFleet() {
 
                 {/* CAR INFO */}
                 <div className="p-3 md:p-4 lg:p-5">
-                  {/* NAME & YEAR */}
-                  <h3 className="text-sm md:text-lg lg:text-xl font-black text-[#0B1F3A] mb-0.5 md:mb-1 line-clamp-1">
+                  {/* NAME */}
+                  <h3 className="text-sm md:text-lg lg:text-xl font-black text-[#0B1F3A] mb-0.5 md:mb-1 line-clamp-1 group-hover:text-[#1E3A8A] transition-colors">
                     {car.name}
                   </h3>
                   <p className="text-[10px] md:text-xs lg:text-sm text-gray-600 mb-2 md:mb-3 line-clamp-1 font-medium">
-                    {car.brand} {car.model} • {car.year}
+                    {car.brand} {car.model}
                   </p>
 
                   {/* SPECIFICATIONS */}
@@ -342,15 +367,11 @@ export default function FeaturedFleet() {
                   </div>
 
                   {/* CTA BUTTON */}
-                  <Link
-                    href={`/cars/${car.id}`}
-                    className="view-details-btn block w-full text-center px-3 md:px-4 py-2 md:py-2.5 rounded-lg text-xs md:text-sm font-bold"
-                    title={`View details and book ${car.name} - Car rental Kigali Rwanda`}
-                  >
+                  <div className="view-details-btn block w-full text-center px-3 md:px-4 py-2 md:py-2.5 rounded-lg text-xs md:text-sm font-bold">
                     View Details
-                  </Link>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
