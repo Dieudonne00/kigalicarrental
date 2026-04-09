@@ -1,7 +1,26 @@
-"use client";
-
+import { Metadata } from "next";
 import BlogListing from "@/components/BlogListing";
 import { imageUrl } from "@/lib/images";
+
+export const metadata: Metadata = {
+  title: "Kigali Car Rentals Blog | Rwanda Travel Tips & Car Hire Guides",
+  description:
+    "Discover expert car rental tips, Rwanda travel guides, and insider advice from Kigali Car Rentals. Learn everything about self-drive adventures, safaris, road trips, and renting a car in Kigali.",
+  keywords:
+    "Kigali car rentals blog, Rwanda car rental tips, Kigali car hire guide, Rwanda travel tips, self drive Rwanda, car rental Kigali blog, Rwanda road trip guide, safari car hire Rwanda",
+  openGraph: {
+    title: "Kigali Car Rentals Blog | Travel Tips & Car Hire Guides in Rwanda",
+    description:
+      "Expert travel guides, car rental tips, and Rwanda road trip advice from Kigali Car Rentals.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kigali Car Rentals Blog | Rwanda Travel & Car Hire Tips",
+    description:
+      "Smart tips and expert guides for renting cars and exploring Rwanda with confidence.",
+  },
+};
 
 export default function BlogPage() {
   return (
@@ -26,13 +45,13 @@ export default function BlogPage() {
           </h1>
           <p className="text-sm md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Powerful travel guides, smart car rental tips, and local insights from
-            <span className="text-[#FF6B35] font-semibold"> Kigali Car Rentals </span>
+            <span className="text-[#4B5320] font-semibold"> Kigali Car Rentals </span>
             to help you explore Rwanda with confidence, comfort, and class.
           </p>
 
           {/* Accent Line */}
           <div className="mt-8 flex justify-center">
-            <span className="w-24 h-1 bg-[#FF6B35] rounded-full"></span>
+            <span className="w-24 h-1 bg-[#4B5320] rounded-full"></span>
           </div>
         </div>
       </section>
@@ -40,9 +59,10 @@ export default function BlogPage() {
       {/* Blog Listing */}
       <section className="relative">
         {/* Decorative Accent */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#FF6B35] to-[#E55A2B]" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4B5320] to-[#3E451A]" />
         <BlogListing />
       </section>
     </main>
   );
 }
+
