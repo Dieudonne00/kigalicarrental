@@ -42,7 +42,7 @@ export default function FeaturedBlogs() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="inline-block">
-              <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#4B5320]/20 border-t-[#4B5320]"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-4 border-[#1E3A8A]/20 border-t-[#1E3A8A]"></div>
             </div>
             <p className="mt-4 text-gray-500">Loading latest articles...</p>
           </div>
@@ -62,7 +62,7 @@ export default function FeaturedBlogs() {
         <div className="text-center mb-12 md:mb-16">
           {/* Decorative element */}
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-1 bg-[#4B5320] rounded-full"></div>
+            <div className="w-16 h-1 bg-[#1E3A8A] rounded-full"></div>
           </div>
           
           <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 font-[family-name:var(--font-plus-jakarta)] tracking-tight">
@@ -71,16 +71,16 @@ export default function FeaturedBlogs() {
           
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
             Expert tips, local guides, and everything you need to know about 
-            <span className="text-[#4B5320] font-semibold"> car rental in Rwanda</span>
+            <span className="text-[#1E3A8A] font-semibold"> car rental in Rwanda</span>
           </p>
           
           {/* Optional: Decorative icon */}
           <div className="flex justify-center gap-2 mt-6">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#4B5320]/40"></div>
-            <div className="w-1.5 h-1.5 rounded-full bg-[#4B5320]/60"></div>
-            <div className="w-1.5 h-1.5 rounded-full bg-[#4B5320]"></div>
-            <div className="w-1.5 h-1.5 rounded-full bg-[#4B5320]/60"></div>
-            <div className="w-1.5 h-1.5 rounded-full bg-[#4B5320]/40"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-[#1E3A8A]/40"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-[#1E3A8A]/60"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-[#1E3A8A]"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-[#1E3A8A]/60"></div>
+            <div className="w-1.5 h-1.5 rounded-full bg-[#1E3A8A]/40"></div>
           </div>
         </div>
 
@@ -94,7 +94,7 @@ export default function FeaturedBlogs() {
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Featured Image Container */}
-              <div className="relative h-48 md:h-64 overflow-hidden bg-gradient-to-br from-[#4B5320]/10 to-[#4B5320]/5">
+              <div className="relative h-48 md:h-64 overflow-hidden bg-gradient-to-br from-[#1E3A8A]/10 to-[#1E3A8A]/5">
                 {blog.featuredImage ? (
                   <>
                     <Image
@@ -109,7 +109,7 @@ export default function FeaturedBlogs() {
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
                     <svg
-                      className="w-16 h-16 md:w-24 md:h-24 text-[#4B5320]/20"
+                      className="w-16 h-16 md:w-24 md:h-24 text-[#1E3A8A]/20"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -124,7 +124,7 @@ export default function FeaturedBlogs() {
                 
                 {/* Category Badge - Enhanced */}
                 <div className="absolute top-4 left-4 z-10">
-                  <span className="px-3 py-1.5 bg-[#4B5320] text-white text-xs font-bold rounded-lg shadow-md backdrop-blur-sm bg-opacity-90">
+                  <span className="px-3 py-1.5 bg-[#0B1F3A] text-white text-xs font-bold rounded-lg shadow-md backdrop-blur-sm bg-opacity-90">
                     {blog.category
                       .split("-")
                       .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
@@ -148,9 +148,9 @@ export default function FeaturedBlogs() {
                 {/* Author & Stats Row */}
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <div className="w-6 h-6 rounded-full bg-[#4B5320]/10 flex items-center justify-center">
+                    <div className="w-6 h-6 rounded-full bg-[#1E3A8A]/10 flex items-center justify-center">
                       <svg
-                        className="w-3 h-3 text-[#4B5320]"
+                        className="w-3 h-3 text-[#1E3A8A]"
                         fill="none"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -182,7 +182,7 @@ export default function FeaturedBlogs() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#4B5320] transition-colors duration-300 line-clamp-2 leading-tight">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#1E3A8A] transition-colors duration-300 line-clamp-2 leading-tight">
                   {blog.title}
                 </h3>
 
@@ -193,7 +193,7 @@ export default function FeaturedBlogs() {
 
                 {/* Read More Link */}
                 <div className="flex items-center justify-between pt-2 border-t border-gray-100">
-                  <div className="flex items-center text-[#4B5320] font-semibold text-sm group-hover:gap-2 transition-all duration-300">
+                  <div className="flex items-center text-[#1E3A8A] font-semibold text-sm group-hover:gap-2 transition-all duration-300">
                     <span>Continue Reading</span>
                     <svg
                       className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
@@ -226,7 +226,7 @@ export default function FeaturedBlogs() {
         <div className="text-center">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#4B5320] text-white font-bold text-base rounded-xl hover:bg-[#3a4218] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 group"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-[#0B1F3A] text-white font-bold text-base rounded-xl hover:bg-[#1E3A8A] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 group"
           >
             <span>Explore All Articles</span>
             <svg
@@ -245,7 +245,7 @@ export default function FeaturedBlogs() {
           {/* Optional: Newsletter CTA below button */}
           <p className="text-sm text-gray-500 mt-4">
             Get travel tips straight to your inbox — 
-            <Link href="/newsletter" className="text-[#4B5320] hover:underline font-semibold ml-1">
+            <Link href="/newsletter" className="text-[#1E3A8A] hover:underline font-semibold ml-1">
               Subscribe to our newsletter
             </Link>
           </p>
