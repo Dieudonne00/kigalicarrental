@@ -161,7 +161,7 @@ export default async function BlogPostPage({
   return (
     <main className="bg-white">
         {/* Hero Section */}
-        <div className="relative bg-gradient-to-r from-gray-900 to-gray-800 py-16">
+        <div className="relative bg-gradient-to-r from-[#0B1F3A] to-[#1E3A8A] py-16">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Breadcrumb */}
             <nav className="mb-6">
@@ -190,7 +190,7 @@ export default async function BlogPostPage({
 
             {/* Category Badge */}
             <div className="mb-4">
-              <span className="inline-block px-4 py-2 bg-[#01B000] text-white text-sm font-bold rounded-full">
+              <span className="inline-block px-4 py-2 bg-[#1E3A8A] text-white text-sm font-bold rounded-full">
                 {post.category
                   .split("-")
                   .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
@@ -279,7 +279,7 @@ export default async function BlogPostPage({
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           {/* Blog Content */}
           <div
-            className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-[#01B000] prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-ul:text-gray-700 prose-ol:text-gray-700 prose-blockquote:border-l-[#01B000] prose-blockquote:text-gray-600 prose-img:rounded-xl"
+            className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-[#1E3A8A] prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-ul:text-gray-700 prose-ol:text-gray-700 prose-blockquote:border-l-[#1E3A8A] prose-blockquote:text-gray-600 prose-img:rounded-xl"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
@@ -291,7 +291,7 @@ export default async function BlogPostPage({
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-[#01B000] hover:text-white transition-colors cursor-pointer"
+                    className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-[#1E3A8A] hover:text-white transition-colors cursor-pointer"
                   >
                     {tag}
                   </span>
@@ -314,7 +314,7 @@ export default async function BlogPostPage({
                   <Link
                     key={relatedPost.id}
                     href={`/blog/${relatedPost.slug}`}
-                    className="group bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-[#01B000] transition-all duration-300 hover:shadow-xl"
+                    className="group bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-[#1E3A8A] transition-all duration-300 hover:shadow-xl"
                   >
                     {relatedPost.featuredImage ? (
                       <div className="relative h-48 overflow-hidden">
@@ -326,17 +326,17 @@ export default async function BlogPostPage({
                         />
                       </div>
                     ) : (
-                      <div className="h-48 bg-gradient-to-br from-[#01B000] to-[#019500]"></div>
+                      <div className="h-48 bg-gradient-to-br from-[#0B1F3A] to-[#1E3A8A]"></div>
                     )}
 
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#01B000] transition-colors line-clamp-2">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#1E3A8A] transition-colors line-clamp-2">
                         {relatedPost.title}
                       </h3>
                       <p className="text-gray-600 line-clamp-3 mb-4">
                         {relatedPost.excerpt}
                       </p>
-                      <div className="flex items-center text-[#01B000] font-bold group-hover:gap-2 transition-all">
+                      <div className="flex items-center text-[#1E3A8A] font-bold group-hover:gap-2 transition-all">
                         <span>Read More</span>
                         <svg
                           className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
@@ -359,7 +359,7 @@ export default async function BlogPostPage({
         )}
 
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-[#01B000] to-[#019500]">
+        <section className="py-16 bg-gradient-to-r from-[#0B1F3A] to-[#1E3A8A]">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-bold text-white mb-4 font-[family-name:var(--font-plus-jakarta)]">
               Ready to Explore Rwanda?
@@ -370,13 +370,13 @@ export default async function BlogPostPage({
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/fleet"
-                className="px-8 py-4 bg-white text-[#01B000] font-bold rounded-lg hover:bg-gray-100 transition-all shadow-lg"
+                className="px-8 py-4 bg-white text-[#0B1F3A] font-bold rounded-lg hover:bg-gray-100 transition-all shadow-lg"
               >
                 Browse Our Fleet
               </Link>
               <Link
                 href="/blog"
-                className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-[#01B000] transition-all"
+                className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-[#0B1F3A] transition-all"
               >
                 Read More Articles
               </Link>
