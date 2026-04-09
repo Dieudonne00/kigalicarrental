@@ -29,8 +29,8 @@ export default function Footer() {
           {/* Google Maps Location */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#4B5320]/20 rounded-xl flex items-center justify-center">
-                <svg className="w-5 h-5 text-[#4B5320]" fill="currentColor" viewBox="0 0 24 24">
+              <div className="w-10 h-10 bg-[#1E3A8A]/20 rounded-xl flex items-center justify-center">
+                <svg className="w-5 h-5 text-[#1E3A8A]" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                 </svg>
               </div>
@@ -56,14 +56,14 @@ export default function Footer() {
             
             <div className="flex flex-wrap gap-4 text-sm">
               <div className="flex items-center gap-2 bg-gray-800/50 px-3 py-2 rounded-lg">
-                <svg className="w-4 h-4 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-[#1E3A8A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span className="text-gray-300">KG 541 St, Kigali, Rwanda</span>
               </div>
               <div className="flex items-center gap-2 bg-gray-800/50 px-3 py-2 rounded-lg">
-                <svg className="w-4 h-4 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-[#1E3A8A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <span className="text-gray-300">Mon-Sun: 8:00 AM - 8:00 PM</span>
@@ -75,16 +75,16 @@ export default function Footer() {
           <div className="space-y-6">
             <div className="bg-gray-800/30 rounded-2xl p-6 border border-gray-700">
               <h3 className="text-white font-bold text-xl mb-4 flex items-center gap-2">
-                <svg className="w-6 h-6 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-[#1E3A8A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 Quick Contact
               </h3>
               
               <div className="space-y-3 mb-6">
-                <a href="tel:+250787619387" className="flex items-center gap-3 text-gray-300 hover:text-[#4B5320] transition-colors group">
-                  <div className="w-10 h-10 bg-[#4B5320]/10 rounded-lg flex items-center justify-center group-hover:bg-[#4B5320]/20 transition-colors">
-                    <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <a href="tel:+250787619387" className="flex items-center gap-3 text-gray-300 hover:text-[#1E3A8A] transition-colors group">
+                  <div className="w-10 h-10 bg-[#1E3A8A]/10 rounded-lg flex items-center justify-center group-hover:bg-[#1E3A8A]/20 transition-colors">
+                    <svg className="w-5 h-5 text-[#1E3A8A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   </div>
@@ -94,9 +94,9 @@ export default function Footer() {
                   </div>
                 </a>
                 
-                <a href="https://wa.me/250787619387" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-300 hover:text-[#4B5320] transition-colors group">
-                  <div className="w-10 h-10 bg-[#4B5320]/10 rounded-lg flex items-center justify-center group-hover:bg-[#4B5320]/20 transition-colors">
-                    <svg className="w-5 h-5 text-[#4B5320]" fill="currentColor" viewBox="0 0 24 24">
+                <a href="https://wa.me/250787619387" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-300 hover:text-[#1E3A8A] transition-colors group">
+                  <div className="w-10 h-10 bg-[#1E3A8A]/10 rounded-lg flex items-center justify-center group-hover:bg-[#1E3A8A]/20 transition-colors">
+                    <svg className="w-5 h-5 text-[#1E3A8A]" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M20.52 3.48A11.89 11.89 0 0012 0C5.37 0 0 5.37 0 12c0 2.12.55 4.2 1.6 6.03L0 24l6.14-1.6c1.77.96 3.79 1.47 5.86 1.47 6.63 0 12-5.37 12-12 0-3.2-1.25-6.21-3.48-8.52zM12 21.82c-1.8 0-3.57-.48-5.09-1.39l-.37-.22-3.64.95.97-3.56-.24-.38a9.86 9.86 0 01-1.51-5.25c0-5.45 4.43-9.88 9.88-9.88 2.64 0 5.12 1.03 6.99 2.9a9.85 9.85 0 012.9 7.01c-.01 5.44-4.44 9.87-9.89 9.87zm5.42-7.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.18.2-.36.22-.66.07-.3-.15-1.27-.47-2.42-1.49-.89-.79-1.5-1.77-1.67-2.07-.18-.3-.02-.46.13-.61.14-.14.3-.36.45-.54.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.36-.01-.55-.01s-.5.07-.76.36c-.26.29-1 .97-1 2.37s1.02 2.75 1.17 2.94c.15.19 2.01 3.08 4.88 4.31 2.87 1.23 2.87.82 3.39.77.51-.05 1.65-.67 1.88-1.32.23-.65.23-1.21.16-1.33-.07-.11-.25-.19-.55-.33z" />
                     </svg>
                   </div>
@@ -106,9 +106,9 @@ export default function Footer() {
                   </div>
                 </a>
                 
-                <a href="mailto:booking@carrentalinkigali.com" className="flex items-center gap-3 text-gray-300 hover:text-[#4B5320] transition-colors group">
-                  <div className="w-10 h-10 bg-[#4B5320]/10 rounded-lg flex items-center justify-center group-hover:bg-[#4B5320]/20 transition-colors">
-                    <svg className="w-5 h-5 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <a href="mailto:booking@carrentalinkigali.com" className="flex items-center gap-3 text-gray-300 hover:text-[#1E3A8A] transition-colors group">
+                  <div className="w-10 h-10 bg-[#1E3A8A]/10 rounded-lg flex items-center justify-center group-hover:bg-[#1E3A8A]/20 transition-colors">
+                    <svg className="w-5 h-5 text-[#1E3A8A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
@@ -122,7 +122,7 @@ export default function Footer() {
               {/* Newsletter Subscription */}
               <div className="pt-4 border-t border-gray-700">
                 <h4 className="text-white font-semibold mb-3 flex items-center gap-2">
-                  <svg className="w-4 h-4 text-[#4B5320]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-[#1E3A8A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                   </svg>
                   Newsletter Signup
@@ -134,18 +134,18 @@ export default function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your email address"
-                    className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#4B5320] transition-colors"
+                    className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#1E3A8A] transition-colors"
                     required
                   />
                   <button
                     type="submit"
-                    className="px-4 py-2 bg-[#4B5320] hover:bg-[#3a4218] text-white font-semibold rounded-lg transition-all transform hover:scale-105"
+                    className="px-4 py-2 bg-[#0B1F3A] hover:bg-[#1E3A8A] text-white font-semibold rounded-lg transition-all transform hover:scale-105"
                   >
                     Subscribe
                   </button>
                 </form>
                 {subscribed && (
-                  <p className="text-[#4B5320] text-sm mt-2 animate-pulse">✓ Subscribed successfully!</p>
+                  <p className="text-[#1E3A8A] text-sm mt-2 animate-pulse">✓ Subscribed successfully!</p>
                 )}
               </div>
             </div>
@@ -187,36 +187,36 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-bold text-lg mb-4 relative inline-block">
               Our Services
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#4B5320] mt-1"></span>
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#1E3A8A] mt-1"></span>
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/self-drive-car-rental" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/self-drive-car-rental" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   Self-Drive Rentals
                 </Link>
               </li>
               <li>
-                <Link href="/chauffeur-service-kigali" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/chauffeur-service-kigali" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   Chauffeur Service
                 </Link>
               </li>
               <li>
-                <Link href="/airport-transfer-kigali" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/airport-transfer-kigali" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   Airport Transfers
                 </Link>
               </li>
               <li>
-                <Link href="/long-term-car-rental" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/long-term-car-rental" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   Long-Term Rentals
                 </Link>
               </li>
               <li>
-                <Link href="/corporate-car-rental" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/corporate-car-rental" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   Corporate Fleet
                 </Link>
               </li>
@@ -227,36 +227,36 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-bold text-lg mb-4 relative inline-block">
               Quick Links
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#4B5320] mt-1"></span>
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#1E3A8A] mt-1"></span>
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/about" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/about" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/contact" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/faq" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/blog" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   Travel Blog
                 </Link>
               </li>
               <li>
-                <Link href="/driving-guide-rwanda" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/driving-guide-rwanda" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   Rwanda Driving Guide
                 </Link>
               </li>
@@ -267,36 +267,36 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-bold text-lg mb-4 relative inline-block">
               Legal
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#4B5320] mt-1"></span>
+              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-[#1E3A8A] mt-1"></span>
             </h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/terms" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/terms" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   Terms & Conditions
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/privacy" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/cancellation" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/cancellation" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   Cancellation Policy
                 </Link>
               </li>
               <li>
-                <Link href="/insurance" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/insurance" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   Insurance Info
                 </Link>
               </li>
               <li>
-                <Link href="/sitemap" className="text-gray-400 hover:text-[#4B5320] transition-colors flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#4B5320] rounded-full"></span>
+                <Link href="/sitemap" className="text-gray-400 hover:text-[#1E3A8A] transition-colors flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#1E3A8A] rounded-full"></span>
                   Sitemap
                 </Link>
               </li>
@@ -320,7 +320,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center hover:bg-[#4B5320] transition-all transform hover:scale-110 group"
+                  className="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center hover:bg-[#1E3A8A] transition-all transform hover:scale-110 group"
                 >
                   <svg className="w-5 h-5 text-gray-400 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d={social.icon} />
@@ -335,20 +335,20 @@ export default function Footer() {
                 &copy; {currentYear} <span className="text-white font-semibold">Kigali Car Rental</span>. All rights reserved.
               </p>
               <p className="text-gray-500 text-xs mt-1">
-                Designed and developed by <a href="https://wa.me/250787619387" className="hover:text-[#4B5320]">Our team</a>
+                Designed and developed by <a href="https://wa.me/250787619387" className="hover:text-[#1E3A8A]">Our team</a>
               </p>
             </div>
             
             {/* Trust Badges */}
             <div className="flex gap-4">
               <div className="flex items-center gap-1 text-xs text-gray-500">
-                <svg className="w-4 h-4 text-[#4B5320]" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-4 h-4 text-[#1E3A8A]" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span>SSL Secure</span>
               </div>
               <div className="flex items-center gap-1 text-xs text-gray-500">
-                <svg className="w-4 h-4 text-[#4B5320]" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-4 h-4 text-[#1E3A8A]" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
                   <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
                 </svg>
