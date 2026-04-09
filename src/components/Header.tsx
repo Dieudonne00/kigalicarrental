@@ -18,163 +18,97 @@ export default function Header() {
     {
       label: "Car Rental",
       href: "/car-rental-kigali",
-      keywords: "Car Rental Kigali Rwanda | Cheap & Luxury Options",
-      icon: "🚗",
+      keywords: "kigali car rentals | kigali car hire | rwanda car rental | kigali airport car rental | car rental near me",
+      icon: "",
       submenus: [
         {
           label: "Cheap Car Rental",
-          href: "/services/cheap-car-rental",
-          keywords: "Budget car rental Kigali Rwanda",
+          href: "/cheap-car-rental-kigali",
+          keywords: "kigali car rentals | kigali car hire | rwanda car rental | kigali airport car rental | car rental near me",
         },
         {
           label: "Luxury Car Rental",
-          href: "/services/luxury-car-rental",
-          keywords: "Premium luxury car hire Kigali",
-        },
-        {
-          label: "4x4 Safari Rental",
-          href: "/services/4x4-safari-rental",
-          keywords: "Safari 4x4 rental Rwanda - Land Cruiser & Prado",
+          href: "/luxury-car-rental-kigali",
+          keywords: "kigali car rentals | kigali car hire | rwanda car rental | kigali airport car rental | car rental near me",
         },
         {
           label: "Self-Drive Rwanda",
-          href: "/services/self-drive-rwanda",
-          keywords: "Self-drive car rental Rwanda tourism",
+          href: "/self-drive-rwanda",
+          keywords: "kigali car rentals | kigali car hire | rwanda car rental | kigali airport car rental | car rental near me | rwanda car rental",
         },
         {
-          label: "Long-Term Rental",
-          href: "/special/long-term-rental",
-          keywords: "Extended car rental Kigali Rwanda",
+          label: "Car Hire Rwanda",
+          href: "/car-hire-rwanda",
+          keywords: "Vehicle hire across Rwanda",
+        },
+      ],
+    },
+    {
+      label: "Safari 4x4",
+      href: "/4x4-car-rental-rwanda",
+      keywords: "4x4 Safari Car Rental Rwanda | Land Cruiser Prado",
+      icon: "",
+      submenus: [
+        {
+          label: "Land Cruiser Rental",
+          href: "/land-cruiser-rental-rwanda",
+          keywords: "Toyota Land Cruiser rental Rwanda safari",
+        },
+        {
+          label: "Prado Rental",
+          href: "/prado-rental-kigali",
+          keywords: "Toyota Prado rental Kigali Rwanda",
+        },
+        {
+          label: "Safari Vehicle Rental",
+          href: "/safari-car-rental-rwanda",
+          keywords: "Professional safari car rental Rwanda tourism",
         },
       ],
     },
     {
       label: "Airport Transfer",
-      href: "/services/airport-transfer",
+      href: "/kigali-airport-transfer",
       keywords: "Kigali Airport Transfer | 24/7 Pickup Service",
-      icon: "✈️",
+      icon: "",
       submenus: [
         {
-          label: "Airport Pickup",
-          href: "/locations/kigali-airport",
-          keywords: "Kigali airport pickup service 24/7",
+          label: "Airport Pickup Service",
+          href: "/airport-pickup-kigali",
+          keywords: "Kigali international airport pickup service",
         },
         {
-          label: "VIP Transfer",
-          href: "/services/airport-transfer#vip",
+          label: "VIP Airport Transfer",
+          href: "/vip-airport-service",
           keywords: "VIP premium airport transfer Kigali",
         },
         {
-          label: "Group Transfer",
-          href: "/special/group-bookings",
-          keywords: "Group airport transfer Kigali Rwanda",
+          label: "24/7 Airport Service",
+          href: "/24-7-airport-service",
+          keywords: "24/7 airport transfer service Kigali Rwanda",
         },
       ],
     },
     {
-      label: "Our Services",
-      href: "/services",
-      keywords: "Car Rental Services Kigali Rwanda",
-      icon: "🏢",
-      submenus: [
-        {
-          label: "Chauffeur Service",
-          href: "/services/chauffeur-service",
-          keywords: "Professional chauffeur service Kigali Rwanda",
-        },
-        {
-          label: "Wedding Car Rental",
-          href: "/services/wedding-car-rental",
-          keywords: "Wedding car rental Kigali Rwanda",
-        },
-        {
-          label: "Business Transport",
-          href: "/services/business-transport",
-          keywords: "Corporate car rental Rwanda business transport",
-        },
-        {
-          label: "Group Bookings",
-          href: "/special/group-bookings",
-          keywords: "Group car rental Rwanda team transport",
-        },
-      ],
-    },
-    {
-      label: "Fleet",
-      href: "/fleet",
-      keywords: "Car Fleet Kigali | Economy SUV 4x4 Luxury",
-      icon: "🛞",
-      submenus: [
-        {
-          label: "Economy Cars",
-          href: "/vehicles/economy-cars",
-          keywords: "Budget economy car rental Kigali",
-        },
-        {
-          label: "SUV Rental",
-          href: "/vehicles/suv-rental",
-          keywords: "SUV rental Kigali Rwanda families",
-        },
-        {
-          label: "4x4 Vehicles",
-          href: "/vehicles/4x4-vehicles",
-          keywords: "4x4 vehicles rental off-road Rwanda",
-        },
-        {
-          label: "Luxury Vehicles",
-          href: "/vehicles/luxury-vehicles",
-          keywords: "Luxury car rental premium vehicles Kigali",
-        },
-      ],
-    },
-    {
-      label: "Guides",
-      href: "/guides",
-      keywords: "Rwanda Travel Guides | Driving Tips & FAQ",
-      icon: "📍",
+      label: "Travel Guides",
+      href: "/driving-in-rwanda-guide",
+      keywords: "Rwanda Travel Guide | Driving Tips & Cost",
+      icon: "",
       submenus: [
         {
           label: "Driving in Rwanda",
-          href: "/guides/driving-guide-rwanda",
-          keywords: "Driving in Rwanda guide roads safety",
+          href: "/driving-in-rwanda-guide",
+          keywords: "Complete driving guide Rwanda roads safety",
         },
         {
-          label: "Car Rental Tips",
-          href: "/guides/car-rental-tips",
-          keywords: "Car rental tips advice Rwanda best practices",
+          label: "Rental Tips & Advice",
+          href: "/car-rental-tips-rwanda",
+          keywords: "Car rental tips Rwanda best practices",
         },
         {
-          label: "Travel Guide",
-          href: "/guides/rwanda-travel-guide",
-          keywords: "Rwanda travel guide attractions tourism",
-        },
-        {
-          label: "FAQ",
-          href: "/guides/faq",
-          keywords: "Frequently asked questions car rental Kigali",
-        },
-      ],
-    },
-    {
-      label: "About",
-      href: "/about",
-      keywords: "About Kigali Car Hire | Why Choose Us",
-      icon: "ℹ️",
-      submenus: [
-        {
-          label: "Why Choose Us",
-          href: "/about/why-choose-us",
-          keywords: "Why choose Kigali Car Hire advantages",
-        },
-        {
-          label: "Testimonials",
-          href: "/about/testimonials",
-          keywords: "Customer testimonials reviews Kigali Car Hire",
-        },
-        {
-          label: "Contact Us",
-          href: "/about/contact-us",
-          keywords: "Contact Kigali Car Hire phone email location",
+          label: "Travel Cost Guide",
+          href: "/rwanda-travel-cost-guide",
+          keywords: "Rwanda travel budget guide costs",
         },
       ],
     },
@@ -185,6 +119,16 @@ export default function Header() {
       <style>{`
         @keyframes slideDown {
           from { opacity: 0; transform: translateY(-8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
         }
 
@@ -204,13 +148,24 @@ export default function Header() {
           left: 0;
           width: 0;
           height: 2.5px;
-          background: linear-gradient(to right, #0B1F3A, #1E3A8A);
+          background: linear-gradient(to right, #1e40af, #dc2626);
           transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .nav-link:hover::after {
           width: 100%;
         }
+
+        .mobile-menu-item {
+          animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          animation-fill-mode: both;
+        }
+
+        .mobile-menu-item:nth-child(1) { animation-delay: 0.05s; }
+        .mobile-menu-item:nth-child(2) { animation-delay: 0.1s; }
+        .mobile-menu-item:nth-child(3) { animation-delay: 0.15s; }
+        .mobile-menu-item:nth-child(4) { animation-delay: 0.2s; }
+        .mobile-menu-item:nth-child(5) { animation-delay: 0.25s; }
 
         .header-top-bar {
           background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
@@ -225,7 +180,7 @@ export default function Header() {
 
         .header-main.scrolled {
           background: rgba(255, 255, 255, 0.95);
-          box-shadow: 0 8px 32px rgba(11, 31, 58, 0.08);
+          box-shadow: 0 8px 32px rgba(15, 23, 42, 0.08);
           padding-top: 0.5rem;
           padding-bottom: 0.5rem;
         }
@@ -242,7 +197,7 @@ export default function Header() {
           top: 0;
           height: 100%;
           width: 3px;
-          background: linear-gradient(to bottom, #0B1F3A, #1E3A8A);
+          background: linear-gradient(to bottom, #1e40af, #dc2626);
           transform: scaleY(0);
           transform-origin: top;
           transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -253,7 +208,7 @@ export default function Header() {
         }
 
         .cta-button {
-          background: linear-gradient(135deg, #0B1F3A 0%, #1E3A8A 100%);
+          background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
           position: relative;
           overflow: hidden;
           transition: all 0.3s ease;
@@ -276,7 +231,7 @@ export default function Header() {
 
         .cta-button:hover {
           transform: translateY(-2px);
-          box-shadow: 0 12px 24px rgba(11, 31, 58, 0.3);
+          box-shadow: 0 12px 24px rgba(30, 58, 138, 0.3);
         }
 
         .top-bar-contact {
@@ -300,7 +255,7 @@ export default function Header() {
         }
       `}</style>
 
-      {/* TOP BAR */}
+      {/* TOP BAR - CONTACTS & TAGLINE */}
       <div className="header-top-bar text-white text-xs">
         <div className="max-w-7xl mx-auto px-4 lg:px-6 py-2.5 flex justify-between items-center flex-wrap gap-3">
           <div className="flex gap-3 lg:gap-6 flex-wrap">
@@ -309,37 +264,37 @@ export default function Header() {
               className="top-bar-contact hover:text-blue-300"
               title="Call Kigali Car Hire for car rental booking"
             >
-              📞 <span className="hidden sm:inline">+250</span> 787 619 387
+               <span className="hidden sm:inline">+250</span> 787 619 387
             </a>
             <a
               href="mailto:booking@carrentalinkigali.com"
               className="top-bar-contact hover:text-blue-300"
               title="Email car rental inquiries"
             >
-              ✉️ <span className="hidden sm:inline">booking@carrentalinkigali.com</span>
+               <span className="hidden sm:inline">booking@carrentalinkigali.com</span>
               <span className="sm:hidden">Email Us</span>
             </a>
           </div>
 
           <div className="text-center text-blue-200 text-[10px] lg:text-xs font-medium">
-            🚗 Cheap Car Rental Kigali • 4x4 Safari • Self-Drive • 24/7 Airport Pickup
+             Best Kigali Car Rental Company • Save Big 10% Off • Kigali car rentals • Self Drive & Airport Pickup Rwanda
           </div>
         </div>
       </div>
 
-      {/* MAIN NAV */}
+      {/* MAIN NAVIGATION */}
       <nav className={`header-main ${scrolled ? "scrolled" : ""}`}>
         <div className="max-w-7xl mx-auto px-4 lg:px-6 py-3 lg:py-4">
           <div className="flex items-center justify-between">
-            {/* LOGO */}
+            {/* LOGO & BRANDING */}
             <Link
               href="/"
               className="flex-shrink-0 group"
-              title="Kigali Car Hire - Car Rental Kigali Rwanda Airport Transfer Safari 4x4"
+              title="Kigali Car Rental - Car Rental Rwanda Kigali Airport Transfer Safari 4x4"
             >
               <div className="flex flex-col gap-0.5">
-                <span className="text-lg lg:text-2xl font-black bg-gradient-to-r from-blue-900 via-blue-700 to-blue-600 bg-clip-text text-transparent transition-all duration-300 group-hover:tracking-tight">
-                  Kigali Car Hire
+                <span className="text-lg lg:text-2xl font-black bg-gradient-to-r from-blue-900 via-blue-700 to-red-600 bg-clip-text text-transparent transition-all duration-300 group-hover:tracking-tight">
+                  Kigali Car Rentals
                 </span>
                 <span className="text-[9px] lg:text-[10px] text-gray-500 uppercase font-semibold tracking-wider">
                   Car Rental • Safari • Airport Transfer Rwanda
@@ -347,7 +302,7 @@ export default function Header() {
               </div>
             </Link>
 
-            {/* DESKTOP NAV */}
+            {/* DESKTOP NAVIGATION */}
             <div className="hidden lg:flex items-center gap-1 xl:gap-3">
               {menuStructure.map((menu) => (
                 <div
@@ -365,7 +320,7 @@ export default function Header() {
                     <span>{menu.label}</span>
                   </Link>
 
-                  {/* DROPDOWN */}
+                  {/* DESKTOP DROPDOWN */}
                   <div
                     className={`dropdown-menu absolute left-0 mt-1 w-72 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden transition-all duration-200 ${
                       activeMenu === menu.label
@@ -391,7 +346,7 @@ export default function Header() {
               ))}
             </div>
 
-            {/* CTA - DESKTOP */}
+            {/* CTA BUTTON - DESKTOP */}
             <Link
               href="/book-now"
               className="hidden lg:block cta-button text-white px-6 py-2.5 rounded-lg font-bold text-sm relative z-10"
@@ -400,7 +355,7 @@ export default function Header() {
               Book Now
             </Link>
 
-            {/* MOBILE MENU BTN */}
+            {/* MOBILE MENU BUTTON */}
             <button
               className="lg:hidden p-2.5 rounded-lg hover:bg-gray-100 transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -432,8 +387,8 @@ export default function Header() {
           {/* MOBILE MENU */}
           {isMobileMenuOpen && (
             <div className="lg:hidden mt-4 pb-4 space-y-1 border-t border-gray-100 pt-4">
-              {menuStructure.map((menu) => (
-                <div key={menu.label}>
+              {menuStructure.map((menu, menuIdx) => (
+                <div key={menu.label} className="mobile-menu-item">
                   <Link
                     href={menu.href}
                     className="flex items-center gap-2 px-3 py-3 font-bold text-gray-800 hover:bg-blue-50 rounded-lg transition-colors"
