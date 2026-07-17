@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import BlogListing from "@/components/BlogListing";
+import { imageUrl } from "@/lib/images";
 
 export const metadata: Metadata = {
   title: "Kigali Car Rentals Blog | Rwanda Travel Tips & Car Hire Guides",
@@ -31,8 +32,7 @@ export default function BlogPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage:
-              "url(https://res.cloudinary.com/dxn12qcje/image/upload/cars/1763129080028-2022-toyota-rav-4-prime-wheels-red-carprousa-1404x1112.webp)",
+            backgroundImage: `url(${imageUrl('cars/1763129080028-2022-toyota-rav-4-prime-wheels-red-carprousa-1404x1112.webp')})`,
           }}
         >
           <div className="absolute inset-0 bg-black/65"></div>
@@ -45,13 +45,13 @@ export default function BlogPage() {
           </h1>
           <p className="text-sm md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Powerful travel guides, smart car rental tips, and local insights from
-            <span className="text-[#4B5320] font-semibold"> Kigali Car Rentals </span>
+            <span className="text-[#1D4ED8] font-semibold"> Kigali Car Rentals </span>
             to help you explore Rwanda with confidence, comfort, and class.
           </p>
 
           {/* Accent Line */}
           <div className="mt-8 flex justify-center">
-            <span className="w-24 h-1 bg-[#4B5320] rounded-full"></span>
+            <span className="w-24 h-1 bg-[#1D4ED8] rounded-full"></span>
           </div>
         </div>
       </section>
@@ -59,7 +59,7 @@ export default function BlogPage() {
       {/* Blog Listing */}
       <section className="relative">
         {/* Decorative Accent */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#4B5320] to-[#3E451A]" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1D4ED8] to-[#1E3A8A]" />
         <BlogListing />
       </section>
     </main>

@@ -74,7 +74,7 @@ export default function CarRentalRwanda() {
           </p>
           <div className="space-x-4">
             <Link
-              href="/cars"
+              href="/fleet"
               className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg text-lg font-bold hover:bg-gray-100"
             >
               View Available Cars

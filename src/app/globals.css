@@ -3,6 +3,19 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Brand color — Kigali Car Rental blue. Use these instead of introducing
+     new one-off accent colors (olive, gold, khaki, green, purple, etc.) so
+     every page shares one consistent identity. Matches Tailwind's blue-*
+     scale already used in Header/Footer/HeroSection. */
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
 }
 
 @theme inline {
@@ -10,6 +23,14 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-brand-50: var(--color-brand-50);
+  --color-brand-100: var(--color-brand-100);
+  --color-brand-400: var(--color-brand-400);
+  --color-brand-500: var(--color-brand-500);
+  --color-brand-600: var(--color-brand-600);
+  --color-brand-700: var(--color-brand-700);
+  --color-brand-800: var(--color-brand-800);
+  --color-brand-900: var(--color-brand-900);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -82,14 +103,14 @@ body {
 
 .ProseMirror blockquote {
   padding-left: 1rem;
-  border-left: 3px solid #01B000;
+  border-left: 3px solid #2563eb;
   margin: 1rem 0;
   font-style: italic;
   color: #6b7280;
 }
 
 .ProseMirror a {
-  color: #01B000;
+  color: #2563eb;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -186,14 +207,14 @@ body {
 
 .prose blockquote {
   padding-left: 1rem !important;
-  border-left: 3px solid #01B000 !important;
+  border-left: 3px solid #2563EB !important;
   margin: 1rem 0 !important;
   font-style: italic !important;
   color: #6b7280 !important;
 }
 
 .prose a {
-  color: #01B000 !important;
+  color: #2563EB !important;
   text-decoration: underline !important;
 }
 

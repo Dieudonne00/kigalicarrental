@@ -77,7 +77,7 @@ export default function BlogListing() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center items-center h-96">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#01B000]"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
           </div>
         </div>
       </section>
@@ -101,7 +101,7 @@ export default function BlogListing() {
                     setSearchQuery(e.target.value);
                     setCurrentPage(1);
                   }}
-                  className="w-full px-4 py-3 pl-12 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none"
+                  className="w-full px-4 py-3 pl-12 border-2 border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none"
                 />
                 <svg
                   className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
@@ -125,7 +125,7 @@ export default function BlogListing() {
                   setSelectedCategory(e.target.value);
                   setCurrentPage(1);
                 }}
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-600 focus:outline-none"
               >
                 {categories.map((category) => (
                   <option key={category.value} value={category.value}>
@@ -151,7 +151,7 @@ export default function BlogListing() {
                 <Link
                   key={blog.id}
                   href={`/blog/${blog.slug}`}
-                  className="group bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-[#01B000] transition-all duration-300 hover:shadow-xl"
+                  className="group bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-blue-600 transition-all duration-300 hover:shadow-xl"
                 >
                   {/* Featured Image */}
                   {blog.featuredImage ? (
@@ -163,7 +163,7 @@ export default function BlogListing() {
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute top-2 md:top-4 left-2 md:left-4">
-                        <span className="px-2 md:px-3 py-0.5 md:py-1 bg-[#01B000] text-white text-[10px] md:text-sm font-bold rounded-full">
+                        <span className="px-2 md:px-3 py-0.5 md:py-1 bg-blue-600 text-white text-[10px] md:text-sm font-bold rounded-full">
                           {blog.category
                             .split("-")
                             .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
@@ -172,7 +172,7 @@ export default function BlogListing() {
                       </div>
                     </div>
                   ) : (
-                    <div className="relative h-32 md:h-56 bg-gradient-to-br from-[#01B000] to-[#019500] flex items-center justify-center">
+                    <div className="relative h-32 md:h-56 bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center">
                       <svg
                         className="w-12 h-12 md:w-20 md:h-20 text-white/30"
                         fill="none"
@@ -185,7 +185,7 @@ export default function BlogListing() {
                         <path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                       </svg>
                       <div className="absolute top-2 md:top-4 left-2 md:left-4">
-                        <span className="px-2 md:px-3 py-0.5 md:py-1 bg-white text-[#01B000] text-[10px] md:text-sm font-bold rounded-full">
+                        <span className="px-2 md:px-3 py-0.5 md:py-1 bg-white text-blue-600 text-[10px] md:text-sm font-bold rounded-full">
                           {blog.category
                             .split("-")
                             .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
@@ -240,7 +240,7 @@ export default function BlogListing() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xs md:text-xl font-bold text-gray-900 mb-1 md:mb-2 group-hover:text-[#01B000] transition-colors line-clamp-2">
+                    <h3 className="text-xs md:text-xl font-bold text-gray-900 mb-1 md:mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
                       {blog.title}
                     </h3>
 
@@ -250,7 +250,7 @@ export default function BlogListing() {
                     </p>
 
                     {/* Read More */}
-                    <div className="flex items-center text-[#01B000] font-bold text-[10px] md:text-base group-hover:gap-2 transition-all">
+                    <div className="flex items-center text-blue-600 font-bold text-[10px] md:text-base group-hover:gap-2 transition-all">
                       <span>Read More</span>
                       <svg
                         className="w-3 h-3 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform"
@@ -275,7 +275,7 @@ export default function BlogListing() {
                 <button
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={currentPage === 1}
-                  className="px-4 py-2 border-2 border-gray-200 rounded-lg font-bold text-gray-700 hover:border-[#01B000] hover:text-[#01B000] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-4 py-2 border-2 border-gray-200 rounded-lg font-bold text-gray-700 hover:border-blue-600 hover:text-blue-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Previous
                 </button>
@@ -287,8 +287,8 @@ export default function BlogListing() {
                       onClick={() => handlePageChange(page)}
                       className={`px-4 py-2 border-2 rounded-lg font-bold transition-all ${
                         currentPage === page
-                          ? "bg-[#01B000] text-white border-[#01B000]"
-                          : "border-gray-200 text-gray-700 hover:border-[#01B000] hover:text-[#01B000]"
+                          ? "bg-blue-600 text-white border-blue-600"
+                          : "border-gray-200 text-gray-700 hover:border-blue-600 hover:text-blue-600"
                       }`}
                     >
                       {page}
@@ -299,7 +299,7 @@ export default function BlogListing() {
                 <button
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage === totalPages}
-                  className="px-4 py-2 border-2 border-gray-200 rounded-lg font-bold text-gray-700 hover:border-[#01B000] hover:text-[#01B000] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-4 py-2 border-2 border-gray-200 rounded-lg font-bold text-gray-700 hover:border-blue-600 hover:text-blue-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Next
                 </button>
@@ -332,7 +332,7 @@ export default function BlogListing() {
                 setSelectedCategory("all");
                 setCurrentPage(1);
               }}
-              className="px-6 py-3 bg-[#01B000] text-white font-bold rounded-lg hover:bg-[#019500] transition-all"
+              className="px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all"
             >
               Clear Filters
             </button>

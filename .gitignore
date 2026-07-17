@@ -1,1 +1,9 @@
 node_modules
+.next
+.env
+.env.local
+.env*.local
+file.env
+tsconfig.tsbuildinfo
+.claude/
+prisma/dev.db

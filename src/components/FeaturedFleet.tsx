@@ -47,7 +47,7 @@ export default function FeaturedFleet() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4B5320] mx-auto"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
             <p className="mt-4 text-gray-600">Loading...</p>
           </div>
         </div>
@@ -76,17 +76,17 @@ export default function FeaturedFleet() {
             {cars.map((car) => (
               <div
                 key={car.id}
-                className="bg-white rounded-xl overflow-hidden border-2 border-gray-200 hover:border-[#4B5320] transition-all duration-300"
+                className="bg-white rounded-xl overflow-hidden border-2 border-gray-200 hover:border-blue-600 transition-all duration-300"
               >
                 {/* IMAGE - SIMPLE FIX */}
                 <div className="relative h-32 md:h-48 overflow-hidden">
                   <img
                     src={car.imageUrl}
-                    alt={car.name}
+                    alt={`${car.brand} ${car.model} ${car.year} rental - Kigali Car Rental Rwanda`}
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-2 md:top-3 right-2 md:right-3">
-                    <span className="inline-block px-2 md:px-3 py-1 bg-[#4B5320] text-white rounded-full text-[10px] md:text-xs font-bold">
+                    <span className="inline-block px-2 md:px-3 py-1 bg-blue-600 text-white rounded-full text-[10px] md:text-xs font-bold">
                       Featured
                     </span>
                   </div>
@@ -126,7 +126,7 @@ export default function FeaturedFleet() {
                   <div className="mb-2 md:mb-4 pt-2 md:pt-4 border-t border-gray-200">
                     <div className="flex items-center justify-between">
                       <div className="flex items-baseline gap-0.5 md:gap-1">
-                        <span className="text-base md:text-2xl font-bold text-[#4B5320]">
+                        <span className="text-base md:text-2xl font-bold text-blue-600">
                           ${car.dailyRate}
                         </span>
                         <span className="text-[10px] md:text-sm text-gray-500">/day</span>
@@ -136,7 +136,7 @@ export default function FeaturedFleet() {
 
                   <Link
                     href={`/cars/${car.id}`}
-                    className="block w-full text-center bg-[#4B5320] text-white px-3 md:px-6 py-2 md:py-3 rounded-lg text-xs md:text-base font-bold hover:bg-[#3a4218]"
+                    className="block w-full text-center bg-blue-600 text-white px-3 md:px-6 py-2 md:py-3 rounded-lg text-xs md:text-base font-bold hover:bg-blue-700"
                   >
                     View Details
                   </Link>
@@ -148,8 +148,8 @@ export default function FeaturedFleet() {
 
         <div className="text-center mt-12">
           <Link
-            href="/cars"
-            className="inline-flex items-center gap-2 text-[#4B5320] font-bold text-lg"
+            href="/fleet"
+            className="inline-flex items-center gap-2 text-blue-600 font-bold text-lg"
           >
             View All Cars
             <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">

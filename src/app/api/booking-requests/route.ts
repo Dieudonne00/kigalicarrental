@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
 import { sendBookingNotificationToManager } from "@/lib/email";
-
-
-
-const prisma = new PrismaClient();
 
 // POST - Create a new booking request
 export async function POST(request: NextRequest) {
@@ -80,7 +76,11 @@ export async function POST(request: NextRequest) {
     console.error("Failed to send email notification:", error);
   });
 
-      } catch (error) {
+    return NextResponse.json(
+      { success: true, bookingRequest },
+      { status: 201 }
+    );
+  } catch (error) {
     console.error("Error creating booking request:", error);
     return NextResponse.json(
       { error: "Failed to submit booking request" },

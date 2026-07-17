@@ -29,7 +29,7 @@ export default function proxy(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Configure which routes the middleware should run on
+// Configure which routes the proxy should run on
 export const config = {
   matcher: "/manager/:path*",
 };

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
+import { imageUrl } from "@/lib/images";
 
 export default function ManagerSidebar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -118,7 +119,7 @@ export default function ManagerSidebar() {
           <div className="p-6 border-b-2 border-gray-200">
             <Link href="/manager/dashboard" className="flex items-center">
               <Image
-                src="https://res.cloudinary.com/dxn12qcje/image/upload/kigalicarhire.png"
+                src={imageUrl("kigalicarhire.png")}
                 alt="Kigali Car Hire"
                 width={120}
                 height={40}

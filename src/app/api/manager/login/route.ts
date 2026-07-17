@@ -6,9 +6,6 @@ export async function POST(request: Request) {
   try {
     const { email, password } = await request.json();
 
-    console.log("Login attempt for:", email);
-    console.log("DATABASE_URL exists:", !!process.env.DATABASE_URL);
-
     // Validate input
     if (!email || !password) {
       return NextResponse.json(
@@ -18,11 +15,9 @@ export async function POST(request: Request) {
     }
 
     // Find manager by email
-    console.log("Querying database for manager...");
     const manager = await prisma.manager.findUnique({
       where: { email },
     });
-    console.log("Manager found:", !!manager);
 
     if (!manager) {
       return NextResponse.json(

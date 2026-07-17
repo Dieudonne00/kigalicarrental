@@ -55,55 +55,6 @@ export default function Header() {
         { label: "Akagera Safari Rental", href: "/akagera-safari-rental", keywords: ["game park vehicle", "wildlife tour"] },
         { label: "Volcanoes 4x4 Rental", href: "/volcanoes-4x4-rental", keywords: ["gorilla trekking transport", "mountain vehicle"] },
         { label: "Nyungwe Forest Safari", href: "/nyungwe-forest-safari", keywords: ["rainforest vehicle", "canopy walk transport"] },
-        { label: "Safari Package Deals", href: "/safari-package-deals", keywords: ["complete safari packages", "all-inclusive"] },
-      ]
-    },
-    {
-      label: "AIRPORT & CITY",
-      href: "/kigali-airport-transfer",
-      submenus: [
-        { label: "Kigali Airport Transfer", href: "/kigali-airport-transfer", keywords: ["airport taxi", "airport shuttle"] },
-        { label: "Airport Pickup Kigali", href: "/airport-pickup-kigali", keywords: ["meet at airport", "arrival service"] },
-        { label: "One Way Car Rental Rwanda", href: "/one-way-car-rental-rwanda", keywords: ["different location drop-off", "flexible return"] },
-        { label: "Hotel Delivery Car Rental Kigali", href: "/hotel-delivery-car-rental-kigali", keywords: ["hotel pickup", "accommodation delivery"] },
-        { label: "Business Travel Car Hire Kigali", href: "/business-travel-car-hire-kigali", keywords: ["corporate rental", "business transport"] },
-        { label: "Conference Transport Rwanda", href: "/conference-transport-rwanda", keywords: ["event transport", "conference shuttle"] },
-        { label: "City Center Delivery", href: "/city-center-delivery", keywords: ["downtown pickup", "central location"] },
-        { label: "Corporate Account Services", href: "/corporate-account-services", keywords: ["business accounts", "company contracts"] },
-        { label: "VIP Airport Service", href: "/vip-airport-service", keywords: ["premium airport service", "fast track"] },
-        { label: "24/7 Airport Service", href: "/24-7-airport-service", keywords: ["late night arrival", "early morning flight"] },
-      ]
-    },
-    {
-      label: "DESTINATIONS IN RWANDA",
-      href: "/car-rental-kigali-city",
-      submenus: [
-        { label: "Car Rental in Kigali City", href: "/car-rental-kigali-city", keywords: ["city rental", "urban car hire"] },
-        { label: "Car Hire in Musanze", href: "/car-hire-musanze", keywords: ["Volcanoes National Park", "gorilla trekking base"] },
-        { label: "Car Rental Nyungwe Forest", href: "/car-rental-nyungwe-forest", keywords: ["rainforest transport", "Nyungwe tours"] },
-        { label: "Car Hire Akagera National Park", href: "/car-hire-akagera-national-park", keywords: ["safari park vehicle", "game drive"] },
-        { label: "Gisenyi & Lake Kivu Car Rental", href: "/gisenyi-lake-kivu-car-rental", keywords: ["beach resort transport", "lake transport"] },
-        { label: "Rwanda Road Trip Car Hire", href: "/rwanda-road-trip-car-hire", keywords: ["cross-country rental", "scenic routes"] },
-        { label: "Huye Car Rental", href: "/huye-car-rental", keywords: ["southern Rwanda", "Butare transport"] },
-        { label: "Rubavu Car Hire", href: "/rubavu-car-hire", keywords: ["western Rwanda", "border transport"] },
-        { label: "East Rwanda Transport", href: "/east-rwanda-transport", keywords: ["eastern province", "rural transport"] },
-        { label: "Cross-Border Rwanda", href: "/cross-border-rwanda", keywords: ["Uganda border", "Tanzania transport"] },
-      ]
-    },
-    {
-      label: "TRAVEL & BLOG",
-      href: "/driving-in-rwanda-guide",
-      submenus: [
-        { label: "Driving in Rwanda Guide", href: "/driving-in-rwanda-guide", keywords: ["road rules Rwanda", "driving regulations"] },
-        { label: "Car Rental Tips Rwanda", href: "/car-rental-tips-rwanda", keywords: ["rental advice", "hiring tips"] },
-        { label: "Rwanda Travel Cost Guide", href: "/rwanda-travel-cost-guide", keywords: ["budget planning", "travel expenses"] },
-        { label: "Self Drive Safety Rwanda", href: "/self-drive-safety-rwanda", keywords: ["safe driving", "road safety"] },
-        { label: "Best Roads in Rwanda", href: "/best-roads-in-rwanda", keywords: ["scenic routes", "road conditions"] },
-        { label: "Rwanda Travel Requirements", href: "/rwanda-travel-requirements", keywords: ["visa information", "entry documents"] },
-        { label: "Weather Guide Rwanda", href: "/weather-guide-rwanda", keywords: ["best time to visit", "climate information"] },
-        { label: "Accommodation Guide", href: "/accommodation-guide", keywords: ["hotels Rwanda", "lodging options"] },
-        { label: "Tourist Attractions Guide", href: "/tourist-attractions-guide", keywords: ["things to do", "sightseeing"] },
-        { label: "Emergency Information", href: "/emergency-information", keywords: ["emergency contacts", "medical services"] },
       ]
     },
   ];
@@ -112,53 +63,54 @@ export default function Header() {
   const quickLinks = [
     { label: "Last Minute Deals", href: "/deals/last-minute", badge: "HOT" },
     { label: "Monthly Rental", href: "/long-term/monthly", badge: "SAVE 15%" },
+    { label: "Blog", href: "/blog" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-4 py-3 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-lg">
-      <div className="max-w-7xl mx-auto">
-        {/* TOP BAR - Promotions & Contact */}
-        <div className="hidden md:flex justify-between items-center py-2 border-b border-gray-100 mb-3">
-          <div className="flex items-center gap-6 text-sm">
-            <div className="flex items-center gap-2">
-              <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-bold">24/7</span>
-              <span className="text-gray-700">24/7 Customer Support</span>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg border-b-2 border-blue-100">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* TOP CONTACT BAR - BLUE THEME */}
+        <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2 px-4 rounded-b-lg">
+          <div className="flex justify-between items-center text-sm">
+            <div className="flex items-center gap-6">
+              <div className="flex items-center gap-2">
+                <span className="bg-white text-blue-600 px-2 py-1 rounded-full text-xs font-bold">24/7</span>
+                <span>Car Rental Support Kigali Rwanda</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="bg-white text-blue-600 px-2 py-1 rounded-full text-xs font-bold">FREE</span>
+                <span>Airport Delivery Kigali</span>
+              </div>
+              <div className="hidden md:flex items-center gap-2">
+                <span className="bg-white text-blue-600 px-2 py-1 rounded-full text-xs font-bold">BEST</span>
+                <span>Car Rental Rates Kigali</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs font-bold">FREE</span>
-              <span className="text-gray-700">Free Delivery</span>
+
+            <div className="flex items-center gap-4">
+              <a href="tel:+250787619387" className="flex items-center gap-2 hover:text-blue-200 transition-colors font-semibold">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+                <span>Call: +250 787 619 387</span>
+              </a>
+              <a href="mailto:booking@carrentalinkigali.com" className="hover:text-blue-200 transition-colors font-semibold">
+                booking@carrentalinkigali.com
+              </a>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-bold">BEST</span>
-              <span className="text-gray-700">Best Price Guarantee</span>
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <a href="tel:+250796077321" className="text-gray-700 hover:text-[#4B5320] font-medium">
-              +250 796 077 321
-            </a>
-            <a href="mailto:kigalicarrentals2004@gmail.com" className="text-gray-700 hover:text-[#4B5320] font-medium">
-              kigalicarrentals2004@gmail.com
-            </a>
           </div>
         </div>
 
-        {/* MAIN NAVIGATION */}
-        <nav className="flex items-center justify-between">
-          {/* LOGO WITH SEO TEXT */}
-          <Link href="/" className="flex items-center gap-3">
-            <Image
-              src="https://res.cloudinary.com/dxn12qcje/image/upload/v1770132530/mylogo-removebg-preview_mpcp0n.png"
-              alt="Kigali Car Hire - Best Car Rental in Rwanda | Airport Pickup | SUV & 4x4 Rental"
-              width={140}
-              height={50}
-              className="h-12 w-auto"
-              priority
-            />
-          </Link>
+        {/* MAIN NAVIGATION - WHITE BACKGROUND */}
+        <nav className="flex items-center justify-between py-4">
+          {/* LOGO REMOVED - SPACE SAVED FOR MOBILE MENU BUTTON */}
+          <div className="flex items-center">
+            <Link href="/" className="text-blue-600 font-bold text-xl hover:text-blue-700 transition-colors">
+              Kigali Car Rental
+            </Link>
+          </div>
 
-          {/* DESKTOP MEGA MENU */}
+          {/* DESKTOP MENU - BLUE ACCENTS */}
           <div className="hidden xl:flex items-center gap-1">
             {menuStructure.map((menu) => (
               <div
@@ -169,67 +121,67 @@ export default function Header() {
               >
                 <Link
                   href={menu.href}
-                  className="px-4 py-3 text-gray-800 hover:text-[#4B5320] font-semibold hover:bg-gray-50 rounded-lg transition-colors flex items-center gap-1"
-                  title={`${menu.label} - Car Rental Services Rwanda`}
+                  className="px-4 py-3 text-gray-800 hover:text-blue-600 font-semibold hover:bg-blue-50 rounded-lg transition-all flex items-center gap-1"
+                  title={`${menu.label} - Car Rental Services Rwanda Kigali`}
                 >
                   {menu.label}
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </Link>
 
-                {/* MEGA SUBMENU */}
+                {/* MEGA SUBMENU - BLUE THEME */}
                 {activeMenu === menu.label && (
-                  <div className="absolute left-0 top-full pt-2 w-screen max-w-4xl">
-                    <div className="bg-white rounded-xl shadow-2xl border border-gray-200 p-6 grid grid-cols-2 gap-6">
-                      <div className="space-y-4">
-                        <h3 className="font-bold text-lg text-[#4B5320] border-b pb-2">
-                          {menu.label} Services
+                  <div className="absolute left-0 top-full pt-2 w-screen max-w-4xl z-50">
+                    <div className="bg-white rounded-xl shadow-2xl border-2 border-blue-100 p-6 grid grid-cols-2 gap-6">
+                      <div className="space-y-3">
+                        <h3 className="font-bold text-xl text-blue-600 border-b-2 border-blue-200 pb-2">
+                          {menu.label} - Car Rental Kigali
                         </h3>
                         {menu.submenus.slice(0, 5).map((sub) => (
                           <Link
                             key={sub.href}
                             href={sub.href}
-                            className="block p-3 hover:bg-gray-50 rounded-lg transition-colors group/sub"
-                            title={sub.keywords?.join(", ")}
+                            className="block p-3 hover:bg-blue-50 rounded-lg transition-all group/sub border-l-4 border-transparent hover:border-blue-400"
+                            title={`${sub.label} - ${sub.keywords?.join(", ")} | Car Rental Rwanda`}
                           >
-                            <div className="font-medium text-gray-800 group-hover/sub:text-[#4B5320]">
+                            <div className="font-semibold text-gray-800 group-hover/sub:text-blue-600">
                               {sub.label}
                             </div>
-                            <div className="text-xs text-gray-500 mt-1">
-                              {sub.keywords?.slice(0, 2).join(" • ")}
+                            <div className="text-sm text-gray-500 mt-1">
+                              {sub.keywords?.slice(0, 2).join(" • ")} • Car Hire Kigali
                             </div>
                           </Link>
                         ))}
                       </div>
-                      <div className="space-y-4">
-                        <h3 className="font-bold text-lg text-[#4B5320] border-b pb-2">
-                          More Options
+                      <div className="space-y-3">
+                        <h3 className="font-bold text-xl text-blue-600 border-b-2 border-blue-200 pb-2">
+                          More Car Rental Options
                         </h3>
                         {menu.submenus.slice(5, 10).map((sub) => (
                           <Link
                             key={sub.href}
                             href={sub.href}
-                            className="block p-3 hover:bg-gray-50 rounded-lg transition-colors group/sub"
-                            title={sub.keywords?.join(", ")}
+                            className="block p-3 hover:bg-blue-50 rounded-lg transition-all group/sub border-l-4 border-transparent hover:border-blue-400"
+                            title={`${sub.label} - ${sub.keywords?.join(", ")} | Rwanda Car Rental`}
                           >
-                            <div className="font-medium text-gray-800 group-hover/sub:text-[#4B5320]">
+                            <div className="font-semibold text-gray-800 group-hover/sub:text-blue-600">
                               {sub.label}
                             </div>
-                            <div className="text-xs text-gray-500 mt-1">
-                              {sub.keywords?.slice(0, 2).join(" • ")}
+                            <div className="text-sm text-gray-500 mt-1">
+                              {sub.keywords?.slice(0, 2).join(" • ")} • Kigali Hire
                             </div>
                           </Link>
                         ))}
-                        {/* FEATURED OFFER */}
-                        <div className="mt-6 p-4 bg-gradient-to-r from-[#4B5320] to-green-800 rounded-lg text-white">
-                          <div className="font-bold">SPECIAL OFFER</div>
-                          <div className="text-sm">Book 7+ days get 15% discount</div>
+                        {/* FEATURED OFFER - BLUE THEME */}
+                        <div className="mt-6 p-4 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl text-white shadow-lg">
+                          <div className="font-bold text-lg">🚗 SPECIAL CAR RENTAL OFFER</div>
+                          <div className="text-sm opacity-90">Book 7+ days get 15% discount on car hire Kigali</div>
                           <Link
-                            href="/deals/long-term"
-                            className="inline-block mt-2 bg-white text-[#4B5320] px-4 py-1 rounded text-sm font-bold"
+                            href="/long-term/monthly"
+                            className="inline-block mt-3 bg-white text-blue-600 px-4 py-2 rounded-lg font-bold hover:bg-blue-50 transition-colors"
                           >
-                            Claim Offer →
+                            Claim Car Rental Deal →
                           </Link>
                         </div>
                       </div>
@@ -240,46 +192,46 @@ export default function Header() {
             ))}
           </div>
 
-          {/* QUICK ACTIONS & BOOKING */}
+          {/* QUICK ACTIONS & BOOKING - BLUE THEME */}
           <div className="hidden lg:flex items-center gap-4">
             <div className="flex gap-2">
               {quickLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-200 rounded-lg font-medium"
+                  className="px-4 py-2 text-sm bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg font-semibold transition-colors border border-blue-200"
                 >
                   {link.label}
                   {link.badge && (
-                    <span className="ml-1 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded">
+                    <span className="ml-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold">
                       {link.badge}
                     </span>
                   )}
                 </Link>
               ))}
             </div>
-            
+
             <div className="relative">
               <Link
                 href="/book-now"
-                className="bg-gradient-to-r from-[#4B5320] to-green-700 text-white px-6 py-3 rounded-xl font-bold hover:shadow-lg transition-shadow flex items-center gap-2"
-                title="Book Car Rental Online - Instant Confirmation"
+                className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-xl font-bold hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center gap-2"
+                title="Book Car Rental Online - Instant Confirmation Kigali Rwanda"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                BOOK NOW
+                BOOK CAR NOW
               </Link>
             </div>
           </div>
 
-          {/* MOBILE MENU BUTTON */}
+          {/* MOBILE MENU BUTTON - BLUE THEME */}
           <button
-            className="xl:hidden p-3 bg-gray-100 rounded-lg"
+            className="xl:hidden p-3 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle mobile menu"
+            aria-label="Toggle mobile menu - Car Rental Kigali"
           >
-            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isMobileMenuOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -289,50 +241,50 @@ export default function Header() {
           </button>
         </nav>
 
-        {/* MOBILE MEGA MENU - FIXED VISIBILITY ISSUE */}
+        {/* MOBILE MEGA MENU - BLUE THEME */}
         {isMobileMenuOpen && (
-          <div className="xl:hidden mt-4 bg-white rounded-2xl border border-gray-200 shadow-xl p-4 max-h-[80vh] overflow-y-auto">
+          <div className="xl:hidden mt-4 bg-white rounded-2xl border-2 border-blue-100 shadow-2xl p-4 max-h-[80vh] overflow-y-auto">
             {/* QUICK ACTIONS MOBILE */}
-            <div className="grid grid-cols-2 gap-2 mb-6">
+            <div className="grid grid-cols-2 gap-3 mb-6">
               {quickLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="p-3 bg-gray-50 rounded-lg text-center hover:bg-gray-100"
+                  className="p-3 bg-blue-50 rounded-lg text-center hover:bg-blue-100 border border-blue-200 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  <div className="font-medium text-sm text-gray-900">{link.label}</div>
+                  <div className="font-semibold text-sm text-blue-700">{link.label}</div>
                   {link.badge && (
-                    <div className="text-xs text-red-600 font-bold mt-1">{link.badge}</div>
+                    <div className="text-xs text-red-600 font-bold mt-1 bg-red-100 px-2 py-1 rounded-full">{link.badge}</div>
                   )}
                 </Link>
               ))}
             </div>
 
             {/* MOBILE MENU ITEMS */}
-            <div className="space-y-2">
+            <div className="space-y-3">
               {menuStructure.map((menu) => (
-                <div key={menu.label} className="border-b border-gray-200 pb-2">
+                <div key={menu.label} className="border-b border-blue-100 pb-3">
                   <Link
                     href={menu.href}
-                    className="flex justify-between items-center p-3 hover:bg-gray-50 rounded-lg"
+                    className="flex justify-between items-center p-3 hover:bg-blue-50 rounded-lg border-l-4 border-transparent hover:border-blue-400 transition-all"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <span className="font-bold text-gray-900">{menu.label}</span>
-                    <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </Link>
-                  
-                  {/* MOBILE SUBMENU - FIXED TEXT COLOR */}
-                  <div className="pl-4 grid grid-cols-2 gap-2 mt-2">
+
+                  {/* MOBILE SUBMENU */}
+                  <div className="pl-4 grid grid-cols-2 gap-2 mt-3">
                     {menu.submenus.slice(0, 4).map((sub) => (
                       <Link
                         key={sub.href}
                         href={sub.href}
-                        className="p-2 text-sm bg-gray-50 hover:bg-gray-100 rounded text-gray-900"
+                        className="p-3 text-sm bg-blue-50 hover:bg-blue-100 rounded-lg text-blue-700 font-medium border border-blue-200 transition-colors"
                         onClick={() => setIsMobileMenuOpen(false)}
-                        title={sub.keywords?.join(", ")}
+                        title={`${sub.label} - ${sub.keywords?.join(", ")} | Car Rental Kigali`}
                       >
                         {sub.label}
                       </Link>
@@ -342,30 +294,33 @@ export default function Header() {
               ))}
             </div>
 
-            {/* MOBILE CTA */}
-            <div className="mt-6 p-4 bg-gradient-to-r from-[#4B5320] to-green-700 rounded-xl text-white">
+            {/* MOBILE CTA - BLUE THEME */}
+            <div className="mt-6 p-4 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl text-white shadow-lg">
               <div className="text-center">
-                <div className="font-bold text-lg">Ready to Book?</div>
-                <div className="text-sm opacity-90 mt-1">Best Rates Guaranteed</div>
+                <div className="font-bold text-lg">Ready to Book Car Rental?</div>
+                <div className="text-sm opacity-90 mt-1">Best Car Hire Rates in Kigali Rwanda</div>
                 <Link
                   href="/book-now"
-                  className="inline-block mt-3 bg-white text-[#4B5320] px-6 py-2 rounded-lg font-bold"
+                  className="inline-block mt-3 bg-white text-blue-600 px-6 py-2 rounded-lg font-bold hover:bg-blue-50 transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Reserve Your Car
+                  Reserve Your Car Now
                 </Link>
               </div>
             </div>
 
-            {/* CONTACT INFO MOBILE - FIXED TEXT COLOR */}
-            <div className="mt-6 pt-4 border-t border-gray-200">
+            {/* CONTACT INFO MOBILE */}
+            <div className="mt-6 pt-4 border-t border-blue-100">
               <div className="text-center text-sm">
-                <div className="font-bold text-gray-900">24/7 Support</div>
-                <a href="tel:+250796077321" className="block mt-1 text-gray-900 font-bold hover:text-[#4B5320]">
-                  +250 796 077 321
+                <div className="font-bold text-blue-600 mb-2">24/7 Car Rental Support Kigali</div>
+                <a href="tel:+250787619387" className="flex items-center justify-center gap-2 text-gray-900 font-bold hover:text-blue-600 transition-colors mb-2">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                  </svg>
+                  Call: +250 787 619 387
                 </a>
-                <a href="mailto:kigalicarrentals2004@gmail.com" className="block mt-1 text-gray-900 hover:text-[#4B5320]">
-                  kigalicarrentals2004@gmail.com
+                <a href="mailto:booking@carrentalinkigali.com" className="block text-gray-700 hover:text-blue-600 transition-colors font-medium">
+                  booking@carrentalinkigali.com
                 </a>
               </div>
             </div>

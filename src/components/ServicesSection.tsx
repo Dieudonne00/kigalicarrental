@@ -5,7 +5,7 @@ export default function ServicesSection() {
     {
       icon: (
         <svg
-          className="w-12 h-12"
+          className="w-12 h-12 text-blue-600"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -16,15 +16,15 @@ export default function ServicesSection() {
           <path d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
         </svg>
       ),
-      title: "Car Rental",
+      title: "Car Rental Kigali Rwanda",
       description:
-        "Daily, weekly, and monthly rental packages with flexible pickup and special long-term discounts.",
-      features: ["Flexible Pickup", "Discounted Long-Term Rates", "No Hidden Fees"],
+        "Daily, weekly, and monthly car rental packages with flexible pickup and special long-term discounts in Kigali Rwanda.",
+      features: ["Flexible Airport Pickup Kigali", "Discounted Long-Term Car Hire", "No Hidden Car Rental Fees"],
     },
     {
       icon: (
         <svg
-          className="w-12 h-12"
+          className="w-12 h-12 text-blue-600"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -35,15 +35,15 @@ export default function ServicesSection() {
           <path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      title: "City & Country Tours",
+      title: "City & Country Tours Rwanda",
       description:
-        "Guided and self-drive tours to explore Rwanda's cities, countryside, and hidden gems.",
-      features: ["Expert Guides", "Custom Routes", "All Inclusive"],
+        "Guided and self-drive tours to explore Rwanda's cities, countryside, and hidden gems with car rental services.",
+      features: ["Expert Rwanda Tour Guides", "Custom Car Rental Routes", "All Inclusive Car Hire Packages"],
     },
     {
       icon: (
         <svg
-          className="w-12 h-12"
+          className="w-12 h-12 text-blue-600"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -151,7 +151,7 @@ export default function ServicesSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="tel:+250796077321"
+                href="tel:+250787619387"
                 className="inline-flex items-center justify-center px-6 py-3 bg-[#4B5320] text-white font-bold rounded-lg hover:bg-[#3a4218] transition-all"
               >
                 <svg
@@ -165,10 +165,10 @@ export default function ServicesSection() {
                 >
                   <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                Call Us: +250 796 077 321
+                Call Us: +250 787 619 387
               </a>
               <a
-                href="mailto:kigalicarrentals2004@gmail.com"
+                href="mailto:booking@carrentalinkigali.com"
                 className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 text-gray-900 font-bold rounded-lg hover:border-[#4B5320] hover:bg-[#4B5320] hover:text-white transition-all"
               >
                 <svg

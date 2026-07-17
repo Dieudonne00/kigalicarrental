@@ -353,7 +353,7 @@ export default async function ManagerDashboard() {
                     key={car.id}
                     className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200 hover:border-[#01B000] transition-all"
                   >
-                    {car.images[0] && (
+                    {Array.isArray(car.images) && typeof car.images[0] === "string" && (
                       <img
                         src={car.images[0]}
                         alt={car.name}

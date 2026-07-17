@@ -37,11 +37,11 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[90vh] bg-white overflow-hidden py-24">
+    <section className="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden">
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(https://res.cloudinary.com/dxn12qcje/image/upload/kgl%20.png)' }}
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
+        style={{ backgroundImage: 'url(https://carrentalinkigali.com/myimages/kgl.png)' }}
       />
 
       {/* White Overlay - 85% opacity for subtle background */}
@@ -62,33 +62,41 @@ export default function HeroSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading and Description Section */}
         <div className="text-center mb-8 pt-8 max-w-4xl mx-auto">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 text-blue-800 text-sm font-medium mb-6 border border-blue-200">
+            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2 animate-pulse"></span>
+            Trusted Car Rental Kigali Rwanda | Best Car Hire Services
+          </div>
+
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-[1.1] font-[family-name:var(--font-plus-jakarta)] tracking-tight">
-            Discover Rwanda with Confidence - Premium Car Rentals for Every Journey
+            Car Rental Kigali
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-700">
+              Best Car Hire Rwanda
+            </span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
-            Experience the Land of a Thousand Hills in comfort and style. Whether you're exploring Kigali's vibrant streets, 
-            embarking on a safari adventure, or traveling for business, our reliable fleet is ready for your Rwandan journey.
+            Premium car rental services in Kigali Rwanda. Airport pickup, city delivery, SUVs & luxury cars.
+            Self drive car rental Kigali, chauffeur services, 4x4 safari vehicles. Best rates guaranteed.
           </p>
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/book-now"
-              className="w-full sm:w-auto bg-[#4B5320] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#3a4218] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
+              className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-3"
             >
               <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
-              Reserve Your Car
+              Book Car Rental Now
             </Link>
             <Link
               href="/fleet"
-              className="w-full sm:w-auto bg-white text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-50 transition-all border-2 border-gray-200 hover:border-[#4B5320] flex items-center justify-center gap-3"
+              className="w-full sm:w-auto bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all border-2 border-blue-200 hover:border-blue-400 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-3"
             >
               <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
               </svg>
-              Explore Our Fleet
+              View Car Rental Fleet
             </Link>
           </div>
         </div>

@@ -46,7 +46,7 @@ export async function GET(request: Request) {
       const imageUrl = car.imageUrl || 
                       car.image || 
                       (car.images && car.images[0]) || 
-                      `https://res.cloudinary.com/dxn12qcje/image/upload/cars/${car.name.replace(/\s+/g, '-')}.jpg`;
+                      `https://carrentalinkigali.com/myimages/${car.name.replace(/\s+/g, '-')}.jpg`;
 
       return {
         ...car,

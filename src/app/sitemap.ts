@@ -1,194 +1,93 @@
 import { MetadataRoute } from "next";
+import { prisma } from "@/lib/prisma";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.kigalicarrental.site";
+const baseUrl = "https://www.kigalicarrental.site";
+
+// Every real, public (non-manager) static route in the app.
+const STATIC_ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
+  { path: "", priority: 1, changeFrequency: "daily" },
+  { path: "/car-rental-kigali", priority: 0.9, changeFrequency: "daily" },
+  { path: "/car-rental-rwanda", priority: 0.9, changeFrequency: "daily" },
+  { path: "/car-hire-rwanda", priority: 0.9, changeFrequency: "daily" },
+  { path: "/fleet", priority: 0.9, changeFrequency: "daily" },
+  { path: "/kigali-airport-car-rental", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/luxury-car-rental-kigali", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/cheap-car-rental-kigali", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/self-drive-rwanda", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/self-drive-car-rental-kigali", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/driver-car-hire-kigali", priority: 0.7, changeFrequency: "weekly" },
+  { path: "/chauffeur-service-rwanda", priority: 0.7, changeFrequency: "weekly" },
+  { path: "/private-driver-kigali", priority: 0.7, changeFrequency: "weekly" },
+  { path: "/rwanda-guided-transport", priority: 0.7, changeFrequency: "weekly" },
+  { path: "/airport-driver-service", priority: 0.7, changeFrequency: "weekly" },
+  { path: "/city-tour-driver", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/business-driver-service", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/event-transport-driver", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/4x4-car-rental-rwanda", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/safari-car-rental-rwanda", priority: 0.7, changeFrequency: "weekly" },
+  { path: "/land-cruiser-rental-rwanda", priority: 0.7, changeFrequency: "weekly" },
+  { path: "/prado-rental-kigali", priority: 0.7, changeFrequency: "weekly" },
+  { path: "/rooftop-tent-car-rental-rwanda", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/camping-car-rental-rwanda", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/akagera-safari-rental", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/akagera-game-drive", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/volcanoes-4x4-rental", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/nyungwe-forest-safari", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/long-term-car-rental-rwanda", priority: 0.7, changeFrequency: "weekly" },
+  { path: "/long-term/monthly", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/deals/last-minute", priority: 0.6, changeFrequency: "weekly" },
+  { path: "/book-now", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/how-it-works", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/about", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/contact", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/blog", priority: 0.5, changeFrequency: "weekly" },
+  { path: "/faq", priority: 0.4, changeFrequency: "monthly" },
+  { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/site-map", priority: 0.3, changeFrequency: "monthly" },
+];
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const currentDate = new Date();
 
-  return [
-    // HOME & MAIN PAGES
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: "daily",
-      priority: 1,
-    },
-    
-    // 🔥 RWANDA LOCATION PAGES (MOST IMPORTANT FOR SEO)
-    {
-      url: `${baseUrl}/car-rental-rwanda`,
-      lastModified: currentDate,
-      changeFrequency: "daily",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/car-rental-kigali`,
-      lastModified: currentDate,
-      changeFrequency: "daily",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/kigali-airport-car-rental`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/rent-car-kigali-airport`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    
-    // CITY PAGES FOR RWANDA
-    {
-      url: `${baseUrl}/car-rental-musanze`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/car-rental-huye`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/car-rental-rubavu`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    
-    // CAR TYPE PAGES
-    {
-      url: `${baseUrl}/cars`,
-      lastModified: currentDate,
-      changeFrequency: "daily",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/suv-rental-rwanda`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/4x4-rental-rwanda`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/luxury-car-rental-rwanda`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/economy-car-rental-rwanda`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/toyota-rental-rwanda`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.7,
-    },
-    
-    // SERVICE PAGES
-    {
-      url: `${baseUrl}/self-drive-rwanda`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/chauffeur-service-rwanda`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/wedding-car-rental-rwanda`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/business-car-rental-rwanda`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    
-    // INFORMATION PAGES
-    {
-      url: `${baseUrl}/about`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/faq`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.4,
-    },
-    {
-      url: `${baseUrl}/driving-rwanda-guide`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/car-rental-tips-rwanda`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.4,
-    },
-    
-    // LEGAL PAGES
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/cancellation-policy`,
-      lastModified: currentDate,
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    
-    // BLOG/CONTENT PAGES (Add when you create them)
-    /*
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/blog/best-time-visit-rwanda`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.4,
-    },
-    */
-  ];
+  const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
+    url: `${baseUrl}${route.path}`,
+    lastModified: currentDate,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
+  }));
+
+  let cars: { id: string; updatedAt: Date }[] = [];
+  let blogPosts: { slug: string; updatedAt: Date }[] = [];
+
+  try {
+    [cars, blogPosts] = await Promise.all([
+      prisma.car.findMany({
+        where: { available: true },
+        select: { id: true, updatedAt: true },
+      }),
+      prisma.blogPost.findMany({
+        where: { published: true },
+        select: { slug: true, updatedAt: true },
+      }),
+    ]);
+  } catch (error) {
+    console.error("Sitemap: failed to fetch dynamic routes from database", error);
+  }
+
+  const carEntries: MetadataRoute.Sitemap = cars.map((car) => ({
+    url: `${baseUrl}/cars/${car.id}`,
+    lastModified: car.updatedAt,
+    changeFrequency: "weekly",
+    priority: 0.6,
+  }));
+
+  const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: post.updatedAt,
+    changeFrequency: "monthly",
+    priority: 0.5,
+  }));
+
+  return [...staticEntries, ...carEntries, ...blogEntries];
 }

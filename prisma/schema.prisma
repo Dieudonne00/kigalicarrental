@@ -26,7 +26,7 @@ model Car {
   dailyRate     Float
   weeklyRate    Float?
   monthlyRate   Float?
-  images        String[] // Array of image URLs
+  images        Json? // Array of image URLs (stored as JSON for sqlite dev)
   available     Boolean  @default(true)
   featured      Boolean  @default(false)
   gameDrive     Boolean  @default(false) // For Akagera Game Drive
@@ -108,14 +108,14 @@ model BlogPost {
   title           String
   slug            String   @unique // URL-friendly version of title
   excerpt         String   // Short description for previews
-  content         String   @db.Text // Full blog content (supports HTML/Markdown)
+  content         String   // Full blog content (supports HTML/Markdown)
   featuredImage   String?  // Main image URL
   author          String   @default("Kigali Car Hire Team")
   category        String   // car-tips, travel-guides, company-news, rwanda-tourism, car-maintenance
-  tags            String[] // SEO keywords: car rental Rwanda, Kigali tourism, etc.
+  tags            Json? // SEO keywords: car rental Rwanda, Kigali tourism, etc. (JSON for sqlite dev)
   metaTitle       String?  // SEO meta title
   metaDescription String?  // SEO meta description
-  metaKeywords    String[] // SEO keywords array
+  metaKeywords    Json? // SEO keywords array (JSON for sqlite dev)
   published       Boolean  @default(false)
   featured        Boolean  @default(false) // Show on homepage
   views           Int      @default(0)
@@ -147,7 +147,7 @@ model BookingRequest {
   seats                 String?
   budget                String?
   purpose               String?
-  additionalRequirements String?  @db.Text
+  additionalRequirements String?  
 
   // Contact Information
   fullName              String
@@ -158,7 +158,7 @@ model BookingRequest {
   // Status and management
   status                String   @default("new") // new, contacted, quoted, converted, cancelled
   assignedCarId         String?  // If a car is assigned later
-  notes                 String?  @db.Text // Admin notes
+  notes                 String?  // Admin notes
 
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
