@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import IconRail from "@/components/IconRail";
 
 export default function ConditionalLayout({
   children,
@@ -19,11 +20,12 @@ export default function ConditionalLayout({
     return <>{children}</>;
   }
 
-  // Public routes: normal page flow with a sticky header
+  // Public routes: normal page flow with a sticky header and a left icon rail on large screens
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1">{children}</main>
+      <IconRail />
+      <main className="flex-1 lg:pl-16">{children}</main>
       <Footer />
     </div>
   );

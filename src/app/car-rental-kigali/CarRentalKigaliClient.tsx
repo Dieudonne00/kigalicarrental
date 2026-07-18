@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 
 interface Car {
   id: string;
@@ -195,7 +196,7 @@ export default function CarRentalKigaliClient() {
                   alt={`${car.brand} ${car.model} ${car.year} - Best Car Rental Kigali Rwanda`}
                   className="w-full h-full object-cover"
                   onError={(e) => {
-                    e.currentTarget.src = '/placeholder-car.jpg';
+                    e.currentTarget.src = CAR_IMAGE_FALLBACK;
                   }}
                 />
                 <div className="absolute top-4 right-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-3 py-2 rounded-full text-sm font-bold shadow-lg">

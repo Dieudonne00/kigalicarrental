@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { Car } from "@/types/car";
+import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 
 export default function FleetClient() {
   const [cars, setCars] = useState<Car[]>([]);
@@ -225,7 +226,15 @@ export default function FleetClient() {
                   <Link key={car.id} href={`/cars/${car.id}`} className="group bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-[#2563EB] transition-all hover:shadow-lg">
                     <div className="relative h-32 md:h-48 bg-gray-100 overflow-hidden">
                       {car.images && car.images.length > 0 ? (
-                        <img src={car.images[0]} alt={`${car.name} rental - Kigali Car Rental Rwanda`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                        <img
+                          src={car.images[0]}
+                          alt={`${car.name} rental - Kigali Car Rental Rwanda`}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = CAR_IMAGE_FALLBACK;
+                          }}
+                        />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
                           <svg className="w-16 h-16 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">

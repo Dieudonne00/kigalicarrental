@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 
 interface Car {
   id: string;
@@ -83,6 +84,10 @@ export default function FeaturedFleet() {
                     src={car.imageUrl}
                     alt={`${car.brand} ${car.model} ${car.year} rental - Kigali Car Rental Rwanda`}
                     className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = CAR_IMAGE_FALLBACK;
+                    }}
                   />
                   <div className="absolute top-3 right-3">
                     <span className="inline-block px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-bold">

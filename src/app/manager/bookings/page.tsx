@@ -5,6 +5,7 @@ import ManagerSidebar from "@/components/ManagerSidebar";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
 import ConfirmModal from "@/components/ConfirmModal";
+import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 
 interface Car {
   id: string;
@@ -309,7 +310,7 @@ export default function BookingsPage() {
                           <div className="flex items-center gap-3">
                             <img
                               src={
-                                booking.car.images[0] || "/placeholder-car.jpg"
+                                booking.car.images[0] || CAR_IMAGE_FALLBACK
                               }
                               alt={booking.car.name}
                               className="w-12 h-12 rounded-lg object-cover"

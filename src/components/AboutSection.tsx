@@ -9,18 +9,18 @@ export default function AboutSection() {
           <div>
             <div className="mb-8">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                Our Story in Rwanda
+                Kigali Car Rental You Can Trust
               </h2>
               <div className="w-20 h-1 bg-blue-600 mb-6"></div>
             </div>
 
             <div className="space-y-6">
               <p className="text-gray-600 text-lg leading-relaxed">
-                Founded in the heart of Kigali, <span className="font-semibold text-gray-800">Kigali Car Rentals</span> began with a simple mission: to provide reliable, safe, and comfortable transportation solutions for both locals and visitors exploring Rwanda.
+                <span className="font-semibold text-gray-800">Kigali Car Rental</span> was founded in the heart of Kigali with a simple mission: to provide reliable, safe, and comfortable car rental in Kigali for both locals and visitors exploring Rwanda.
               </p>
-              
+
               <p className="text-gray-600 text-lg leading-relaxed">
-                What started as a small fleet of two vehicles has grown into one of Rwanda's most trusted car rental services, serving thousands of satisfied customers from across the globe.
+                What started as a small fleet of two vehicles has grown into one of the most trusted names in Kigali car rental, serving thousands of satisfied customers from across the globe who chose us for car hire in Kigali and beyond.
               </p>
 
               <div className="mt-8 p-6 bg-gray-50 rounded-xl border-l-4 border-blue-600">
@@ -36,7 +36,7 @@ export default function AboutSection() {
             {/* Core Values */}
             <div className="mb-10">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Why Choose Us
+                Why Choose Us for Car Rental in Kigali
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

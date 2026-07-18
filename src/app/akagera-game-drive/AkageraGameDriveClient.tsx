@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 
 interface Car {
   id: string;
@@ -273,7 +274,7 @@ export default function AkageraGameDriveClient() {
                 >
                   <div className="relative h-32 md:h-48">
                     <img
-                      src={car.images[0] || "/placeholder-car.jpg"}
+                      src={car.images[0] || CAR_IMAGE_FALLBACK}
                       alt={car.name}
                       className="w-full h-full object-cover"
                     />

@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
+import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 
 interface Car {
   id: string;
@@ -287,10 +288,14 @@ export default function CarDetailClient() {
               <div className="relative h-96 bg-gray-100">
                 <img
                   src={
-                    validImages[selectedImage] || "/placeholder-car.jpg"
+                    validImages[selectedImage] || CAR_IMAGE_FALLBACK
                   }
                   alt={`${car.name} rental in Kigali, Rwanda - Kigali Car Rental`}
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = CAR_IMAGE_FALLBACK;
+                  }}
                 />
                 <div className="absolute top-4 right-4 flex gap-2">
                   {car.hasActiveBooking && (
@@ -323,6 +328,10 @@ export default function CarDetailClient() {
                         src={image}
                         alt={`${car.name} - photo ${index + 1} - Kigali Car Rental`}
                         className="w-full h-full object-cover"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = CAR_IMAGE_FALLBACK;
+                        }}
                       />
                     </button>
                   ))}
