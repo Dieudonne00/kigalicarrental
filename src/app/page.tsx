@@ -3,12 +3,13 @@ import AboutSection from "@/components/AboutSection";
 import FeaturedFleet from "@/components/FeaturedFleet";
 import ServicesSection from "@/components/ServicesSection";
 import FeaturedBlogs from "@/components/FeaturedBlogs";
+import FAQSection from "@/components/FAQSection";
 import { Metadata } from "next";
 import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Car Rental Kigali | Premium Car Hire Rwanda | Kigali Airport Pickup",
-  description: "Looking for the best car rental in Kigali? We offer premium SUVs, luxury cars, and self-drive rentals in Rwanda. 24/7 support, best rates, and Kigali airport delivery.",
+  title: "Kigali Car Rental | Premium Car Hire Rwanda | Kigali Airport Pickup",
+  description: "Looking for the best Kigali car rental? We offer premium SUVs, luxury cars, and self-drive rentals in Rwanda. 24/7 support, best rates, and Kigali airport delivery.",
   keywords: ["Kigali car rental", "car hire Kigali", "Rwanda car rental", "Kigali airport car rental", "self drive Rwanda", "cheap car rental Kigali", "4x4 rental Rwanda"],
   openGraph: {
     title: "Kigali Car Rental | Trusted Car Hire in Rwanda",
@@ -78,7 +79,7 @@ export default function Home() {
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-10 sm:mb-12 text-center">
-            Why Choose Our Kigali Car Hire Service?
+            Why Choose Our Kigali Car Rental Service?
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
             {whyChooseUs.map((item) => (
@@ -94,19 +95,20 @@ export default function Home() {
       <AboutSection />
       <ServicesSection />
       <FeaturedBlogs />
+      <FAQSection />
 
       {/* SEO content block - unique on-page copy for the homepage's target keywords */}
       <section className="py-14 sm:py-20 bg-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-6 sm:mb-8 text-center">
-            The Best Car Rental in Kigali, Rwanda
+            The Best Kigali Car Rental in Rwanda
           </h2>
           <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 text-gray-700 leading-relaxed text-sm sm:text-base max-w-5xl mx-auto">
             <p>
-              Welcome to <strong>Kigali Car Rental</strong>, the premier choice for travelers, business professionals, and adventurers looking for reliable car hire in Rwanda. Whether you are arriving at <strong>Kigali International Airport (KGL)</strong> or need a vehicle delivered to your hotel, we provide seamless, professional service tailored to your needs.
+              Welcome to <strong>Kigali Car Rental</strong>, the premier choice for travelers, business professionals, and adventurers looking for reliable car rental in Rwanda. Whether you are arriving at <strong>Kigali International Airport (KGL)</strong> or need a vehicle delivered to your hotel, we provide seamless, professional service tailored to your needs.
             </p>
             <p>
-              Our fleet includes everything from <strong>cheap car rental in Kigali</strong> for budget-conscious travelers to high-end <strong>luxury car rentals</strong> for executive needs. If you're planning a safari, our <strong>4x4 rental Rwanda</strong> options like the Toyota Land Cruiser are perfectly maintained for the Land of a Thousand Hills.
+              Our fleet includes everything from <strong>cheap Kigali car rental</strong> for budget-conscious travelers to high-end <strong>luxury car rentals</strong> for executive needs. If you're planning a safari, our <strong>4x4 rental Rwanda</strong> options like the Toyota Land Cruiser are perfectly maintained for the Land of a Thousand Hills.
             </p>
           </div>
         </div>

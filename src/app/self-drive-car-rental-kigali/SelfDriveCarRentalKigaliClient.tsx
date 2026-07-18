@@ -109,7 +109,7 @@ export default function SelfDriveCarRentalKigaliClient() {
     "@context": "https://schema.org",
     "@type": "AutoRental",
     "name": "Self Drive Car Rental Kigali - Drive Yourself Rwanda",
-    "description": "Self drive car rental in Kigali. Rent a car without driver and explore Rwanda at your own pace. Economy cars, SUVs, 4x4s, sedans. Unlimited mileage options. Free delivery in Kigali.",
+    "description": "Self drive Kigali car rental. Rent a car without a driver and explore Rwanda at your own pace. Economy cars, SUVs, 4x4s, sedans. Unlimited mileage options. Free delivery in Kigali.",
     "url": "https://kigalicarrental.site/self-drive-car-rental-kigali",
     "telephone": "+250787619387",
     "address": {

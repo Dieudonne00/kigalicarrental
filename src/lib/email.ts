@@ -100,7 +100,7 @@ export async function sendStatusUpdateToCustomer(data: any) {
         <p>Pickup: ${data.pickupDate}</p>
         <p>Return: ${data.returnDate}</p>
         <h3>Total: $${data.totalCost}</h3>
-        <p>Thank you for choosing Kigali Car Hire.</p>
+        <p>Thank you for choosing Kigali Car Rental.</p>
       `,
     });
 

@@ -16,11 +16,11 @@ export default function AboutSection() {
 
             <div className="space-y-6">
               <p className="text-gray-600 text-lg leading-relaxed">
-                <span className="font-semibold text-gray-800">Kigali Car Rental</span> was founded in the heart of Kigali with a simple mission: to provide reliable, safe, and comfortable car rental in Kigali for both locals and visitors exploring Rwanda.
+                <span className="font-semibold text-gray-800">Kigali Car Rental</span> was founded in the heart of Kigali with a simple mission: to provide reliable, safe, and comfortable Kigali car rental for both locals and visitors exploring Rwanda.
               </p>
 
               <p className="text-gray-600 text-lg leading-relaxed">
-                What started as a small fleet of two vehicles has grown into one of the most trusted names in Kigali car rental, serving thousands of satisfied customers from across the globe who chose us for car hire in Kigali and beyond.
+                What started as a small fleet of two vehicles has grown into one of the most trusted names in Kigali car rental, serving thousands of satisfied customers from across the globe who chose us for Kigali car rental and beyond.
               </p>
 
               <div className="mt-8 p-6 bg-gray-50 rounded-xl border-l-4 border-blue-600">
@@ -36,7 +36,7 @@ export default function AboutSection() {
             {/* Core Values */}
             <div className="mb-10">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Why Choose Us for Car Rental in Kigali
+                Why Choose Us for Kigali Car Rental
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

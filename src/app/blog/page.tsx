@@ -3,15 +3,15 @@ import BlogListing from "@/components/BlogListing";
 import { imageUrl } from "@/lib/images";
 
 export const metadata: Metadata = {
-  title: "Kigali Car Rentals Blog | Rwanda Travel Tips & Car Hire Guides",
+  title: "Kigali Car Rental Blog | Rwanda Travel Tips & Car Hire Guides",
   description:
-    "Discover expert car rental tips, Rwanda travel guides, and insider advice from Kigali Car Rentals. Learn everything about self-drive adventures, safaris, road trips, and renting a car in Kigali.",
+    "Discover expert Kigali car rental tips, Rwanda travel guides, and insider advice from Kigali Car Rental. Learn everything about self-drive adventures, safaris, and road trips.",
   keywords:
-    "Kigali car rentals blog, Rwanda car rental tips, Kigali car hire guide, Rwanda travel tips, self drive Rwanda, car rental Kigali blog, Rwanda road trip guide, safari car hire Rwanda",
+    "Kigali car rental, Kigali car rental blog, Rwanda car rental tips, Kigali car rental guide, Rwanda travel tips, self drive Rwanda, Rwanda road trip guide, safari car hire Rwanda",
   openGraph: {
-    title: "Kigali Car Rentals Blog | Travel Tips & Car Hire Guides in Rwanda",
+    title: "Kigali Car Rental Blog | Travel Tips & Car Hire Guides in Rwanda",
     description:
-      "Expert travel guides, car rental tips, and Rwanda road trip advice from Kigali Car Rentals.",
+      "Expert travel guides, Kigali car rental tips, and Rwanda road trip advice from Kigali Car Rental.",
     type: "website",
   },
   twitter: {

@@ -17,7 +17,7 @@ export default function AddBlogPage() {
     excerpt: "",
     content: "",
     featuredImage: "",
-    author: "Kigali Car Hire Team",
+    author: "Kigali Car Rental Team",
     category: "car-tips",
     tags: [] as string[],
     metaTitle: "",
@@ -41,7 +41,7 @@ export default function AddBlogPage() {
   // Suggested SEO keywords for car rental in Rwanda
   const suggestedKeywords = [
     "car rental Rwanda",
-    "Kigali car hire",
+    "Kigali car rental",
     "rent a car Kigali",
     "Rwanda car rental",
     "affordable car rental Rwanda",

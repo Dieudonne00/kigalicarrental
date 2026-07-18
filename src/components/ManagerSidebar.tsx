@@ -120,7 +120,7 @@ export default function ManagerSidebar() {
             <Link href="/manager/dashboard" className="flex items-center">
               <Image
                 src={imageUrl("kigalicarhire.png")}
-                alt="Kigali Car Hire"
+                alt="Kigali Car Rental"
                 width={120}
                 height={40}
                 className="h-10 w-auto"

@@ -48,7 +48,7 @@ export default function ManagerLogin() {
         <div className="flex justify-center">
           <Image
             src={imageUrl("kigalicarhire.png")}
-            alt="Kigali Car Hire Logo"
+            alt="Kigali Car Rental Logo"
             width={180}
             height={60}
             className="h-16 w-auto"

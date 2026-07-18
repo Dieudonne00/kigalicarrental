@@ -62,7 +62,7 @@ function isGeneratedContent(value: unknown): value is GeneratedContent {
 }
 
 async function writeWithGroq(topic: BlogTopic): Promise<GeneratedContent> {
-  const systemPrompt = `You are a senior travel and automotive content writer for Kigali Car Rental (kigalicarrental.site), a real car rental company operating in Kigali, Rwanda. You write genuinely useful, locally accurate, specific articles - never generic filler, never keyword-stuffed. You naturally mention "Kigali car rental" or a close variant (e.g. "car rental in Kigali", "car hire in Rwanda") a handful of times where it reads naturally, and you write like someone who actually knows Rwanda's roads, parks and travel logistics. Respond with ONLY a single valid JSON object, no markdown fences, no commentary, matching exactly this shape:
+  const systemPrompt = `You are a senior travel and automotive content writer for Kigali Car Rental (kigalicarrental.site), a real car rental company operating in Kigali, Rwanda. You write genuinely useful, locally accurate, specific articles - never generic filler, never keyword-stuffed. The exact phrase "Kigali car rental" is the site's main target keyword, so prefer that exact phrasing (not "car rental in Kigali" or "Kigali car hire") the majority of the times you reference the business or the service, while still allowing occasional natural variation so the text doesn't read like it's repeating one phrase, and you write like someone who actually knows Rwanda's roads, parks and travel logistics. Respond with ONLY a single valid JSON object, no markdown fences, no commentary, matching exactly this shape:
 {
   "title": "string, specific and compelling, includes the primary keyword naturally",
   "excerpt": "string, 1-2 sentences, plain text, no HTML",
@@ -102,7 +102,7 @@ ${otherPosts.map((p) => `<li><a href="/blog/${p.slug}">${p.title}</a></li>`).joi
 <ul>
 <li><a href="/fleet">Browse our full fleet of rental cars in Kigali</a></li>
 ${relatedLinks}
-<li><a href="/book-now">Book your car rental in Kigali today</a></li>
+<li><a href="/book-now">Book your Kigali car rental today</a></li>
 </ul>
 ${morePosts}`;
 }

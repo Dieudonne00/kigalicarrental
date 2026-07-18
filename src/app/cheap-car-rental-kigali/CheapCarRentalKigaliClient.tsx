@@ -144,7 +144,7 @@ export default function CheapCarRentalKigaliClient() {
             Cheap Car Rental Kigali
           </h1>
           <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
-            Quality cars from <span className="text-blue-400 font-bold text-2xl">$25/day</span>. Best budget car rental in Kigali, Rwanda.
+            Quality cars from <span className="text-blue-400 font-bold text-2xl">$25/day</span>. The best budget Kigali car rental.
             No hidden fees, free delivery, and full insurance included.
           </p>
 

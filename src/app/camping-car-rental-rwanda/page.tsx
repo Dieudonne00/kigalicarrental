@@ -4,7 +4,7 @@ import CampingCarRentalRwandaClient from "./CampingCarRentalRwandaClient";
 export const metadata: Metadata = {
   title: "Camping Car Rental Rwanda | Motorhomes & Campervans",
   description:
-    "Self-contained camping car rental in Kigali, Rwanda. Fully equipped motorhomes and campervans with kitchen, toilet, shower and fridge, sleeping 2-6. Perfect for Akagera, Lake Kivu and cross-border safaris.",
+    "Kigali car rental for camping trips - fully equipped motorhomes and campervans with kitchen, toilet, shower and fridge, sleeping 2-6. Perfect for Akagera, Lake Kivu and cross-border safaris.",
   alternates: {
     canonical: "/camping-car-rental-rwanda",
   },

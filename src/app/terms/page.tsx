@@ -5,7 +5,7 @@ import { CONTACT } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "Terms & Conditions | Kigali Car Rental",
   description:
-    "Terms and conditions for renting a vehicle from Kigali Car Rental in Kigali, Rwanda, including eligibility, payment, insurance, and cancellation policy.",
+    "Terms and conditions for renting a vehicle from Kigali Car Rental in Rwanda, including eligibility, payment, insurance, and cancellation policy.",
   alternates: { canonical: "/terms" },
 };
 

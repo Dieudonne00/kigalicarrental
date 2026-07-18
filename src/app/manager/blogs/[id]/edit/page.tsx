@@ -38,7 +38,7 @@ export default function EditBlogPage() {
     excerpt: "",
     content: "",
     featuredImage: null,
-    author: "Kigali Car Hire Team",
+    author: "Kigali Car Rental Team",
     category: "car-rental-tips",
     tags: [],
     metaTitle: null,
@@ -50,7 +50,7 @@ export default function EditBlogPage() {
 
   const suggestedKeywords = [
     "car rental Rwanda",
-    "Kigali car hire",
+    "Kigali car rental",
     "rent a car Kigali",
     "Rwanda car rental",
     "affordable car rental Rwanda",
