@@ -7,3 +7,5 @@ file.env
 tsconfig.tsbuildinfo
 .claude/
 prisma/dev.db
+.vercel
+.env*

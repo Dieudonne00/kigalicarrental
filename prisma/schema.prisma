@@ -26,7 +26,7 @@ model Car {
   dailyRate     Float
   weeklyRate    Float?
   monthlyRate   Float?
-  images        Json? // Array of image URLs (stored as JSON for sqlite dev)
+  images        String[] @default([]) // Array of image URLs
   available     Boolean  @default(true)
   featured      Boolean  @default(false)
   gameDrive     Boolean  @default(false) // For Akagera Game Drive
@@ -112,10 +112,10 @@ model BlogPost {
   featuredImage   String?  // Main image URL
   author          String   @default("Kigali Car Hire Team")
   category        String   // car-tips, travel-guides, company-news, rwanda-tourism, car-maintenance
-  tags            Json? // SEO keywords: car rental Rwanda, Kigali tourism, etc. (JSON for sqlite dev)
+  tags            String[] @default([]) // SEO keywords: car rental Rwanda, Kigali tourism, etc.
   metaTitle       String?  // SEO meta title
   metaDescription String?  // SEO meta description
-  metaKeywords    Json? // SEO keywords array (JSON for sqlite dev)
+  metaKeywords    String[] @default([]) // SEO keywords array
   published       Boolean  @default(false)
   featured        Boolean  @default(false) // Show on homepage
   views           Int      @default(0)
