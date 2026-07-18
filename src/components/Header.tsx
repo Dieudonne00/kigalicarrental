@@ -67,7 +67,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg border-b-2 border-blue-100">
+    <header className="sticky top-0 z-50 bg-white shadow-lg border-b-2 border-blue-100">
       <div className="max-w-7xl mx-auto px-4">
         {/* TOP CONTACT BAR - BLUE THEME */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2 px-4 rounded-b-lg">

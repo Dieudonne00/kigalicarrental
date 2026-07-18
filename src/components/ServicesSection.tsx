@@ -93,36 +93,34 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* Services Grid - 2 columns on mobile, 4 on desktop */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+        {/* Services Grid - single column on phones, up to 4 columns on desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl border-2 border-gray-200 p-4 md:p-8 hover:border-[#4B5320] transition-all duration-300 hover:shadow-lg group"
+              className="bg-white rounded-xl border-2 border-gray-200 p-6 sm:p-8 hover:border-blue-600 transition-all duration-300 hover:shadow-lg group"
             >
               {/* Icon */}
-              <div className="w-10 h-10 md:w-16 md:h-16 bg-[#4B5320]/10 rounded-xl flex items-center justify-center text-[#4B5320] mb-3 md:mb-6 group-hover:bg-[#4B5320] group-hover:text-white transition-all duration-300">
-                <div className="scale-75 md:scale-100">
-                  {service.icon}
-                </div>
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-5 sm:mb-6 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                {service.icon}
               </div>
 
               {/* Title */}
-              <h3 className="text-sm md:text-xl font-bold text-gray-900 mb-2 md:mb-3 font-[family-name:var(--font-plus-jakarta)] line-clamp-2">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 font-[family-name:var(--font-plus-jakarta)]">
                 {service.title}
               </h3>
 
               {/* Description */}
-              <p className="text-[11px] md:text-base text-gray-600 mb-3 md:mb-6 leading-relaxed line-clamp-3 md:line-clamp-none">
+              <p className="text-sm sm:text-base text-gray-600 mb-5 sm:mb-6 leading-relaxed">
                 {service.description}
               </p>
 
               {/* Features */}
-              <ul className="space-y-1 md:space-y-2">
+              <ul className="space-y-2">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-[10px] md:text-sm">
+                  <li key={featureIndex} className="flex items-center text-sm">
                     <svg
-                      className="w-3 h-3 md:w-5 md:h-5 text-[#4B5320] mr-1 md:mr-2 flex-shrink-0"
+                      className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2 flex-shrink-0"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -152,7 +150,7 @@ export default function ServicesSection() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
                 href="tel:+250787619387"
-                className="inline-flex items-center justify-center px-6 py-3 bg-[#4B5320] text-white font-bold rounded-lg hover:bg-[#3a4218] transition-all"
+                className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all"
               >
                 <svg
                   className="w-5 h-5 mr-2"
@@ -169,7 +167,7 @@ export default function ServicesSection() {
               </a>
               <a
                 href="mailto:booking@carrentalinkigali.com"
-                className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 text-gray-900 font-bold rounded-lg hover:border-[#4B5320] hover:bg-[#4B5320] hover:text-white transition-all"
+                className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 text-gray-900 font-bold rounded-lg hover:border-blue-600 hover:bg-blue-600 hover:text-white transition-all"
               >
                 <svg
                   className="w-5 h-5 mr-2"

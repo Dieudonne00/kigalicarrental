@@ -19,14 +19,12 @@ export default function ConditionalLayout({
     return <>{children}</>;
   }
 
-  // Public routes: include header/footer with fixed scrolling
+  // Public routes: normal page flow with a sticky header
   return (
-    <div className="flex flex-col h-screen overflow-hidden">
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 overflow-y-auto">
-        {children}
-        <Footer />
-      </main>
+      <main className="flex-1">{children}</main>
+      <Footer />
     </div>
   );
 }
