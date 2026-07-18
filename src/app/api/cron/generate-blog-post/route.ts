@@ -1,12 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { generateBlogPost } from "@/lib/blog-generator";
-import { sendBlogDraftNotification } from "@/lib/email";
+import { sendBlogPublishedNotification } from "@/lib/email";
 
-// Triggered 3x/day by a VPS crontab hitting this URL. Protected by the same
-// shared-secret pattern as /api/cron/daily-report. Generates ONE draft post
-// per call (three cron triggers a day = three posts a day) and always saves
-// as an unpublished draft - a human reviews and publishes it in
-// /manager/blogs, so a bad generation never reaches a live visitor.
+const POSTS_PER_RUN = 4;
+
+// Triggered once a day at 8am by a VPS crontab hitting this URL. Protected
+// by the same shared-secret pattern as /api/cron/daily-report. Generates
+// and PUBLISHES 4 posts per run, fully automatically - no manager review
+// step. If one generation fails, the rest still proceed; a single summary
+// email covers whatever published plus how many failed.
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const secret = searchParams.get("secret") || request.headers.get("x-cron-secret");
@@ -15,24 +17,27 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  try {
-    const { post, editUrl } = await generateBlogPost();
+  const published: { id: string; slug: string; title: string }[] = [];
+  const notified: { title: string; category: string; excerpt: string; liveUrl: string }[] = [];
+  let failedCount = 0;
 
-    await sendBlogDraftNotification({
-      title: post.title,
-      category: post.category,
-      excerpt: post.excerpt,
-      editUrl,
-    });
-
-    return NextResponse.json({
-      success: true,
-      id: post.id,
-      slug: post.slug,
-      title: post.title,
-    });
-  } catch (error) {
-    console.error("Error generating AI blog post:", error);
-    return NextResponse.json({ error: "Failed to generate blog post" }, { status: 500 });
+  for (let i = 0; i < POSTS_PER_RUN; i++) {
+    try {
+      const { post, liveUrl } = await generateBlogPost();
+      published.push({ id: post.id, slug: post.slug, title: post.title });
+      notified.push({ title: post.title, category: post.category, excerpt: post.excerpt, liveUrl });
+    } catch (error) {
+      failedCount += 1;
+      console.error(`Error generating AI blog post (${i + 1}/${POSTS_PER_RUN}):`, error);
+    }
   }
+
+  await sendBlogPublishedNotification(notified, failedCount);
+
+  return NextResponse.json({
+    success: published.length > 0,
+    publishedCount: published.length,
+    failedCount,
+    posts: published,
+  });
 }

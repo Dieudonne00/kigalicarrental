@@ -143,33 +143,48 @@ export async function sendDailyDigest(data: DailyDigestData) {
   }
 }
 
-// ================= AI BLOG DRAFT NOTIFICATION =================
-export interface BlogDraftEmailData {
+// ================= AI BLOG PUBLISHED NOTIFICATION =================
+export interface PublishedBlogPost {
   title: string;
   category: string;
   excerpt: string;
-  editUrl: string;
+  liveUrl: string;
 }
 
-export async function sendBlogDraftNotification(data: BlogDraftEmailData) {
+export async function sendBlogPublishedNotification(posts: PublishedBlogPost[], failedCount: number) {
+  if (posts.length === 0 && failedCount === 0) return;
   try {
+    const postsHtml = posts
+      .map(
+        (p) => `
+        <div style="margin-bottom:16px;padding:12px;background:#eff6ff;border-radius:8px;">
+          <p style="margin:0 0 4px;"><b>${p.title}</b> <span style="color:#6b7280;">(${p.category})</span></p>
+          <p style="margin:0 0 8px;color:#4b5563;">${p.excerpt}</p>
+          <a href="${p.liveUrl}" style="color:#2563eb;">${p.liveUrl}</a>
+        </div>`
+      )
+      .join("");
+
+    const failedHtml =
+      failedCount > 0
+        ? `<p style="color:#b91c1c;">${failedCount} post${failedCount > 1 ? "s" : ""} failed to generate - check the server logs.</p>`
+        : "";
+
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_ADMIN,
-      subject: `📝 New AI Blog Draft Ready for Review - ${data.title}`,
+      subject: `📝 ${posts.length} New Blog Post${posts.length !== 1 ? "s" : ""} Published Automatically`,
       html: `
-        <h2>New AI-Generated Blog Draft</h2>
-        <p><b>Title:</b> ${data.title}</p>
-        <p><b>Category:</b> ${data.category}</p>
-        <p><b>Excerpt:</b> ${data.excerpt}</p>
-        <p>This post was written automatically and saved as a <b>draft</b> - it will not go live until you review and publish it.</p>
-        <p><a href="${data.editUrl}" style="display:inline-block;background:#2563eb;color:#fff;padding:10px 18px;border-radius:6px;text-decoration:none;">Review &amp; Publish</a></p>
+        <h2>Today's AI-Generated Blog Posts</h2>
+        <p>These went live automatically - no review needed.</p>
+        ${postsHtml}
+        ${failedHtml}
       `,
     });
 
-    console.log("✅ Blog draft notification email sent");
+    console.log("✅ Blog published notification email sent");
   } catch (err) {
-    console.error("❌ Blog draft notification email failed:", err);
+    console.error("❌ Blog published notification email failed:", err);
   }
 }
 

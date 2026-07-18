@@ -1,8 +1,41 @@
 import { prisma } from "@/lib/prisma";
 import { groqChatJSON } from "@/lib/groq";
 import { BLOG_TOPICS, BlogTopic } from "@/lib/blog-topics";
+import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 
 const SITE_URL = "https://www.kigalicarrental.site";
+
+// Groq has no image-generation endpoint, so the featured image is a real
+// photo from the actual fleet rather than a fabricated/stock one - picked to
+// match the topic where possible (safari/4x4 topics get an SUV, luxury/
+// business topics get a luxury car), falling back to any featured car, then
+// any available car, then a generic placeholder as a last resort.
+async function pickFeaturedImage(topic: BlogTopic): Promise<string | null> {
+  const text = `${topic.key} ${topic.brief} ${topic.primaryKeyword}`.toLowerCase();
+  let preferredCategory: string | null = null;
+  if (/luxury|wedding|vip|business|executive|conference/.test(text)) {
+    preferredCategory = "luxury";
+  } else if (/4x4|safari|akagera|volcanoes|nyungwe|camping|rooftop|gorilla|land cruiser|prado|suv/.test(text)) {
+    preferredCategory = "suv";
+  }
+
+  const baseWhere = { available: true, images: { isEmpty: false } };
+
+  let candidates = preferredCategory
+    ? await prisma.car.findMany({ where: { ...baseWhere, category: preferredCategory }, select: { images: true } })
+    : [];
+
+  if (candidates.length === 0) {
+    candidates = await prisma.car.findMany({ where: { ...baseWhere, featured: true }, select: { images: true } });
+  }
+  if (candidates.length === 0) {
+    candidates = await prisma.car.findMany({ where: baseWhere, select: { images: true } });
+  }
+  if (candidates.length === 0) return null;
+
+  const car = candidates[Math.floor(Math.random() * candidates.length)];
+  return car.images[Math.floor(Math.random() * car.images.length)];
+}
 
 function slugify(title: string): string {
   return title
@@ -111,16 +144,20 @@ export async function generateBlogPost() {
   const topic = await pickTopic();
   const generated = await writeWithGroq(topic);
 
-  const otherPostsPool = await prisma.blogPost.findMany({
-    where: { published: true },
-    orderBy: { publishedAt: "desc" },
-    take: 8,
-    select: { slug: true, title: true },
-  });
+  const [otherPostsPool, featuredImage] = await Promise.all([
+    prisma.blogPost.findMany({
+      where: { published: true },
+      orderBy: { publishedAt: "desc" },
+      take: 8,
+      select: { slug: true, title: true },
+    }),
+    pickFeaturedImage(topic),
+  ]);
   const otherPosts = otherPostsPool.sort(() => Math.random() - 0.5).slice(0, 2);
 
   const content = generated.content + buildInternalLinksBlock(topic, otherPosts);
   const slug = await uniqueSlug(slugify(generated.title));
+  const now = new Date();
 
   const post = await prisma.blogPost.create({
     data: {
@@ -128,16 +165,18 @@ export async function generateBlogPost() {
       slug,
       excerpt: generated.excerpt,
       content,
+      featuredImage: featuredImage || CAR_IMAGE_FALLBACK,
       author: "Kigali Car Rental Team",
       category: topic.category,
       tags: generated.tags,
       metaTitle: generated.metaTitle,
       metaDescription: generated.metaDescription,
       metaKeywords: generated.metaKeywords,
-      published: false,
+      published: true,
       featured: false,
+      publishedAt: now,
     },
   });
 
-  return { post, editUrl: `${SITE_URL}/manager/blogs/${post.id}/edit` };
+  return { post, liveUrl: `${SITE_URL}/blog/${post.slug}` };
 }
