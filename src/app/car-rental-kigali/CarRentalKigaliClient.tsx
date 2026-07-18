@@ -327,10 +327,10 @@ export default function CarRentalKigaliClient() {
               📞 Call +250 787 619 387 Now
             </a>
             <a
-              href="mailto:booking@carrentalinkigali.com"
+              href="mailto:hi@rwandatours.co.rw"
               className="bg-blue-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
-              📧 Email: booking@carrentalinkigali.com
+              📧 Email: hi@rwandatours.co.rw
             </a>
             <a
               href="/book-now"

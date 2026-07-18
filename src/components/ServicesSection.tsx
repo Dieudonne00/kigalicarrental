@@ -166,7 +166,7 @@ export default function ServicesSection() {
                 Call Us: +250 787 619 387
               </a>
               <a
-                href="mailto:booking@carrentalinkigali.com"
+                href="mailto:hi@rwandatours.co.rw"
                 className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 text-gray-900 font-bold rounded-lg hover:border-blue-600 hover:bg-blue-600 hover:text-white transition-all"
               >
                 <svg

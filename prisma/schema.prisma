@@ -167,3 +167,11 @@ model BookingRequest {
   @@index([email])
   @@index([createdAt])
 }
+
+model PageVisit {
+  id        String   @id @default(cuid())
+  path      String
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}

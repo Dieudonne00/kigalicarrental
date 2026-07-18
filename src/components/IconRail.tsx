@@ -64,7 +64,7 @@ export default function IconRail() {
   return (
     <nav
       aria-label="Quick service navigation"
-      className="hidden lg:flex fixed left-0 top-[108px] bottom-0 z-40 w-16 flex-col items-center bg-blue-900 pt-4 gap-1 overflow-y-auto"
+      className="hidden lg:flex fixed left-0 top-[65px] bottom-0 z-40 w-16 flex-col items-center bg-blue-900 pt-4 gap-1 overflow-y-auto"
     >
       {railItems.map((item) => {
         const active = pathname === item.href;

@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { CONTACT } from "@/lib/constants";
 
 // ================== TRANSPORTER ==================
 const transporter = nodemailer.createTransport({
@@ -32,6 +33,7 @@ export async function sendBookingNotificationToManager(data: BookingEmailData) {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_ADMIN,
+      replyTo: data.customerEmail,
       subject: `🚗 New Booking - ${data.carName}`,
       html: `
         <h2>New Booking Received</h2>
@@ -66,6 +68,7 @@ export async function sendContactFormNotification(data: {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: process.env.EMAIL_ADMIN,
+      replyTo: data.email,
       subject: `📩 Contact Form - ${data.name}`,
       html: `
         <h2>New Contact Message</h2>
@@ -88,6 +91,7 @@ export async function sendStatusUpdateToCustomer(data: any) {
     await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: data.customerEmail,
+      replyTo: CONTACT.EMAIL,
       subject: `Booking Status Updated - ${data.carName}`,
       html: `
         <h2>Status: ${data.newStatus}</h2>
@@ -103,6 +107,39 @@ export async function sendStatusUpdateToCustomer(data: any) {
     console.log("✅ Status email sent");
   } catch (err) {
     console.error("❌ Status email failed:", err);
+  }
+}
+
+// ================= DAILY ADMIN DIGEST =================
+export interface DailyDigestData {
+  date: string;
+  visitCount: number;
+  bookingCount: number;
+  bookingRequestCount: number;
+  contactMessageCount: number;
+}
+
+export async function sendDailyDigest(data: DailyDigestData) {
+  try {
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_ADMIN,
+      subject: `📊 Daily Report - ${data.date} - Kigali Car Rental`,
+      html: `
+        <h2>Daily Report for ${data.date}</h2>
+        <table cellpadding="8" style="border-collapse: collapse; width: 100%; max-width: 480px;">
+          <tr style="background:#eff6ff;"><td><b>Website visits</b></td><td>${data.visitCount}</td></tr>
+          <tr><td><b>New bookings</b></td><td>${data.bookingCount}</td></tr>
+          <tr style="background:#eff6ff;"><td><b>New booking requests</b></td><td>${data.bookingRequestCount}</td></tr>
+          <tr><td><b>New contact messages</b></td><td>${data.contactMessageCount}</td></tr>
+        </table>
+        <p style="margin-top:16px;color:#6b7280;">Automated daily summary from kigalicarrental.site</p>
+      `,
+    });
+
+    console.log("✅ Daily digest email sent");
+  } catch (err) {
+    console.error("❌ Daily digest email failed:", err);
   }
 }
 

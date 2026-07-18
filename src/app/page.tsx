@@ -71,6 +71,9 @@ export default function Home() {
 
       <HeroSection />
 
+      {/* Cars come right after the hero - this is what visitors came for */}
+      <FeaturedFleet />
+
       {/* Why Choose Us */}
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -88,7 +91,6 @@ export default function Home() {
         </div>
       </section>
 
-      <FeaturedFleet />
       <AboutSection />
       <ServicesSection />
       <FeaturedBlogs />

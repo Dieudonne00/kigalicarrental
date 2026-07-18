@@ -8,10 +8,22 @@ export default function HeroSection() {
   const today = new Date().toISOString().split("T")[0];
   const [pickupDate, setPickupDate] = useState(today);
   const [returnDate, setReturnDate] = useState("");
+  const [carType, setCarType] = useState("all");
+
+  const carTypes = [
+    { value: "all", label: "Any Vehicle Type" },
+    { value: "sedan", label: "Sedan" },
+    { value: "suv", label: "SUV" },
+    { value: "luxury", label: "Luxury" },
+    { value: "coupe", label: "Coupe" },
+    { value: "convertible", label: "Convertible" },
+    { value: "electric", label: "Electric" },
+  ];
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     const params = new URLSearchParams();
+    if (carType && carType !== "all") params.set("category", carType);
     if (pickupDate) params.set("pickupDate", pickupDate);
     if (returnDate) params.set("returnDate", returnDate);
     router.push(`/fleet?${params.toString()}`);
@@ -53,6 +65,26 @@ export default function HeroSection() {
               <div className="text-sm font-medium text-gray-900 truncate">Kigali, Rwanda</div>
             </div>
           </div>
+
+          <label className="flex-1 flex items-center gap-2 bg-gray-50 rounded-lg px-3 py-2.5 border border-transparent focus-within:border-blue-500 cursor-pointer">
+            <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M5 17h14M5 17a2 2 0 01-2-2v-2.5a1 1 0 01.3-.7l2.1-2.1A2 2 0 016.8 9h10.4a2 2 0 011.4.6l2.1 2.1a1 1 0 01.3.7V15a2 2 0 01-2 2M5 17a2 2 0 002 2h1a2 2 0 002-2m8 0a2 2 0 002 2h1a2 2 0 002-2" />
+            </svg>
+            <div className="min-w-0 flex-1">
+              <div className="text-[10px] font-semibold text-gray-400 uppercase leading-none">Vehicle Type</div>
+              <select
+                value={carType}
+                onChange={(e) => setCarType(e.target.value)}
+                className="text-sm font-medium text-gray-900 bg-transparent outline-none w-full cursor-pointer"
+              >
+                {carTypes.map((type) => (
+                  <option key={type.value} value={type.value}>
+                    {type.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </label>
 
           <label className="flex-1 flex items-center gap-2 bg-gray-50 rounded-lg px-3 py-2.5 border border-transparent focus-within:border-blue-500 cursor-pointer">
             <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">

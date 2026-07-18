@@ -1,6 +1,6 @@
 export const CONTACT = {
   PHONE: "+250787619387",
-  EMAIL: "booking@carrentalinkigali.com",
+  EMAIL: "hi@rwandatours.co.rw",
   COMPANY_NAME: "Kigali Car Rental",
   ADDRESS: "KG 541 St, Kigali, Rwanda",
 };

@@ -478,8 +478,8 @@ export default function KigaliAirportCarRentalClient() {
                 </div>
                 <div className="pt-3 border-t border-white/20">
                   <div className="font-bold">Email for Flight Details:</div>
-                  <a href="mailto:booking@carrentalinkigali.com" className="hover:underline">
-                    booking@carrentalinkigali.com
+                  <a href="mailto:hi@rwandatours.co.rw" className="hover:underline">
+                    hi@rwandatours.co.rw
                   </a>
                 </div>
               </div>
