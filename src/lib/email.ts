@@ -143,3 +143,33 @@ export async function sendDailyDigest(data: DailyDigestData) {
   }
 }
 
+// ================= AI BLOG DRAFT NOTIFICATION =================
+export interface BlogDraftEmailData {
+  title: string;
+  category: string;
+  excerpt: string;
+  editUrl: string;
+}
+
+export async function sendBlogDraftNotification(data: BlogDraftEmailData) {
+  try {
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_ADMIN,
+      subject: `📝 New AI Blog Draft Ready for Review - ${data.title}`,
+      html: `
+        <h2>New AI-Generated Blog Draft</h2>
+        <p><b>Title:</b> ${data.title}</p>
+        <p><b>Category:</b> ${data.category}</p>
+        <p><b>Excerpt:</b> ${data.excerpt}</p>
+        <p>This post was written automatically and saved as a <b>draft</b> - it will not go live until you review and publish it.</p>
+        <p><a href="${data.editUrl}" style="display:inline-block;background:#2563eb;color:#fff;padding:10px 18px;border-radius:6px;text-decoration:none;">Review &amp; Publish</a></p>
+      `,
+    });
+
+    console.log("✅ Blog draft notification email sent");
+  } catch (err) {
+    console.error("❌ Blog draft notification email failed:", err);
+  }
+}
+

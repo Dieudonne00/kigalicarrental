@@ -175,3 +175,12 @@ model PageVisit {
 
   @@index([createdAt])
 }
+
+model GeneratedTopicLog {
+  id        String   @id @default(cuid())
+  topicKey  String
+  createdAt DateTime @default(now())
+
+  @@index([topicKey])
+  @@index([createdAt])
+}

@@ -1,8 +1,8 @@
-# Allow all search engines to crawl the site
+# Allow all search engines to crawl the public site
 User-agent: *
 Allow: /
-
-
+Disallow: /manager/
+Disallow: /api/
 
 # Sitemap location
 Sitemap: https://www.kigalicarrental.site/sitemap.xml
