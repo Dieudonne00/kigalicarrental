@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
+import { createSessionToken } from "@/lib/session";
 
 export async function POST(request: Request) {
   try {
@@ -44,10 +45,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // Create session token (simple approach - in production use JWT or next-auth)
-    const sessionToken = Buffer.from(
-      `${manager.id}:${Date.now()}`
-    ).toString("base64");
+    // Signed, tamper-proof session token (see src/lib/session.ts)
+    const sessionToken = await createSessionToken(manager.id);
 
     // Create response with session cookie
     const response = NextResponse.json(

@@ -1,28 +1,35 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { verifySessionToken } from "@/lib/session";
 
-export default function proxy(request: NextRequest) {
+// Login/logout must stay reachable without a valid session - everything
+// else under /api/manager/* mutates or reads admin data and previously had
+// no auth check of its own (the old proxy only guarded /manager/* pages,
+// not /api/manager/* routes).
+const PUBLIC_API_PATHS = new Set(["/api/manager/login", "/api/manager/logout"]);
+
+export default async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const sessionCookie = request.cookies.get("manager_session")?.value;
 
-  // Check if the request is for a manager route (except login)
-  if (pathname.startsWith("/manager") && pathname !== "/manager/login") {
-    // Check for session cookie
-    const sessionCookie = request.cookies.get("manager_session");
+  const isProtectedPage = pathname.startsWith("/manager") && pathname !== "/manager/login";
+  const isProtectedApi = pathname.startsWith("/api/manager") && !PUBLIC_API_PATHS.has(pathname);
 
-    if (!sessionCookie) {
-      // Redirect to login if no session
-      const loginUrl = new URL("/manager/login", request.url);
-      return NextResponse.redirect(loginUrl);
+  if (isProtectedPage || isProtectedApi) {
+    const session = await verifySessionToken(sessionCookie);
+    if (!session) {
+      if (isProtectedApi) {
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+      }
+      return NextResponse.redirect(new URL("/manager/login", request.url));
     }
   }
 
-  // If accessing login page while already authenticated, redirect to dashboard
+  // Already authenticated and hitting the login page - skip straight to the dashboard.
   if (pathname === "/manager/login") {
-    const sessionCookie = request.cookies.get("manager_session");
-
-    if (sessionCookie) {
-      const dashboardUrl = new URL("/manager/dashboard", request.url);
-      return NextResponse.redirect(dashboardUrl);
+    const session = await verifySessionToken(sessionCookie);
+    if (session) {
+      return NextResponse.redirect(new URL("/manager/dashboard", request.url));
     }
   }
 
@@ -31,5 +38,5 @@ export default function proxy(request: NextRequest) {
 
 // Configure which routes the proxy should run on
 export const config = {
-  matcher: "/manager/:path*",
+  matcher: ["/manager/:path*", "/api/manager/:path*"],
 };
