@@ -69,8 +69,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-lg border-b-2 border-blue-100">
       <div className="max-w-7xl mx-auto px-4">
-        {/* TOP CONTACT BAR - BLUE THEME */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2 px-4 rounded-b-lg">
+        {/* TOP CONTACT BAR - BLUE THEME - desktop only, mobile menu has contact info */}
+        <div className="hidden md:block bg-gradient-to-r from-blue-600 to-blue-700 text-white py-2 px-4 rounded-b-lg">
           <div className="flex justify-between items-center text-sm">
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">

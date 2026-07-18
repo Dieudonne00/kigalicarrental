@@ -76,7 +76,7 @@ export default function FeaturedFleet() {
             {cars.map((car) => (
               <div
                 key={car.id}
-                className="bg-white rounded-xl overflow-hidden border-2 border-gray-200 hover:border-blue-600 transition-all duration-300"
+                className="bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-blue-400 hover:shadow-md transition-all duration-200"
               >
                 <div className="relative h-44 sm:h-48 overflow-hidden">
                   <img

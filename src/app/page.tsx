@@ -79,8 +79,8 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
             {whyChooseUs.map((item) => (
-              <div key={item.title} className="p-6 sm:p-8 rounded-2xl border border-blue-100 bg-blue-50/30 hover:shadow-xl transition-shadow">
-                <h3 className="text-lg sm:text-xl font-bold text-blue-800 mb-2 sm:mb-3">{item.title}</h3>
+              <div key={item.title} className="p-6 sm:p-8 rounded-xl border border-gray-200 hover:border-blue-300 transition-colors">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{item.title}</h3>
                 <p className="text-gray-600 text-sm sm:text-base">{item.desc}</p>
               </div>
             ))}
