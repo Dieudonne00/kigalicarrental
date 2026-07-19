@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "Kigali Car Rental | Premium Car Hire Rwanda | Kigali Airport Pickup",
   description: "Looking for the best Kigali car rental? We offer premium SUVs, luxury cars, and self-drive rentals in Rwanda. 24/7 support, best rates, and Kigali airport delivery.",
   keywords: ["Kigali car rental", "car hire Kigali", "Rwanda car rental", "Kigali airport car rental", "self drive Rwanda", "cheap car rental Kigali", "4x4 rental Rwanda"],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Kigali Car Rental | Trusted Car Hire in Rwanda",
     description: "Premium car rental services in Kigali. Airport pickup, SUVs, and luxury fleet. Book your journey today.",

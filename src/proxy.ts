@@ -8,8 +8,21 @@ import { verifySessionToken } from "@/lib/session";
 // not /api/manager/* routes).
 const PUBLIC_API_PATHS = new Set(["/api/manager/login", "/api/manager/logout"]);
 
+const CANONICAL_HOST = "www.kigalicarrental.site";
+
 export default async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // Both the apex and www domains were serving identical content with no
+  // redirect between them - Google sees that as two duplicate URLs and can
+  // stall indexing while it tries to resolve which one is canonical.
+  const hostname = request.headers.get("host") || "";
+  if (hostname === "kigalicarrental.site") {
+    const url = new URL(request.url);
+    url.hostname = CANONICAL_HOST;
+    return NextResponse.redirect(url, 308);
+  }
+
   const sessionCookie = request.cookies.get("manager_session")?.value;
 
   const isProtectedPage = pathname.startsWith("/manager") && pathname !== "/manager/login";
@@ -36,7 +49,9 @@ export default async function proxy(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Configure which routes the proxy should run on
+// Configure which routes the proxy should run on - now everything except
+// static assets, since the host-canonicalization redirect above must apply
+// sitewide, not just to /manager and /api/manager.
 export const config = {
-  matcher: ["/manager/:path*", "/api/manager/:path*"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|icon.svg).*)"],
 };
