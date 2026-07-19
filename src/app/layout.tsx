@@ -26,7 +26,10 @@ export const metadata: Metadata = {
   title: "Kigali Car Rental - Premium Car Hire Services in Rwanda",
   description: "Rent quality vehicles in Kigali, Rwanda. Airport pickup, city delivery, SUVs & luxury cars. Book online for best rates with 24/7 support.",
   verification: {
-    google: "xHopaPwEJGui02kgKU5AHndOdIRei2piro21JOdMeGk",
+    google: [
+      "xHopaPwEJGui02kgKU5AHndOdIRei2piro21JOdMeGk",
+      "1RDwUPlhnpplY_rLoMQcPUOwl7wFPnh5MU7-FYtYcr8",
+    ],
   },
 };
 
