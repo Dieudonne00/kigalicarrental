@@ -17,6 +17,7 @@ export default function OrganizationSchema() {
           addressLocality: "Kigali",
           addressCountry: "RW",
         },
+        sameAs: ["https://share.google/YeNXsgPb1RAncDYvA"],
       },
       {
         "@type": "WebSite",

@@ -19,20 +19,11 @@ export const metadata: Metadata = {
     description: "Premium car rental services in Kigali. Airport pickup, SUVs, and luxury fleet. Book your journey today.",
     url: "https://www.kigalicarrental.site",
     siteName: "Kigali Car Rental",
-    images: [
-      {
-        url: "https://carrentalinkigali.com/myimages/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Kigali Car Rental",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Kigali Car Rental - Premium Car Hire Services in Rwanda",
     description: "Rent quality vehicles in Kigali, Rwanda. Airport pickup, city delivery, SUVs & luxury cars.",
-    images: ["https://carrentalinkigali.com/myimages/og-image.jpg"],
   },
 };
 

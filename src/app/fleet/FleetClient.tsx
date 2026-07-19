@@ -51,7 +51,7 @@ export default function FleetClient() {
   };
 
   const { minYear, maxYear, minPrice, maxPrice } = useMemo(() => {
-    if (cars.length === 0) return { minYear: 2000, maxYear: 2025, minPrice: 0, maxPrice: 500 };
+    if (cars.length === 0) return { minYear: 2000, maxYear: 2026, minPrice: 0, maxPrice: 500 };
 
     const years = cars.map((car) => car.year);
     const prices = cars.map((car) => car.dailyRate);

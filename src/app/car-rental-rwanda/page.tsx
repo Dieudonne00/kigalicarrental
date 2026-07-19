@@ -1,9 +1,13 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 
-export const metadata = {
-  title: 'Car Rental Rwanda | Best Prices 2024 | KigaliCarRental',
+export const metadata: Metadata = {
+  title: 'Car Rental Rwanda | Best Prices | Kigali Car Rental',
   description: 'Book car rental in Rwanda at best prices. Toyota RAV4, Prado, Sedans available. Airport pickup, 24/7 support. Rent a car in Rwanda today!',
   keywords: 'car rental Rwanda, rent a car Rwanda, car hire Rwanda, Rwanda car rental, 4x4 rental Rwanda, Kigali car rental',
+  alternates: {
+    canonical: '/car-rental-rwanda',
+  },
 }
 
 export default function CarRentalRwanda() {
@@ -13,7 +17,7 @@ export default function CarRentalRwanda() {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Car Rental in Rwanda - Best Prices 2024
+            Car Rental in Rwanda - Best Prices
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Find the perfect car for your Rwandan adventure. From Kigali city tours to Volcanoes National Park safaris.

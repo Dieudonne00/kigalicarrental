@@ -132,6 +132,9 @@ export async function generateMetadata({
     title: post.metaTitle || post.title,
     description: post.metaDescription || post.excerpt,
     keywords: post.metaKeywords.join(", "),
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
     openGraph: {
       title: post.metaTitle || post.title,
       description: post.metaDescription || post.excerpt,

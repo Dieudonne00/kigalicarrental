@@ -52,7 +52,7 @@ export default function CheapCarRentalKigaliClient() {
 
   // Calculate min and max values from all cars
   const { minYear, maxYear, minPrice, maxPrice } = useMemo(() => {
-    if (cars.length === 0) return { minYear: 2015, maxYear: 2025, minPrice: 25, maxPrice: 60 };
+    if (cars.length === 0) return { minYear: 2015, maxYear: 2026, minPrice: 25, maxPrice: 60 };
 
     const years = cars.map((car) => car.year);
     const prices = cars.map((car) => car.dailyRate);
