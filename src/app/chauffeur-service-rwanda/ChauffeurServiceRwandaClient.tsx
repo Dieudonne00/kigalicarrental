@@ -143,12 +143,7 @@ export default function ChauffeurServiceRwandaClient() {
       "name": "Rwanda"
     },
     "serviceType": "Chauffeur Service, Private Driver, Executive Transport",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "287"
-    },
-    "offers": {
+        "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": "USD",
       "lowPrice": "80",
@@ -223,8 +218,8 @@ export default function ChauffeurServiceRwandaClient() {
                   <div className="text-xs text-gray-300 mt-1">Chauffeur Dispatch</div>
                 </div>
                 <div className="bg-[#1D4ED8]/40 backdrop-blur-sm rounded-xl p-4 border border-[#93C5FD]/30">
-                  <div className="text-2xl font-bold text-[#93C5FD]">4.9★</div>
-                  <div className="text-xs text-gray-300 mt-1">287+ Reviews</div>
+                  <div className="text-2xl font-bold text-[#93C5FD]">100%</div>
+                  <div className="text-xs text-gray-300 mt-1">Licensed Drivers</div>
                 </div>
               </div>
 

@@ -152,11 +152,6 @@ export default function Volcanoes4x4RentalClient() {
       "addressLocality": "Kigali",
       "addressCountry": "RW"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "412"
-    },
     "priceRange": "$$$",
     "areaServed": ["Volcanoes National Park", "Musanze", "Kigali", "Rwanda"],
     "hasOfferCatalog": {
@@ -236,8 +231,8 @@ export default function Volcanoes4x4RentalClient() {
                   <div className="text-xs text-gray-300 mt-1">Peak Elevation</div>
                 </div>
                 <div className="bg-blue-50 backdrop-blur-sm rounded-xl p-4 border border-blue-100/30">
-                  <div className="text-2xl font-bold text-blue-200">4.9★</div>
-                  <div className="text-xs text-gray-300 mt-1">412+ Reviews</div>
+                  <div className="text-2xl font-bold text-blue-200">24/7</div>
+                  <div className="text-xs text-gray-300 mt-1">Customer Support</div>
                 </div>
               </div>
               
@@ -983,57 +978,6 @@ export default function Volcanoes4x4RentalClient() {
                   Our 3-day complete package includes 4x4 with driver, gorilla permit ($1,500), 2 nights accommodation in Musanze, and park entry fees. Everything organized for a stress-free experience.
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* TESTIMONIALS */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What Our <span className="text-blue-600">Gorilla Trekking Guests Say</span>
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              412+ 5-star reviews from gorilla trekking adventures
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <p className="text-gray-700 mb-4">"The Land Cruiser Prado handled the muddy roads to Kinigi effortlessly. Our driver Jean was excellent - knew exactly when to leave and waited all day while we trekked. Vehicle was clean and comfortable."</p>
-              <div className="font-bold text-gray-900">Gorilla Trekking Group</div>
-              <div className="text-sm text-gray-500">4x4 + Driver • Volcanoes NP</div>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <p className="text-gray-700 mb-4">"Booked the complete 3-day package. Everything was perfectly organized - airport pickup, 4x4, driver, accommodation, permits. The vehicle was a Land Cruiser V8, incredibly capable on the mountain roads."</p>
-              <div className="font-bold text-gray-900">Sarah & Michael</div>
-              <div className="text-sm text-gray-500">Complete Trekking Package</div>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <p className="text-gray-700 mb-4">"Self-drove to Volcanoes in a Hilux. The vehicle was perfect - high clearance, 4x4 low-range for the steep sections. Park staff were impressed we made it ourselves. Great experience!"</p>
-              <div className="font-bold text-gray-900">Adventure Couple</div>
-              <div className="text-sm text-gray-500">Self-drive • Volcanoes NP</div>
             </div>
           </div>
         </div>

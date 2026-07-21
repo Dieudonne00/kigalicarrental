@@ -105,11 +105,6 @@ export default function DriverCarHireKigaliClient() {
       "addressLocality": "Kigali",
       "addressCountry": "RW"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "342"
-    },
     "priceRange": "$$",
     "areaServed": "Kigali, Rwanda",
     "serviceType": "Chauffeur Service, Car With Driver, Private Driver Hire"

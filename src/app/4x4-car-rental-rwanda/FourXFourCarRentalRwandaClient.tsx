@@ -156,11 +156,6 @@ export default function FourXFourCarRentalRwandaClient() {
       "addressLocality": "Kigali",
       "addressCountry": "RW"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "412"
-    },
     "priceRange": "$$$",
     "areaServed": ["Kigali", "Akagera National Park", "Volcanoes National Park", "Nyungwe Forest", "Lake Kivu"],
     "brand": {
@@ -255,8 +250,8 @@ export default function FourXFourCarRentalRwandaClient() {
                   <div className="text-xs text-gray-300 mt-1">National Parks</div>
                 </div>
                 <div className="bg-[#1D4ED8]/40 backdrop-blur-sm rounded-xl p-4 border border-[#93C5FD]/30">
-                  <div className="text-2xl font-bold text-[#93C5FD]">4.8★</div>
-                  <div className="text-xs text-gray-300 mt-1">412+ Reviews</div>
+                  <div className="text-2xl font-bold text-[#93C5FD]">24/7</div>
+                  <div className="text-xs text-gray-300 mt-1">Customer Support</div>
                 </div>
               </div>
               
@@ -1081,57 +1076,6 @@ export default function FourXFourCarRentalRwandaClient() {
                   Both options available. Self-drive gives you freedom to explore at your pace. Guided safari includes professional driver-guide who knows the parks, animal behavior, and best spots. Choose what suits you.
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* TESTIMONIALS */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What Our <span className="text-[#1D4ED8]">Safari Clients Say</span>
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              412+ 5-star reviews from 4x4 adventurers
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <p className="text-gray-700 mb-4">"The Land Cruiser Prado was perfect for Akagera. Handled mud tracks easily, pop-up roof made game viewing amazing. Vehicle was clean, well-maintained, and had full recovery kit."</p>
-              <div className="font-bold text-gray-900">Michael & Family</div>
-              <div className="text-sm text-gray-500">Self-drive Safari • Akagera</div>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <p className="text-gray-700 mb-4">"Booked Land Rover Defender with guide for Volcanoes. Steep muddy roads were no problem. Guide was excellent, knew exactly where to find gorillas. Vehicle was tough and comfortable."</p>
-              <div className="font-bold text-gray-900">Sarah & David</div>
-              <div className="text-sm text-gray-500">Guided Safari • Volcanoes NP</div>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <p className="text-gray-700 mb-4">"Rented Hilux with roof tent for 5-day camping trip. Everything was included - tent, mattress, cooking gear, fridge. Crossed into Uganda no problem. Best adventure ever!"</p>
-              <div className="font-bold text-gray-900">Adventure Team</div>
-              <div className="text-sm text-gray-500">Camping Expedition • Cross-border</div>
             </div>
           </div>
         </div>

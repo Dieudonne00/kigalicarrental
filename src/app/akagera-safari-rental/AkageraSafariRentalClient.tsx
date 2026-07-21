@@ -160,11 +160,6 @@ export default function AkageraSafariRentalClient() {
       "addressLocality": "Kigali",
       "addressCountry": "RW"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "287"
-    },
     "priceRange": "$$$",
     "areaServed": ["Akagera National Park", "Kigali", "Rwanda"],
     "hasOfferCatalog": {
@@ -244,8 +239,8 @@ export default function AkageraSafariRentalClient() {
                   <div className="text-xs text-gray-300 mt-1">Lion, Leopard, Elephant, Buffalo, Rhino</div>
                 </div>
                 <div className="bg-[#1D4ED8]/40 backdrop-blur-sm rounded-xl p-4 border border-[#93C5FD]/30">
-                  <div className="text-2xl font-bold text-[#93C5FD]">4.9★</div>
-                  <div className="text-xs text-gray-300 mt-1">287+ Reviews</div>
+                  <div className="text-2xl font-bold text-[#93C5FD]">24/7</div>
+                  <div className="text-xs text-gray-300 mt-1">Customer Support</div>
                 </div>
               </div>
               
@@ -1042,59 +1037,6 @@ export default function AkageraSafariRentalClient() {
               <div className="text-5xl mb-3">🐃</div>
               <div className="font-bold text-gray-800">Buffalo</div>
               <div className="text-xs text-gray-500 mt-1">Big Five</div>
-            </div>
-          </div>
-        </div>
-
-        {/* TESTIMONIALS */}
-        <div className="bg-gray-100 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                What Our <span className="text-[#1D4ED8]">Akagera Guests Say</span>
-              </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                287+ 5-star reviews from Akagera safaris
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-                <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                </div>
-                <p className="text-gray-700 mb-4">"The Land Cruiser with pop-up roof was perfect for Akagera. We saw lions, elephants, and even rhinos. Standing through the roof for photos was amazing. Vehicle was clean and well-maintained."</p>
-                <div className="font-bold text-gray-900">Michael & Family</div>
-                <div className="text-sm text-gray-500">Self-drive Safari • Akagera</div>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-                <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                </div>
-                <p className="text-gray-700 mb-4">"Our guided safari with Jean was incredible. He knew exactly where to find the lions and leopards. The vehicle had a pop-up roof and we got amazing photos. Best day of our Rwanda trip."</p>
-                <div className="font-bold text-gray-900">Sarah & David</div>
-                <div className="text-sm text-gray-500">Guided Safari • Akagera</div>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-                <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                </div>
-                <p className="text-gray-700 mb-4">"Spent 2 nights camping in Akagera with the roof tent equipped Land Cruiser. Woke up to hippos grazing nearby. The fridge kept our food cold, and we cooked dinner under the stars. Unforgettable!"</p>
-                <div className="font-bold text-gray-900">Camping Adventure</div>
-                <div className="text-sm text-gray-500">Overnight Safari • Akagera</div>
-              </div>
             </div>
           </div>
         </div>

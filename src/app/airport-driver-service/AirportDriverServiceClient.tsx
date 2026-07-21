@@ -156,12 +156,7 @@ export default function AirportDriverServiceClient() {
         "addressCountry": "RW"
       }
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "856"
-    },
-    "offers": {
+        "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": "USD",
       "lowPrice": "35",
@@ -244,8 +239,8 @@ export default function AirportDriverServiceClient() {
                   <div className="text-xs text-gray-300 mt-1">Flight Tracking</div>
                 </div>
                 <div className="bg-[#1D4ED8]/40 backdrop-blur-sm rounded-xl p-4 border border-[#93C5FD]/30">
-                  <div className="text-2xl font-bold text-[#93C5FD]">4.9★</div>
-                  <div className="text-xs text-gray-300 mt-1">856+ Reviews</div>
+                  <div className="text-2xl font-bold text-[#93C5FD]">Free</div>
+                  <div className="text-xs text-gray-300 mt-1">Meet & Greet</div>
                 </div>
               </div>
               
@@ -1027,57 +1022,6 @@ export default function AirportDriverServiceClient() {
                 <div className="font-bold text-[#1D4ED8]">Gikondo</div>
                 <div className="text-xs text-gray-500">25 min • $45</div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* TESTIMONIALS */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What Our <span className="text-[#1D4ED8]">Airport Guests Say</span>
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              856+ 5-star reviews from satisfied airport transfer customers
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <p className="text-gray-700 mb-4">"After a 14-hour flight, seeing my name on a sign was such a relief. Driver was professional, car was clean, and he knew the hotel. Flight was delayed 2 hours but he was still there. Great service!"</p>
-              <div className="font-bold text-gray-900">David Chen</div>
-              <div className="text-sm text-gray-500">Singapore • Business Traveler</div>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <p className="text-gray-700 mb-4">"Booked a luxury transfer for our honeymoon. Mercedes was spotless, driver in suit with our names. Even had cold water waiting. Made a great first impression of Rwanda. Worth every dollar."</p>
-              <div className="font-bold text-gray-900">James & Sarah</div>
-              <div className="text-sm text-gray-500">UK • Honeymoon</div>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <p className="text-gray-700 mb-4">"Traveling with 3 kids and lots of luggage. Driver helped with all bags, had child seats installed, van was spacious. Easy WhatsApp communication before arrival. Will use again."</p>
-              <div className="font-bold text-gray-900">Maria Gonzalez</div>
-              <div className="text-sm text-gray-500">Spain • Family Travel</div>
             </div>
           </div>
         </div>

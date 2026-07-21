@@ -154,11 +154,6 @@ export default function NyungweForestSafariClient() {
       "addressLocality": "Kigali",
       "addressCountry": "RW"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "187"
-    },
     "priceRange": "$$$",
     "areaServed": ["Nyungwe Forest National Park", "Kigali", "Rwanda"],
     "hasOfferCatalog": {
@@ -248,8 +243,8 @@ export default function NyungweForestSafariClient() {
                   <div className="text-xs text-gray-300 mt-1">Primate Species</div>
                 </div>
                 <div className="bg-[#1D4ED8]/40 backdrop-blur-sm rounded-xl p-4 border border-[#93C5FD]/30">
-                  <div className="text-2xl font-bold text-[#93C5FD]">4.8★</div>
-                  <div className="text-xs text-gray-300 mt-1">187+ Reviews</div>
+                  <div className="text-2xl font-bold text-[#93C5FD]">24/7</div>
+                  <div className="text-xs text-gray-300 mt-1">Customer Support</div>
                 </div>
               </div>
               
@@ -1059,57 +1054,6 @@ export default function NyungweForestSafariClient() {
                   Absolutely! Many visitors combine Nyungwe with Lake Kivu (2 hours away) or continue to Volcanoes National Park. We offer multi-park safari packages with comfortable vehicles for the journey.
                 </p>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* TESTIMONIALS */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What Our <span className="text-[#1D4ED8]">Nyungwe Guests Say</span>
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              187+ 5-star reviews from Nyungwe Forest adventures
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <p className="text-gray-700 mb-4">"The Prado was perfect for the long drive to Nyungwe. Comfortable for 5 hours, and handled the forest roads easily. Our chimpanzee tracking experience was incredible - saw a whole family!"</p>
-              <div className="font-bold text-gray-900">Primate Lovers</div>
-              <div className="text-sm text-gray-500">Chimpanzee Tracking • Nyungwe</div>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <p className="text-gray-700 mb-4">"The canopy walk was the highlight! Our driver got us to Uwinka early, and we had the walkway almost to ourselves. The vehicle was clean, air-conditioned, and made the long journey comfortable."</p>
-              <div className="font-bold text-gray-900">Adventure Couple</div>
-              <div className="text-sm text-gray-500">Canopy Walk • Nyungwe</div>
-            </div>
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-              <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              </div>
-              <p className="text-gray-700 mb-4">"Booked a 3-day bird watching package. Our guide was exceptional - spotted over 100 species including the great blue turaco. The vehicle was perfect for the forest roads. Highly recommend!"</p>
-              <div className="font-bold text-gray-900">Birding Enthusiast</div>
-              <div className="text-sm text-gray-500">Bird Watching • Nyungwe</div>
             </div>
           </div>
         </div>

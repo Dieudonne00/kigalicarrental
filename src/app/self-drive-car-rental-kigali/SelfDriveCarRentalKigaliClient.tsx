@@ -117,11 +117,6 @@ export default function SelfDriveCarRentalKigaliClient() {
       "addressLocality": "Kigali",
       "addressCountry": "RW"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.7",
-      "reviewCount": "523"
-    },
     "priceRange": "$$",
     "areaServed": "Kigali, Rwanda",
     "openingHours": "Mo-Su 07:00-22:00",

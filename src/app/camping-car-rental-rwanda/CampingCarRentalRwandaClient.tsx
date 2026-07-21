@@ -167,11 +167,6 @@ export default function CampingCarRentalRwandaClient() {
       "addressLocality": "Kigali",
       "addressCountry": "RW"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "145"
-    },
     "priceRange": "$$$",
     "areaServed": ["Akagera National Park", "Lake Kivu", "Volcanoes National Park", "Nyungwe Forest", "Rwanda", "Uganda", "Tanzania"],
     "hasOfferCatalog": {
@@ -259,8 +254,8 @@ export default function CampingCarRentalRwandaClient() {
                   <div className="text-xs text-gray-300 mt-1">Kitchen & Bathroom</div>
                 </div>
                 <div className="bg-[#1D4ED8]/40 backdrop-blur-sm rounded-xl p-4 border border-[#93C5FD]/30">
-                  <div className="text-2xl font-bold text-[#93C5FD]">4.8★</div>
-                  <div className="text-xs text-gray-300 mt-1">145+ Reviews</div>
+                  <div className="text-2xl font-bold text-[#93C5FD]">24/7</div>
+                  <div className="text-xs text-gray-300 mt-1">Customer Support</div>
                 </div>
               </div>
               
@@ -1045,59 +1040,6 @@ export default function CampingCarRentalRwandaClient() {
               <div className="text-4xl mb-3">🐒</div>
               <div className="font-bold text-gray-800">Gisakura Campsite</div>
               <div className="text-xs text-gray-500 mt-1">Nyungwe Forest • Basic facilities</div>
-            </div>
-          </div>
-        </div>
-
-        {/* TESTIMONIALS */}
-        <div className="bg-gray-100 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                What Our <span className="text-[#1D4ED8]">Camping Car Guests Say</span>
-              </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                145+ 5-star reviews from camping adventures
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-                <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                </div>
-                <p className="text-gray-700 mb-4">"Our family of 4 spent 10 days in the motorhome. Akagera, Lake Kivu, and Volcanoes. Having our own toilet and shower made camping with kids so easy. Solar panels kept everything charged. Unforgettable!"</p>
-                <div className="font-bold text-gray-900">The Wilson Family</div>
-                <div className="text-sm text-gray-500">Motorhome • 10 days</div>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-                <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                </div>
-                <p className="text-gray-700 mb-4">"Rented a campervan for 2 weeks to explore Rwanda and Uganda. Crossed borders easily with the team's help. Vehicle was comfortable, well-equipped, and we saved a fortune on hotels. Best decision ever!"</p>
-                <div className="font-bold text-gray-900">Overland Couple</div>
-                <div className="text-sm text-gray-500">Campervan • Cross-border</div>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-                <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                </div>
-                <p className="text-gray-700 mb-4">"Stayed 5 nights at Lake Kivu in the motorhome. Waking up to the lake view, having breakfast outside, then driving to the next beach. Pure freedom. The vehicle was spotless and everything worked perfectly."</p>
-                <div className="font-bold text-gray-900">Solo Adventurer</div>
-                <div className="text-sm text-gray-500">Motorhome • Lake Kivu</div>
-              </div>
             </div>
           </div>
         </div>

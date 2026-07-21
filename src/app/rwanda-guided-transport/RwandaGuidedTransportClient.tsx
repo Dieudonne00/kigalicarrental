@@ -139,11 +139,6 @@ export default function RwandaGuidedTransportClient() {
       "addressLocality": "Kigali",
       "addressCountry": "RW"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "412"
-    },
     "priceRange": "$$$",
     "areaServed": ["Kigali", "Volcanoes National Park", "Akagera National Park", "Nyungwe Forest", "Lake Kivu"],
     "makesOffer": {
@@ -222,8 +217,8 @@ export default function RwandaGuidedTransportClient() {
                   <div className="text-xs text-gray-300 mt-1">National Parks</div>
                 </div>
                 <div className="bg-[#1D4ED8]/40 backdrop-blur-sm rounded-xl p-4 border border-[#93C5FD]/30">
-                  <div className="text-2xl font-bold text-[#93C5FD]">4.9★</div>
-                  <div className="text-xs text-gray-300 mt-1">412+ Reviews</div>
+                  <div className="text-2xl font-bold text-[#93C5FD]">24/7</div>
+                  <div className="text-xs text-gray-300 mt-1">Customer Support</div>
                 </div>
               </div>
               
@@ -978,59 +973,6 @@ export default function RwandaGuidedTransportClient() {
               <p className="text-gray-600 text-sm leading-relaxed">
                 You can book online through our website, call our tour desk at +250 787 619 387, or send a WhatsApp message. For gorilla trekking, please book at least 3 months in advance as permits are limited.
               </p>
-            </div>
-          </div>
-        </div>
-
-        {/* TESTIMONIALS */}
-        <div className="bg-gray-100 py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                What Our <span className="text-[#1D4ED8]">Guests Say</span>
-              </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                412+ 5-star reviews from travelers who experienced Rwanda with our guides
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-                <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                </div>
-                <p className="text-gray-700 mb-4">"Our guide Jean was incredible! He spotted wildlife we would have missed and knew exactly where the gorilla family was. Made our dream trip perfect."</p>
-                <div className="font-bold text-gray-900">Sarah & Michael</div>
-                <div className="text-sm text-gray-500">United Kingdom • Gorilla Trek</div>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-                <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                </div>
-                <p className="text-gray-700 mb-4">"5-day safari with Claude was amazing. He knew every animal, every bird, and the best spots in Akagera. The vehicle was comfortable and we felt safe the whole time."</p>
-                <div className="font-bold text-gray-900">The Johnson Family</div>
-                <div className="text-sm text-gray-500">USA • Akagera Safari</div>
-              </div>
-              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
-                <div className="flex items-center gap-1 text-yellow-400 mb-3">
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                </div>
-                <p className="text-gray-700 mb-4">"Marie took us chimpanzee tracking in Nyungwe. Her knowledge of the forest and primates was incredible. The canopy walk was breathtaking. Best decision to book a guide."</p>
-                <div className="font-bold text-gray-900">Emma & Thomas</div>
-                <div className="text-sm text-gray-500">Australia • Chimpanzee Trek</div>
-              </div>
             </div>
           </div>
         </div>
