@@ -5,11 +5,11 @@ import ServicesSection from "@/components/ServicesSection";
 import FeaturedBlogs from "@/components/FeaturedBlogs";
 import FAQSection from "@/components/FAQSection";
 import { Metadata } from "next";
-import { CONTACT } from "@/lib/constants";
+import { SITE } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
 
-// Revalidate hourly rather than fully static - the aggregateRating below
-// reflects real, moderated reviews and shouldn't need a full redeploy to update.
+// Revalidate hourly rather than fully static - priceRange/aggregateRating
+// below reflect live fleet/review data and shouldn't need a full redeploy.
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
@@ -39,35 +39,30 @@ const whyChooseUs = [
 ];
 
 export default async function Home() {
-  const reviews = await prisma.review.findMany({
-    where: { published: true },
-    select: { rating: true },
-  });
+  // The static business facts (name, address, logo, hours, etc.) render
+  // sitewide via OrganizationSchema in the root layout. This block only adds
+  // the parts that need live data - real price range and real review
+  // aggregate - as additional properties on that SAME @id, so Google merges
+  // them into one entity rather than seeing two conflicting definitions.
+  const [reviews, priceAgg] = await Promise.all([
+    prisma.review.findMany({ where: { published: true }, select: { rating: true } }),
+    prisma.car.aggregate({
+      where: { available: true },
+      _min: { dailyRate: true },
+      _max: { dailyRate: true },
+    }),
+  ]);
   const reviewCount = reviews.length;
   const averageRating =
     reviewCount > 0 ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviewCount : 0;
+  const minRate = priceAgg._min.dailyRate;
+  const maxRate = priceAgg._max.dailyRate;
 
-  const structuredData = {
+  const businessData = {
     "@context": "https://schema.org",
-    "@type": "AutoRental",
-    "name": "Kigali Car Rental",
-    "description": "Premium car rental services in Kigali, Rwanda. Airport pickup, city delivery, SUVs and luxury cars.",
-    "url": "https://www.kigalicarrental.site",
-    "telephone": CONTACT.PHONE,
-    "email": CONTACT.EMAIL,
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "KG 541 St",
-      "addressLocality": "Kigali",
-      "addressCountry": "RW"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "-1.9441",
-      "longitude": "30.0619"
-    },
-    "openingHours": "Mo-Su 00:00-23:59",
-    "priceRange": "$$",
+    "@type": ["LocalBusiness", "AutoRental"],
+    "@id": `${SITE.URL}/#organization`,
+    ...(minRate != null && maxRate != null && { priceRange: `$${minRate} - $${maxRate}` }),
     // Only present when backed by real, moderated customer reviews (see the
     // /leave-review flow) - never a placeholder or invented figure.
     ...(reviewCount > 0 && {
@@ -79,11 +74,23 @@ export default async function Home() {
     }),
   };
 
+  const breadcrumbData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.kigalicarrental.site/" },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(businessData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
       />
 
       <HeroSection />

@@ -894,6 +894,12 @@ export default function NyungweForestSafariClient() {
                   <p>Nyungwe Forest National Park is Rwanda's premier primate destination, home to 13 primate species including chimpanzees, colobus monkeys, and L'Hoest's monkeys. The park covers 1,019 km² of pristine montane rainforest.</p>
                   <p>Highlights include the famous canopy walk, suspended above the forest canopy and one of only a handful of walkways of its kind anywhere in Africa, plus excellent bird watching with over 300 species. The park's network of hiking trails offers everything from short nature walks to multi-day treks.</p>
                   <p>Getting there is part of the experience. Nyungwe sits roughly 225 km from Kigali, and the drive takes 5-6 hours depending on which route you take: east via Huye (Butare), or west via Rusizi/Cyangugu along Lake Kivu. Both roads are tarmac for most of the distance, but the final approach climbs through tea plantations on narrow, winding mountain roads before reaching the park boundary near Gisakura and Uwinka. Because of the high rainfall this rainforest receives, those last kilometres and the access tracks to the trailheads are where a 4x4 with real ground clearance earns its keep, not just on paper.</p>
+                  <p className="text-sm text-gray-300">
+                    Official park information:{" "}
+                    <a href="https://www.nyungweforestnationalpark.org/" target="_blank" rel="noopener noreferrer" className="underline text-[#93C5FD] hover:text-white">
+                      Nyungwe Forest National Park
+                    </a>
+                  </p>
                   <div className="grid grid-cols-2 gap-4 mt-6">
                     <div>
                       <div className="text-2xl font-bold text-[#93C5FD]">1,019 km²</div>

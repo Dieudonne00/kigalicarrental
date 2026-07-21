@@ -877,6 +877,16 @@ export default function AkageraSafariRentalClient() {
                   <p>Akagera National Park is Rwanda's premier Big Five safari destination. Covering 1,122 km² of savanna, woodland, wetlands, and lakes, it's home to lions, leopards, elephants, buffalo, rhinos, and over 500 bird species.</p>
                   <p>The park has been successfully restocked with lions and rhinos in recent years, making it one of Africa's greatest conservation success stories. Self-drive safaris are popular, and boat safaris on Lake Ihema offer hippo and crocodile viewing.</p>
                   <p>Akagera sits in Rwanda's Eastern Province near the Tanzania border, and unlike the mountain gorilla parks, it's reached on a fully paved road the whole way — about 2.5 to 3 hours from Kigali, which makes it one of the most accessible savanna parks in East Africa for a day trip or overnight run. Lions were reintroduced in 2015 after roughly a 20-year absence from the park, and both black and white rhino followed in 2017 and 2019, completing the Big Five alongside the park's existing elephant, buffalo, and leopard populations. Self-drive is permitted on Akagera's marked network of game-viewing tracks — unusual for Rwanda's park system — though a 4x4 still matters once the clay-heavy sections soften in the rains, and a vehicle with a raised or pop-top roof makes a real difference for standing to watch and photograph game.</p>
+                  <p className="text-sm text-gray-300">
+                    Official park information:{" "}
+                    <a href="https://visitrwanda.com/destinations/akagera-national-park/" target="_blank" rel="noopener noreferrer" className="underline text-[#93C5FD] hover:text-white">
+                      Visit Rwanda
+                    </a>{" "}
+                    &middot;{" "}
+                    <a href="https://www.africanparks.org/the-parks/akagera" target="_blank" rel="noopener noreferrer" className="underline text-[#93C5FD] hover:text-white">
+                      African Parks
+                    </a>
+                  </p>
                   <div className="grid grid-cols-2 gap-4 mt-6">
                     <div>
                       <div className="text-2xl font-bold text-[#93C5FD]">{akageraInfo.size}</div>

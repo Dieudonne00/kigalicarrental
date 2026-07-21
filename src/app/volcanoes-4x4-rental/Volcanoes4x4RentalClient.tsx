@@ -831,6 +831,12 @@ export default function Volcanoes4x4RentalClient() {
                   <p>Volcanoes National Park is Rwanda's premier gorilla trekking destination. Home to endangered mountain gorillas and golden monkeys, the park covers 160 km² of lush montane forest and bamboo zones across five volcanoes.</p>
                   <p>The park is part of the Virunga Massif, shared with Uganda and DRC. Trekking starts early morning from Kinigi headquarters, with experienced guides leading small groups to habituated gorilla families.</p>
                   <p>Volcanoes sits just outside Musanze town in Rwanda's Northern Province, about 2 to 2.5 hours from Kigali on a well-maintained paved road — one of the easier park approaches in the country. Your vehicle's real job here is less about the trek itself, which is done entirely on foot with a park guide up steep, often muddy volcanic slopes, and more about getting you comfortably to park headquarters in Kinigi and to your lodge. Many lodges sit on unpaved, volcanic-soil access roads that soften considerably during the rainy periods (roughly March-May and September-November), which is where a 4x4 actually earns its keep on this trip. Gorilla permits are issued by the Rwanda Development Board at a fixed per-person fee, currently in the region of $1,500, and should be confirmed and booked well in advance since daily permit numbers are limited.</p>
+                  <p className="text-sm text-gray-300">
+                    Official park information:{" "}
+                    <a href="https://visitrwanda.com/destinations/volcanoes-national-park/" target="_blank" rel="noopener noreferrer" className="underline text-blue-200 hover:text-white">
+                      Visit Rwanda
+                    </a>
+                  </p>
                   <div className="grid grid-cols-2 gap-4 mt-6">
                     <div>
                       <div className="text-2xl font-bold text-blue-200">160 km²</div>
