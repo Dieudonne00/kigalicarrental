@@ -143,6 +143,34 @@ export async function sendDailyDigest(data: DailyDigestData) {
   }
 }
 
+// ================= REVIEW REQUEST TO CUSTOMER =================
+export async function sendReviewRequestEmail(data: {
+  bookingId: string;
+  customerName: string;
+  customerEmail: string;
+  carName: string;
+}) {
+  try {
+    const reviewUrl = `https://www.kigalicarrental.site/leave-review/${data.bookingId}`;
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: data.customerEmail,
+      replyTo: CONTACT.EMAIL,
+      subject: `How was your rental with ${data.carName}?`,
+      html: `
+        <h2>Hi ${data.customerName},</h2>
+        <p>Thanks for renting the <b>${data.carName}</b> with Kigali Car Rental! We'd love to hear how it went.</p>
+        <p><a href="${reviewUrl}" style="display:inline-block;background:#2563eb;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;">Leave a Review</a></p>
+        <p>It only takes a minute, and helps other travelers find us.</p>
+      `,
+    });
+
+    console.log("✅ Review request email sent");
+  } catch (err) {
+    console.error("❌ Review request email failed:", err);
+  }
+}
+
 // ================= AI BLOG PUBLISHED NOTIFICATION =================
 export interface PublishedBlogPost {
   title: string;

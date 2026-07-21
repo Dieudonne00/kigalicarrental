@@ -28,7 +28,25 @@ interface Car {
   hasActiveBooking?: boolean;
 }
 
-export default function CarDetailClient({ initialCar }: { initialCar: Car }) {
+interface CarReview {
+  id: string;
+  customerName: string;
+  rating: number;
+  comment: string;
+  createdAt: string;
+}
+
+export default function CarDetailClient({
+  initialCar,
+  reviews = [],
+  reviewCount = 0,
+  averageRating = 0,
+}: {
+  initialCar: Car;
+  reviews?: CarReview[];
+  reviewCount?: number;
+  averageRating?: number;
+}) {
   const car = initialCar;
 
   const [selectedImage, setSelectedImage] = useState(0);
@@ -584,6 +602,47 @@ export default function CarDetailClient({ initialCar }: { initialCar: Car }) {
               )}
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Customer Reviews - real, moderated reviews tied to completed bookings */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+        <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-bold text-gray-900">Customer Reviews</h2>
+            {reviewCount > 0 && (
+              <div className="flex items-center gap-2">
+                <span className="text-yellow-500 text-xl">
+                  {"★".repeat(Math.round(averageRating))}
+                  {"☆".repeat(5 - Math.round(averageRating))}
+                </span>
+                <span className="text-gray-700 font-semibold">
+                  {averageRating.toFixed(1)} ({reviewCount} review{reviewCount === 1 ? "" : "s"})
+                </span>
+              </div>
+            )}
+          </div>
+
+          {reviewCount === 0 ? (
+            <p className="text-gray-600">
+              No reviews yet for this vehicle. Rented it? We'll email you a link to leave one after your trip.
+            </p>
+          ) : (
+            <div className="space-y-5">
+              {reviews.map((review) => (
+                <div key={review.id} className="border-b border-gray-100 last:border-0 pb-5 last:pb-0">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-gray-900">{review.customerName}</span>
+                    <span className="text-yellow-500">
+                      {"★".repeat(review.rating)}
+                      {"☆".repeat(5 - review.rating)}
+                    </span>
+                  </div>
+                  <p className="text-gray-700">{review.comment}</p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

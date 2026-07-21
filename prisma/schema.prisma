@@ -35,6 +35,7 @@ model Car {
   updatedAt     DateTime @updatedAt
 
   bookings      Booking[]
+  reviews       Review[]
 
   @@index([category])
   @@index([available])
@@ -61,12 +62,38 @@ model Booking {
 
   specialRequests String?
 
+  review        Review?
+
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
   @@index([carId])
   @@index([status])
   @@index([customerEmail])
+}
+
+model Review {
+  id            String   @id @default(cuid())
+  bookingId     String   @unique
+  booking       Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  carId         String
+  car           Car      @relation(fields: [carId], references: [id], onDelete: Cascade)
+
+  customerName  String
+  rating        Int      // 1-5
+  comment       String
+
+  // Moderation gate - unlike the AI blog pipeline, unmoderated public reviews
+  // are a real abuse vector (anyone who guesses/leaks a bookingId could try
+  // to post, and a bad-faith review is far more damaging unreviewed than a
+  // slightly-late blog post), so these start hidden until a manager approves.
+  published     Boolean  @default(false)
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([carId])
+  @@index([published])
 }
 
 model ContactMessage {

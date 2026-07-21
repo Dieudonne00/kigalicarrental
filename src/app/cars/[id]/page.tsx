@@ -49,6 +49,15 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
   const { bookings, ...carFields } = car;
   const carWithBookingStatus = { ...carFields, hasActiveBooking: bookings.length > 0 };
 
+  const reviews = await prisma.review.findMany({
+    where: { carId: id, published: true },
+    select: { id: true, customerName: true, rating: true, comment: true, createdAt: true },
+    orderBy: { createdAt: "desc" },
+  });
+  const reviewCount = reviews.length;
+  const averageRating =
+    reviewCount > 0 ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviewCount : 0;
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -68,6 +77,23 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
         : "https://schema.org/OutOfStock",
       areaServed: "Kigali, Rwanda",
     },
+    // Only include rating/review markup when real, published customer
+    // reviews exist - Google requires this to be genuine, and a Product
+    // block with no aggregateRating/review simply won't show a star snippet.
+    ...(reviewCount > 0 && {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: Math.round(averageRating * 10) / 10,
+        reviewCount,
+      },
+      review: reviews.slice(0, 10).map((r) => ({
+        "@type": "Review",
+        author: { "@type": "Person", name: r.customerName },
+        datePublished: r.createdAt.toISOString(),
+        reviewBody: r.comment,
+        reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5, worstRating: 1 },
+      })),
+    }),
   };
 
   return (
@@ -76,7 +102,12 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <CarDetailClient initialCar={carWithBookingStatus} />
+      <CarDetailClient
+        initialCar={carWithBookingStatus}
+        reviews={reviews.map((r) => ({ ...r, createdAt: r.createdAt.toISOString() }))}
+        reviewCount={reviewCount}
+        averageRating={Math.round(averageRating * 10) / 10}
+      />
     </>
   );
 }

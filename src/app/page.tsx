@@ -6,6 +6,11 @@ import FeaturedBlogs from "@/components/FeaturedBlogs";
 import FAQSection from "@/components/FAQSection";
 import { Metadata } from "next";
 import { CONTACT } from "@/lib/constants";
+import { prisma } from "@/lib/prisma";
+
+// Revalidate hourly rather than fully static - the aggregateRating below
+// reflects real, moderated reviews and shouldn't need a full redeploy to update.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Kigali Car Rental | Premium Car Hire Rwanda | Kigali Airport Pickup",
@@ -33,7 +38,15 @@ const whyChooseUs = [
   { title: "24/7 Roadside Support", desc: "Travel with peace of mind. Our local team is always a call away." },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const reviews = await prisma.review.findMany({
+    where: { published: true },
+    select: { rating: true },
+  });
+  const reviewCount = reviews.length;
+  const averageRating =
+    reviewCount > 0 ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviewCount : 0;
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "AutoRental",
@@ -54,7 +67,16 @@ export default function Home() {
       "longitude": "30.0619"
     },
     "openingHours": "Mo-Su 00:00-23:59",
-    "priceRange": "$$"
+    "priceRange": "$$",
+    // Only present when backed by real, moderated customer reviews (see the
+    // /leave-review flow) - never a placeholder or invented figure.
+    ...(reviewCount > 0 && {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: Math.round(averageRating * 10) / 10,
+        reviewCount,
+      },
+    }),
   };
 
   return (
