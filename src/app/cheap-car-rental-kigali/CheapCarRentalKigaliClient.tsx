@@ -404,7 +404,7 @@ export default function CheapCarRentalKigaliClient() {
                     {car.images && car.images.length > 0 ? (
                       <img
                         src={car.images[0]}
-                        alt={car.name}
+                        alt={`${car.name} - Cheap Car Rental Kigali`}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     ) : (

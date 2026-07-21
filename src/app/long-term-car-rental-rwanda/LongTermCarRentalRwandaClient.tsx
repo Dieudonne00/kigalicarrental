@@ -487,7 +487,7 @@ export default function LongTermCarRentalRwandaClient() {
                       {car.images && car.images.length > 0 ? (
                         <img
                           src={car.images[0]}
-                          alt={car.name}
+                          alt={`${car.name} - Long Term Car Rental Rwanda`}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       ) : (

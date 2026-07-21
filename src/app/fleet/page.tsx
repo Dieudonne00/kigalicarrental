@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import { prisma } from "@/lib/prisma";
 import FleetClient from "./FleetClient";
 
@@ -53,9 +52,7 @@ export default async function FleetPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <Suspense fallback={null}>
-        <FleetClient />
-      </Suspense>
+      <FleetClient />
     </>
   );
 }

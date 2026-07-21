@@ -415,12 +415,14 @@ export default function CarDetailClient({ initialCar }: { initialCar: Car }) {
               ) : (
                 <form onSubmit={handleBookingSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1">
+                    <label htmlFor="customerName" className="block text-sm font-bold text-gray-700 mb-1">
                       Full Name *
                     </label>
                     <input
                       type="text"
+                      id="customerName"
                       name="customerName"
+                      autoComplete="name"
                       value={bookingData.customerName}
                       onChange={handleInputChange}
                       required
@@ -429,12 +431,14 @@ export default function CarDetailClient({ initialCar }: { initialCar: Car }) {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1">
+                    <label htmlFor="customerEmail" className="block text-sm font-bold text-gray-700 mb-1">
                       Email *
                     </label>
                     <input
                       type="email"
+                      id="customerEmail"
                       name="customerEmail"
+                      autoComplete="email"
                       value={bookingData.customerEmail}
                       onChange={handleInputChange}
                       required
@@ -443,12 +447,14 @@ export default function CarDetailClient({ initialCar }: { initialCar: Car }) {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1">
+                    <label htmlFor="customerPhone" className="block text-sm font-bold text-gray-700 mb-1">
                       Phone *
                     </label>
                     <input
                       type="tel"
+                      id="customerPhone"
                       name="customerPhone"
+                      autoComplete="tel"
                       value={bookingData.customerPhone}
                       onChange={handleInputChange}
                       required
@@ -457,11 +463,12 @@ export default function CarDetailClient({ initialCar }: { initialCar: Car }) {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1">
+                    <label htmlFor="pickupDate" className="block text-sm font-bold text-gray-700 mb-1">
                       Pickup Date *
                     </label>
                     <input
                       type="date"
+                      id="pickupDate"
                       name="pickupDate"
                       value={bookingData.pickupDate}
                       onChange={handleInputChange}
@@ -472,11 +479,13 @@ export default function CarDetailClient({ initialCar }: { initialCar: Car }) {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1">
+                    <label htmlFor="rentalDuration" className="block text-sm font-bold text-gray-700 mb-1">
                       Rental Duration *
                     </label>
                     <div className="grid grid-cols-2 gap-3">
                       <select
+                        id="rentalDuration"
+                        name="rentalDuration"
                         value={rentalDuration}
                         onChange={(e) => setRentalDuration(e.target.value)}
                         className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1D4ED8] focus:outline-none text-gray-900"
@@ -488,6 +497,8 @@ export default function CarDetailClient({ initialCar }: { initialCar: Car }) {
                       </select>
                       <input
                         type="number"
+                        id="rentalQuantity"
+                        name="rentalQuantity"
                         min="1"
                         value={rentalQuantity}
                         onChange={(e) => setRentalQuantity(parseInt(e.target.value) || 1)}
@@ -507,10 +518,11 @@ export default function CarDetailClient({ initialCar }: { initialCar: Car }) {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1">
+                    <label htmlFor="specialRequests" className="block text-sm font-bold text-gray-700 mb-1">
                       Special Requests
                     </label>
                     <textarea
+                      id="specialRequests"
                       name="specialRequests"
                       value={bookingData.specialRequests}
                       onChange={handleInputChange}

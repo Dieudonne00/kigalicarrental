@@ -468,9 +468,9 @@ export default function LastMinuteDealsClient() {
                       {/* CAR IMAGE */}
                       <div className="relative h-48 bg-gray-100 overflow-hidden">
                         {car.images && car.images.length > 0 ? (
-                          <img src={car.images[0]} alt={car.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                          <img src={car.images[0]} alt={`${car.name} - Last Minute Car Rental Deals Kigali`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                         ) : car.imageUrl ? (
-                          <img src={car.imageUrl} alt={car.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                          <img src={car.imageUrl} alt={`${car.name} - Last Minute Car Rental Deals Kigali`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center">
                             <svg className="w-16 h-16 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

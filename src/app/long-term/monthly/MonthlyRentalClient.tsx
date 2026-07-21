@@ -318,7 +318,7 @@ export default function MonthlyRentalClient() {
                   <div className="relative h-48 bg-gray-100">
                     <img
                       src={vehicle.imageUrl}
-                      alt={`${vehicle.brand} ${vehicle.model}`}
+                      alt={`${vehicle.brand} ${vehicle.model} - Monthly Car Rental Kigali`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       onError={(e) => {
                         // Fallback if image fails

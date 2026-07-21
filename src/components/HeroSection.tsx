@@ -73,6 +73,7 @@ export default function HeroSection() {
             <div className="min-w-0 flex-1">
               <div className="text-[10px] font-semibold text-gray-400 uppercase leading-none">Vehicle Type</div>
               <select
+                name="carType"
                 value={carType}
                 onChange={(e) => setCarType(e.target.value)}
                 className="text-sm font-medium text-gray-900 bg-transparent outline-none w-full cursor-pointer"
@@ -94,6 +95,8 @@ export default function HeroSection() {
               <div className="text-[10px] font-semibold text-gray-400 uppercase leading-none">Pickup Date</div>
               <input
                 type="date"
+                name="pickupDate"
+                autoComplete="off"
                 value={pickupDate}
                 min={today}
                 onChange={(e) => setPickupDate(e.target.value)}
@@ -110,6 +113,8 @@ export default function HeroSection() {
               <div className="text-[10px] font-semibold text-gray-400 uppercase leading-none">Return Date</div>
               <input
                 type="date"
+                name="returnDate"
+                autoComplete="off"
                 value={returnDate}
                 min={pickupDate || today}
                 onChange={(e) => setReturnDate(e.target.value)}

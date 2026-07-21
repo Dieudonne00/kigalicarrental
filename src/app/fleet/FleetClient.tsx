@@ -2,19 +2,35 @@
 
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { Car } from "@/types/car";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 
 export default function FleetClient() {
-  const searchParams = useSearchParams();
-  const categoryFromSearch = searchParams.get("category");
-  const pickupDateFromSearch = searchParams.get("pickupDate");
-  const returnDateFromSearch = searchParams.get("returnDate");
+  // Read via window.location instead of next/navigation's useSearchParams():
+  // that hook forces this page out of static generation into a client-only
+  // render behind a Suspense boundary, which left the entire page (H1 and
+  // all) blank for crawlers. Reading manually keeps this a static page.
+  const [searchFilters, setSearchFilters] = useState<{
+    category: string | null;
+    pickupDate: string | null;
+    returnDate: string | null;
+  }>({ category: null, pickupDate: null, returnDate: null });
+  const { category: categoryFromSearch, pickupDate: pickupDateFromSearch, returnDate: returnDateFromSearch } = searchFilters;
 
   const [cars, setCars] = useState<Car[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState<string>(categoryFromSearch || "all");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+    setSearchFilters({
+      category,
+      pickupDate: params.get("pickupDate"),
+      returnDate: params.get("returnDate"),
+    });
+    if (category) setSelectedCategory(category);
+  }, []);
   const [selectedTransmission, setSelectedTransmission] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [yearRange, setYearRange] = useState<[number, number]>([0, 0]);

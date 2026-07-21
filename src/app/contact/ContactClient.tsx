@@ -113,24 +113,41 @@ export default function ContactClient() {
         <div className="bg-white border-2 border-gray-200 rounded-2xl p-8">
           <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
           <form onSubmit={handleSubmit} className="space-y-6">
-            {["name", "email", "phone"].map((field) => (
-              <input
-                key={field}
-                name={field}
-                value={(formData as any)[field]}
+            {[
+              { field: "name", label: "Name", type: "text", autoComplete: "name" },
+              { field: "email", label: "Email", type: "email", autoComplete: "email" },
+              { field: "phone", label: "Phone", type: "tel", autoComplete: "tel" },
+            ].map(({ field, label, type, autoComplete }) => (
+              <div key={field}>
+                <label htmlFor={`contact-${field}`} className="block text-sm font-semibold text-gray-700 mb-1">
+                  {label}
+                </label>
+                <input
+                  id={`contact-${field}`}
+                  name={field}
+                  type={type}
+                  autoComplete={autoComplete}
+                  value={(formData as any)[field]}
+                  onChange={handleChange}
+                  placeholder={label.toUpperCase()}
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1D4ED8] outline-none"
+                />
+              </div>
+            ))}
+            <div>
+              <label htmlFor="contact-message" className="block text-sm font-semibold text-gray-700 mb-1">
+                Message
+              </label>
+              <textarea
+                id="contact-message"
+                name="message"
+                rows={5}
+                value={formData.message}
                 onChange={handleChange}
-                placeholder={field.toUpperCase()}
+                placeholder="Tell us about your rental needs..."
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1D4ED8] outline-none"
               />
-            ))}
-            <textarea
-              name="message"
-              rows={5}
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Tell us about your rental needs..."
-              className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1D4ED8] outline-none"
-            />
+            </div>
             <button
               type="submit"
               disabled={isSubmitting}

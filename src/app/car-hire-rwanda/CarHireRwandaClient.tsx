@@ -325,7 +325,7 @@ export default function CarHireRwandaClient() {
                     {car.imageUrl ? (
                       <img
                         src={car.imageUrl}
-                        alt={`${car.brand} ${car.model}`}
+                        alt={`${car.brand} ${car.model} - Car Hire Rwanda`}
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                         onError={(e) => {
                           // Fallback image if URL fails

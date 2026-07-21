@@ -409,6 +409,7 @@ export default function BookNowClient() {
                   type="text"
                   id="fullName"
                   name="fullName"
+                  autoComplete="name"
                   required
                   value={formData.fullName}
                   onChange={handleChange}
@@ -426,6 +427,7 @@ export default function BookNowClient() {
                   type="email"
                   id="email"
                   name="email"
+                  autoComplete="email"
                   required
                   value={formData.email}
                   onChange={handleChange}
@@ -443,6 +445,7 @@ export default function BookNowClient() {
                   type="tel"
                   id="phone"
                   name="phone"
+                  autoComplete="tel"
                   required
                   value={formData.phone}
                   onChange={handleChange}
@@ -460,6 +463,7 @@ export default function BookNowClient() {
                   type="tel"
                   id="whatsapp"
                   name="whatsapp"
+                  autoComplete="tel"
                   value={formData.whatsapp}
                   onChange={handleChange}
                   placeholder="If different from phone number"

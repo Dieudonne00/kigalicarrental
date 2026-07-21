@@ -70,8 +70,8 @@ export default function Header() {
       {/* DESKTOP TOP BAR - large screens navigate via the left icon rail instead,
           so this is just branding + phone + the primary CTA, no nav menu */}
       <div className="hidden lg:flex items-center justify-between max-w-7xl mx-auto px-6 py-3">
-        <Link href="/" className="text-blue-600 font-bold text-xl hover:text-blue-700 transition-colors">
-          Kigali Car Rental
+        <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+          <Image src="/logo.svg" alt="Kigali Car Rental" width={40} height={40} className="rounded-lg" priority />
         </Link>
         <div className="flex items-center gap-6">
           <a href="tel:+250787619387" className="flex items-center gap-2 text-gray-700 hover:text-blue-600 transition-colors font-semibold">
@@ -128,10 +128,9 @@ export default function Header() {
 
         {/* MAIN NAVIGATION - WHITE BACKGROUND */}
         <nav className="flex items-center justify-between py-4">
-          {/* LOGO REMOVED - SPACE SAVED FOR MOBILE MENU BUTTON */}
           <div className="flex items-center">
-            <Link href="/" className="text-blue-600 font-bold text-xl hover:text-blue-700 transition-colors">
-              Kigali Car Rental
+            <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+              <Image src="/logo.svg" alt="Kigali Car Rental" width={36} height={36} className="rounded-lg" priority />
             </Link>
           </div>
 

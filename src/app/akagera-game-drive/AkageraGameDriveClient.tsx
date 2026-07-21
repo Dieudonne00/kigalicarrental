@@ -275,7 +275,7 @@ export default function AkageraGameDriveClient() {
                   <div className="relative h-32 md:h-48">
                     <img
                       src={car.images[0] || CAR_IMAGE_FALLBACK}
-                      alt={car.name}
+                      alt={`${car.name} - Akagera Game Drive Rwanda`}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute top-2 md:top-4 right-2 md:right-4">
