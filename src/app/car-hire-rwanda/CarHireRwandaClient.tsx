@@ -216,17 +216,6 @@ export default function CarHireRwandaClient() {
     router.push(`/book-now?car=${carId}`);
   };
 
-  if (loading) {
-    return (
-      <div className="pt-24 pb-16 min-h-screen bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 text-center py-20">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1D4ED8] mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading our Rwanda fleet...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <main className="pt-24 pb-16 bg-gray-50 min-h-screen">
       {/* Hero Section */}
@@ -301,7 +290,12 @@ export default function CarHireRwandaClient() {
         </div>
 
         {/* Cars Grid - Using YOUR exact component structure */}
-        {filteredCars.length === 0 ? (
+        {loading ? (
+          <div className="text-center py-20 bg-white rounded-xl shadow">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1D4ED8] mx-auto"></div>
+            <p className="mt-4 text-gray-600">Loading our Rwanda fleet...</p>
+          </div>
+        ) : filteredCars.length === 0 ? (
           <div className="text-center py-12 bg-white rounded-xl shadow">
             <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

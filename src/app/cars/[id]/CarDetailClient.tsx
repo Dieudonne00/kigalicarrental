@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
@@ -29,13 +28,9 @@ interface Car {
   hasActiveBooking?: boolean;
 }
 
-export default function CarDetailClient() {
-  const params = useParams();
-  const router = useRouter();
-  const carId = params.id as string;
+export default function CarDetailClient({ initialCar }: { initialCar: Car }) {
+  const car = initialCar;
 
-  const [car, setCar] = useState<Car | null>(null);
-  const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
   const [showBookingForm, setShowBookingForm] = useState(true);
 
@@ -57,29 +52,6 @@ export default function CarDetailClient() {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showErrorModal, setShowErrorModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  // Fetch car details
-  useEffect(() => {
-    const fetchCar = async () => {
-      try {
-        const response = await fetch(`/api/cars/${carId}`);
-        if (!response.ok) {
-          throw new Error("Car not found");
-        }
-        const data = await response.json();
-        setCar(data.car);
-      } catch (error) {
-        console.error("Error fetching car:", error);
-        setErrorMessage("Failed to load car details");
-        setShowErrorModal(true);
-        setTimeout(() => router.push("/"), 2000);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchCar();
-  }, [carId, router]);
 
   // Calculate total cost and return date based on duration
   useEffect(() => {
@@ -164,106 +136,6 @@ export default function CarDetailClient() {
       setBookingLoading(false);
     }
   };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 pt-32 pb-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb Skeleton */}
-          <div className="mb-6">
-            <div className="h-5 w-32 bg-gray-200 rounded animate-pulse"></div>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Left Column - Image and Info Skeleton */}
-            <div className="lg:col-span-2">
-              {/* Main Image Skeleton */}
-              <div className="bg-white rounded-xl border-2 border-gray-200 p-6 mb-6">
-                <div className="w-full h-[400px] bg-gray-200 rounded-lg animate-pulse mb-4"></div>
-                {/* Thumbnails Skeleton */}
-                <div className="flex gap-3">
-                  <div className="w-20 h-20 bg-gray-200 rounded-lg animate-pulse"></div>
-                  <div className="w-20 h-20 bg-gray-200 rounded-lg animate-pulse"></div>
-                  <div className="w-20 h-20 bg-gray-200 rounded-lg animate-pulse"></div>
-                </div>
-              </div>
-
-              {/* Car Information Skeleton */}
-              <div className="bg-white rounded-xl border-2 border-gray-200 p-6 mb-6">
-                <div className="h-8 w-3/4 bg-gray-200 rounded animate-pulse mb-2"></div>
-                <div className="h-6 w-1/2 bg-gray-200 rounded animate-pulse mb-4"></div>
-
-                {/* Rental Rates Skeleton */}
-                <div className="mb-6 pb-6 border-b-2 border-gray-200">
-                  <div className="h-6 w-32 bg-gray-200 rounded animate-pulse mb-3"></div>
-                  <div className="flex gap-4">
-                    <div className="h-8 w-24 bg-gray-200 rounded animate-pulse"></div>
-                    <div className="h-8 w-24 bg-gray-200 rounded animate-pulse"></div>
-                    <div className="h-8 w-24 bg-gray-200 rounded animate-pulse"></div>
-                  </div>
-                </div>
-
-                {/* Description Skeleton */}
-                <div className="mb-6">
-                  <div className="h-6 w-32 bg-gray-200 rounded animate-pulse mb-3"></div>
-                  <div className="space-y-2">
-                    <div className="h-4 w-full bg-gray-200 rounded animate-pulse"></div>
-                    <div className="h-4 w-full bg-gray-200 rounded animate-pulse"></div>
-                    <div className="h-4 w-3/4 bg-gray-200 rounded animate-pulse"></div>
-                  </div>
-                </div>
-
-                {/* Specifications Skeleton */}
-                <div className="h-6 w-40 bg-gray-200 rounded animate-pulse mb-4"></div>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {[1, 2, 3, 4, 5, 6].map((i) => (
-                    <div key={i} className="bg-gray-50 rounded-lg p-4 border-2 border-gray-200">
-                      <div className="h-4 w-16 bg-gray-200 rounded animate-pulse mb-2"></div>
-                      <div className="h-5 w-20 bg-gray-200 rounded animate-pulse"></div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right Column - Booking Form Skeleton */}
-            <div className="lg:col-span-1">
-              <div className="bg-white rounded-xl border-2 border-gray-200 p-6 sticky top-8">
-                <div className="h-7 w-40 bg-gray-200 rounded animate-pulse mb-6"></div>
-                <div className="space-y-4">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <div key={i}>
-                      <div className="h-4 w-24 bg-gray-200 rounded animate-pulse mb-2"></div>
-                      <div className="h-10 w-full bg-gray-200 rounded-lg animate-pulse"></div>
-                    </div>
-                  ))}
-                  <div className="h-12 w-full bg-gray-200 rounded-lg animate-pulse mt-6"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!car) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">
-            Car not found
-          </h1>
-          <Link
-            href="/"
-            className="text-[#1D4ED8] hover:underline font-bold"
-          >
-            Go back home
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   const validImages = car.images.filter((img) => img && !img.startsWith("blob:"));
 
@@ -684,7 +556,7 @@ export default function CarDetailClient() {
                     </p>
                     <a
                       href={`https://wa.me/250787619387?text=${encodeURIComponent(
-                        `Hi! I'm interested in renting the ${car?.name || "car"}.\n\nDetails:\n- Pickup: ${bookingData.pickupDate || "Not specified"}\n- Return: ${bookingData.returnDate || "Not specified"}\n- Duration: ${rentalQuantity} ${rentalDuration}\n- Estimated Cost: $${totalCost}\n\nCar: https://www.kigalicarrental.site/cars/${carId}`
+                        `Hi! I'm interested in renting the ${car?.name || "car"}.\n\nDetails:\n- Pickup: ${bookingData.pickupDate || "Not specified"}\n- Return: ${bookingData.returnDate || "Not specified"}\n- Duration: ${rentalQuantity} ${rentalDuration}\n- Estimated Cost: $${totalCost}\n\nCar: https://www.kigalicarrental.site/cars/${car.id}`
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"

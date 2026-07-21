@@ -87,14 +87,6 @@ export default function CarRentalKigaliClient() {
     router.push(`/cars/${carId}`);
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100">
       {/* Hero Section - BLUE THEME */}
@@ -187,8 +179,13 @@ export default function CarRentalKigaliClient() {
         </div>
 
         {/* Cars Grid */}
+        {loading && (
+          <div className="text-center py-20">
+            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto"></div>
+          </div>
+        )}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {filteredCars.map((car) => (
+          {!loading && filteredCars.map((car) => (
             <div key={car.id} className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-blue-100">
               <div className="relative h-56 bg-gradient-to-br from-blue-50 to-blue-100">
                 <img
@@ -258,7 +255,7 @@ export default function CarRentalKigaliClient() {
           ))}
         </div>
 
-        {filteredCars.length === 0 && (
+        {!loading && filteredCars.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-500 text-lg">No cars found matching your criteria.</p>
           </div>

@@ -1,10 +1,27 @@
 import type { Metadata } from "next";
+import { cache } from "react";
+import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import CarDetailClient from "./CarDetailClient";
 
+const getCar = cache((id: string) =>
+  prisma.car.findUnique({
+    where: { id },
+    include: {
+      bookings: {
+        where: {
+          status: "confirmed",
+          returnDate: { gte: new Date() },
+        },
+        select: { id: true },
+      },
+    },
+  })
+);
+
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
-  const car = await prisma.car.findUnique({ where: { id } });
+  const car = await getCar(id);
 
   if (!car) {
     return { title: "Car Not Found | Kigali Car Rental" };
@@ -23,11 +40,14 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
 export default async function CarDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const car = await prisma.car.findUnique({ where: { id } });
+  const car = await getCar(id);
 
   if (!car) {
-    return <CarDetailClient />;
+    notFound();
   }
+
+  const { bookings, ...carFields } = car;
+  const carWithBookingStatus = { ...carFields, hasActiveBooking: bookings.length > 0 };
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -56,7 +76,7 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <CarDetailClient />
+      <CarDetailClient initialCar={carWithBookingStatus} />
     </>
   );
 }
