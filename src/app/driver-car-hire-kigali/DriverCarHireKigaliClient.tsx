@@ -126,8 +126,6 @@ export default function DriverCarHireKigaliClient() {
               <div className="flex items-center gap-2 text-sm text-[#93C5FD] mb-6">
                 <Link href="/" className="hover:text-white transition-colors">Home</Link>
                 <span>›</span>
-                <Link href="/car-rental-kigali" className="hover:text-white transition-colors">Kigali</Link>
-                <span>›</span>
                 <span className="text-white">Driver Hire</span>
               </div>
 

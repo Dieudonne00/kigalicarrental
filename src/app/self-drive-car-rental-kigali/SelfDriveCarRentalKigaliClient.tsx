@@ -134,8 +134,7 @@ export default function SelfDriveCarRentalKigaliClient() {
     "@type": "BreadcrumbList",
     "itemListElement": [
       {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://kigalicarrental.site/"},
-      {"@type": "ListItem", "position": 2, "name": "Car Rental Kigali", "item": "https://kigalicarrental.site/car-rental-kigali"},
-      {"@type": "ListItem", "position": 3, "name": "Self Drive Car Rental Kigali", "item": "https://kigalicarrental.site/self-drive-car-rental-kigali"}
+      {"@type": "ListItem", "position": 2, "name": "Self Drive Car Rental Kigali", "item": "https://kigalicarrental.site/self-drive-car-rental-kigali"}
     ]
   };
 
@@ -163,8 +162,6 @@ export default function SelfDriveCarRentalKigaliClient() {
               {/* Breadcrumbs for SEO */}
               <div className="flex items-center gap-2 text-sm text-[#93C5FD] mb-6">
                 <Link href="/" className="hover:text-white transition-colors">Home</Link>
-                <span>›</span>
-                <Link href="/car-rental-kigali" className="hover:text-white transition-colors">Kigali Car Rental</Link>
                 <span>›</span>
                 <span className="text-white">Self Drive</span>
               </div>

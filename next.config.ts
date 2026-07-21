@@ -17,6 +17,19 @@ const nextConfig: NextConfig = {
   },
   // Enable React strict mode for better development experience
   reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        // /car-rental-kigali targeted the identical head term as the
+        // homepage (keyword cannibalization - Google was splitting ranking
+        // signals between two of our own pages for "Kigali car rental").
+        // Consolidating onto the homepage.
+        source: "/car-rental-kigali",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

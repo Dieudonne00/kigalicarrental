@@ -14,7 +14,6 @@ export default function Header() {
       href: "/car-hire-rwanda",
       submenus: [
         { label: "Car Hire Rwanda", href: "/car-hire-rwanda", keywords: ["car rental Rwanda", "vehicle hire Rwanda"] },
-        { label: "Car Rental Kigali", href: "/car-rental-kigali", keywords: ["Kigali car rental", "Kigali rental cars"] },
         { label: "Kigali Airport Car Rental", href: "/kigali-airport-car-rental", keywords: ["airport pickup", "KGL airport rental"] },
         { label: "Cheap Car Rental Kigali", href: "/cheap-car-rental-kigali", keywords: ["budget car hire", "affordable rental"] },
         { label: "Long Term Car Rental Rwanda", href: "/long-term-car-rental-rwanda", keywords: ["monthly rental", "extended lease"] },

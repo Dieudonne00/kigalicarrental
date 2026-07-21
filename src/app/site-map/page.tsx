@@ -26,7 +26,6 @@ const linkGroups: { title: string; links: { label: string; href: string }[] }[] 
     title: "Car Rental",
     links: [
       { label: "Car Hire Rwanda", href: "/car-hire-rwanda" },
-      { label: "Car Rental Kigali", href: "/car-rental-kigali" },
       { label: "Car Rental Rwanda", href: "/car-rental-rwanda" },
       { label: "Kigali Airport Car Rental", href: "/kigali-airport-car-rental" },
       { label: "Cheap Car Rental Kigali", href: "/cheap-car-rental-kigali" },

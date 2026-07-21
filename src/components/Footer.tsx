@@ -145,12 +145,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/car-rental-kigali" className="text-gray-400 hover:text-[#2563EB] transition-colors flex items-center gap-2">
-                  <span className="w-1 h-1 bg-gray-600 rounded-full"></span>
-                  Car Rental Kigali
-                </Link>
-              </li>
-              <li>
                 <Link href="/kigali-airport-car-rental" className="text-gray-400 hover:text-[#2563EB] transition-colors flex items-center gap-2">
                   <span className="w-1 h-1 bg-gray-600 rounded-full"></span>
                   Kigali Airport Rental

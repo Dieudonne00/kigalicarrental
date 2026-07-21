@@ -6,7 +6,6 @@ const baseUrl = "https://www.kigalicarrental.site";
 // Every real, public (non-manager) static route in the app.
 const STATIC_ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
   { path: "", priority: 1, changeFrequency: "daily" },
-  { path: "/car-rental-kigali", priority: 0.9, changeFrequency: "daily" },
   { path: "/car-rental-rwanda", priority: 0.9, changeFrequency: "daily" },
   { path: "/car-hire-rwanda", priority: 0.9, changeFrequency: "daily" },
   { path: "/fleet", priority: 0.9, changeFrequency: "daily" },
