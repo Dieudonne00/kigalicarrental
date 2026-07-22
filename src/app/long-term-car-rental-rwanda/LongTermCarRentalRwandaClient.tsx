@@ -158,7 +158,7 @@ export default function LongTermCarRentalRwandaClient({ initialCars }: { initial
               View Monthly Rates
             </Link>
             <Link
-              href="/corporate-account"
+              href="/contact"
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 font-bold rounded-lg hover:bg-gray-100 transition-all shadow-lg"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -380,7 +380,7 @@ export default function LongTermCarRentalRwandaClient({ initialCars }: { initial
                     <div>
                       <p className="font-bold text-gray-900">Corporate Accounts</p>
                       <p className="text-xs text-gray-600 mt-1">NGOs, embassies & businesses get additional 10-20% off</p>
-                      <Link href="/corporate-account" className="text-xs text-blue-600 font-bold hover:underline mt-2 inline-block">
+                      <Link href="/contact" className="text-xs text-blue-600 font-bold hover:underline mt-2 inline-block">
                         Apply for corporate rates →
                       </Link>
                     </div>
@@ -642,7 +642,7 @@ export default function LongTermCarRentalRwandaClient({ initialCars }: { initial
                   </p>
                   <div className="flex flex-wrap gap-4">
                     <Link
-                      href="/corporate-account"
+                      href="/contact"
                       className="inline-flex items-center px-6 py-3 bg-white text-gray-900 rounded-lg font-bold hover:bg-gray-100 transition-all"
                     >
                       <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
