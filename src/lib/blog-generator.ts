@@ -98,8 +98,23 @@ function mentionsSiteKeyword(text: string): boolean {
   return /kigali\s+car\s+rental/i.test(text);
 }
 
+function countSiteKeywordMentions(text: string): number {
+  return (text.match(/kigali\s+car\s+rental/gi) || []).length;
+}
+
 function countSubheadings(html: string): number {
   return (html.match(/<h[23][ >]/gi) || []).length;
+}
+
+// At least one subheading should carry the phrase (or the post's own topic
+// keyword) - a keyword buried only in body prose is weaker than one that
+// also shows up in a heading Google weights more heavily.
+function subheadingsText(html: string): string {
+  return (html.match(/<h[23][^>]*>([\s\S]*?)<\/h[23]>/gi) || []).join(" ");
+}
+
+function countWords(html: string): number {
+  return html.replace(/<[^>]*>/g, " ").split(/\s+/).filter(Boolean).length;
 }
 
 function buildBlogPrompts(topic: BlogTopic, corrective?: string) {
@@ -111,7 +126,7 @@ function buildBlogPrompts(topic: BlogTopic, corrective?: string) {
   "metaDescription": "string, under 155 characters, MUST contain the exact phrase \\"Kigali car rental\\", reads naturally, not stuffed",
   "tags": ["5 to 8 short SEO tag strings"],
   "metaKeywords": ["5 to 8 short SEO keyword phrases, the first one must be \\"Kigali car rental\\""],
-  "content": "string of clean HTML using only <h2>, <h3>, <p>, <ul>, <li>, <strong> tags - 900 to 1300 words, with AT LEAST 4 <h2> subheadings (not 2 or 3 - four minimum), no <html>/<body> wrapper, no images, no links. The exact phrase \\"Kigali car rental\\" must appear naturally in the opening paragraph and again in the closing paragraph, plus 2-4 more times spread through the body - never back-to-back, never forced into a sentence where it reads awkwardly"
+  "content": "string of clean HTML using only <h2>, <h3>, <p>, <ul>, <li>, <strong> tags - 900 to 1300 words, with AT LEAST 4 <h2> subheadings (not 2 or 3 - four minimum), no <html>/<body> wrapper, no images, no links. The exact phrase \\"Kigali car rental\\" must appear naturally in the opening paragraph, again in the closing paragraph, in the text of AT LEAST ONE <h2> or <h3> subheading (not just body prose), and at least 5 times total across the whole piece - never back-to-back, never forced into a sentence where it reads awkwardly"
 }
 Every single post exists to reinforce "Kigali car rental" as this site's core commercial phrase, regardless of the specific angle each post covers - a post about driving tips or chauffeur etiquette still needs to read as being from, and pointing back to, a Kigali car rental company. That said, never sacrifice natural, specific, locally-accurate writing to hit a keyword count - work the phrase into sentences that would read naturally even without an SEO goal.`;
 
@@ -123,37 +138,94 @@ Do not include any links or anchor tags in the content - links will be added sep
   return { systemPrompt, userPrompt };
 }
 
-async function writeWithGroq(topic: BlogTopic): Promise<GeneratedContent> {
-  const { systemPrompt, userPrompt } = buildBlogPrompts(topic);
-  const raw = await groqChatJSON(systemPrompt, userPrompt);
-  if (!isGeneratedContent(raw)) {
-    throw new Error("Groq response did not match the expected blog post shape");
-  }
-
-  // Groq doesn't always follow the keyword/structure instructions on the
-  // first try - rather than silently publishing a post that dilutes the
-  // site's core keyword (exactly the bug this replaces), validate the
-  // actual output and give the model one corrective retry with the specific
-  // problem named, instead of hoping the prompt alone is enough.
+function findProblems(content: GeneratedContent): string[] {
   const problems: string[] = [];
-  if (!mentionsSiteKeyword(raw.title)) problems.push('the title is missing the exact phrase "Kigali car rental"');
-  if (!mentionsSiteKeyword(raw.metaDescription)) problems.push('the metaDescription is missing the exact phrase "Kigali car rental"');
-  if (!mentionsSiteKeyword(raw.content)) problems.push('the article body never mentions the exact phrase "Kigali car rental"');
-  if (countSubheadings(raw.content) < 4) problems.push(`the content only has ${countSubheadings(raw.content)} <h2>/<h3> subheadings - needs at least 4`);
+  if (!mentionsSiteKeyword(content.title)) problems.push('the title is missing the exact phrase "Kigali car rental"');
+  if (!mentionsSiteKeyword(content.metaDescription)) problems.push('the metaDescription is missing the exact phrase "Kigali car rental"');
+  const mentionCount = countSiteKeywordMentions(content.content);
+  if (mentionCount < 5) problems.push(`the article body only mentions the exact phrase "Kigali car rental" ${mentionCount} time(s) - needs at least 5, spread naturally through the piece, not clustered`);
+  if (countSubheadings(content.content) < 4) problems.push(`the content only has ${countSubheadings(content.content)} <h2>/<h3> subheadings - needs at least 4`);
+  if (!mentionsSiteKeyword(subheadingsText(content.content))) problems.push('none of the <h2>/<h3> subheadings contain the exact phrase "Kigali car rental" - at least one heading needs it, not just body paragraphs');
+  const wordCount = countWords(content.content);
+  if (wordCount < 850) problems.push(`the content is only ${wordCount} words - needs to be 900-1300 words. Do not add filler - add one more concrete <h2> section with specific, useful detail (a real tip, a real place, a real number) to reach length naturally`);
+  return problems;
+}
 
-  if (problems.length === 0) {
-    return raw;
+const MAX_WRITE_ATTEMPTS = 3;
+const MAX_EXPAND_ATTEMPTS = 2;
+
+// Regenerating from scratch is a gamble on length every time - Groq tends to
+// systematically undershoot the word target regardless of how many fresh
+// attempts it gets. Extending the best existing draft (a concrete anchor to
+// build on) converges far more reliably than hoping a new draft lands longer.
+async function expandContent(topic: BlogTopic, content: GeneratedContent): Promise<GeneratedContent> {
+  const expandSystemPrompt = `You are a senior travel and automotive content writer for Kigali Car Rental (kigalicarrental.site), a real car rental company in Kigali, Rwanda. Respond with ONLY a single valid JSON object, no markdown fences, no commentary, matching exactly this shape: { "content": "string" }`;
+
+  const expandUserPrompt = `Here is an existing draft blog post body (clean HTML, <h2>/<h3>/<p>/<ul>/<li>/<strong> only):
+
+${content.content}
+
+This is currently about ${countWords(content.content)} words but needs to reach 900-1300 words total. Add ONE additional <h2> section with genuinely concrete, useful, specific detail about "${topic.brief}" (a real practical tip, a real place in Kigali/Rwanda, a real number or price range) - not filler, not repetition of what's already covered. Weave in the exact phrase "Kigali car rental" naturally within the new section. Insert the new section right before the final closing paragraph so the piece still ends on a conclusion. Do not alter, shorten, remove, or rephrase any existing sentence - return the COMPLETE updated body (all existing HTML plus the new section) as one HTML string in the "content" field.`;
+
+  const raw = await groqChatJSON(expandSystemPrompt, expandUserPrompt);
+  if (!raw || typeof raw !== "object" || typeof (raw as Record<string, unknown>).content !== "string") {
+    return content;
+  }
+  return { ...content, content: (raw as Record<string, unknown>).content as string };
+}
+
+async function writeWithGroq(topic: BlogTopic): Promise<GeneratedContent> {
+  // Groq doesn't reliably follow every instruction (keyword placement,
+  // subheading count, word count) on the first try - rather than silently
+  // publishing a post that dilutes the site's core keyword or runs thin
+  // (exactly the bugs this replaces), validate the actual output and loop
+  // with a corrective prompt naming the specific gap, up to a few attempts.
+  // Unattended 4x/day generation needs this to be enforced, not hoped for.
+  let best: GeneratedContent | null = null;
+  let bestProblems: string[] = [];
+  let corrective: string | undefined;
+
+  for (let attempt = 1; attempt <= MAX_WRITE_ATTEMPTS; attempt++) {
+    const { systemPrompt, userPrompt } = buildBlogPrompts(topic, corrective);
+    const raw = await groqChatJSON(systemPrompt, userPrompt);
+    if (!isGeneratedContent(raw)) {
+      throw new Error(`Groq response did not match the expected blog post shape (attempt ${attempt})`);
+    }
+
+    const problems = findProblems(raw);
+    console.log(`[blog-generator] attempt ${attempt}/${MAX_WRITE_ATTEMPTS} for "${topic.key}": ${problems.length === 0 ? "PASSED" : problems.length + " problem(s) - " + problems.join(" | ")}`);
+
+    if (problems.length === 0) {
+      return raw;
+    }
+    if (best === null || problems.length < bestProblems.length) {
+      best = raw;
+      bestProblems = problems;
+    }
+    corrective = `Your previous attempt had these specific problems, fix them: ${problems.join("; ")}.`;
   }
 
-  const { systemPrompt: retrySystem, userPrompt: retryUser } = buildBlogPrompts(
-    topic,
-    `Your previous attempt had these specific problems, fix them: ${problems.join("; ")}.`
-  );
-  const retryRaw = await groqChatJSON(retrySystem, retryUser);
-  if (!isGeneratedContent(retryRaw)) {
-    throw new Error("Groq response did not match the expected blog post shape on retry");
+  let current = best as GeneratedContent;
+  let currentProblems = bestProblems;
+  for (
+    let expandAttempt = 1;
+    expandAttempt <= MAX_EXPAND_ATTEMPTS && currentProblems.some((p) => p.includes("word"));
+    expandAttempt++
+  ) {
+    const expanded = await expandContent(topic, current);
+    const problems = findProblems(expanded);
+    console.log(`[blog-generator] expand attempt ${expandAttempt}/${MAX_EXPAND_ATTEMPTS} for "${topic.key}": ${problems.length === 0 ? "PASSED" : problems.length + " problem(s) - " + problems.join(" | ")}`);
+    current = expanded;
+    currentProblems = problems;
+    if (problems.length === 0) {
+      return expanded;
+    }
   }
-  return retryRaw;
+
+  if (currentProblems.length > 0) {
+    console.warn(`[blog-generator] "${topic.key}" never fully passed validation, publishing closest attempt (${currentProblems.length} remaining issue(s)): ${currentProblems.join(" | ")}`);
+  }
+  return current;
 }
 
 function buildInternalLinksBlock(topic: BlogTopic, otherPosts: { slug: string; title: string }[]): string {
