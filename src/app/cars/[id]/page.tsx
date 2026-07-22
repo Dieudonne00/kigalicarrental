@@ -76,6 +76,12 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
         ? "https://schema.org/InStock"
         : "https://schema.org/OutOfStock",
       areaServed: "Kigali, Rwanda",
+      // Marks this as a rental offer, not a sale - Search Console's
+      // "missing shippingDetails / hasMerchantReturnPolicy" suggestions are
+      // retail-goods fields that don't apply to a car rental (nothing ships,
+      // there's no purchase to return); GoodRelations' LeaseOut function is
+      // the correct way to say that rather than inventing fake policy data.
+      businessFunction: "http://purl.org/goodrelations/v1#LeaseOut",
     },
     // Only include rating/review markup when real, published customer
     // reviews exist - Google requires this to be genuine, and a Product

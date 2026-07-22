@@ -1,52 +1,29 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { prisma } from "@/lib/prisma";
 
-interface BlogPost {
-  id: string;
-  title: string;
-  slug: string;
-  excerpt: string;
-  featuredImage: string | null;
-  author: string;
-  category: string;
-  publishedAt: string;
-  views: number;
-}
-
-export default function FeaturedBlogs() {
-  const [blogs, setBlogs] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchFeaturedBlogs();
-  }, []);
-
-  const fetchFeaturedBlogs = async () => {
-    try {
-      const response = await fetch("/api/blogs?featured=true&limit=3");
-      const data = await response.json();
-      setBlogs(data.blogs || []);
-    } catch (error) {
-      console.error("Error fetching featured blogs:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (loading) {
-    return (
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+// Server-rendered (not a client fetch) so this real content - and the "9
+// blogs" the homepage promises - is actually present in the HTML a crawler
+// sees, not hidden behind a loading spinner. Shows the most recent published
+// posts rather than filtering on the "featured" flag, which only 8 of 23+
+// published posts currently have set and isn't being kept up to date.
+export default async function FeaturedBlogs() {
+  const blogs = await prisma.blogPost.findMany({
+    where: { published: true },
+    orderBy: { publishedAt: "desc" },
+    take: 9,
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      excerpt: true,
+      featuredImage: true,
+      author: true,
+      category: true,
+      publishedAt: true,
+      views: true,
+    },
+  });
 
   if (blogs.length === 0) {
     return null;

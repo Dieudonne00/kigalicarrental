@@ -94,28 +94,66 @@ function isGeneratedContent(value: unknown): value is GeneratedContent {
   );
 }
 
-async function writeWithGroq(topic: BlogTopic): Promise<GeneratedContent> {
-  const systemPrompt = `You are a senior travel and automotive content writer for Kigali Car Rental (kigalicarrental.site), a real car rental company operating in Kigali, Rwanda. You write genuinely useful, locally accurate, specific articles - never generic filler, never keyword-stuffed. The exact phrase "Kigali car rental" is the site's main target keyword, so prefer that exact phrasing (not "car rental in Kigali" or "Kigali car hire") the majority of the times you reference the business or the service, while still allowing occasional natural variation so the text doesn't read like it's repeating one phrase, and you write like someone who actually knows Rwanda's roads, parks and travel logistics. Respond with ONLY a single valid JSON object, no markdown fences, no commentary, matching exactly this shape:
+function mentionsSiteKeyword(text: string): boolean {
+  return /kigali\s+car\s+rental/i.test(text);
+}
+
+function countSubheadings(html: string): number {
+  return (html.match(/<h[23][ >]/gi) || []).length;
+}
+
+function buildBlogPrompts(topic: BlogTopic, corrective?: string) {
+  const systemPrompt = `You are a senior travel and automotive content writer for Kigali Car Rental (kigalicarrental.site), a real car rental company operating in Kigali, Rwanda. You write genuinely useful, locally accurate, specific articles - never generic filler, never keyword-stuffed. Respond with ONLY a single valid JSON object, no markdown fences, no commentary, matching exactly this shape:
 {
-  "title": "string, specific and compelling, includes the primary keyword naturally",
+  "title": "string, specific and compelling, MUST contain the exact phrase \\"Kigali car rental\\" AND naturally work in this post's own angle/keyword",
   "excerpt": "string, 1-2 sentences, plain text, no HTML",
-  "metaTitle": "string, under 60 characters, includes the primary keyword",
-  "metaDescription": "string, under 155 characters, includes the primary keyword",
+  "metaTitle": "string, under 60 characters, MUST contain the exact phrase \\"Kigali car rental\\"",
+  "metaDescription": "string, under 155 characters, MUST contain the exact phrase \\"Kigali car rental\\", reads naturally, not stuffed",
   "tags": ["5 to 8 short SEO tag strings"],
-  "metaKeywords": ["5 to 8 short SEO keyword phrases"],
-  "content": "string of clean HTML using only <h2>, <h3>, <p>, <ul>, <li>, <strong> tags - 900 to 1300 words, well structured with 3-5 subheadings, no <html>/<body> wrapper, no images, no links"
-}`;
+  "metaKeywords": ["5 to 8 short SEO keyword phrases, the first one must be \\"Kigali car rental\\""],
+  "content": "string of clean HTML using only <h2>, <h3>, <p>, <ul>, <li>, <strong> tags - 900 to 1300 words, with AT LEAST 4 <h2> subheadings (not 2 or 3 - four minimum), no <html>/<body> wrapper, no images, no links. The exact phrase \\"Kigali car rental\\" must appear naturally in the opening paragraph and again in the closing paragraph, plus 2-4 more times spread through the body - never back-to-back, never forced into a sentence where it reads awkwardly"
+}
+Every single post exists to reinforce "Kigali car rental" as this site's core commercial phrase, regardless of the specific angle each post covers - a post about driving tips or chauffeur etiquette still needs to read as being from, and pointing back to, a Kigali car rental company. That said, never sacrifice natural, specific, locally-accurate writing to hit a keyword count - work the phrase into sentences that would read naturally even without an SEO goal.`;
 
   const userPrompt = `Write a blog post for this angle: "${topic.brief}".
-Primary keyword to target naturally: "${topic.primaryKeyword}".
+This post's own specific keyword/angle: "${topic.primaryKeyword}" - weave this in naturally alongside the required site keyword "Kigali car rental".
 Category: ${topic.category}.
-Do not include any links or anchor tags in the content - links will be added separately. Do not repeat the exact same opening sentence structure that generic AI travel blogs use ("Nestled in the heart of...", "Are you planning a trip to..."). Get specific and concrete fast.`;
+Do not include any links or anchor tags in the content - links will be added separately. Do not repeat the exact same opening sentence structure that generic AI travel blogs use ("Nestled in the heart of...", "Are you planning a trip to..."). Get specific and concrete fast.${corrective ? `\n\nIMPORTANT CORRECTION NEEDED: ${corrective}` : ""}`;
 
+  return { systemPrompt, userPrompt };
+}
+
+async function writeWithGroq(topic: BlogTopic): Promise<GeneratedContent> {
+  const { systemPrompt, userPrompt } = buildBlogPrompts(topic);
   const raw = await groqChatJSON(systemPrompt, userPrompt);
   if (!isGeneratedContent(raw)) {
     throw new Error("Groq response did not match the expected blog post shape");
   }
-  return raw;
+
+  // Groq doesn't always follow the keyword/structure instructions on the
+  // first try - rather than silently publishing a post that dilutes the
+  // site's core keyword (exactly the bug this replaces), validate the
+  // actual output and give the model one corrective retry with the specific
+  // problem named, instead of hoping the prompt alone is enough.
+  const problems: string[] = [];
+  if (!mentionsSiteKeyword(raw.title)) problems.push('the title is missing the exact phrase "Kigali car rental"');
+  if (!mentionsSiteKeyword(raw.metaDescription)) problems.push('the metaDescription is missing the exact phrase "Kigali car rental"');
+  if (!mentionsSiteKeyword(raw.content)) problems.push('the article body never mentions the exact phrase "Kigali car rental"');
+  if (countSubheadings(raw.content) < 4) problems.push(`the content only has ${countSubheadings(raw.content)} <h2>/<h3> subheadings - needs at least 4`);
+
+  if (problems.length === 0) {
+    return raw;
+  }
+
+  const { systemPrompt: retrySystem, userPrompt: retryUser } = buildBlogPrompts(
+    topic,
+    `Your previous attempt had these specific problems, fix them: ${problems.join("; ")}.`
+  );
+  const retryRaw = await groqChatJSON(retrySystem, retryUser);
+  if (!isGeneratedContent(retryRaw)) {
+    throw new Error("Groq response did not match the expected blog post shape on retry");
+  }
+  return retryRaw;
 }
 
 function buildInternalLinksBlock(topic: BlogTopic, otherPosts: { slug: string; title: string }[]): string {
