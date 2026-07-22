@@ -21,10 +21,10 @@ interface Car {
   imageUrl: string;
 }
 
-export default function KigaliAirportCarRentalClient() {
-  const [cars, setCars] = useState<Car[]>([]);
-  const [filteredCars, setFilteredCars] = useState<Car[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function KigaliAirportCarRentalClient({ initialCars }: { initialCars: any[] }) {
+  const [cars, setCars] = useState<Car[]>(initialCars);
+  const [filteredCars, setFilteredCars] = useState<Car[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const router = useRouter();
@@ -40,28 +40,6 @@ export default function KigaliAirportCarRentalClient() {
     "4x4",
     "Economy"
   ];
-
-  useEffect(() => {
-    const fetchAirportCars = async () => {
-      try {
-        setLoading(true);
-        // Using YOUR exact API pattern
-        const response = await fetch("/api/cars?location=airport");
-        const data = await response.json();
-
-        if (data.cars && Array.isArray(data.cars)) {
-          setCars(data.cars);
-          setFilteredCars(data.cars);
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchAirportCars();
-  }, []);
 
   useEffect(() => {
     let filtered = cars;

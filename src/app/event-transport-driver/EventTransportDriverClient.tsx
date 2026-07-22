@@ -41,9 +41,9 @@ interface EventTransportVehicle {
   privateParty: boolean;
 }
 
-export default function EventTransportDriverClient() {
-  const [vehicles, setVehicles] = useState<EventTransportVehicle[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function EventTransportDriverClient({ initialCars }: { initialCars: any[] }) {
+  const [vehicles, setVehicles] = useState<EventTransportVehicle[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedEventType, setSelectedEventType] = useState<string>("all");
   const [selectedLanguage, setSelectedLanguage] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
@@ -52,40 +52,22 @@ export default function EventTransportDriverClient() {
   const [formalAttire, setFormalAttire] = useState(false);
   const [decorationAllowed, setDecorationAllowed] = useState(false);
 
-  // Fetch event transport vehicles from DB
+  // Filter for vehicles with event transport capability
   useEffect(() => {
-    const fetchEventVehicles = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for event transport vehicles
-        const response = await fetch("/api/cars?event=true&transport=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for vehicles with event transport capability
-          const eventCars = data.cars.filter((car: any) => 
-            car.weddings === true || 
-            car.corporateEvents === true ||
-            car.eventTransport === true ||
-            car.weddingExperience === true ||
-            car.conferenceExperience === true
-          );
-          setVehicles(eventCars);
-          
-          if (eventCars.length > 0) {
-            const rates = eventCars.map((c: any) => c.eventRate || c.packageRate || c.dailyRate || 85);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching event transport vehicles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const eventCars = initialCars.filter((car: any) =>
+      car.weddings === true ||
+      car.corporateEvents === true ||
+      car.eventTransport === true ||
+      car.weddingExperience === true ||
+      car.conferenceExperience === true
+    );
+    setVehicles(eventCars);
 
-    fetchEventVehicles();
-  }, []);
+    if (eventCars.length > 0) {
+      const rates = eventCars.map((c: any) => c.eventRate || c.packageRate || c.dailyRate || 85);
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
+  }, [initialCars]);
 
   // Event types for filtering
   const eventTypes = [

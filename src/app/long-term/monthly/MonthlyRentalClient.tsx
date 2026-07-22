@@ -1,7 +1,7 @@
 // app/long-term/monthly/page.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 interface MonthlyRentalCar {
@@ -27,42 +27,29 @@ interface MonthlyRentalCar {
   location: string;
 }
 
-export default function MonthlyRentalClient() {
-  const [vehicles, setVehicles] = useState<MonthlyRentalCar[]>([]);
-  const [loading, setLoading] = useState(true);
+// Only include cars that have monthly rates - previously done against the
+// /api/cars response, now run against the server-fetched initialCars so
+// this page renders real monthly rentals in the initial HTML instead of
+// an empty grid.
+function filterMonthlyCars(cars: any[]): MonthlyRentalCar[] {
+  return cars.filter((car: any) => car.monthlyRate && car.monthlyRate > 0);
+}
+
+export default function MonthlyRentalClient({ initialCars }: { initialCars: any[] }) {
+  const initialMonthlyCars = filterMonthlyCars(initialCars);
+  const [vehicles, setVehicles] = useState<MonthlyRentalCar[]>(initialMonthlyCars);
+  const [loading, setLoading] = useState(false);
   const [selectedCommitment, setSelectedCommitment] = useState<number>(1);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [priceRange, setPriceRange] = useState<[number, number]>([400, 1500]);
+  const [priceRange, setPriceRange] = useState<[number, number]>(
+    initialMonthlyCars.length > 0
+      ? [
+          Math.min(...initialMonthlyCars.map((c) => c.monthlyRate)),
+          Math.max(...initialMonthlyCars.map((c) => c.monthlyRate)),
+        ]
+      : [400, 1500]
+  );
   const [showFilters, setShowFilters] = useState(false);
-
-  // Fetch real monthly rental vehicles from DB
-  useEffect(() => {
-    const fetchMonthlyRentals = async () => {
-      try {
-        setLoading(true);
-        // REAL API CALL - fetches only cars with monthly rates
-        const response = await fetch("/api/cars?rentalType=monthly");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Only include cars that have monthly rates
-          const monthlyCars = data.cars.filter((car: any) => car.monthlyRate && car.monthlyRate > 0);
-          setVehicles(monthlyCars);
-          
-          if (monthlyCars.length > 0) {
-            const rates = monthlyCars.map((c: any) => c.monthlyRate);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching monthly rentals:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchMonthlyRentals();
-  }, []);
 
   // Get unique categories from real data
   const categories = ["all", ...Array.from(new Set(vehicles.map(v => v.category)))];

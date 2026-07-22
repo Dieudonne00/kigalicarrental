@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { prisma } from "@/lib/prisma";
+import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import AirportDriverServiceClient from "./AirportDriverServiceClient";
 
 export const metadata: Metadata = {
@@ -17,6 +19,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AirportDriverServicePage() {
-  return <AirportDriverServiceClient />;
+export default async function AirportDriverServicePage() {
+  const cars = await prisma.car.findMany({
+    where: { available: true },
+    orderBy: { createdAt: "desc" },
+  });
+  const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
+
+  return <AirportDriverServiceClient initialCars={initialCars} />;
 }

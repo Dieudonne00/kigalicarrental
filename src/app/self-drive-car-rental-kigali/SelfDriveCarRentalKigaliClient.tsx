@@ -31,9 +31,9 @@ interface SelfDriveCar {
   toolKit: boolean;
 }
 
-export default function SelfDriveCarRentalKigaliClient() {
-  const [vehicles, setVehicles] = useState<SelfDriveCar[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function SelfDriveCarRentalKigaliClient({ initialCars }: { initialCars: any[] }) {
+  const [vehicles, setVehicles] = useState<SelfDriveCar[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedTransmission, setSelectedTransmission] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
@@ -42,32 +42,12 @@ export default function SelfDriveCarRentalKigaliClient() {
   const [acOnly, setAcOnly] = useState(false);
   const [sortBy, setSortBy] = useState<string>("recommended");
 
-  // Fetch all self-drive vehicles from DB
+  // Derive the initial price range from the server-provided self-drive vehicles
   useEffect(() => {
-    const fetchSelfDriveCars = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for all available cars
-        const response = await fetch("/api/cars?selfdrive=true&all=true");
-        const data = await response.json();
-
-        if (data.cars && Array.isArray(data.cars)) {
-          // All cars are available for self-drive
-          setVehicles(data.cars);
-
-          if (data.cars.length > 0) {
-            const rates = data.cars.map((c: any) => c.dailyRate);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching self-drive cars:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchSelfDriveCars();
+    if (initialCars.length > 0) {
+      const rates = initialCars.map((c: any) => c.dailyRate);
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
   }, []);
 
   // Get unique values from real data

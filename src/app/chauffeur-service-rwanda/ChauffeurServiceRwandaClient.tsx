@@ -35,9 +35,9 @@ interface ChauffeurVehicle {
   safariDrives: boolean;
 }
 
-export default function ChauffeurServiceRwandaClient() {
-  const [vehicles, setVehicles] = useState<ChauffeurVehicle[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function ChauffeurServiceRwandaClient({ initialCars }: { initialCars: any[] }) {
+  const [vehicles, setVehicles] = useState<ChauffeurVehicle[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedService, setSelectedService] = useState<string>("all");
   const [selectedLanguage, setSelectedLanguage] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
@@ -45,39 +45,21 @@ export default function ChauffeurServiceRwandaClient() {
   const [uniformedOnly, setUniformedOnly] = useState(false);
   const [wifiOnly, setWifiOnly] = useState(false);
 
-  // Fetch chauffeur vehicles from DB
+  // Derive chauffeur vehicles from server-rendered initial data
   useEffect(() => {
-    const fetchChauffeurVehicles = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for chauffeur service vehicles
-        const response = await fetch("/api/cars?chauffeur=true&premium=true");
-        const data = await response.json();
+    const chauffeurCars = initialCars.filter((car: any) =>
+      car.chauffeurAvailable === true ||
+      car.chauffeurIncluded === true ||
+      car.category?.toLowerCase().includes('luxury') ||
+      car.category?.toLowerCase().includes('executive')
+    );
+    setVehicles(chauffeurCars);
 
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for vehicles with chauffeur service
-          const chauffeurCars = data.cars.filter((car: any) =>
-            car.chauffeurAvailable === true ||
-            car.chauffeurIncluded === true ||
-            car.category?.toLowerCase().includes('luxury') ||
-            car.category?.toLowerCase().includes('executive')
-          );
-          setVehicles(chauffeurCars);
-
-          if (chauffeurCars.length > 0) {
-            const rates = chauffeurCars.map((c: any) => c.dailyRate + (c.chauffeurRate || 50));
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching chauffeur vehicles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchChauffeurVehicles();
-  }, []);
+    if (chauffeurCars.length > 0) {
+      const rates = chauffeurCars.map((c: any) => c.dailyRate + (c.chauffeurRate || 50));
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
+  }, [initialCars]);
 
   // Service types for filtering
   const serviceTypes = [

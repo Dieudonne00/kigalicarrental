@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { prisma } from "@/lib/prisma";
+import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import DriverCarHireKigaliClient from "./DriverCarHireKigaliClient";
 
 export const metadata: Metadata = {
@@ -17,6 +19,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function DriverCarHireKigaliPage() {
-  return <DriverCarHireKigaliClient />;
+export default async function DriverCarHireKigaliPage() {
+  const cars = await prisma.car.findMany({
+    where: { available: true },
+    orderBy: { createdAt: "desc" },
+  });
+  const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
+
+  return <DriverCarHireKigaliClient initialCars={initialCars} />;
 }

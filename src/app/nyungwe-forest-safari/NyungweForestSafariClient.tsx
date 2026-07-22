@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 interface NyungweSafariVehicle {
@@ -36,55 +36,42 @@ interface NyungweSafariVehicle {
   parkEntryAssistance: boolean;
 }
 
-export default function NyungweForestSafariClient() {
-  const [vehicles, setVehicles] = useState<NyungweSafariVehicle[]>([]);
-  const [loading, setLoading] = useState(true);
+// Filter the full available fleet down to vehicles suitable for Nyungwe
+// Forest - previously done against the /api/cars response, now run
+// against the server-fetched initialCars so this page renders real safari
+// vehicles in the initial HTML instead of an empty grid.
+function filterNyungweVehicles(cars: any[]): NyungweSafariVehicle[] {
+  return cars.filter((car: any) =>
+    car.nationalParks?.includes('Nyungwe') ||
+    car.bestFor?.includes('Nyungwe') ||
+    car.bestFor?.includes('chimpanzee tracking') ||
+    car.bestFor?.includes('bird watching') ||
+    car.forestTerrain === true ||
+    car.longDistanceComfort === true ||
+    car.brand === 'Toyota' && (car.model?.includes('Land Cruiser') || car.model?.includes('Prado') || car.model?.includes('Hilux')) ||
+    car.brand === 'Land Rover' ||
+    car.brand === 'Range Rover'
+  );
+}
+
+export default function NyungweForestSafariClient({ initialCars }: { initialCars: any[] }) {
+  const initialNyungweVehicles = filterNyungweVehicles(initialCars);
+  const [vehicles, setVehicles] = useState<NyungweSafariVehicle[]>(initialNyungweVehicles);
+  const [loading, setLoading] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [selectedActivity, setSelectedActivity] = useState<string>("all");
-  const [priceRange, setPriceRange] = useState<[number, number]>([80, 280]);
+  const [priceRange, setPriceRange] = useState<[number, number]>(
+    initialNyungweVehicles.length > 0
+      ? [
+          Math.min(...initialNyungweVehicles.map((c) => c.safariRate || c.dailyRate)),
+          Math.max(...initialNyungweVehicles.map((c) => c.safariRate || c.dailyRate)),
+        ]
+      : [80, 280]
+  );
   const [highClearance, setHighClearance] = useState(false);
   const [longDistance, setLongDistance] = useState(false);
   const [guideIncluded, setGuideIncluded] = useState(false);
-
-  // Fetch Nyungwe safari vehicles from DB
-  useEffect(() => {
-    const fetchNyungweVehicles = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for Nyungwe Forest vehicles
-        const response = await fetch("/api/cars?nyungwe=true&safari=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for vehicles suitable for Nyungwe Forest
-          const nyungweCars = data.cars.filter((car: any) => 
-            car.nationalParks?.includes('Nyungwe') ||
-            car.bestFor?.includes('Nyungwe') ||
-            car.bestFor?.includes('chimpanzee tracking') ||
-            car.bestFor?.includes('bird watching') ||
-            car.forestTerrain === true ||
-            car.longDistanceComfort === true ||
-            car.brand === 'Toyota' && (car.model?.includes('Land Cruiser') || car.model?.includes('Prado') || car.model?.includes('Hilux')) ||
-            car.brand === 'Land Rover' ||
-            car.brand === 'Range Rover'
-          );
-          setVehicles(nyungweCars);
-          
-          if (nyungweCars.length > 0) {
-            const rates = nyungweCars.map((c: any) => c.safariRate || c.dailyRate);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching Nyungwe Forest vehicles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchNyungweVehicles();
-  }, []);
 
   // Vehicle brands for filtering
   const vehicleBrands = ["all", ...Array.from(new Set(vehicles.map(v => v.brand)))].filter(b => b !== 'all');

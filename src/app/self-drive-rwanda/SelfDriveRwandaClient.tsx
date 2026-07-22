@@ -4,41 +4,24 @@ import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { Car } from "@/types/car";
 
-export default function SelfDriveRwandaClient() {
-  const [cars, setCars] = useState<Car[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function SelfDriveRwandaClient({ initialCars }: { initialCars: any[] }) {
+  const [cars, setCars] = useState<Car[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedTransmission, setSelectedTransmission] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 0]);
   const [include4x4, setInclude4x4] = useState<boolean>(false);
 
+  // Derive the initial price range from the server-provided self-drive cars
   useEffect(() => {
-    fetchSelfDriveCars();
-  }, []);
-
-  const fetchSelfDriveCars = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch("/api/cars?selfdrive=true");
-      const data = await response.json();
-      let fetchedCars = data.cars || [];
-
-      // All cars available for self drive
-      setCars(fetchedCars);
-
-      if (fetchedCars.length > 0) {
-        const prices = fetchedCars.map((car: Car) => car.dailyRate);
-        const minPrice = Math.min(...prices);
-        const maxPrice = Math.max(...prices);
-        setPriceRange([minPrice, maxPrice]);
-      }
-    } catch (error) {
-      console.error("Error fetching self-drive cars:", error);
-    } finally {
-      setLoading(false);
+    if (initialCars.length > 0) {
+      const prices = initialCars.map((car: any) => car.dailyRate);
+      const minPrice = Math.min(...prices);
+      const maxPrice = Math.max(...prices);
+      setPriceRange([minPrice, maxPrice]);
     }
-  };
+  }, []);
 
   const { minPrice, maxPrice } = useMemo(() => {
     if (cars.length === 0) return { minPrice: 35, maxPrice: 150 };

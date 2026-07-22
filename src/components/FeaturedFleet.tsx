@@ -1,60 +1,22 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
+import { prisma } from "@/lib/prisma";
+import CarImage from "@/components/CarImage";
 
-interface Car {
-  id: string;
-  name: string;
-  brand: string;
-  model: string;
-  year: number;
-  category: string;
-  transmission: string;
-  seats: number;
-  fuelType: string;
-  dailyRate: number;
-  weeklyRate?: number | null;
-  monthlyRate?: number | null;
-  imageUrl: string;
-}
+// Server-rendered - this was a client fetch with a spinner-only loading
+// state, meaning the homepage's actual fleet showcase (real car names,
+// prices, images) was invisible to crawlers on first paint, same bug
+// pattern fixed elsewhere on the site.
+export default async function FeaturedFleet() {
+  const carsRaw = await prisma.car.findMany({
+    where: { available: true, featured: true },
+    orderBy: { createdAt: "desc" },
+  });
 
-export default function FeaturedFleet() {
-  const [cars, setCars] = useState<Car[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchFeaturedCars = async () => {
-      try {
-        const response = await fetch("/api/cars?featured=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          setCars(data.cars);
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchFeaturedCars();
-  }, []);
-
-  if (loading) {
-    return (
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading...</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  const cars = carsRaw.map((car) => ({
+    ...car,
+    imageUrl: car.images?.[0] || CAR_IMAGE_FALLBACK,
+  }));
 
   if (cars.length === 0) {
     return null;
@@ -80,14 +42,10 @@ export default function FeaturedFleet() {
                 className="bg-white rounded-lg overflow-hidden border border-gray-200 hover:border-blue-400 hover:shadow-md transition-all duration-200"
               >
                 <div className="relative h-44 sm:h-48 overflow-hidden">
-                  <img
+                  <CarImage
                     src={car.imageUrl}
                     alt={`${car.brand} ${car.model} ${car.year} rental - Kigali Car Rental Rwanda`}
                     className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.onerror = null;
-                      e.currentTarget.src = CAR_IMAGE_FALLBACK;
-                    }}
                   />
                   <div className="absolute top-3 right-3">
                     <span className="inline-block px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-bold">

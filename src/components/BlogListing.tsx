@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -16,30 +16,17 @@ interface BlogPost {
   views: number;
 }
 
-export default function BlogListing() {
-  const [blogs, setBlogs] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
+// initialBlogs is fetched server-side by the /blog page - this used to fetch
+// client-side with a spinner-only loading state, meaning the entire post
+// grid (all 23+ articles) was invisible to crawlers on first paint. Search/
+// filter/pagination stay client-side since those are genuinely interactive,
+// but the underlying data is now real from the very first render.
+export default function BlogListing({ initialBlogs }: { initialBlogs: BlogPost[] }) {
+  const [blogs] = useState<BlogPost[]>(initialBlogs);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 9;
-
-  useEffect(() => {
-    fetchBlogs();
-  }, []);
-
-  const fetchBlogs = async () => {
-    try {
-      const response = await fetch("/api/blogs");
-      const data = await response.json();
-      setBlogs(data.blogs || []);
-    } catch (error) {
-      console.error("Error fetching blogs:", error);
-      setBlogs([]);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const categories = [
     { value: "all", label: "All Categories" },
@@ -71,18 +58,6 @@ export default function BlogListing() {
     setCurrentPage(pageNumber);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
-  if (loading) {
-    return (
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center items-center h-96">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className="py-16">

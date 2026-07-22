@@ -36,47 +36,29 @@ interface CityTourVehicle {
   genocideMemorialExpert: boolean;
 }
 
-export default function CityTourDriverClient() {
-  const [vehicles, setVehicles] = useState<CityTourVehicle[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function CityTourDriverClient({ initialCars }: { initialCars: any[] }) {
+  const [vehicles, setVehicles] = useState<CityTourVehicle[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedTourType, setSelectedTourType] = useState<string>("all");
   const [selectedLanguage, setSelectedLanguage] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [selectedDuration, setSelectedDuration] = useState<string>("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([40, 200]);
 
-  // Fetch city tour vehicles from DB
+  // Derive city tour vehicles from server-rendered initial data
   useEffect(() => {
-    const fetchCityTourVehicles = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for city tour vehicles
-        const response = await fetch("/api/cars?citytour=true&driver=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for vehicles with city tour capability
-          const tourCars = data.cars.filter((car: any) => 
-            car.cityTours === true || 
-            car.tourGuideQualified === true ||
-            car.historicalKnowledge === true
-          );
-          setVehicles(tourCars);
-          
-          if (tourCars.length > 0) {
-            const rates = tourCars.map((c: any) => c.tourRate || c.dailyRate || 65);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching city tour vehicles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const tourCars = initialCars.filter((car: any) =>
+      car.cityTours === true ||
+      car.tourGuideQualified === true ||
+      car.historicalKnowledge === true
+    );
+    setVehicles(tourCars);
 
-    fetchCityTourVehicles();
-  }, []);
+    if (tourCars.length > 0) {
+      const rates = tourCars.map((c: any) => c.tourRate || c.dailyRate || 65);
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
+  }, [initialCars]);
 
   // Tour types for filtering
   const tourTypes = [

@@ -5,50 +5,31 @@ import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { Car } from "@/types/car";
 
-export default function CheapCarRentalKigaliClient() {
-  const [cars, setCars] = useState<Car[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function CheapCarRentalKigaliClient({ initialCars }: { initialCars: any[] }) {
+  const [cars, setCars] = useState<Car[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedTransmission, setSelectedTransmission] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [yearRange, setYearRange] = useState<[number, number]>([0, 0]);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 60]); // Capped at $60 for budget
 
+  // Set initial year/price ranges from the server-rendered budget-friendly cars
   useEffect(() => {
-    fetchCars();
-  }, []);
+    const budgetCars = initialCars.filter((car: Car) => car.dailyRate <= 60);
 
-  const fetchCars = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch("/api/cars?budget=true");
-      const data = await response.json();
-      let fetchedCars = data.cars || [];
+    if (budgetCars.length > 0) {
+      const years = budgetCars.map((car: Car) => car.year);
+      const minYear = Math.min(...years);
+      const maxYear = Math.max(...years);
+      setYearRange([minYear, maxYear]);
 
-      // Filter to only show budget-friendly cars (under $60/day)
-      fetchedCars = fetchedCars.filter((car: Car) => car.dailyRate <= 60);
-
-      setCars(fetchedCars);
-
-      // Set initial year range based on available cars
-      if (fetchedCars.length > 0) {
-        const years = fetchedCars.map((car: Car) => car.year);
-        const minYear = Math.min(...years);
-        const maxYear = Math.max(...years);
-        setYearRange([minYear, maxYear]);
-
-        // Set initial price range based on available cars (capped at $60)
-        const prices = fetchedCars.map((car: Car) => car.dailyRate);
-        const minPrice = Math.min(...prices);
-        const maxPrice = Math.min(Math.max(...prices), 60);
-        setPriceRange([minPrice, maxPrice]);
-      }
-    } catch (error) {
-      console.error("Error fetching cheap cars:", error);
-    } finally {
-      setLoading(false);
+      const prices = budgetCars.map((car: Car) => car.dailyRate);
+      const minPrice = Math.min(...prices);
+      const maxPrice = Math.min(Math.max(...prices), 60);
+      setPriceRange([minPrice, maxPrice]);
     }
-  };
+  }, [initialCars]);
 
   // Calculate min and max values from all cars
   const { minYear, maxYear, minPrice, maxPrice } = useMemo(() => {

@@ -40,9 +40,9 @@ interface FourXFourVehicle {
   winch: boolean;
 }
 
-export default function FourXFourCarRentalRwandaClient() {
-  const [vehicles, setVehicles] = useState<FourXFourVehicle[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function FourXFourCarRentalRwandaClient({ initialCars }: { initialCars: any[] }) {
+  const [vehicles, setVehicles] = useState<FourXFourVehicle[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [selectedTerrain, setSelectedTerrain] = useState<string>("all");
@@ -50,48 +50,30 @@ export default function FourXFourCarRentalRwandaClient() {
   const [safariReady, setSafariReady] = useState(false);
   const [campingReady, setCampingReady] = useState(false);
 
-  // Fetch 4x4 vehicles from DB
+  // Derive 4x4/off-road vehicles from the server-rendered initial cars
   useEffect(() => {
-    const fetchFourXFourVehicles = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for 4x4 vehicles
-        const response = await fetch("/api/cars?4x4=true&offroad=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for 4x4/off-road vehicles
-          const fourXFourCars = data.cars.filter((car: any) => 
-            car.driveType?.toLowerCase().includes('4x4') ||
-            car.driveType?.toLowerCase().includes('4wd') ||
-            car.driveType?.toLowerCase().includes('all-wheel') ||
-            car.category?.toLowerCase().includes('4x4') ||
-            car.category?.toLowerCase().includes('off-road') ||
-            car.category?.toLowerCase().includes('suv') ||
-            car.brand === 'Toyota' && (car.model?.includes('Land Cruiser') || car.model?.includes('Prado') || car.model?.includes('Hilux') || car.model?.includes('Fortuner')) ||
-            car.brand === 'Land Rover' ||
-            car.brand === 'Range Rover' ||
-            car.brand === 'Jeep' ||
-            car.brand === 'Mitsubishi' && car.model?.includes('Pajero') ||
-            car.brand === 'Nissan' && car.model?.includes('Patrol') ||
-            car.brand === 'Ford' && car.model?.includes('Ranger')
-          );
-          setVehicles(fourXFourCars);
-          
-          if (fourXFourCars.length > 0) {
-            const rates = fourXFourCars.map((c: any) => c.dailyRate);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching 4x4 vehicles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const fourXFourCars = initialCars.filter((car: any) =>
+      car.driveType?.toLowerCase().includes('4x4') ||
+      car.driveType?.toLowerCase().includes('4wd') ||
+      car.driveType?.toLowerCase().includes('all-wheel') ||
+      car.category?.toLowerCase().includes('4x4') ||
+      car.category?.toLowerCase().includes('off-road') ||
+      car.category?.toLowerCase().includes('suv') ||
+      car.brand === 'Toyota' && (car.model?.includes('Land Cruiser') || car.model?.includes('Prado') || car.model?.includes('Hilux') || car.model?.includes('Fortuner')) ||
+      car.brand === 'Land Rover' ||
+      car.brand === 'Range Rover' ||
+      car.brand === 'Jeep' ||
+      car.brand === 'Mitsubishi' && car.model?.includes('Pajero') ||
+      car.brand === 'Nissan' && car.model?.includes('Patrol') ||
+      car.brand === 'Ford' && car.model?.includes('Ranger')
+    );
+    setVehicles(fourXFourCars);
 
-    fetchFourXFourVehicles();
-  }, []);
+    if (fourXFourCars.length > 0) {
+      const rates = fourXFourCars.map((c: any) => c.dailyRate);
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
+  }, [initialCars]);
 
   // Vehicle brands for filtering
   const vehicleBrands = ["all", ...Array.from(new Set(vehicles.map(v => v.brand)))].filter(b => b !== 'all');

@@ -27,45 +27,27 @@ interface DriverCar {
   crossBorder: boolean;
 }
 
-export default function DriverCarHireKigaliClient() {
-  const [vehicles, setVehicles] = useState<DriverCar[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function DriverCarHireKigaliClient({ initialCars }: { initialCars: any[] }) {
+  const [vehicles, setVehicles] = useState<DriverCar[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedLanguage, setSelectedLanguage] = useState<string>("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([50, 200]);
   const [airportOnly, setAirportOnly] = useState(false);
   const [crossBorderOnly, setCrossBorderOnly] = useState(false);
 
-  // Fetch driver-included vehicles from DB
+  // Only include cars that have driver option
   useEffect(() => {
-    const fetchDriverCars = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for vehicles with driver option
-        const response = await fetch("/api/cars?driver=true&withDriver=true");
-        const data = await response.json();
+    const driverCars = initialCars.filter((car: any) =>
+      car.driverIncluded === true || car.driverAvailable === true
+    );
+    setVehicles(driverCars);
 
-        if (data.cars && Array.isArray(data.cars)) {
-          // Only include cars that have driver option
-          const driverCars = data.cars.filter((car: any) =>
-            car.driverIncluded === true || car.driverAvailable === true
-          );
-          setVehicles(driverCars);
-
-          if (driverCars.length > 0) {
-            const rates = driverCars.map((c: any) => c.dailyRate + (c.driverRate || 20));
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching driver cars:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchDriverCars();
-  }, []);
+    if (driverCars.length > 0) {
+      const rates = driverCars.map((c: any) => c.dailyRate + (c.driverRate || 20));
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
+  }, [initialCars]);
 
   // Get unique values from real data
   const categories = ["all", ...Array.from(new Set(vehicles.map(v => v.category)))];

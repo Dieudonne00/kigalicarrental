@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 interface LandCruiserVehicle {
@@ -41,54 +41,41 @@ interface LandCruiserVehicle {
   guideAvailable: boolean;
 }
 
-export default function LandCruiserRentalRwandaClient() {
-  const [vehicles, setVehicles] = useState<LandCruiserVehicle[]>([]);
-  const [loading, setLoading] = useState(true);
+// Filter the full available fleet down to Toyota Land Cruiser models -
+// previously done against the /api/cars response, now run against the
+// server-fetched initialCars so this page renders real Land Cruisers in
+// the initial HTML instead of an empty grid.
+function filterLandCruisers(cars: any[]): LandCruiserVehicle[] {
+  return cars.filter((car: any) =>
+    car.brand === 'Toyota' && (
+      car.model?.toLowerCase().includes('land cruiser') ||
+      car.model?.toLowerCase().includes('landcruiser') ||
+      car.model?.toLowerCase().includes('prado') ||
+      car.model?.toLowerCase().includes('v8') ||
+      car.model?.toLowerCase().includes('300 series') ||
+      car.model?.toLowerCase().includes('200 series')
+    )
+  );
+}
+
+export default function LandCruiserRentalRwandaClient({ initialCars }: { initialCars: any[] }) {
+  const initialLandCruisers = filterLandCruisers(initialCars);
+  const [vehicles, setVehicles] = useState<LandCruiserVehicle[]>(initialLandCruisers);
+  const [loading, setLoading] = useState(false);
   const [selectedModel, setSelectedModel] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [selectedPark, setSelectedPark] = useState<string>("all");
-  const [priceRange, setPriceRange] = useState<[number, number]>([120, 400]);
+  const [priceRange, setPriceRange] = useState<[number, number]>(
+    initialLandCruisers.length > 0
+      ? [
+          Math.min(...initialLandCruisers.map((c) => c.dailyRate)),
+          Math.max(...initialLandCruisers.map((c) => c.dailyRate)),
+        ]
+      : [120, 400]
+  );
   const [popUpRoof, setPopUpRoof] = useState(false);
   const [campingGear, setCampingGear] = useState(false);
   const [snorkelEquipped, setSnorkelEquipped] = useState(false);
-
-  // Fetch Land Cruiser vehicles from DB
-  useEffect(() => {
-    const fetchLandCruisers = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for Land Cruiser vehicles
-        const response = await fetch("/api/cars?landcruiser=true&toyota=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for Land Cruiser models
-          const landCruisers = data.cars.filter((car: any) => 
-            car.brand === 'Toyota' && (
-              car.model?.toLowerCase().includes('land cruiser') ||
-              car.model?.toLowerCase().includes('landcruiser') ||
-              car.model?.toLowerCase().includes('prado') ||
-              car.model?.toLowerCase().includes('v8') ||
-              car.model?.toLowerCase().includes('300 series') ||
-              car.model?.toLowerCase().includes('200 series')
-            )
-          );
-          setVehicles(landCruisers);
-          
-          if (landCruisers.length > 0) {
-            const rates = landCruisers.map((c: any) => c.dailyRate);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching Land Cruisers:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchLandCruisers();
-  }, []);
 
   // Land Cruiser models
   const landCruiserModels = [

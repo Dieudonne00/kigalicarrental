@@ -41,9 +41,9 @@ interface PradoVehicle {
   guideAvailable: boolean;
 }
 
-export default function PradoRentalKigaliClient() {
-  const [vehicles, setVehicles] = useState<PradoVehicle[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function PradoRentalKigaliClient({ initialCars }: { initialCars: any[] }) {
+  const [vehicles, setVehicles] = useState<PradoVehicle[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedGeneration, setSelectedGeneration] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [selectedPark, setSelectedPark] = useState<string>("all");
@@ -52,40 +52,23 @@ export default function PradoRentalKigaliClient() {
   const [campingGear, setCampingGear] = useState(false);
   const [leatherSeats, setLeatherSeats] = useState(false);
 
-  // Fetch Prado vehicles from DB
+  // Derive Prado vehicles + price range from server-rendered initial data
   useEffect(() => {
-    const fetchPradoVehicles = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for Prado vehicles
-        const response = await fetch("/api/cars?prado=true&landcruiser=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for Prado models
-          const pradoCars = data.cars.filter((car: any) => 
-            car.brand === 'Toyota' && (
-              car.model?.toLowerCase().includes('prado') ||
-              car.name?.toLowerCase().includes('prado') ||
-              car.model?.toLowerCase().includes('land cruiser prado')
-            )
-          );
-          setVehicles(pradoCars);
-          
-          if (pradoCars.length > 0) {
-            const rates = pradoCars.map((c: any) => c.dailyRate);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching Prado vehicles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    // Filter for Prado models
+    const pradoCars = initialCars.filter((car: any) =>
+      car.brand === 'Toyota' && (
+        car.model?.toLowerCase().includes('prado') ||
+        car.name?.toLowerCase().includes('prado') ||
+        car.model?.toLowerCase().includes('land cruiser prado')
+      )
+    );
+    setVehicles(pradoCars);
 
-    fetchPradoVehicles();
-  }, []);
+    if (pradoCars.length > 0) {
+      const rates = pradoCars.map((c: any) => c.dailyRate);
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
+  }, [initialCars]);
 
   // Prado generations
   const pradoGenerations = [

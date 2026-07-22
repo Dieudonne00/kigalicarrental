@@ -4,41 +4,26 @@ import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { Car } from "@/types/car";
 
-export default function PrivateDriverKigaliClient() {
-  const [cars, setCars] = useState<Car[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function PrivateDriverKigaliClient({ initialCars }: { initialCars: any[] }) {
+  const [cars, setCars] = useState<Car[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [serviceType, setServiceType] = useState<string>("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 0]);
   const [includeLuxury, setIncludeLuxury] = useState<boolean>(false);
 
+  // Derive price range from server-rendered initial data (all cars available for private driver service)
   useEffect(() => {
-    fetchPrivateDriverCars();
-  }, []);
+    setCars(initialCars);
 
-  const fetchPrivateDriverCars = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch("/api/cars?chauffeur=true");
-      const data = await response.json();
-      let fetchedCars = data.cars || [];
-
-      // All cars available for private driver service
-      setCars(fetchedCars);
-
-      if (fetchedCars.length > 0) {
-        const prices = fetchedCars.map((car: Car) => car.dailyRate);
-        const minPrice = Math.min(...prices);
-        const maxPrice = Math.max(...prices);
-        setPriceRange([minPrice, maxPrice]);
-      }
-    } catch (error) {
-      console.error("Error fetching private driver cars:", error);
-    } finally {
-      setLoading(false);
+    if (initialCars.length > 0) {
+      const prices = initialCars.map((car: Car) => car.dailyRate);
+      const minPrice = Math.min(...prices);
+      const maxPrice = Math.max(...prices);
+      setPriceRange([minPrice, maxPrice]);
     }
-  };
+  }, [initialCars]);
 
   const { minPrice, maxPrice } = useMemo(() => {
     if (cars.length === 0) return { minPrice: 65, maxPrice: 250 };
@@ -141,8 +126,8 @@ export default function PrivateDriverKigaliClient() {
           {/* Trust Badges */}
           <div className="flex flex-wrap justify-center gap-6 mb-10">
             <div className="bg-white/10 backdrop-blur-md rounded-xl px-6 py-4 border border-white/20">
-              <div className="text-3xl font-bold text-white">5★</div>
-              <div className="text-xs text-white/80">Professional</div>
+              <div className="text-3xl font-bold text-white">100%</div>
+              <div className="text-xs text-white/80">Licensed Drivers</div>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-xl px-6 py-4 border border-white/20">
               <div className="text-3xl font-bold text-white">24/7</div>

@@ -35,47 +35,29 @@ interface AirportDriverVehicle {
   flightDelayProtection: boolean;
 }
 
-export default function AirportDriverServiceClient() {
-  const [vehicles, setVehicles] = useState<AirportDriverVehicle[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function AirportDriverServiceClient({ initialCars }: { initialCars: any[] }) {
+  const [vehicles, setVehicles] = useState<AirportDriverVehicle[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedVehicleType, setSelectedVehicleType] = useState<string>("all");
   const [selectedLanguage, setSelectedLanguage] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [selectedService, setSelectedService] = useState<string>("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([35, 150]);
 
-  // Fetch airport driver vehicles from DB
+  // Derive airport transfer-capable vehicles from the server-rendered initial cars
   useEffect(() => {
-    const fetchAirportVehicles = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for airport transfer vehicles
-        const response = await fetch("/api/cars?airport=true&driver=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for vehicles with airport transfer capability
-          const airportCars = data.cars.filter((car: any) => 
-            car.airportTransfers === true || 
-            car.airportPickup === true ||
-            car.meetAndGreet === true
-          );
-          setVehicles(airportCars);
-          
-          if (airportCars.length > 0) {
-            const rates = airportCars.map((c: any) => c.airportTransferRate || 45);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching airport driver vehicles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const airportCars = initialCars.filter((car: any) =>
+      car.airportTransfers === true ||
+      car.airportPickup === true ||
+      car.meetAndGreet === true
+    );
+    setVehicles(airportCars);
 
-    fetchAirportVehicles();
-  }, []);
+    if (airportCars.length > 0) {
+      const rates = airportCars.map((c: any) => c.airportTransferRate || 45);
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
+  }, [initialCars]);
 
   // Vehicle types for filtering
   const vehicleTypes = [

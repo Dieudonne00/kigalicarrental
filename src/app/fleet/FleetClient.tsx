@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Car } from "@/types/car";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 
-export default function FleetClient() {
+export default function FleetClient({ initialCars }: { initialCars: any[] }) {
   // Read via window.location instead of next/navigation's useSearchParams():
   // that hook forces this page out of static generation into a client-only
   // render behind a Suspense boundary, which left the entire page (H1 and
@@ -17,8 +17,8 @@ export default function FleetClient() {
   }>({ category: null, pickupDate: null, returnDate: null });
   const { category: categoryFromSearch, pickupDate: pickupDateFromSearch, returnDate: returnDateFromSearch } = searchFilters;
 
-  const [cars, setCars] = useState<Car[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [cars, setCars] = useState<Car[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   useEffect(() => {
@@ -37,34 +37,18 @@ export default function FleetClient() {
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 0]);
 
   useEffect(() => {
-    fetchCars();
-  }, []);
+    if (initialCars.length > 0) {
+      const years = initialCars.map((car: Car) => car.year);
+      const minYear = Math.min(...years);
+      const maxYear = Math.max(...years);
+      setYearRange([minYear, maxYear]);
 
-  const fetchCars = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch("/api/cars");
-      const data = await response.json();
-      const fetchedCars = data.cars || [];
-      setCars(fetchedCars);
-
-      if (fetchedCars.length > 0) {
-        const years = fetchedCars.map((car: Car) => car.year);
-        const minYear = Math.min(...years);
-        const maxYear = Math.max(...years);
-        setYearRange([minYear, maxYear]);
-
-        const prices = fetchedCars.map((car: Car) => car.dailyRate);
-        const minPrice = Math.min(...prices);
-        const maxPrice = Math.max(...prices);
-        setPriceRange([minPrice, maxPrice]);
-      }
-    } catch (error) {
-      console.error("Error fetching cars:", error);
-    } finally {
-      setLoading(false);
+      const prices = initialCars.map((car: Car) => car.dailyRate);
+      const minPrice = Math.min(...prices);
+      const maxPrice = Math.max(...prices);
+      setPriceRange([minPrice, maxPrice]);
     }
-  };
+  }, [initialCars]);
 
   const { minYear, maxYear, minPrice, maxPrice } = useMemo(() => {
     if (cars.length === 0) return { minYear: 2000, maxYear: 2026, minPrice: 0, maxPrice: 500 };

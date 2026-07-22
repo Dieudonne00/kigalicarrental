@@ -38,9 +38,9 @@ interface AkageraSafariVehicle {
   gameDriveExperience: string;
 }
 
-export default function AkageraSafariRentalClient() {
-  const [vehicles, setVehicles] = useState<AkageraSafariVehicle[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function AkageraSafariRentalClient({ initialCars }: { initialCars: any[] }) {
+  const [vehicles, setVehicles] = useState<AkageraSafariVehicle[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedVehicleType, setSelectedVehicleType] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [selectedDuration, setSelectedDuration] = useState<string>("all");
@@ -49,42 +49,24 @@ export default function AkageraSafariRentalClient() {
   const [campingGear, setCampingGear] = useState(false);
   const [guideIncluded, setGuideIncluded] = useState(false);
 
-  // Fetch Akagera safari vehicles from DB
+  // Derive vehicles suitable for Akagera from the server-rendered initial cars
   useEffect(() => {
-    const fetchAkageraVehicles = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for Akagera safari vehicles
-        const response = await fetch("/api/cars?akagera=true&safari=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for vehicles suitable for Akagera
-          const safariCars = data.cars.filter((car: any) => 
-            car.nationalParks?.includes('Akagera') ||
-            car.bestFor?.includes('Akagera') ||
-            car.bestFor?.includes('safari') ||
-            car.category?.includes('4x4') ||
-            car.category?.includes('SUV') ||
-            car.popUpRoof === true ||
-            car.gameViewingSeats === true
-          );
-          setVehicles(safariCars);
-          
-          if (safariCars.length > 0) {
-            const rates = safariCars.map((c: any) => c.safariRate || c.dailyRate);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching Akagera safari vehicles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const safariCars = initialCars.filter((car: any) =>
+      car.nationalParks?.includes('Akagera') ||
+      car.bestFor?.includes('Akagera') ||
+      car.bestFor?.includes('safari') ||
+      car.category?.includes('4x4') ||
+      car.category?.includes('SUV') ||
+      car.popUpRoof === true ||
+      car.gameViewingSeats === true
+    );
+    setVehicles(safariCars);
 
-    fetchAkageraVehicles();
-  }, []);
+    if (safariCars.length > 0) {
+      const rates = safariCars.map((c: any) => c.safariRate || c.dailyRate);
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
+  }, [initialCars]);
 
   // Vehicle types for filtering
   const vehicleTypes = [

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { prisma } from "@/lib/prisma";
+import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import AkageraGameDriveClient from "./AkageraGameDriveClient";
 
 export const metadata: Metadata = {
@@ -17,6 +19,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AkageraGameDrivePage() {
-  return <AkageraGameDriveClient />;
+export default async function AkageraGameDrivePage() {
+  const cars = await prisma.car.findMany({
+    where: { available: true, gameDrive: true },
+    orderBy: { createdAt: "desc" },
+  });
+  const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
+
+  return <AkageraGameDriveClient initialCars={initialCars} />;
 }

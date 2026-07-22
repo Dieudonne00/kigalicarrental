@@ -46,9 +46,9 @@ interface CampingCar {
   weight: string;
 }
 
-export default function CampingCarRentalRwandaClient() {
-  const [vehicles, setVehicles] = useState<CampingCar[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function CampingCarRentalRwandaClient({ initialCars }: { initialCars: any[] }) {
+  const [vehicles, setVehicles] = useState<CampingCar[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedType, setSelectedType] = useState<string>("all");
   const [selectedSleeping, setSelectedSleeping] = useState<string>("all");
   const [selectedPark, setSelectedPark] = useState<string>("all");
@@ -57,41 +57,23 @@ export default function CampingCarRentalRwandaClient() {
   const [kitchen, setKitchen] = useState(false);
   const [solarIncluded, setSolarIncluded] = useState(false);
 
-  // Fetch camping cars from DB
+  // Derive camping cars from server-rendered initial data
   useEffect(() => {
-    const fetchCampingCars = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for camping cars / campervans
-        const response = await fetch("/api/cars?campingcar=true&motorhome=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for camping cars / campervans
-          const campingCars = data.cars.filter((car: any) => 
-            car.type?.toLowerCase().includes('camper') ||
-            car.type?.toLowerCase().includes('motorhome') ||
-            car.type?.toLowerCase().includes('rv') ||
-            car.kitchen === true ||
-            car.toilet === true ||
-            car.sleepingCapacity > 0
-          );
-          setVehicles(campingCars);
-          
-          if (campingCars.length > 0) {
-            const rates = campingCars.map((c: any) => c.dailyRate);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching camping cars:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const campingCars = initialCars.filter((car: any) =>
+      car.type?.toLowerCase().includes('camper') ||
+      car.type?.toLowerCase().includes('motorhome') ||
+      car.type?.toLowerCase().includes('rv') ||
+      car.kitchen === true ||
+      car.toilet === true ||
+      car.sleepingCapacity > 0
+    );
+    setVehicles(campingCars);
 
-    fetchCampingCars();
-  }, []);
+    if (campingCars.length > 0) {
+      const rates = campingCars.map((c: any) => c.dailyRate);
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
+  }, [initialCars]);
 
   // Camping car types
   const campingTypes = [

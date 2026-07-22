@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 import BlogListing from "@/components/BlogListing";
 import { imageUrl } from "@/lib/images";
+import { prisma } from "@/lib/prisma";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Kigali Car Rental Blog | Rwanda Travel Tips & Car Hire Guides",
@@ -25,7 +28,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const blogs = await prisma.blogPost.findMany({
+    where: { published: true },
+    orderBy: { publishedAt: "desc" },
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      excerpt: true,
+      featuredImage: true,
+      author: true,
+      category: true,
+      publishedAt: true,
+      views: true,
+    },
+  });
+
   return (
     <main className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -63,7 +82,7 @@ export default function BlogPage() {
       <section className="relative">
         {/* Decorative Accent */}
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1D4ED8] to-[#1E3A8A]" />
-        <BlogListing />
+        <BlogListing initialBlogs={blogs.map((b) => ({ ...b, publishedAt: b.publishedAt?.toISOString() ?? "" }))} />
       </section>
     </main>
   );

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { prisma } from "@/lib/prisma";
+import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import NyungweForestSafariClient from "./NyungweForestSafariClient";
 
 export const metadata: Metadata = {
@@ -18,6 +20,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function NyungweForestSafariPage() {
-  return <NyungweForestSafariClient />;
+export default async function NyungweForestSafariPage() {
+  const cars = await prisma.car.findMany({ where: { available: true }, orderBy: { createdAt: "desc" } });
+  const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
+  return <NyungweForestSafariClient initialCars={initialCars} />;
 }

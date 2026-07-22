@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
+import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import FleetClient from "./FleetClient";
 
 // Revalidate hourly rather than fully static - the ItemList schema below
@@ -24,11 +25,10 @@ export const metadata: Metadata = {
 };
 
 export default async function FleetPage() {
-  let cars: { id: string; brand: string; model: string; year: number }[] = [];
+  let cars: Awaited<ReturnType<typeof prisma.car.findMany>> = [];
   try {
     cars = await prisma.car.findMany({
       where: { available: true },
-      select: { id: true, brand: true, model: true, year: true },
       orderBy: { createdAt: "desc" },
     });
   } catch (error) {
@@ -46,13 +46,15 @@ export default async function FleetPage() {
     })),
   };
 
+  const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <FleetClient />
+      <FleetClient initialCars={initialCars} />
     </>
   );
 }

@@ -40,9 +40,9 @@ interface BusinessDriverVehicle {
   embassyApproved: boolean;
 }
 
-export default function BusinessDriverServiceClient() {
-  const [vehicles, setVehicles] = useState<BusinessDriverVehicle[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function BusinessDriverServiceClient({ initialCars }: { initialCars: any[] }) {
+  const [vehicles, setVehicles] = useState<BusinessDriverVehicle[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedVehicleType, setSelectedVehicleType] = useState<string>("all");
   const [selectedLanguage, setSelectedLanguage] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
@@ -51,44 +51,26 @@ export default function BusinessDriverServiceClient() {
   const [wifiRequired, setWifiRequired] = useState(false);
   const [uniformRequired, setUniformRequired] = useState(false);
 
-  // Fetch business driver vehicles from DB
+  // Derive business/corporate-capable vehicles from the server-rendered initial cars
   useEffect(() => {
-    const fetchBusinessVehicles = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for business/corporate vehicles
-        const response = await fetch("/api/cars?business=true&corporate=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for vehicles with business/corporate capability
-          const businessCars = data.cars.filter((car: any) => 
-            car.corporateEvents === true || 
-            car.businessTravel === true ||
-            car.category?.toLowerCase().includes('executive') ||
-            car.category?.toLowerCase().includes('luxury') ||
-            car.brand === 'Mercedes' || 
-            car.brand === 'BMW' || 
-            car.brand === 'Audi' ||
-            car.brand === 'Lexus' ||
-            car.brand === 'Range Rover'
-          );
-          setVehicles(businessCars);
-          
-          if (businessCars.length > 0) {
-            const rates = businessCars.map((c: any) => c.businessRate || c.dailyRate || 85);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching business driver vehicles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const businessCars = initialCars.filter((car: any) =>
+      car.corporateEvents === true ||
+      car.businessTravel === true ||
+      car.category?.toLowerCase().includes('executive') ||
+      car.category?.toLowerCase().includes('luxury') ||
+      car.brand === 'Mercedes' ||
+      car.brand === 'BMW' ||
+      car.brand === 'Audi' ||
+      car.brand === 'Lexus' ||
+      car.brand === 'Range Rover'
+    );
+    setVehicles(businessCars);
 
-    fetchBusinessVehicles();
-  }, []);
+    if (businessCars.length > 0) {
+      const rates = businessCars.map((c: any) => c.businessRate || c.dailyRate || 85);
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
+  }, [initialCars]);
 
   // Vehicle types for filtering
   const vehicleTypes = [

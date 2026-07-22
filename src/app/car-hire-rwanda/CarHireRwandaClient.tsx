@@ -21,10 +21,10 @@ interface Car {
   imageUrl: string;
 }
 
-export default function CarHireRwandaClient() {
-  const [cars, setCars] = useState<Car[]>([]);
-  const [filteredCars, setFilteredCars] = useState<Car[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function CarHireRwandaClient({ initialCars }: { initialCars: any[] }) {
+  const [cars, setCars] = useState<Car[]>(initialCars);
+  const [filteredCars, setFilteredCars] = useState<Car[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const router = useRouter();
@@ -41,154 +41,6 @@ export default function CarHireRwandaClient() {
     "Luxury",
     "Business"
   ];
-
-  useEffect(() => {
-    const fetchAllCars = async () => {
-      try {
-        setLoading(true);
-        // Using your existing API endpoint structure
-        const response = await fetch("/api/cars");
-        const data = await response.json();
-
-        if (data.cars && Array.isArray(data.cars)) {
-          setCars(data.cars);
-          setFilteredCars(data.cars);
-        } else {
-          // Fallback to sample data if API fails
-          const sampleCars: Car[] = [
-            {
-              id: "1",
-              name: "Toyota RAV4",
-              brand: "Toyota",
-              model: "RAV4",
-              year: 2023,
-              category: "SUV",
-              transmission: "Automatic",
-              seats: 5,
-              fuelType: "Petrol",
-              dailyRate: 85,
-              weeklyRate: 500,
-              monthlyRate: 1800,
-              imageUrl: "/images/toyota-rav4.jpg"
-            },
-            {
-              id: "2",
-              name: "Toyota Land Cruiser",
-              brand: "Toyota",
-              model: "Land Cruiser",
-              year: 2022,
-              category: "4x4",
-              transmission: "Automatic",
-              seats: 7,
-              fuelType: "Diesel",
-              dailyRate: 120,
-              weeklyRate: 750,
-              monthlyRate: 2800,
-              imageUrl: "/images/land-cruiser.jpg"
-            },
-            {
-              id: "3",
-              name: "Toyota Hilux",
-              brand: "Toyota",
-              model: "Hilux",
-              year: 2023,
-              category: "Pickup",
-              transmission: "Manual",
-              seats: 5,
-              fuelType: "Diesel",
-              dailyRate: 65,
-              weeklyRate: 400,
-              monthlyRate: 1500,
-              imageUrl: "/images/hilux.jpg"
-            },
-            {
-              id: "4",
-              name: "Mazda CX-5",
-              brand: "Mazda",
-              model: "CX-5",
-              year: 2023,
-              category: "SUV",
-              transmission: "Automatic",
-              seats: 5,
-              fuelType: "Petrol",
-              dailyRate: 75,
-              weeklyRate: 450,
-              monthlyRate: 1600,
-              imageUrl: "/images/mazda-cx5.jpg"
-            },
-            {
-              id: "5",
-              name: "Toyota Hiace",
-              brand: "Toyota",
-              model: "Hiace",
-              year: 2022,
-              category: "Minibus",
-              transmission: "Manual",
-              seats: 14,
-              fuelType: "Diesel",
-              dailyRate: 95,
-              weeklyRate: 600,
-              monthlyRate: 2200,
-              imageUrl: "/images/hiace.jpg"
-            },
-            {
-              id: "6",
-              name: "Suzuki Vitara",
-              brand: "Suzuki",
-              model: "Vitara",
-              year: 2023,
-              category: "Compact SUV",
-              transmission: "Automatic",
-              seats: 5,
-              fuelType: "Petrol",
-              dailyRate: 60,
-              weeklyRate: 350,
-              monthlyRate: 1300,
-              imageUrl: "/images/vitara.jpg"
-            },
-            {
-              id: "7",
-              name: "Toyota Corolla",
-              brand: "Toyota",
-              model: "Corolla",
-              year: 2023,
-              category: "Sedan",
-              transmission: "Automatic",
-              seats: 5,
-              fuelType: "Petrol",
-              dailyRate: 55,
-              weeklyRate: 320,
-              monthlyRate: 1200,
-              imageUrl: "/images/corolla.jpg"
-            },
-            {
-              id: "8",
-              name: "Land Rover Defender",
-              brand: "Land Rover",
-              model: "Defender",
-              year: 2022,
-              category: "4x4",
-              transmission: "Automatic",
-              seats: 7,
-              fuelType: "Diesel",
-              dailyRate: 150,
-              weeklyRate: 900,
-              monthlyRate: 3200,
-              imageUrl: "/images/defender.jpg"
-            }
-          ];
-          setCars(sampleCars);
-          setFilteredCars(sampleCars);
-        }
-      } catch (error) {
-        console.error("Error fetching cars:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchAllCars();
-  }, []);
 
   useEffect(() => {
     let filtered = cars;

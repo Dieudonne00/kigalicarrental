@@ -37,9 +37,22 @@ interface Volcanoes4x4Vehicle {
   parkEntryAssistance: boolean;
 }
 
-export default function Volcanoes4x4RentalClient() {
-  const [vehicles, setVehicles] = useState<Volcanoes4x4Vehicle[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function Volcanoes4x4RentalClient({ initialCars }: { initialCars: any[] }) {
+  // Filter server-provided cars for vehicles suitable for Volcanoes terrain
+  const volcanoesInitialCars = initialCars.filter((car: any) =>
+    car.nationalParks?.includes('Volcanoes') ||
+    car.bestFor?.includes('gorilla trekking') ||
+    car.bestFor?.includes('Volcanoes') ||
+    car.mountainTerrain === true ||
+    car.steepSlopeCapable === true ||
+    car.highClearance === true ||
+    car.brand === 'Toyota' && (car.model?.includes('Land Cruiser') || car.model?.includes('Prado') || car.model?.includes('Hilux')) ||
+    car.brand === 'Land Rover' ||
+    car.brand === 'Range Rover'
+  );
+
+  const [vehicles, setVehicles] = useState<Volcanoes4x4Vehicle[]>(volcanoesInitialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [selectedTransmission, setSelectedTransmission] = useState<string>("all");
@@ -48,43 +61,12 @@ export default function Volcanoes4x4RentalClient() {
   const [lowRange, setLowRange] = useState(false);
   const [guideIncluded, setGuideIncluded] = useState(false);
 
-  // Fetch Volcanoes 4x4 vehicles from DB
+  // Derive the initial price range from the server-provided Volcanoes 4x4 vehicles
   useEffect(() => {
-    const fetchVolcanoesVehicles = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for Volcanoes National Park vehicles
-        const response = await fetch("/api/cars?volcanoes=true&4x4=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for vehicles suitable for Volcanoes terrain
-          const volcanoesCars = data.cars.filter((car: any) => 
-            car.nationalParks?.includes('Volcanoes') ||
-            car.bestFor?.includes('gorilla trekking') ||
-            car.bestFor?.includes('Volcanoes') ||
-            car.mountainTerrain === true ||
-            car.steepSlopeCapable === true ||
-            car.highClearance === true ||
-            car.brand === 'Toyota' && (car.model?.includes('Land Cruiser') || car.model?.includes('Prado') || car.model?.includes('Hilux')) ||
-            car.brand === 'Land Rover' ||
-            car.brand === 'Range Rover'
-          );
-          setVehicles(volcanoesCars);
-          
-          if (volcanoesCars.length > 0) {
-            const rates = volcanoesCars.map((c: any) => c.trekkingRate || c.dailyRate);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching Volcanoes 4x4 vehicles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchVolcanoesVehicles();
+    if (volcanoesInitialCars.length > 0) {
+      const rates = volcanoesInitialCars.map((c: any) => c.trekkingRate || c.dailyRate);
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
   }, []);
 
   // Vehicle brands for filtering

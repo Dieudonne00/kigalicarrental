@@ -1,46 +1,33 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Car } from "@/types/car";
 
-export default function LongTermCarRentalRwandaClient() {
-  const [cars, setCars] = useState<Car[]>([]);
-  const [loading, setLoading] = useState(true);
+// Only show cars with monthly rates available - previously done against
+// the /api/cars response, now run against the server-fetched initialCars
+// so this page renders real long-term vehicles in the initial HTML instead
+// of an empty grid.
+function filterLongTermCars(cars: any[]): Car[] {
+  return cars.filter((car: Car) => car.monthlyRate && car.monthlyRate > 0);
+}
+
+export default function LongTermCarRentalRwandaClient({ initialCars }: { initialCars: any[] }) {
+  const initialLongTermCars = filterLongTermCars(initialCars);
+  const [cars, setCars] = useState<Car[]>(initialLongTermCars);
+  const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedTransmission, setSelectedTransmission] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [rentalDuration, setRentalDuration] = useState<string>("monthly");
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 0]);
-
-  useEffect(() => {
-    fetchLongTermCars();
-  }, []);
-
-  const fetchLongTermCars = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch("/api/cars?longterm=true");
-      const data = await response.json();
-      let fetchedCars = data.cars || [];
-
-      // Only show cars with monthly rates available
-      fetchedCars = fetchedCars.filter((car: Car) => car.monthlyRate && car.monthlyRate > 0);
-
-      setCars(fetchedCars);
-
-      if (fetchedCars.length > 0) {
-        const prices = fetchedCars.map((car: Car) => car.monthlyRate || 0);
-        const minPrice = Math.min(...prices);
-        const maxPrice = Math.max(...prices);
-        setPriceRange([minPrice, maxPrice]);
-      }
-    } catch (error) {
-      console.error("Error fetching long-term cars:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [priceRange, setPriceRange] = useState<[number, number]>(
+    initialLongTermCars.length > 0
+      ? [
+          Math.min(...initialLongTermCars.map((car) => car.monthlyRate || 0)),
+          Math.max(...initialLongTermCars.map((car) => car.monthlyRate || 0)),
+        ]
+      : [0, 0]
+  );
 
   // Calculate monthly savings vs daily rate
   const calculateMonthlySavings = (car: Car) => {

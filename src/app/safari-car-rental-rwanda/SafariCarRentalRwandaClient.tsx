@@ -39,9 +39,9 @@ interface SafariVehicle {
   guideAvailable: boolean;
 }
 
-export default function SafariCarRentalRwandaClient() {
-  const [vehicles, setVehicles] = useState<SafariVehicle[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function SafariCarRentalRwandaClient({ initialCars }: { initialCars: any[] }) {
+  const [vehicles, setVehicles] = useState<SafariVehicle[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedPark, setSelectedPark] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [selectedSpecialty, setSelectedSpecialty] = useState<string>("all");
@@ -50,43 +50,26 @@ export default function SafariCarRentalRwandaClient() {
   const [campingGear, setCampingGear] = useState(false);
   const [guideIncluded, setGuideIncluded] = useState(false);
 
-  // Fetch safari vehicles from DB
+  // Derive safari-ready vehicles + price range from server-rendered initial data
   useEffect(() => {
-    const fetchSafariVehicles = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for safari vehicles
-        const response = await fetch("/api/cars?safari=true&gameview=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for safari-ready vehicles
-          const safariCars = data.cars.filter((car: any) => 
-            car.safariReady === true ||
-            car.gameViewing === true ||
-            car.popUpRoof === true ||
-            car.nationalParks?.length > 0 ||
-            car.wildlifeSpecialty?.length > 0 ||
-            car.brand === 'Toyota' && (car.model?.includes('Land Cruiser') || car.model?.includes('Prado')) ||
-            car.brand === 'Land Rover' ||
-            car.brand === 'Range Rover'
-          );
-          setVehicles(safariCars);
-          
-          if (safariCars.length > 0) {
-            const rates = safariCars.map((c: any) => c.safariRate || c.dailyRate);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching safari vehicles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    // Filter for safari-ready vehicles
+    const safariCars = initialCars.filter((car: any) =>
+      car.safariReady === true ||
+      car.gameViewing === true ||
+      car.popUpRoof === true ||
+      car.nationalParks?.length > 0 ||
+      car.wildlifeSpecialty?.length > 0 ||
+      car.brand === 'Toyota' && (car.model?.includes('Land Cruiser') || car.model?.includes('Prado')) ||
+      car.brand === 'Land Rover' ||
+      car.brand === 'Range Rover'
+    );
+    setVehicles(safariCars);
 
-    fetchSafariVehicles();
-  }, []);
+    if (safariCars.length > 0) {
+      const rates = safariCars.map((c: any) => c.safariRate || c.dailyRate);
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
+  }, [initialCars]);
 
   // Rwanda's national parks for safari
   const nationalParks = [

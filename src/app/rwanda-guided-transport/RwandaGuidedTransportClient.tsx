@@ -33,48 +33,31 @@ interface GuidedTourVehicle {
   fieldGuides: boolean;
 }
 
-export default function RwandaGuidedTransportClient() {
-  const [vehicles, setVehicles] = useState<GuidedTourVehicle[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function RwandaGuidedTransportClient({ initialCars }: { initialCars: any[] }) {
+  const [vehicles, setVehicles] = useState<GuidedTourVehicle[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedTourType, setSelectedTourType] = useState<string>("all");
   const [selectedLanguage, setSelectedLanguage] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [selectedDuration, setSelectedDuration] = useState<string>("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([150, 500]);
 
-  // Fetch guided tour vehicles from DB
+  // Derive guided tour vehicles + price range from server-rendered initial data
   useEffect(() => {
-    const fetchGuidedVehicles = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for guided tour vehicles
-        const response = await fetch("/api/cars?guided=true&tours=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for vehicles with tour guide capabilities
-          const guidedCars = data.cars.filter((car: any) => 
-            car.guidedTours === true || 
-            car.tourGuideAvailable === true ||
-            car.safariReady === true ||
-            car.nationalParkAccess?.length > 0
-          );
-          setVehicles(guidedCars);
-          
-          if (guidedCars.length > 0) {
-            const rates = guidedCars.map((c: any) => c.dailyRate + (c.tourGuideRate || 75));
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching guided tour vehicles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    // Filter for vehicles with tour guide capabilities
+    const guidedCars = initialCars.filter((car: any) =>
+      car.guidedTours === true ||
+      car.tourGuideAvailable === true ||
+      car.safariReady === true ||
+      car.nationalParkAccess?.length > 0
+    );
+    setVehicles(guidedCars);
 
-    fetchGuidedVehicles();
-  }, []);
+    if (guidedCars.length > 0) {
+      const rates = guidedCars.map((c: any) => c.dailyRate + (c.tourGuideRate || 75));
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
+  }, [initialCars]);
 
   // Tour types for filtering
   const tourTypes = [

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 interface LuxuryCar {
@@ -30,54 +30,41 @@ interface LuxuryCar {
   vipPackage: boolean;
 }
 
-export default function LuxuryCarRentalKigaliClient() {
-  const [vehicles, setVehicles] = useState<LuxuryCar[]>([]);
-  const [loading, setLoading] = useState(true);
+// Filter the full available fleet down to luxury/premium vehicles -
+// previously done against the /api/cars response, now run against the
+// server-fetched initialCars so this page renders real luxury cars in the
+// initial HTML instead of an empty grid.
+function filterLuxuryCars(cars: any[]): LuxuryCar[] {
+  return cars.filter((car: any) =>
+    car.category?.toLowerCase().includes('luxury') ||
+    car.category?.toLowerCase().includes('premium') ||
+    car.category?.toLowerCase().includes('executive') ||
+    car.brand?.toLowerCase() === 'mercedes' ||
+    car.brand?.toLowerCase() === 'bmw' ||
+    car.brand?.toLowerCase() === 'audi' ||
+    car.brand?.toLowerCase() === 'range rover' ||
+    car.brand?.toLowerCase() === 'land rover' ||
+    car.brand?.toLowerCase() === 'porsche' ||
+    car.brand?.toLowerCase() === 'lexus' ||
+    car.brand?.toLowerCase() === 'jaguar'
+  );
+}
+
+export default function LuxuryCarRentalKigaliClient({ initialCars }: { initialCars: any[] }) {
+  const initialLuxuryCars = filterLuxuryCars(initialCars);
+  const [vehicles, setVehicles] = useState<LuxuryCar[]>(initialLuxuryCars);
+  const [loading, setLoading] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState<string>("all");
-  const [priceRange, setPriceRange] = useState<[number, number]>([200, 800]);
+  const [priceRange, setPriceRange] = useState<[number, number]>(
+    initialLuxuryCars.length > 0
+      ? [
+          Math.min(...initialLuxuryCars.map((c) => c.dailyRate)),
+          Math.max(...initialLuxuryCars.map((c) => c.dailyRate)),
+        ]
+      : [200, 800]
+  );
   const [vipOnly, setVipOnly] = useState(false);
   const [chauffeurIncluded, setChauffeurIncluded] = useState(false);
-
-  // Fetch luxury vehicles from DB
-  useEffect(() => {
-    const fetchLuxuryVehicles = async () => {
-      try {
-        setLoading(true);
-        // API endpoint specifically for luxury vehicles
-        const response = await fetch("/api/cars?category=luxury&premium=true");
-        const data = await response.json();
-
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for luxury/premium vehicles only
-          const luxuryCars = data.cars.filter((car: any) =>
-            car.category?.toLowerCase().includes('luxury') ||
-            car.category?.toLowerCase().includes('premium') ||
-            car.category?.toLowerCase().includes('executive') ||
-            car.brand?.toLowerCase() === 'mercedes' ||
-            car.brand?.toLowerCase() === 'bmw' ||
-            car.brand?.toLowerCase() === 'audi' ||
-            car.brand?.toLowerCase() === 'range rover' ||
-            car.brand?.toLowerCase() === 'land rover' ||
-            car.brand?.toLowerCase() === 'porsche' ||
-            car.brand?.toLowerCase() === 'lexus' ||
-            car.brand?.toLowerCase() === 'jaguar'
-          );
-          setVehicles(luxuryCars);
-
-          if (luxuryCars.length > 0) {
-            const rates = luxuryCars.map((c: any) => c.dailyRate);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching luxury vehicles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchLuxuryVehicles();
-  }, []);
 
   // Get unique luxury brands from real data
   const luxuryBrands = ["all", ...Array.from(new Set(vehicles.map(v => v.brand)))];

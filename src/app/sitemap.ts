@@ -3,55 +3,59 @@ import { prisma } from "@/lib/prisma";
 
 const baseUrl = "https://www.kigalicarrental.site";
 
-// Every real, public (non-manager) static route in the app.
-const STATIC_ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
-  { path: "", priority: 1, changeFrequency: "daily" },
-  { path: "/car-rental-rwanda", priority: 0.9, changeFrequency: "daily" },
-  { path: "/car-hire-rwanda", priority: 0.9, changeFrequency: "daily" },
-  { path: "/fleet", priority: 0.9, changeFrequency: "daily" },
-  { path: "/kigali-airport-car-rental", priority: 0.8, changeFrequency: "weekly" },
-  { path: "/luxury-car-rental-kigali", priority: 0.8, changeFrequency: "weekly" },
-  { path: "/cheap-car-rental-kigali", priority: 0.8, changeFrequency: "weekly" },
-  { path: "/self-drive-rwanda", priority: 0.8, changeFrequency: "weekly" },
-  { path: "/self-drive-car-rental-kigali", priority: 0.8, changeFrequency: "weekly" },
-  { path: "/driver-car-hire-kigali", priority: 0.7, changeFrequency: "weekly" },
-  { path: "/chauffeur-service-rwanda", priority: 0.7, changeFrequency: "weekly" },
-  { path: "/private-driver-kigali", priority: 0.7, changeFrequency: "weekly" },
-  { path: "/rwanda-guided-transport", priority: 0.7, changeFrequency: "weekly" },
-  { path: "/airport-driver-service", priority: 0.7, changeFrequency: "weekly" },
-  { path: "/city-tour-driver", priority: 0.6, changeFrequency: "weekly" },
-  { path: "/business-driver-service", priority: 0.6, changeFrequency: "weekly" },
-  { path: "/event-transport-driver", priority: 0.6, changeFrequency: "weekly" },
-  { path: "/4x4-car-rental-rwanda", priority: 0.8, changeFrequency: "weekly" },
-  { path: "/safari-car-rental-rwanda", priority: 0.7, changeFrequency: "weekly" },
-  { path: "/land-cruiser-rental-rwanda", priority: 0.7, changeFrequency: "weekly" },
-  { path: "/prado-rental-kigali", priority: 0.7, changeFrequency: "weekly" },
-  { path: "/rooftop-tent-car-rental-rwanda", priority: 0.6, changeFrequency: "weekly" },
-  { path: "/camping-car-rental-rwanda", priority: 0.6, changeFrequency: "weekly" },
-  { path: "/akagera-safari-rental", priority: 0.6, changeFrequency: "weekly" },
-  { path: "/akagera-game-drive", priority: 0.6, changeFrequency: "weekly" },
-  { path: "/volcanoes-4x4-rental", priority: 0.6, changeFrequency: "weekly" },
-  { path: "/nyungwe-forest-safari", priority: 0.6, changeFrequency: "weekly" },
-  { path: "/long-term-car-rental-rwanda", priority: 0.7, changeFrequency: "weekly" },
-  { path: "/long-term/monthly", priority: 0.6, changeFrequency: "weekly" },
-  { path: "/deals/last-minute", priority: 0.6, changeFrequency: "weekly" },
-  { path: "/book-now", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/how-it-works", priority: 0.5, changeFrequency: "monthly" },
-  { path: "/about", priority: 0.5, changeFrequency: "monthly" },
-  { path: "/contact", priority: 0.5, changeFrequency: "monthly" },
-  { path: "/blog", priority: 0.5, changeFrequency: "weekly" },
-  { path: "/faq", priority: 0.4, changeFrequency: "monthly" },
-  { path: "/terms", priority: 0.3, changeFrequency: "yearly" },
-  { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
-  { path: "/site-map", priority: 0.3, changeFrequency: "monthly" },
+// Every real, public (non-manager) static route in the app. lastModified is
+// the real date each route's page last changed in git (checked 2026-07-22),
+// not "now" - a sitemap where every lastmod is always the current request
+// time teaches Google to distrust the field entirely. Update a route's date
+// here when you actually change that page's content.
+const STATIC_ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]; lastModified: string }[] = [
+  { path: "", priority: 1, changeFrequency: "daily", lastModified: "2026-07-21" },
+  { path: "/car-rental-rwanda", priority: 0.9, changeFrequency: "daily", lastModified: "2026-07-19" },
+  { path: "/car-hire-rwanda", priority: 0.9, changeFrequency: "daily", lastModified: "2026-07-21" },
+  { path: "/fleet", priority: 0.9, changeFrequency: "daily", lastModified: "2026-07-21" },
+  { path: "/kigali-airport-car-rental", priority: 0.8, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/luxury-car-rental-kigali", priority: 0.8, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/cheap-car-rental-kigali", priority: 0.8, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/self-drive-rwanda", priority: 0.8, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/self-drive-car-rental-kigali", priority: 0.8, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/driver-car-hire-kigali", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/chauffeur-service-rwanda", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/private-driver-kigali", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-22" },
+  { path: "/rwanda-guided-transport", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/airport-driver-service", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/city-tour-driver", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/business-driver-service", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/event-transport-driver", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/4x4-car-rental-rwanda", priority: 0.8, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/safari-car-rental-rwanda", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/land-cruiser-rental-rwanda", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/prado-rental-kigali", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/rooftop-tent-car-rental-rwanda", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/camping-car-rental-rwanda", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/akagera-safari-rental", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/akagera-game-drive", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/volcanoes-4x4-rental", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/nyungwe-forest-safari", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/long-term-car-rental-rwanda", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/long-term/monthly", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/deals/last-minute", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-21" },
+  { path: "/book-now", priority: 0.7, changeFrequency: "monthly", lastModified: "2026-07-21" },
+  { path: "/how-it-works", priority: 0.5, changeFrequency: "monthly", lastModified: "2026-07-17" },
+  { path: "/about", priority: 0.5, changeFrequency: "monthly", lastModified: "2026-07-17" },
+  { path: "/contact", priority: 0.5, changeFrequency: "monthly", lastModified: "2026-07-21" },
+  { path: "/blog", priority: 0.5, changeFrequency: "weekly", lastModified: "2026-07-22" },
+  { path: "/faq", priority: 0.4, changeFrequency: "monthly", lastModified: "2026-07-17" },
+  { path: "/terms", priority: 0.3, changeFrequency: "yearly", lastModified: "2026-07-18" },
+  { path: "/privacy", priority: 0.3, changeFrequency: "yearly", lastModified: "2026-07-17" },
+  { path: "/site-map", priority: 0.3, changeFrequency: "monthly", lastModified: "2026-07-21" },
 ];
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const currentDate = new Date();
+export const revalidate = 86400;
 
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
     url: `${baseUrl}${route.path}`,
-    lastModified: currentDate,
+    lastModified: route.lastModified,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));

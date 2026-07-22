@@ -1,5 +1,7 @@
 // app/safari-car-rental-rwanda/page.tsx
 import type { Metadata } from "next";
+import { prisma } from "@/lib/prisma";
+import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import SafariCarRentalRwandaClient from "./SafariCarRentalRwandaClient";
 
 export const metadata: Metadata = {
@@ -18,6 +20,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function SafariCarRentalRwandaPage() {
-  return <SafariCarRentalRwandaClient />;
+export default async function SafariCarRentalRwandaPage() {
+  const cars = await prisma.car.findMany({
+    where: { available: true },
+    orderBy: { createdAt: "desc" },
+  });
+  const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
+
+  return <SafariCarRentalRwandaClient initialCars={initialCars} />;
 }

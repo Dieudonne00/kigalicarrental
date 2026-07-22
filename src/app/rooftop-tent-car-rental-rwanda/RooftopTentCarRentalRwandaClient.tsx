@@ -41,9 +41,9 @@ interface RooftopTentVehicle {
   crossBorderAllowed: boolean;
 }
 
-export default function RooftopTentCarRentalRwandaClient() {
-  const [vehicles, setVehicles] = useState<RooftopTentVehicle[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function RooftopTentCarRentalRwandaClient({ initialCars }: { initialCars: any[] }) {
+  const [vehicles, setVehicles] = useState<RooftopTentVehicle[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedBrand, setSelectedBrand] = useState<string>("all");
   const [selectedSleeping, setSelectedSleeping] = useState<string>("all");
   const [selectedPark, setSelectedPark] = useState<string>("all");
@@ -52,39 +52,22 @@ export default function RooftopTentCarRentalRwandaClient() {
   const [fridgeIncluded, setFridgeIncluded] = useState(false);
   const [solarIncluded, setSolarIncluded] = useState(false);
 
-  // Fetch rooftop tent vehicles from DB
+  // Derive rooftop tent vehicles + price range from server-rendered initial data
   useEffect(() => {
-    const fetchRooftopTentVehicles = async () => {
-      try {
-        setLoading(true);
-        // API endpoint for rooftop tent equipped vehicles
-        const response = await fetch("/api/cars?rooftoptent=true&camping=true");
-        const data = await response.json();
-        
-        if (data.cars && Array.isArray(data.cars)) {
-          // Filter for vehicles with rooftop tents
-          const tentCars = data.cars.filter((car: any) => 
-            car.rooftopTent === true ||
-            car.roofTent === true ||
-            car.tentType?.length > 0 ||
-            car.campingGear === true
-          );
-          setVehicles(tentCars);
-          
-          if (tentCars.length > 0) {
-            const rates = tentCars.map((c: any) => c.dailyRate);
-            setPriceRange([Math.min(...rates), Math.max(...rates)]);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching rooftop tent vehicles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    // Filter for vehicles with rooftop tents
+    const tentCars = initialCars.filter((car: any) =>
+      car.rooftopTent === true ||
+      car.roofTent === true ||
+      car.tentType?.length > 0 ||
+      car.campingGear === true
+    );
+    setVehicles(tentCars);
 
-    fetchRooftopTentVehicles();
-  }, []);
+    if (tentCars.length > 0) {
+      const rates = tentCars.map((c: any) => c.dailyRate);
+      setPriceRange([Math.min(...rates), Math.max(...rates)]);
+    }
+  }, [initialCars]);
 
   // Vehicle brands for filtering
   const vehicleBrands = ["all", ...Array.from(new Set(vehicles.map(v => v.brand)))].filter(b => b !== 'all');

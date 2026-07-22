@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 
@@ -22,27 +22,9 @@ interface Car {
   gameDrive: boolean;
 }
 
-export default function AkageraGameDriveClient() {
-  const [cars, setCars] = useState<Car[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchGameDriveCars = async () => {
-      try {
-        const response = await fetch("/api/cars?gameDrive=true");
-        if (response.ok) {
-          const data = await response.json();
-          setCars(data.cars);
-        }
-      } catch (error) {
-        console.error("Error fetching game drive cars:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchGameDriveCars();
-  }, []);
+export default function AkageraGameDriveClient({ initialCars }: { initialCars: any[] }) {
+  const [cars, setCars] = useState<Car[]>(initialCars);
+  const [loading, setLoading] = useState(false);
 
   return (
     <div className="min-h-screen bg-gray-50">

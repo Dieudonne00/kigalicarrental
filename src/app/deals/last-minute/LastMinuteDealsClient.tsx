@@ -28,52 +28,37 @@ interface Car {
   location: string;
 }
 
-export default function LastMinuteDealsClient() {
-  const [cars, setCars] = useState<Car[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function LastMinuteDealsClient({ initialCars }: { initialCars: any[] }) {
+  const [cars, setCars] = useState<Car[]>(initialCars);
+  const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [selectedTransmission, setSelectedTransmission] = useState<string>("all");
   const [selectedSeats, setSelectedSeats] = useState<string>("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 0]);
 
   useEffect(() => {
-    fetchPremiumFastTrack();
-  }, []);
+    // PREMIUM FAST-TRACK SERVICE - INCREASED PRICES
+    const fetchedCars = initialCars.map((car: Car) => ({
+      ...car,
+      originalRate: car.dailyRate,
+      // 30-50% HIGHER for instant delivery
+      dailyRate: Math.round(car.dailyRate * 1.4), // 40% premium
+      premiumRate: Math.round(car.dailyRate * 1.4),
+      deliveryTime: "30 min",
+      availableNow: true,
+      driverIncluded: true,
+      location: "Anywhere in Kigali",
+    }));
 
-  const fetchPremiumFastTrack = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch("/api/cars?fasttrack=true");
-      const data = await response.json();
-      let fetchedCars = data.cars || [];
-      
-      // PREMIUM FAST-TRACK SERVICE - INCREASED PRICES
-      fetchedCars = fetchedCars.map((car: Car) => ({
-        ...car,
-        originalRate: car.dailyRate,
-        // 30-50% HIGHER for instant delivery
-        dailyRate: Math.round(car.dailyRate * 1.4), // 40% premium
-        premiumRate: Math.round(car.dailyRate * 1.4),
-        deliveryTime: "30 min",
-        availableNow: true,
-        driverIncluded: true,
-        location: "Anywhere in Kigali",
-      }));
-      
-      setCars(fetchedCars);
+    setCars(fetchedCars);
 
-      if (fetchedCars.length > 0) {
-        const prices = fetchedCars.map((car: Car) => car.dailyRate);
-        const minPrice = Math.min(...prices);
-        const maxPrice = Math.max(...prices);
-        setPriceRange([minPrice, maxPrice]);
-      }
-    } catch (error) {
-      console.error("Error fetching premium fast-track:", error);
-    } finally {
-      setLoading(false);
+    if (fetchedCars.length > 0) {
+      const prices = fetchedCars.map((car: Car) => car.dailyRate);
+      const minPrice = Math.min(...prices);
+      const maxPrice = Math.max(...prices);
+      setPriceRange([minPrice, maxPrice]);
     }
-  };
+  }, [initialCars]);
 
   const { minPrice, maxPrice } = useMemo(() => {
     if (cars.length === 0) return { minPrice: 85, maxPrice: 250 };
