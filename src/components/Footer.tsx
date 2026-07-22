@@ -243,6 +243,56 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Popular Searches - real internal links to the actual matching page for
+            each search intent, not a raw keyword list. Google treats a wall of
+            unlinked keyword phrases as keyword stuffing, and duplicate links with
+            different anchor text pointing at the same URL as link manipulation -
+            this is one link per distinct destination page, anchor text drawn
+            from the real search phrase it matches. */}
+        <div className="border-t border-gray-800 pt-8 mt-8">
+          <h3 className="text-white font-bold mb-4 text-sm uppercase tracking-wide">
+            Popular Kigali Car Rental Searches
+          </h3>
+          <div className="flex flex-wrap gap-x-2 gap-y-2 text-sm">
+            {[
+              { label: "Kigali Car Rental", href: "/" },
+              { label: "Affordable Kigali Car Rental", href: "/cheap-car-rental-kigali" },
+              { label: "Kigali Car Rental Deals", href: "/deals/last-minute" },
+              { label: "Kigali Car Rental Company", href: "/about" },
+              { label: "Book Kigali Car Rental Online", href: "/book-now" },
+              { label: "Kigali Car Rental With Driver", href: "/driver-car-hire-kigali" },
+              { label: "Kigali Self Drive Car Rental", href: "/self-drive-car-rental-kigali" },
+              { label: "Kigali Car Rental Daily Rates", href: "/fleet" },
+              { label: "Long Term Kigali Car Rental", href: "/long-term-car-rental-rwanda" },
+              { label: "Kigali Car Rental Reviews", href: "https://g.page/r/Cb5RvGrGJaoyEBM/review", external: true },
+              { label: "Kigali Airport Car Rental", href: "/kigali-airport-car-rental" },
+              { label: "Kigali Airport Car Rental With Driver", href: "/airport-driver-service" },
+              { label: "Car Hire Rwanda", href: "/car-hire-rwanda" },
+              { label: "Kigali Rwanda Car Rental", href: "/car-rental-rwanda" },
+              { label: "Luxury Car Rental Kigali", href: "/luxury-car-rental-kigali" },
+              { label: "4x4 Rental Kigali", href: "/4x4-car-rental-rwanda" },
+              { label: "Wedding Car Rental Kigali", href: "/event-transport-driver" },
+              { label: "Corporate Car Rental Kigali", href: "/business-driver-service" },
+              { label: "Chauffeur Driven Car Rental Kigali", href: "/chauffeur-service-rwanda" },
+              { label: "Kigali Car Rental for Tourists", href: "/how-it-works" },
+              { label: "Kigali Car Rental FAQ", href: "/faq" },
+            ].map((item, i, arr) => (
+              <span key={item.href} className="whitespace-nowrap">
+                {item.external ? (
+                  <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#2563EB] transition-colors">
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link href={item.href} className="text-gray-400 hover:text-[#2563EB] transition-colors">
+                    {item.label}
+                  </Link>
+                )}
+                {i < arr.length - 1 && <span className="text-gray-700 ml-2">&middot;</span>}
+              </span>
+            ))}
+          </div>
+        </div>
+
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
