@@ -255,16 +255,24 @@ export default function Footer() {
           </h3>
           <div className="flex flex-wrap gap-x-2 gap-y-2 text-sm">
             {[
+              // Only the homepage and the airport-specific page get the
+              // site's two exact-match head phrases as anchor text - every
+              // other destination gets anchor text matching ITS OWN target
+              // keyword. Repeating "Kigali Car Rental" as anchor text to 8+
+              // unrelated pages, on every single page of the site, told
+              // Google those pages were all equally valid candidates for the
+              // head term - splitting the exact ranking signal we want
+              // concentrated on the homepage alone.
               { label: "Kigali Car Rental", href: "/" },
-              { label: "Affordable Kigali Car Rental", href: "/cheap-car-rental-kigali" },
-              { label: "Kigali Car Rental Deals", href: "/deals/last-minute" },
-              { label: "Kigali Car Rental Company", href: "/about" },
-              { label: "Book Kigali Car Rental Online", href: "/book-now" },
-              { label: "Kigali Car Rental With Driver", href: "/driver-car-hire-kigali" },
+              { label: "Cheap Car Rental Kigali", href: "/cheap-car-rental-kigali" },
+              { label: "Last-Minute Rental Deals", href: "/deals/last-minute" },
+              { label: "About Our Company", href: "/about" },
+              { label: "Book Online Now", href: "/book-now" },
+              { label: "Driver Car Hire Kigali", href: "/driver-car-hire-kigali" },
               { label: "Kigali Self Drive Car Rental", href: "/self-drive-car-rental-kigali" },
-              { label: "Kigali Car Rental Daily Rates", href: "/fleet" },
-              { label: "Long Term Kigali Car Rental", href: "/long-term-car-rental-rwanda" },
-              { label: "Kigali Car Rental Reviews", href: "https://g.page/r/Cb5RvGrGJaoyEBM/review", external: true },
+              { label: "Browse Our Fleet & Rates", href: "/fleet" },
+              { label: "Long Term Car Rental Rwanda", href: "/long-term-car-rental-rwanda" },
+              { label: "Read Our Google Reviews", href: "https://g.page/r/Cb5RvGrGJaoyEBM/review", external: true },
               { label: "Kigali Airport Car Rental", href: "/kigali-airport-car-rental" },
               { label: "Kigali Airport Car Rental With Driver", href: "/airport-driver-service" },
               { label: "Car Hire Rwanda", href: "/car-hire-rwanda" },
@@ -274,8 +282,8 @@ export default function Footer() {
               { label: "Wedding Car Rental Kigali", href: "/event-transport-driver" },
               { label: "Corporate Car Rental Kigali", href: "/business-driver-service" },
               { label: "Chauffeur Driven Car Rental Kigali", href: "/chauffeur-service-rwanda" },
-              { label: "Kigali Car Rental for Tourists", href: "/how-it-works" },
-              { label: "Kigali Car Rental FAQ", href: "/faq" },
+              { label: "How It Works", href: "/how-it-works" },
+              { label: "Rental FAQ", href: "/faq" },
             ].map((item, i, arr) => (
               <span key={item.href} className="whitespace-nowrap">
                 {item.external ? (
