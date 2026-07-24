@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import HomeLinkCTA from '@/components/HomeLinkCTA'
 
 export const metadata: Metadata = {
   title: 'Car Rental Rwanda | Best Prices | Kigali Car Rental',
@@ -92,6 +93,7 @@ export default function CarRentalRwanda() {
           </div>
         </div>
       </div>
+      <HomeLinkCTA before="Looking specifically for a Kigali rental? Visit our" after="page." />
     </div>
   )
 }

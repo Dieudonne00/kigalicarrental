@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import SelfDriveRwandaClient from "./SelfDriveRwandaClient";
+import HomeLinkCTA from "@/components/HomeLinkCTA";
 
 export const metadata: Metadata = {
   title: "Self Drive Car Rental Rwanda | No Chauffeur Needed",
@@ -26,5 +27,10 @@ export default async function SelfDriveRwandaPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <SelfDriveRwandaClient initialCars={initialCars} />;
+  return (
+    <>
+      <SelfDriveRwandaClient initialCars={initialCars} />
+      <HomeLinkCTA before="Prefer a driver instead? Head to" after="to explore all rental options." />
+    </>
+  );
 }

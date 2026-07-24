@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import FleetClient from "./FleetClient";
+import HomeLinkCTA from "@/components/HomeLinkCTA";
 
 // Revalidate hourly rather than fully static - the ItemList schema below
 // reflects the live fleet, and cars are added/removed from the manager
@@ -55,6 +56,7 @@ export default async function FleetPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <FleetClient initialCars={initialCars} />
+      <HomeLinkCTA before="Ready to book? Head back to" after="to start your reservation." />
     </>
   );
 }

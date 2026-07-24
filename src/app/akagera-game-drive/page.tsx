@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import AkageraGameDriveClient from "./AkageraGameDriveClient";
+import HomeLinkCTA from "@/components/HomeLinkCTA";
 
 export const metadata: Metadata = {
   title: "Akagera Game Drive Car Rental | Self-Drive Safari Rwanda",
@@ -26,5 +27,10 @@ export default async function AkageraGameDrivePage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <AkageraGameDriveClient initialCars={initialCars} />;
+  return (
+    <>
+      <AkageraGameDriveClient initialCars={initialCars} />
+      <HomeLinkCTA before="Planning more than a game drive? See the full" after="lineup for your Rwanda trip." />
+    </>
+  );
 }

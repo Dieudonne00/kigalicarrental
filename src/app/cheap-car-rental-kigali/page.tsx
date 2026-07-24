@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import CheapCarRentalKigaliClient from "./CheapCarRentalKigaliClient";
+import HomeLinkCTA from "@/components/HomeLinkCTA";
 
 export const metadata: Metadata = {
   title: "Cheap Car Rental Kigali | Budget Cars From $25/Day",
@@ -27,5 +28,10 @@ export default async function CheapCarRentalKigaliPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <CheapCarRentalKigaliClient initialCars={initialCars} />;
+  return (
+    <>
+      <CheapCarRentalKigaliClient initialCars={initialCars} />
+      <HomeLinkCTA before="Want to compare rates across our whole fleet? Visit the" after="homepage." />
+    </>
+  );
 }

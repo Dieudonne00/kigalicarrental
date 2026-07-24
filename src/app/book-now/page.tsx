@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BookNowClient from "./BookNowClient";
+import HomeLinkCTA from "@/components/HomeLinkCTA";
 
 export const metadata: Metadata = {
   title: "Book Kigali Car Rental | Free Quote in 2 Hours",
@@ -18,5 +19,10 @@ export const metadata: Metadata = {
 };
 
 export default function BookNowPage() {
-  return <BookNowClient />;
+  return (
+    <>
+      <BookNowClient />
+      <HomeLinkCTA before="Not ready to book yet? Learn more at" after="first." />
+    </>
+  );
 }

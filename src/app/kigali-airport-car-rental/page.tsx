@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import KigaliAirportCarRentalClient from "./KigaliAirportCarRentalClient";
+import HomeLinkCTA from "@/components/HomeLinkCTA";
 
 export const metadata: Metadata = {
   title: "Kigali Airport Car Rental | KGL Meet & Greet Pickup",
@@ -27,5 +28,10 @@ export default async function KigaliAirportCarRentalPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <KigaliAirportCarRentalClient initialCars={initialCars} />;
+  return (
+    <>
+      <KigaliAirportCarRentalClient initialCars={initialCars} />
+      <HomeLinkCTA before="Need more than an airport transfer? Explore the full" after="fleet and services." />
+    </>
+  );
 }
