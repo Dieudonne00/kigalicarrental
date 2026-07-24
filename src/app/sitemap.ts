@@ -52,7 +52,10 @@ const STATIC_ROUTES: { path: string; priority: number; changeFrequency: Metadata
   { path: "/site-map", priority: 0.3, changeFrequency: "monthly", lastModified: "2026-07-23" },
 ];
 
-export const revalidate = 86400;
+// 1 hour, not 24 - the blog cron publishes new posts once daily at 8am, and
+// a stale sitemap for up to a full day after that undercuts the freshness
+// signal we want Google to see new posts on.
+export const revalidate = 3600;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({

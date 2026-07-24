@@ -228,6 +228,60 @@ async function writeWithGroq(topic: BlogTopic): Promise<GeneratedContent> {
   return current;
 }
 
+export interface ExistingPostForRevision {
+  title: string;
+  category: string;
+  tags: string[];
+  content: string;
+}
+
+// Backfill path for posts published before the word-count/keyword-density
+// enforcement existed (or before it was strict enough) - revises the body
+// in place rather than regenerating from scratch, so real, already-accurate
+// content is preserved and only the specific validation gaps get addressed.
+export async function reviseWeakPost(post: ExistingPostForRevision): Promise<{ content: string; problems: string[] }> {
+  const asGenerated: GeneratedContent = {
+    title: post.title,
+    excerpt: "",
+    metaTitle: post.title,
+    metaDescription: post.title,
+    tags: post.tags,
+    metaKeywords: post.tags,
+    content: post.content,
+  };
+
+  // The stored content has a real internal-links block appended at the end
+  // (real hrefs to real pages) - strip it before sending to Groq so revision
+  // can't rewrite or hallucinate a link, then reattach the untouched
+  // original after.
+  const linkBlockMatch = post.content.match(/<h3>Plan Your Trip with Kigali Car Rental<\/h3>[\s\S]*$/);
+  const linkBlock = linkBlockMatch ? linkBlockMatch[0] : "";
+  let current = linkBlock ? post.content.slice(0, post.content.length - linkBlock.length) : post.content;
+
+  let problems = findProblems({ ...asGenerated, content: current }).filter((p) => !p.startsWith("the title") && !p.startsWith("the metaDescription"));
+
+  for (let attempt = 1; attempt <= MAX_EXPAND_ATTEMPTS + 1 && problems.length > 0; attempt++) {
+    const systemPrompt = `You are a senior travel and automotive content writer for Kigali Car Rental (kigalicarrental.site), a real car rental company in Kigali, Rwanda. Respond with ONLY a single valid JSON object, no markdown fences, no commentary, matching exactly this shape: { "content": "string" }`;
+    const userPrompt = `Here is an existing published blog post body (category: ${post.category}, clean HTML using only <h2>, <h3>, <p>, <ul>, <li>, <strong>):
+
+${current}
+
+This post has these specific problems, fix them: ${problems.join("; ")}.
+
+Revise and expand the post to fix every listed problem - add genuinely useful, specific, concrete detail (real tips, real places in Kigali/Rwanda, real numbers) to grow it, and work the exact phrase "Kigali car rental" naturally into the body and into at least one subheading. Do not remove or contradict any existing accurate information, and do not shorten what's already there - only add and adjust. Return the COMPLETE updated body as one HTML string in the "content" field.`;
+
+    const raw = await groqChatJSON(systemPrompt, userPrompt);
+    if (!raw || typeof raw !== "object" || typeof (raw as Record<string, unknown>).content !== "string") {
+      break;
+    }
+    current = (raw as Record<string, unknown>).content as string;
+    problems = findProblems({ ...asGenerated, content: current }).filter((p) => !p.startsWith("the title") && !p.startsWith("the metaDescription"));
+    console.log(`[blog-generator] revise attempt ${attempt} for "${post.title}": ${problems.length === 0 ? "PASSED" : problems.length + " problem(s) - " + problems.join(" | ")}`);
+  }
+
+  return { content: current + linkBlock, problems };
+}
+
 function buildInternalLinksBlock(topic: BlogTopic, otherPosts: { slug: string; title: string }[]): string {
   const relatedLinks = topic.linkTargets
     .map((t) => `<li><a href="${t.path}">${t.label}</a></li>`)
@@ -243,6 +297,7 @@ ${otherPosts.map((p) => `<li><a href="/blog/${p.slug}">${p.title}</a></li>`).joi
   return `
 <h3>Plan Your Trip with Kigali Car Rental</h3>
 <ul>
+<li><a href="/">Kigali Car Rental - book your trusted rental in Rwanda</a></li>
 <li><a href="/fleet">Browse our full fleet of rental cars in Kigali</a></li>
 ${relatedLinks}
 <li><a href="/book-now">Book your Kigali car rental today</a></li>
