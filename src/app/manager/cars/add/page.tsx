@@ -134,15 +134,29 @@ export default function AddCarPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Use CDN URLs for database storage, fallback to local URLs if CDN failed
+    if (uploadingThumbnail || uploadingGallery) {
+      alert("Please wait for the image upload to finish before saving.");
+      return;
+    }
+
+    // Only ever save real CDN URLs - a blob: URL is a browser-local object
+    // reference for instant preview only. It's meaningless (and permanently
+    // broken) to anyone else, including the same browser after a refresh.
+    // This used to silently fall back to the blob preview when the CDN
+    // upload had failed, which is how a car ended up with unrecoverable
+    // "blob:" URLs saved as its real images - block submission instead so
+    // the failure is visible and retryable rather than silently corrupting
+    // the record.
     const allImages = thumbnailCdnUrl
       ? [thumbnailCdnUrl, ...galleryCdnUrls]
-      : thumbnail
-      ? [thumbnail, ...galleryImages]
-      : galleryImages;
+      : galleryCdnUrls;
 
     if (allImages.length === 0) {
       alert("Please upload at least one image (thumbnail or gallery)");
+      return;
+    }
+    if (allImages.some((url) => url.startsWith("blob:"))) {
+      alert("An image upload failed - please re-upload before saving.");
       return;
     }
 
@@ -715,10 +729,14 @@ export default function AddCarPage() {
             </button>
             <button
               type="submit"
-              disabled={loading}
+              disabled={loading || uploadingThumbnail || uploadingGallery}
               className="px-6 py-3 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] transition-all shadow-md disabled:opacity-50"
             >
-              {loading ? "Saving..." : "Add Car"}
+              {loading
+                ? "Saving..."
+                : uploadingThumbnail || uploadingGallery
+                ? "Uploading image..."
+                : "Add Car"}
             </button>
           </div>
         </form>

@@ -523,10 +523,10 @@ export default function AddBlogPage() {
               </button>
               <button
                 type="submit"
-                disabled={submitting}
+                disabled={submitting || uploadingImage}
                 className="flex-1 px-6 py-3 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] transition-all disabled:opacity-50"
               >
-                {submitting ? "Creating Post..." : "Create Blog Post"}
+                {submitting ? "Creating Post..." : uploadingImage ? "Uploading image..." : "Create Blog Post"}
               </button>
             </div>
           </form>

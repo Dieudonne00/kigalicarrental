@@ -238,6 +238,11 @@ export default function EditCarPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (uploadingThumbnail || uploadingGallery) {
+      alert("Please wait for the image upload to finish before saving.");
+      return;
+    }
+
     // Use CDN URLs for database storage
     const allImages = thumbnailCdnUrl
       ? [thumbnailCdnUrl, ...galleryCdnUrls]
@@ -245,6 +250,13 @@ export default function EditCarPage() {
 
     if (allImages.length === 0) {
       alert("Please upload at least one image (thumbnail or gallery)");
+      return;
+    }
+    // Defense in depth - a blob: URL is a browser-local preview reference
+    // only, never valid to persist (see the add-car form's history of this
+    // exact bug).
+    if (allImages.some((url) => url.startsWith("blob:"))) {
+      alert("An image upload failed - please re-upload before saving.");
       return;
     }
 
@@ -848,10 +860,14 @@ export default function EditCarPage() {
               </button>
               <button
                 type="submit"
-                disabled={submitting}
+                disabled={submitting || uploadingThumbnail || uploadingGallery}
                 className="flex-1 bg-[#01B000] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#019500] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {submitting ? "Updating Car..." : "Update Car"}
+                {submitting
+                  ? "Updating Car..."
+                  : uploadingThumbnail || uploadingGallery
+                  ? "Uploading image..."
+                  : "Update Car"}
               </button>
             </div>
           </div>
