@@ -148,6 +148,11 @@ function findProblems(content: GeneratedContent): string[] {
   if (!mentionsSiteKeyword(subheadingsText(content.content))) problems.push('none of the <h2>/<h3> subheadings contain the exact phrase "Kigali car rental" - at least one heading needs it, not just body paragraphs');
   const wordCount = countWords(content.content);
   if (wordCount < 850) problems.push(`the content is only ${wordCount} words - needs to be 900-1300 words. Do not add filler - add one more concrete <h2> section with specific, useful detail (a real tip, a real place, a real number) to reach length naturally`);
+  // The page template already renders its own single <h1> from the post
+  // title - an <h1> inside the body creates two on the page, which dilutes
+  // the heading-based topical relevance signal. Caught live in one post
+  // where Groq used <h1> for a subheading instead of the allowed <h2>/<h3>.
+  if (/<h1[ >]/i.test(content.content)) problems.push('the content contains an <h1> tag - only <h2> and <h3> are allowed for subheadings, the page itself already has its own <h1> from the title');
   return problems;
 }
 

@@ -18,6 +18,7 @@ export default function EditCarPage() {
     description: "",
     category: "sedan",
     brand: "",
+    model: "",
     year: new Date().getFullYear(),
     fuelType: "petrol",
     transmission: "automatic",
@@ -58,6 +59,7 @@ export default function EditCarPage() {
           description: car.description || "",
           category: car.category,
           brand: car.brand,
+          model: car.model || "",
           year: car.year,
           fuelType: car.fuelType,
           transmission: car.transmission,
@@ -225,7 +227,6 @@ export default function EditCarPage() {
       const payload = {
         ...formData,
         images: allImages,
-        model: formData.brand,
         hourlyRate: formData.dailyRate / 8,
         mileage: null,
       };
@@ -373,6 +374,25 @@ export default function EditCarPage() {
                     <option value="Renault">Renault</option>
                     <option value="Subaru">Subaru</option>
                   </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">
+                    Model *
+                    <span className="ml-2 text-xs font-normal text-gray-500">
+                      (e.g., RAV4, Land Cruiser Prado, Corolla)
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.model}
+                    onChange={(e) =>
+                      setFormData({ ...formData, model: e.target.value })
+                    }
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    placeholder="e.g., RAV4"
+                  />
                 </div>
 
                 <div>

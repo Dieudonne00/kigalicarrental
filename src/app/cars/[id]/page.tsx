@@ -4,6 +4,18 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import CarDetailClient from "./CarDetailClient";
 
+// Model has historically ended up equal to brand (a bug in the manager
+// forms, now fixed) or genuinely empty (name carried no usable model info,
+// e.g. "Volkswagen" alone) - never compose a title/schema name that repeats
+// the brand or leaves a dangling double space either way.
+function carDisplayName(car: { brand: string; model: string }): string {
+  const model = car.model?.trim();
+  if (!model || model.toLowerCase() === car.brand.toLowerCase()) {
+    return car.brand;
+  }
+  return `${car.brand} ${model}`;
+}
+
 const getCar = cache((id: string) =>
   prisma.car.findUnique({
     where: { id },
@@ -27,8 +39,9 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     return { title: "Car Not Found | Kigali Car Rental" };
   }
 
-  const title = `${car.brand} ${car.model} ${car.year} Rental Kigali | Kigali Car Rental`;
-  const description = `Rent the ${car.brand} ${car.model} (${car.year}) in Kigali, Rwanda from $${car.dailyRate}/day. ${car.transmission}, ${car.seats} seats. Book online with free airport delivery.`;
+  const displayName = carDisplayName(car);
+  const title = `${displayName} ${car.year} Rental Kigali | Kigali Car Rental`;
+  const description = `Rent the ${displayName} (${car.year}) in Kigali, Rwanda from $${car.dailyRate}/day. ${car.transmission}, ${car.seats} seats. Book online with free airport delivery.`;
 
   return {
     title,
@@ -61,9 +74,9 @@ export default async function CarDetailPage({ params }: { params: Promise<{ id: 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: `${car.brand} ${car.model} ${car.year}`,
+    name: `${carDisplayName(car)} ${car.year}`,
     description:
-      car.description || `Rent the ${car.brand} ${car.model} in Kigali, Rwanda.`,
+      car.description || `Rent the ${carDisplayName(car)} in Kigali, Rwanda.`,
     image: car.images,
     brand: { "@type": "Brand", name: car.brand },
     category: "Car Rental",
