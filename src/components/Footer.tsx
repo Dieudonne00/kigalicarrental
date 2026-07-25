@@ -49,6 +49,10 @@ export default function Footer() {
               >
                 See our Google reviews
               </a>
+              <span className="text-gray-700">&middot;</span>
+              <Link href="/find-my-review" className="text-gray-400 hover:text-blue-400 transition-colors underline">
+                Leave us a review
+              </Link>
             </div>
           </div>
 

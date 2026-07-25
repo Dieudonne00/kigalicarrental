@@ -608,24 +608,33 @@ export default function CarDetailClient({
       {/* Customer Reviews - real, moderated reviews tied to completed bookings */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-6 flex-wrap gap-3">
             <h2 className="text-2xl font-bold text-gray-900">Customer Reviews</h2>
-            {reviewCount > 0 && (
-              <div className="flex items-center gap-2">
-                <span className="text-yellow-500 text-xl">
-                  {"★".repeat(Math.round(averageRating))}
-                  {"☆".repeat(5 - Math.round(averageRating))}
-                </span>
-                <span className="text-gray-700 font-semibold">
-                  {averageRating.toFixed(1)} ({reviewCount} review{reviewCount === 1 ? "" : "s"})
-                </span>
-              </div>
-            )}
+            <div className="flex items-center gap-4">
+              {reviewCount > 0 && (
+                <div className="flex items-center gap-2">
+                  <span className="text-yellow-500 text-xl">
+                    {"★".repeat(Math.round(averageRating))}
+                    {"☆".repeat(5 - Math.round(averageRating))}
+                  </span>
+                  <span className="text-gray-700 font-semibold">
+                    {averageRating.toFixed(1)} ({reviewCount} review{reviewCount === 1 ? "" : "s"})
+                  </span>
+                </div>
+              )}
+              <Link
+                href="/find-my-review"
+                className="text-sm font-bold text-blue-600 hover:text-blue-700 border-2 border-blue-600 hover:bg-blue-50 rounded-lg px-4 py-2 transition-colors"
+              >
+                Write a Review
+              </Link>
+            </div>
           </div>
 
           {reviewCount === 0 ? (
             <p className="text-gray-600">
-              No reviews yet for this vehicle. Rented it? We'll email you a link to leave one after your trip.
+              No reviews yet for this vehicle. Rented it? Use the &quot;Write a Review&quot; button above, or wait
+              for the link we email you after your trip.
             </p>
           ) : (
             <div className="space-y-5">
