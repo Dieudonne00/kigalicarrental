@@ -26,7 +26,7 @@ export default async function LeaveReviewPage({ params }: { params: Promise<{ bo
       carLabel={`${booking.car.brand} ${booking.car.model} ${booking.car.year}`}
       pickupDate={booking.pickupDate.toISOString()}
       returnDate={booking.returnDate.toISOString()}
-      rentalEnded={booking.returnDate <= new Date()}
+      rentalEnded={booking.status === "completed"}
       alreadyReviewed={!!booking.review}
     />
   );

@@ -61,7 +61,8 @@ export default function LeaveReviewClient({
           <p className="text-gray-700">You've already submitted a review for this booking. Thank you!</p>
         ) : !rentalEnded ? (
           <p className="text-gray-700">
-            You'll be able to leave a review once your rental period ends on {formatDate(returnDate)}.
+            You'll be able to leave a review once your rental is marked completed - reach out if you've already
+            returned the car and this hasn't updated yet.
           </p>
         ) : submitted ? (
           <div className="text-center py-6">

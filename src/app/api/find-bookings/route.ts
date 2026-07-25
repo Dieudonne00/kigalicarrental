@@ -3,9 +3,12 @@ import { prisma } from "@/lib/prisma";
 
 // Lets a customer self-serve locate their own review link by email instead
 // of only ever getting it from the automated post-rental email - still only
-// ever returns bookings that match the exact email given, and only ones
-// whose rental has actually ended, so this can't be used to browse other
-// customers' bookings or review a car never rented.
+// ever returns bookings that match the exact email given, and only ones the
+// manager has actually marked completed, so this can't be used to browse
+// other customers' bookings or review a car never rented. Gated on the
+// booking's real status rather than its scheduled returnDate - a rental can
+// finish early (or the manager just marks it done same-day), and the
+// scheduled date doesn't always match when the car actually came back.
 export async function POST(request: Request) {
   try {
     const { email } = await request.json();
@@ -16,7 +19,7 @@ export async function POST(request: Request) {
     const bookings = await prisma.booking.findMany({
       where: {
         customerEmail: { equals: email.trim(), mode: "insensitive" },
-        returnDate: { lte: new Date() },
+        status: "completed",
       },
       include: {
         car: { select: { name: true, brand: true, model: true } },

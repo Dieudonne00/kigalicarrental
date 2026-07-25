@@ -33,9 +33,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Email does not match this booking" }, { status: 403 });
     }
 
-    if (booking.returnDate > new Date()) {
+    if (booking.status !== "completed") {
       return NextResponse.json(
-        { error: "You can leave a review once your rental period has ended" },
+        { error: "You can leave a review once your rental is marked completed" },
         { status: 403 }
       );
     }
