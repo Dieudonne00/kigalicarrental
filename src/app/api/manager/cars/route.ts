@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 
 // GET all cars
@@ -72,6 +73,14 @@ export async function POST(request: Request) {
         specifications: data.specifications || null,
       },
     });
+
+    // The homepage, /fleet, and the 27 landing pages all cache their car
+    // list for up to an hour (revalidate: 3600) - without this, a newly
+    // added car is correct in the DB and its own /cars/[id] page immediately,
+    // but invisible in every listing until that cache window happens to
+    // expire. Busting the whole route tree here makes it show up on the
+    // very next request instead of up to an hour later.
+    revalidatePath("/", "layout");
 
     return NextResponse.json(
       { message: "Car created successfully", car },
