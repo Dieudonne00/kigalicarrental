@@ -2,7 +2,7 @@ const faqs = [
   {
     question: "How much does Kigali car rental cost?",
     answer:
-      "Kigali car rental with us starts from $25/day for an economy car, with SUVs and 4x4s from $60/day and luxury vehicles from $120/day. Weekly and monthly rates include a discount, and every price includes basic insurance - no hidden fees.",
+      "Kigali car rental with us starts from $35/day for an economy car, with SUVs and 4x4s from $60/day and luxury vehicles from $120/day. Weekly and monthly rates include a discount, and every price includes basic insurance - no hidden fees.",
   },
   {
     question: "What documents do I need to rent a car in Kigali?",

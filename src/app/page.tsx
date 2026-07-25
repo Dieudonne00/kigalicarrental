@@ -13,8 +13,8 @@ import { prisma } from "@/lib/prisma";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Kigali Car Rental | Kigali Car Hire | Free Airport Delivery",
-  description: "Looking for the best Kigali car rental? We offer premium SUVs, luxury cars, and self-drive rentals in Rwanda. 24/7 support, best rates, and Kigali airport delivery.",
+  title: "Kigali Car Rental | From $35 | Free Airport Delivery",
+  description: "Looking for the best Kigali car rental? From $35/day - premium SUVs, luxury cars, and self-drive rentals in Rwanda. 24/7 support, best rates, and free Kigali airport delivery.",
   keywords: ["Kigali car rental", "car hire Kigali", "Rwanda car rental", "Kigali airport car rental", "self drive Rwanda", "cheap car rental Kigali", "4x4 rental Rwanda"],
   alternates: {
     canonical: "/",

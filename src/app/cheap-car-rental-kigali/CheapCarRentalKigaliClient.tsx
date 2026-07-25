@@ -125,14 +125,14 @@ export default function CheapCarRentalKigaliClient({ initialCars }: { initialCar
             Cheap Car Rental Kigali
           </h1>
           <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
-            Quality cars from <span className="text-blue-400 font-bold text-2xl">$25/day</span>. The best budget Kigali car rental.
+            Quality cars from <span className="text-blue-400 font-bold text-2xl">$35/day</span>. The best budget Kigali car rental.
             No hidden fees, free delivery, and full insurance included.
           </p>
 
           {/* Price Guarantee Badge */}
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20">
-              <div className="text-2xl font-bold text-white">$25</div>
+              <div className="text-2xl font-bold text-white">$35</div>
               <div className="text-xs text-white/80">Economy Cars</div>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg px-6 py-3 border border-white/20">
@@ -160,7 +160,7 @@ export default function CheapCarRentalKigaliClient({ initialCars }: { initialCar
             >
               <path d="M19 14l-7 7-7-7m14-6l-7-7-7 7" />
             </svg>
-            View Budget Cars Starting $25
+            View Budget Cars Starting $35
           </Link>
         </div>
       </section>

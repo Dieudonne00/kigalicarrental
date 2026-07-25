@@ -41,7 +41,7 @@ export default function HeroSection() {
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20 pb-24 sm:pb-28 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 tracking-tight drop-shadow-sm">
-            Kigali Car Rental from $25/day
+            Kigali Car Rental from $35/day
           </h1>
           <p className="text-base sm:text-lg text-blue-950/80 max-w-2xl mx-auto font-medium">
             Compare SUVs, 4x4s, and luxury cars for rent in Kigali, Rwanda — free airport pickup, self-drive or chauffeur, 24/7 support.

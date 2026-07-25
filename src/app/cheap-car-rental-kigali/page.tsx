@@ -6,16 +6,16 @@ import CheapCarRentalKigaliClient from "./CheapCarRentalKigaliClient";
 import HomeLinkCTA from "@/components/HomeLinkCTA";
 
 export const metadata: Metadata = {
-  title: "Cheap Car Rental Kigali | Budget Cars From $25/Day",
+  title: "Cheap Car Rental Kigali | Budget Cars From $35/Day",
   description:
-    "Affordable Kigali car rental from $25/day. Budget-friendly economy cars, free delivery, no hidden fees, and full insurance included. Book cheap today.",
+    "Affordable Kigali car rental from $35/day. Budget-friendly economy cars, free delivery, no hidden fees, and full insurance included. Book cheap today.",
   alternates: {
     canonical: "/cheap-car-rental-kigali",
   },
   openGraph: {
-    title: "Cheap Car Rental Kigali | Budget Cars From $25/Day",
+    title: "Cheap Car Rental Kigali | Budget Cars From $35/Day",
     description:
-      "Affordable Kigali car rental from $25/day. Budget-friendly economy cars, free delivery, no hidden fees, and full insurance included. Book cheap today.",
+      "Affordable Kigali car rental from $35/day. Budget-friendly economy cars, free delivery, no hidden fees, and full insurance included. Book cheap today.",
     url: "/cheap-car-rental-kigali",
     type: "website",
   },
