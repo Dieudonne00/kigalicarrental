@@ -1,51 +1,44 @@
 import { NextResponse } from "next/server";
-import { v2 as cloudinary } from 'cloudinary';
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+const MEDIA_API_URL = process.env.MEDIA_API_URL || "https://media.kigalicarhire.rw";
+const MEDIA_SECRET = process.env.MEDIA_SECRET || "kch-media-2026";
 
 export async function POST(request: Request) {
   try {
     const { imageUrl, publicId } = await request.json();
 
-    if (publicId) {
-      console.log("Deleting from Cloudinary:", publicId);
-      const result = await cloudinary.uploader.destroy(publicId, {
-        resource_type: "image"
-      });
-      return NextResponse.json({ success: true, result });
-    }
+    let filename = publicId as string | undefined;
 
-    if (imageUrl) {
+    // Older records may still store a full Cloudinary URL/publicId rather
+    // than a media-api filename - only proceed with a real media-api
+    // filename (ends in an image extension, no slashes), otherwise there's
+    // nothing on our own host to delete.
+    if (!filename && imageUrl) {
       const url = new URL(imageUrl);
-      const pathParts = url.pathname.split('/');
-      const uploadIndex = pathParts.findIndex(p => p === 'upload');
-      
-      if (uploadIndex === -1) {
-        return NextResponse.json({ error: "Invalid URL" }, { status: 400 });
-      }
-
-      const afterUpload = pathParts.slice(uploadIndex + 1);
-      const publicIdParts = afterUpload.filter((part, idx) => {
-        if (idx === 0 && part.startsWith('v') && /^v\d+$/.test(part)) {
-          return false;
-        }
-        return true;
-      });
-
-      const extractedId = publicIdParts.join('/').replace(/\.[^/.]+$/, "");
-      console.log("Extracted ID:", extractedId);
-
-      const result = await cloudinary.uploader.destroy(extractedId, {
-        resource_type: "image"
-      });
-      return NextResponse.json({ success: true, result });
+      filename = url.pathname.split("/").pop();
     }
 
-    return NextResponse.json({ error: "Missing params" }, { status: 400 });
+    if (!filename || filename.includes("/") || !/\.(webp|jpg|jpeg|png)$/i.test(filename)) {
+      return NextResponse.json({ success: true, skipped: "not a media-api asset" });
+    }
+
+    const deleteResponse = await fetch(`${MEDIA_API_URL}/delete`, {
+      method: "POST",
+      headers: {
+        "x-secret-key": MEDIA_SECRET,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ filename }),
+    });
+
+    if (!deleteResponse.ok) {
+      const errorText = await deleteResponse.text();
+      console.error("media-api delete failed:", deleteResponse.status, errorText);
+      return NextResponse.json({ error: "Delete failed" }, { status: 500 });
+    }
+
+    const result = await deleteResponse.json();
+    return NextResponse.json({ success: true, result });
   } catch (error) {
     console.error("Delete error:", error);
     return NextResponse.json({ error: "Failed" }, { status: 500 });

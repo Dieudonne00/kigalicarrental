@@ -1,14 +1,13 @@
 export const runtime = "nodejs";
 
 import { NextResponse } from "next/server";
-import { v2 as cloudinary } from "cloudinary";
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-  secure: true,
-});
+// Cloudinary's account was disabled ("cloud_name is disabled" on every
+// upload call) - new images now go to our own self-hosted media-api
+// service on the VPS (/var/www/media-api), which resizes/converts to
+// WebP via sharp and serves the result from media.kigalicarhire.rw.
+const MEDIA_API_URL = process.env.MEDIA_API_URL || "https://media.kigalicarhire.rw";
+const MEDIA_SECRET = process.env.MEDIA_SECRET || "kch-media-2026";
 
 export async function POST(request: Request) {
   try {
@@ -16,35 +15,32 @@ export async function POST(request: Request) {
     const file = formData.get("file") as File | null;
 
     if (!file) {
-      return NextResponse.json(
-        { error: "No file provided" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
-    // Convert file → buffer
-    const arrayBuffer = await file.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
-    const base64 = `data:${file.type};base64,${buffer.toString("base64")}`;
+    const forwardData = new FormData();
+    forwardData.append("file", file, file.name);
 
-    // Upload to Cloudinary
-    const result = await cloudinary.uploader.upload(base64, {
-      folder: "cars",
-      resource_type: "image",
+    const uploadResponse = await fetch(`${MEDIA_API_URL}/upload/image`, {
+      method: "POST",
+      headers: { "x-secret-key": MEDIA_SECRET },
+      body: forwardData,
     });
 
+    if (!uploadResponse.ok) {
+      const errorText = await uploadResponse.text();
+      console.error("media-api upload failed:", uploadResponse.status, errorText);
+      return NextResponse.json({ error: "Upload failed" }, { status: 500 });
+    }
+
+    const result = await uploadResponse.json();
+
     return NextResponse.json(
-      {
-        url: result.secure_url,
-        publicId: result.public_id,
-      },
+      { url: result.url, publicId: result.filename },
       { status: 200 }
     );
   } catch (error) {
     console.error("Upload error:", error);
-    return NextResponse.json(
-      { error: "Upload failed" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Upload failed" }, { status: 500 });
   }
 }
