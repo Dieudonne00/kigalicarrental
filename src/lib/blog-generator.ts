@@ -33,8 +33,14 @@ async function pickFeaturedImage(topic: BlogTopic): Promise<string | null> {
   }
   if (candidates.length === 0) return null;
 
-  const car = candidates[Math.floor(Math.random() * candidates.length)];
-  return car.images[Math.floor(Math.random() * car.images.length)];
+  // A car's images array should never contain a blob: URL (that bug is
+  // fixed at the source now), but this is the one place a bad car record
+  // could otherwise leak a dead URL into a brand new, unrelated blog post -
+  // filter defensively rather than trust upstream data is always clean.
+  const realImages = candidates.flatMap((c) => c.images.filter((img) => !img.startsWith("blob:")));
+  if (realImages.length === 0) return null;
+
+  return realImages[Math.floor(Math.random() * realImages.length)];
 }
 
 function slugify(title: string): string {

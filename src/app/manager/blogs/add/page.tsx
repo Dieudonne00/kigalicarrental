@@ -128,6 +128,16 @@ export default function AddBlogPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (uploadingImage) {
+      alert("Please wait for the image upload to finish before saving.");
+      return;
+    }
+    if (formData.featuredImage.startsWith("blob:")) {
+      alert("The featured image upload failed - please re-upload before saving.");
+      return;
+    }
+
     setSubmitting(true);
 
     try {
