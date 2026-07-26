@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import BlogListing from "@/components/BlogListing";
-import { imageUrl } from "@/lib/images";
 import { prisma } from "@/lib/prisma";
 
 export const revalidate = 3600;
@@ -54,7 +53,7 @@ export default async function BlogPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url(${imageUrl('cars/1763129080028-2022-toyota-rav-4-prime-wheels-red-carprousa-1404x1112.webp')})`,
+            backgroundImage: `url(https://media.kigalicarhire.rw/cars/car_b49ae6f3-3f29-4546-98a3-9c5ea70cc3e8.webp)`,
           }}
         >
           <div className="absolute inset-0 bg-black/65"></div>

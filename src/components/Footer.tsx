@@ -103,15 +103,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <Link href="/" className="inline-block mb-4">
+            <Link href="/" className="inline-flex items-center gap-2 mb-4">
               <Image
-                src="https://carrentalinkigali.com/myimages/mylogo-removebg-preview_mpcp0n.png"
+                src="/logo.svg"
                 alt="Kigali Car Rental - Google Verified Car Rental in Rwanda"
-                width={140}
-                height={46}
-                className="h-12 w-auto brightness-0 invert"
+                width={40}
+                height={40}
+                className="h-10 w-10 rounded-lg"
                 priority={false}
               />
+              <span className="text-white font-bold text-lg">Kigali Car Rental</span>
             </Link>
             <p className="text-sm leading-relaxed text-gray-400">
               Your trusted partner for car rentals in Kigali, Rwanda. Google Verified Business. Quality vehicles, competitive rates, professional service.

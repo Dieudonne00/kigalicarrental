@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import imageUrl from "@/lib/images";
 
 export default function ManagerLogin() {
   const [email, setEmail] = useState("");
@@ -47,11 +46,11 @@ export default function ManagerLogin() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <Image
-            src={imageUrl("kigalicarhire.png")}
+            src="/logo.svg"
             alt="Kigali Car Rental Logo"
-            width={180}
-            height={60}
-            className="h-16 w-auto"
+            width={64}
+            height={64}
+            className="h-16 w-16 rounded-xl"
           />
         </div>
         <h2 className="mt-6 text-center text-3xl font-bold text-gray-900 font-[family-name:var(--font-plus-jakarta)]">

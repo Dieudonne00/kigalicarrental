@@ -111,7 +111,7 @@ export default function FleetClient({ initialCars }: { initialCars: any[] }) {
         {/* ✅ CHANGED: BunnyCDN → cPanel */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: 'url(https://carrentalinkigali.com/images/cars/hero-fleet.webp)' }}
+          style={{ backgroundImage: 'url(https://media.kigalicarhire.rw/cars/car_b49ae6f3-3f29-4546-98a3-9c5ea70cc3e8.webp)' }}
         >
           <div className="absolute inset-0 bg-black/50"></div>
         </div>

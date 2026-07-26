@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 
 export async function GET(request: Request) {
   try {
@@ -43,10 +44,10 @@ export async function GET(request: Request) {
     // FIX: Always ensure imageUrl exists in response
     const carsWithBookingStatus = cars.map((car: any) => {
       // Use whatever image field exists, or create a test one
-      const imageUrl = car.imageUrl || 
-                      car.image || 
-                      (car.images && car.images[0]) || 
-                      `https://carrentalinkigali.com/myimages/${car.name.replace(/\s+/g, '-')}.jpg`;
+      const imageUrl = car.imageUrl ||
+                      car.image ||
+                      (car.images && car.images[0]) ||
+                      CAR_IMAGE_FALLBACK;
 
       return {
         ...car,
