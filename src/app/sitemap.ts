@@ -11,7 +11,7 @@ const baseUrl = "https://www.kigalicarrental.site";
 // that day - update a route's date here whenever you actually change what
 // it renders, whether that's the page itself or a shared component.
 const STATIC_ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]; lastModified: string }[] = [
-  { path: "", priority: 1, changeFrequency: "daily", lastModified: "2026-07-25" },
+  { path: "", priority: 1, changeFrequency: "daily", lastModified: "2026-07-26" },
   { path: "/car-rental-rwanda", priority: 0.9, changeFrequency: "daily", lastModified: "2026-07-25" },
   { path: "/car-hire-rwanda", priority: 0.9, changeFrequency: "daily", lastModified: "2026-07-25" },
   { path: "/fleet", priority: 0.9, changeFrequency: "daily", lastModified: "2026-07-25" },
