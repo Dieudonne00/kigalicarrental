@@ -33,9 +33,21 @@ export const metadata: Metadata = {
 };
 
 const whyChooseUs = [
-  { title: "Kigali Airport Car Rental", desc: "Free meet & greet at Kigali International Airport. No waiting, no stress." },
-  { title: "Self Drive Rwanda", desc: "Experience total freedom with our well-maintained self-drive vehicles." },
-  { title: "24/7 Roadside Support", desc: "Travel with peace of mind. Our local team is always a call away." },
+  {
+    title: "Kigali Car Rental with Free Airport Delivery",
+    desc: "Landing at Kigali International Airport? Our Kigali car rental team meets you at arrivals with your vehicle ready to go - no shuttle, no waiting, no extra delivery fee. Every Kigali car rental booking includes free airport meet & greet, so your trip starts the moment you land.",
+    iconPath: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z",
+  },
+  {
+    title: "Kigali Car Rental You Control Yourself",
+    desc: "Prefer to drive yourself? Every Kigali car rental in our fleet is available self-drive, well-maintained, and ready for Kigali's streets or the open road beyond the city. If you'd rather not drive, the same Kigali car rental can come with a professional driver for just $20/day.",
+    iconPath: "M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z",
+  },
+  {
+    title: "Kigali Car Rental Backed by 24/7 Support",
+    desc: "A Kigali car rental is only as good as the support behind it. Our local team is reachable around the clock for every Kigali car rental booking - roadside help, route advice, or a late-night question, we're one call away, day or night.",
+    iconPath: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+  },
 ];
 
 export default async function Home() {
@@ -107,8 +119,19 @@ export default async function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
             {whyChooseUs.map((item) => (
               <div key={item.title} className="p-6 sm:p-8 rounded-xl border border-gray-200 hover:border-blue-300 transition-colors">
+                <svg
+                  className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mb-4"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d={item.iconPath} />
+                </svg>
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{item.title}</h3>
-                <p className="text-gray-600 text-sm sm:text-base">{item.desc}</p>
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
