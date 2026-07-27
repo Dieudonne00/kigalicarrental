@@ -181,6 +181,111 @@ export default async function Home() {
         </section>
       )}
 
+      {/* How It Works */}
+      <section className="py-14 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-10 sm:mb-12 text-center">
+            How Kigali Car Rental Works
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {[
+              {
+                step: "1",
+                title: "Choose Your Car",
+                desc: "Browse our Kigali car rental fleet - sedans, SUVs, 4x4s, and luxury cars - and pick the vehicle that fits your trip.",
+              },
+              {
+                step: "2",
+                title: "Book Online or WhatsApp",
+                desc: "Confirm your Kigali car rental in minutes through our website or a quick WhatsApp message - no paperwork hassle.",
+              },
+              {
+                step: "3",
+                title: "We Deliver",
+                desc: "Your Kigali car rental is delivered free to Kigali International Airport or any hotel and address in the city.",
+              },
+              {
+                step: "4",
+                title: "Drive or Ride",
+                desc: "Take the wheel yourself, or add a professional driver for $20/day - either way, your Kigali car rental is ready to go.",
+              },
+            ].map((item) => (
+              <div key={item.step} className="text-center p-6">
+                <div className="w-12 h-12 rounded-full bg-blue-600 text-white font-bold text-lg flex items-center justify-center mx-auto mb-4">
+                  {item.step}
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Service Areas */}
+      <section className="py-14 sm:py-20 bg-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-6 text-center">
+            Kigali Car Rental Service Areas
+          </h2>
+          <p className="text-gray-700 leading-relaxed text-sm sm:text-base mb-4">
+            Our Kigali car rental delivers free of charge across Kigali City, including Kigali International Airport (KGL), Kacyiru, Kimihurura, Nyarutarama, Remera, Kicukiro, Nyamirambo, and Gikondo. Wherever you're staying in Kigali, your Kigali car rental can be waiting for you.
+          </p>
+          <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+            Beyond the city, our Kigali car rental fleet is built for Rwanda's roads - Musanze and Volcanoes National Park for gorilla trekking, Akagera National Park for safari game drives, Nyungwe Forest for canopy walks, and Rubavu on Lake Kivu. A Kigali car rental from us is a car for the whole country, not just the capital.
+          </p>
+        </div>
+      </section>
+
+      {/* Requirements */}
+      <section className="py-14 sm:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-6 text-center">
+            What You Need for Kigali Car Rental
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4 text-gray-700 text-sm sm:text-base">
+            <div className="flex items-start gap-3">
+              <span className="text-blue-600 font-bold">✓</span>
+              <span>A valid driver's license (an International Driving Permit is recommended for foreign visitors booking a Kigali car rental)</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-blue-600 font-bold">✓</span>
+              <span>Minimum age of 21 to book a Kigali car rental, with a few premium vehicles requiring 25+</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-blue-600 font-bold">✓</span>
+              <span>A refundable security deposit, held only for the length of your Kigali car rental</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-blue-600 font-bold">✓</span>
+              <span>Basic insurance is included on every Kigali car rental, with optional upgrades available</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Fleet Categories */}
+      <section className="py-14 sm:py-20 bg-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-10 text-center">
+            Kigali Car Rental Fleet Categories
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Sedans", desc: "Fuel-efficient Kigali car rental sedans for city driving, business trips, and airport transfers." },
+              { title: "SUVs", desc: "Spacious Kigali car rental SUVs with room for family, friends, and luggage on longer trips." },
+              { title: "4x4s", desc: "Rugged Kigali car rental 4x4s built for Akagera, Volcanoes, and Rwanda's unpaved roads." },
+              { title: "Luxury", desc: "Premium Kigali car rental options for executive travel, weddings, and special occasions." },
+            ].map((item) => (
+              <div key={item.title} className="bg-white rounded-xl border border-gray-200 p-6 text-center">
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <AboutSection />
       <ServicesSection />
       <FeaturedBlogs />
