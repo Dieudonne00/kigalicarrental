@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import AirportDriverServiceClient from "./AirportDriverServiceClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Airport Driver Service Kigali | Meet & Greet KGL Chauffeur",
@@ -26,5 +27,10 @@ export default async function AirportDriverServicePage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <AirportDriverServiceClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="Airport Driver Service Kigali" path="/airport-driver-service" />
+      <AirportDriverServiceClient initialCars={initialCars} />
+    </>
+  );
 }

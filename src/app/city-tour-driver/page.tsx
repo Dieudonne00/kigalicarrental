@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import CityTourDriverClient from "./CityTourDriverClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "City Tour Driver Kigali | Local Guide & Memorial Tours",
@@ -26,5 +27,10 @@ export default async function CityTourDriverPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <CityTourDriverClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="City Tour Driver Kigali" path="/city-tour-driver" />
+      <CityTourDriverClient initialCars={initialCars} />
+    </>
+  );
 }

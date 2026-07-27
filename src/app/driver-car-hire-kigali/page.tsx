@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import DriverCarHireKigaliClient from "./DriverCarHireKigaliClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Driver Car Hire Kigali | Professional Chauffeur Rwanda",
@@ -26,5 +27,10 @@ export default async function DriverCarHireKigaliPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <DriverCarHireKigaliClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="Driver Car Hire Kigali" path="/driver-car-hire-kigali" />
+      <DriverCarHireKigaliClient initialCars={initialCars} />
+    </>
+  );
 }

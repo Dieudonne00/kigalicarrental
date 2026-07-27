@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import RwandaGuidedTransportClient from "./RwandaGuidedTransportClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Rwanda Guided Transport | Gorilla Trekking & Safari Tours",
@@ -26,5 +27,10 @@ export default async function RwandaGuidedTransportPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <RwandaGuidedTransportClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="Rwanda Guided Transport" path="/rwanda-guided-transport" />
+      <RwandaGuidedTransportClient initialCars={initialCars} />
+    </>
+  );
 }

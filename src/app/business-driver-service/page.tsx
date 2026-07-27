@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import BusinessDriverServiceClient from "./BusinessDriverServiceClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Business Driver Service Kigali | Executive Chauffeur Rwanda",
@@ -27,5 +28,10 @@ export default async function BusinessDriverServicePage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <BusinessDriverServiceClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="Business Driver Service Kigali" path="/business-driver-service" />
+      <BusinessDriverServiceClient initialCars={initialCars} />
+    </>
+  );
 }

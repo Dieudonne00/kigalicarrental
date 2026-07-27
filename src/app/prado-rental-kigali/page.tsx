@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import PradoRentalKigaliClient from "./PradoRentalKigaliClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Prado Rental Kigali | Toyota Land Cruiser Prado for Safari",
@@ -26,5 +27,10 @@ export default async function PradoRentalKigaliPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <PradoRentalKigaliClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="Prado Rental Kigali" path="/prado-rental-kigali" />
+      <PradoRentalKigaliClient initialCars={initialCars} />
+    </>
+  );
 }

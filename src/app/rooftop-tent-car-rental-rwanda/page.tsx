@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import RooftopTentCarRentalRwandaClient from "./RooftopTentCarRentalRwandaClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Rooftop Tent Car Rental Rwanda | 4x4 Camping Vehicles",
@@ -26,5 +27,10 @@ export default async function RooftopTentCarRentalRwandaPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <RooftopTentCarRentalRwandaClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="Rooftop Tent Car Rental Rwanda" path="/rooftop-tent-car-rental-rwanda" />
+      <RooftopTentCarRentalRwandaClient initialCars={initialCars} />
+    </>
+  );
 }

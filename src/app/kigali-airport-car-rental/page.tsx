@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import KigaliAirportCarRentalClient from "./KigaliAirportCarRentalClient";
 import HomeLinkCTA from "@/components/HomeLinkCTA";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Kigali Airport Car Rental | KGL Meet & Greet Pickup",
@@ -30,6 +31,7 @@ export default async function KigaliAirportCarRentalPage() {
 
   return (
     <>
+      <BreadcrumbSchema name="Kigali Airport Car Rental" path="/kigali-airport-car-rental" />
       <KigaliAirportCarRentalClient initialCars={initialCars} />
       <HomeLinkCTA before="Need more than an airport transfer? Explore the full" after="fleet and services." />
     </>

@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import MonthlyRentalClient from "./MonthlyRentalClient";
 import HomeLinkCTA from "@/components/HomeLinkCTA";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Monthly Car Rental Kigali | Flexible Rwanda Rental Plans",
@@ -25,6 +26,7 @@ export default async function MonthlyRentalPage() {
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
   return (
     <>
+      <BreadcrumbSchema name="Monthly Car Rental Kigali" path="/long-term/monthly" />
       <MonthlyRentalClient initialCars={initialCars} />
       <HomeLinkCTA before="Looking for shorter rentals too? Visit" after="for daily and weekly options." />
     </>

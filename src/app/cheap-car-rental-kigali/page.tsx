@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import CheapCarRentalKigaliClient from "./CheapCarRentalKigaliClient";
 import HomeLinkCTA from "@/components/HomeLinkCTA";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Cheap Car Rental Kigali | Budget Cars From $35/Day",
@@ -30,6 +31,7 @@ export default async function CheapCarRentalKigaliPage() {
 
   return (
     <>
+      <BreadcrumbSchema name="Cheap Car Rental Kigali" path="/cheap-car-rental-kigali" />
       <CheapCarRentalKigaliClient initialCars={initialCars} />
       <HomeLinkCTA before="Want to compare rates across our whole fleet? Visit the" after="homepage." />
     </>

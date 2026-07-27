@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import Volcanoes4x4RentalClient from "./Volcanoes4x4RentalClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Volcanoes 4x4 Rental | Gorilla Trekking Vehicles Rwanda",
@@ -26,5 +27,10 @@ export default async function Volcanoes4x4RentalPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <Volcanoes4x4RentalClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="Volcanoes 4x4 Rental" path="/volcanoes-4x4-rental" />
+      <Volcanoes4x4RentalClient initialCars={initialCars} />
+    </>
+  );
 }

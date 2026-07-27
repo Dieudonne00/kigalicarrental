@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import CarHireRwandaClient from "./CarHireRwandaClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Car Hire Rwanda | Nationwide Vehicle Rental Fleet",
@@ -27,5 +28,10 @@ export default async function CarHireRwandaPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <CarHireRwandaClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="Car Hire Rwanda" path="/car-hire-rwanda" />
+      <CarHireRwandaClient initialCars={initialCars} />
+    </>
+  );
 }

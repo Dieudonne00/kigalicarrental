@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import SafariCarRentalRwandaClient from "./SafariCarRentalRwandaClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Safari Car Rental Rwanda | Land Cruiser Game Drive Vehicles",
@@ -27,5 +28,10 @@ export default async function SafariCarRentalRwandaPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <SafariCarRentalRwandaClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="Safari Car Rental Rwanda" path="/safari-car-rental-rwanda" />
+      <SafariCarRentalRwandaClient initialCars={initialCars} />
+    </>
+  );
 }

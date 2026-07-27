@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import FourXFourCarRentalRwandaClient from "./FourXFourCarRentalRwandaClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "4x4 Car Rental Rwanda | Land Cruiser, Land Rover & Safari 4x4s",
@@ -27,5 +28,10 @@ export default async function FourXFourCarRentalRwandaPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <FourXFourCarRentalRwandaClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="4x4 Car Rental Rwanda" path="/4x4-car-rental-rwanda" />
+      <FourXFourCarRentalRwandaClient initialCars={initialCars} />
+    </>
+  );
 }

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import HomeLinkCTA from '@/components/HomeLinkCTA'
+import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 
 export const metadata: Metadata = {
   title: 'Car Rental Rwanda | Best Prices | Kigali Car Rental',
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function CarRentalRwanda() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <BreadcrumbSchema name="Car Rental Rwanda" path="/car-rental-rwanda" />
       <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <div className="text-center mb-12">

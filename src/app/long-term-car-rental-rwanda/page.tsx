@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import LongTermCarRentalRwandaClient from "./LongTermCarRentalRwandaClient";
 import HomeLinkCTA from "@/components/HomeLinkCTA";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Long Term Car Rental Rwanda | Monthly Rates from $800",
@@ -25,6 +26,7 @@ export default async function LongTermCarRentalRwandaPage() {
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
   return (
     <>
+      <BreadcrumbSchema name="Long Term Car Rental Rwanda" path="/long-term-car-rental-rwanda" />
       <LongTermCarRentalRwandaClient initialCars={initialCars} />
       <HomeLinkCTA before="Need something shorter-term instead? Check out" after="for daily and weekly rates." />
     </>

@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import FleetClient from "./FleetClient";
 import HomeLinkCTA from "@/components/HomeLinkCTA";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 // Revalidate hourly rather than fully static - the ItemList schema below
 // reflects the live fleet, and cars are added/removed from the manager
@@ -51,6 +52,7 @@ export default async function FleetPage() {
 
   return (
     <>
+      <BreadcrumbSchema name="Our Fleet" path="/fleet" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

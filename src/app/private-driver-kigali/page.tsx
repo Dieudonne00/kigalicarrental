@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import PrivateDriverKigaliClient from "./PrivateDriverKigaliClient";
 import HomeLinkCTA from "@/components/HomeLinkCTA";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Private Driver Kigali | Personal Chauffeur Hire Rwanda",
@@ -29,6 +30,7 @@ export default async function PrivateDriverKigaliPage() {
 
   return (
     <>
+      <BreadcrumbSchema name="Private Driver Kigali" path="/private-driver-kigali" />
       <PrivateDriverKigaliClient initialCars={initialCars} />
       <HomeLinkCTA before="Prefer self-drive instead? Head back to" after="to see every option." />
     </>

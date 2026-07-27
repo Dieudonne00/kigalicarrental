@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import LandCruiserRentalRwandaClient from "./LandCruiserRentalRwandaClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Land Cruiser Rental Rwanda | Prado, V8 & 300 Series",
@@ -22,5 +23,10 @@ export const metadata: Metadata = {
 export default async function LandCruiserRentalRwandaPage() {
   const cars = await prisma.car.findMany({ where: { available: true }, orderBy: { createdAt: "desc" } });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
-  return <LandCruiserRentalRwandaClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="Land Cruiser Rental Rwanda" path="/land-cruiser-rental-rwanda" />
+      <LandCruiserRentalRwandaClient initialCars={initialCars} />
+    </>
+  );
 }

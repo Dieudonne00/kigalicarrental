@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import LastMinuteDealsClient from "./LastMinuteDealsClient";
 import HomeLinkCTA from "@/components/HomeLinkCTA";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Last Minute Car Rental Kigali | 30-Min Delivery Deals",
@@ -29,6 +30,7 @@ export default async function LastMinuteDealsPage() {
 
   return (
     <>
+      <BreadcrumbSchema name="Last Minute Car Rental Kigali" path="/deals/last-minute" />
       <LastMinuteDealsClient initialCars={initialCars} />
       <HomeLinkCTA before="Want to see our full price range? Visit the" after="homepage for all current offers." />
     </>

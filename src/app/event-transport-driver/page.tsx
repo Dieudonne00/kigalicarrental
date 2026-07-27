@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import EventTransportDriverClient from "./EventTransportDriverClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Event Transport Driver Kigali | Wedding & Conference Cars",
@@ -27,5 +28,10 @@ export default async function EventTransportDriverPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <EventTransportDriverClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="Event Transport Driver Kigali" path="/event-transport-driver" />
+      <EventTransportDriverClient initialCars={initialCars} />
+    </>
+  );
 }

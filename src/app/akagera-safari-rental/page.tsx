@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import AkageraSafariRentalClient from "./AkageraSafariRentalClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Akagera Safari Rental | 4x4 Vehicles for Game Drives",
@@ -27,5 +28,10 @@ export default async function AkageraSafariRentalPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <AkageraSafariRentalClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="Akagera Safari Rental" path="/akagera-safari-rental" />
+      <AkageraSafariRentalClient initialCars={initialCars} />
+    </>
+  );
 }

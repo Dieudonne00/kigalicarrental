@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import CampingCarRentalRwandaClient from "./CampingCarRentalRwandaClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Camping Car Rental Rwanda | Motorhomes & Campervans",
@@ -26,5 +27,10 @@ export default async function CampingCarRentalRwandaPage() {
   });
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
 
-  return <CampingCarRentalRwandaClient initialCars={initialCars} />;
+  return (
+    <>
+      <BreadcrumbSchema name="Camping Car Rental Rwanda" path="/camping-car-rental-rwanda" />
+      <CampingCarRentalRwandaClient initialCars={initialCars} />
+    </>
+  );
 }

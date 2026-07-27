@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
 import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import LuxuryCarRentalKigaliClient from "./LuxuryCarRentalKigaliClient";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export const metadata: Metadata = {
   title: "Luxury Car Rental Kigali | Premium & Exotic Cars Rwanda",
@@ -44,6 +45,7 @@ export default async function LuxuryCarRentalKigaliPage() {
   const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
   return (
     <>
+      <BreadcrumbSchema name="Luxury Car Rental Kigali" path="/luxury-car-rental-kigali" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

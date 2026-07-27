@@ -65,29 +65,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route.priority,
   }));
 
-  let cars: { id: string; updatedAt: Date }[] = [];
-  let blogPosts: { slug: string; updatedAt: Date }[] = [];
+  let cars: { id: string; updatedAt: Date; images: string[] }[] = [];
+  let blogPosts: { slug: string; updatedAt: Date; featuredImage: string | null }[] = [];
 
   try {
     [cars, blogPosts] = await Promise.all([
       prisma.car.findMany({
         where: { available: true },
-        select: { id: true, updatedAt: true },
+        select: { id: true, updatedAt: true, images: true },
       }),
       prisma.blogPost.findMany({
         where: { published: true },
-        select: { slug: true, updatedAt: true },
+        select: { slug: true, updatedAt: true, featuredImage: true },
       }),
     ]);
   } catch (error) {
     console.error("Sitemap: failed to fetch dynamic routes from database", error);
   }
 
+  // Image sitemap extension - real fleet photos, helps Google Images
+  // discover and index them independent of the page's own crawl.
   const carEntries: MetadataRoute.Sitemap = cars.map((car) => ({
     url: `${baseUrl}/cars/${car.id}`,
     lastModified: car.updatedAt,
     changeFrequency: "weekly",
     priority: 0.6,
+    images: car.images.filter((img) => !img.startsWith("blob:")),
   }));
 
   const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
@@ -95,6 +98,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: post.updatedAt,
     changeFrequency: "monthly",
     priority: 0.5,
+    ...(post.featuredImage && !post.featuredImage.startsWith("blob:") && { images: [post.featuredImage] }),
   }));
 
   return [...staticEntries, ...carEntries, ...blogEntries];
