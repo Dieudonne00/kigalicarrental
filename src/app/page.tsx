@@ -61,7 +61,7 @@ export default async function Home() {
       where: { published: true },
       select: { id: true, customerName: true, rating: true, comment: true },
       orderBy: { createdAt: "desc" },
-      take: 9,
+      take: 6,
     }),
     prisma.car.aggregate({
       where: { available: true },
