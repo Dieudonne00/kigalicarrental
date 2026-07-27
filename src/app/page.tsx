@@ -57,7 +57,12 @@ export default async function Home() {
   // aggregate - as additional properties on that SAME @id, so Google merges
   // them into one entity rather than seeing two conflicting definitions.
   const [reviews, priceAgg] = await Promise.all([
-    prisma.review.findMany({ where: { published: true }, select: { rating: true } }),
+    prisma.review.findMany({
+      where: { published: true },
+      select: { id: true, customerName: true, rating: true, comment: true },
+      orderBy: { createdAt: "desc" },
+      take: 9,
+    }),
     prisma.car.aggregate({
       where: { available: true },
       _min: { dailyRate: true },
@@ -137,6 +142,44 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      {/* Real customer reviews - only renders when genuine, moderated
+          reviews exist (see /leave-review), matching the AggregateRating
+          in businessData above rather than a placeholder next to it. */}
+      {reviewCount > 0 && (
+        <section className="py-14 sm:py-20 bg-blue-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-3">
+                What Our Kigali Car Rental Customers Say
+              </h2>
+              <div className="flex items-center justify-center gap-2">
+                <span className="text-yellow-500 text-xl">
+                  {"★".repeat(Math.round(averageRating))}
+                  {"☆".repeat(5 - Math.round(averageRating))}
+                </span>
+                <span className="text-gray-700 font-semibold">
+                  {averageRating.toFixed(1)} ({reviewCount} review{reviewCount === 1 ? "" : "s"})
+                </span>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
+              {reviews.map((review) => (
+                <div key={review.id} className="bg-white rounded-xl border border-gray-200 p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="font-bold text-gray-900">{review.customerName}</span>
+                    <span className="text-yellow-500">
+                      {"★".repeat(review.rating)}
+                      {"☆".repeat(5 - review.rating)}
+                    </span>
+                  </div>
+                  <p className="text-gray-700 text-sm leading-relaxed">{review.comment}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <AboutSection />
       <ServicesSection />
