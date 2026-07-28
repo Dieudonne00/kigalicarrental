@@ -35,17 +35,17 @@ export const metadata: Metadata = {
 const whyChooseUs = [
   {
     title: "Kigali Car Rental with Free Airport Delivery",
-    desc: "Landing at Kigali International Airport? Our Kigali car rental team meets you at arrivals with your vehicle ready to go - no shuttle, no waiting, no extra delivery fee. Every Kigali car rental booking includes free airport meet & greet, so your trip starts the moment you land.",
+    desc: "Landing at Kigali International Airport? Our team meets you at arrivals with your vehicle ready to go - no shuttle, no waiting, no extra delivery fee. Every booking includes free airport meet & greet, so your trip starts the moment you land.",
     iconPath: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z",
   },
   {
     title: "Kigali Car Rental You Control Yourself",
-    desc: "Prefer to drive yourself? Every Kigali car rental in our fleet is available self-drive, well-maintained, and ready for Kigali's streets or the open road beyond the city. If you'd rather not drive, the same Kigali car rental can come with a professional driver for just $20/day.",
+    desc: "Prefer to drive yourself? Every car in our fleet is available self-drive, well-maintained, and ready for Kigali's streets or the open road beyond the city. If you'd rather not drive, the same car can come with a professional driver for just $20/day.",
     iconPath: "M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z",
   },
   {
     title: "Kigali Car Rental Backed by 24/7 Support",
-    desc: "A Kigali car rental is only as good as the support behind it. Our local team is reachable around the clock for every Kigali car rental booking - roadside help, route advice, or a late-night question, we're one call away, day or night.",
+    desc: "A rental is only as good as the support behind it. Our local team is reachable around the clock for every booking - roadside help, route advice, or a late-night question, we're one call away, day or night.",
     iconPath: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
   },
 ];
@@ -203,22 +203,22 @@ export default async function Home() {
               {
                 step: "1",
                 title: "Choose Your Car",
-                desc: "Browse our Kigali car rental fleet - sedans, SUVs, 4x4s, and luxury cars - and pick the vehicle that fits your trip.",
+                desc: "Browse our fleet - sedans, SUVs, 4x4s, and luxury cars - and pick the vehicle that fits your trip.",
               },
               {
                 step: "2",
                 title: "Book Online or WhatsApp",
-                desc: "Confirm your Kigali car rental in minutes through our website or a quick WhatsApp message - no paperwork hassle.",
+                desc: "Confirm your booking in minutes through our website or a quick WhatsApp message - no paperwork hassle.",
               },
               {
                 step: "3",
                 title: "We Deliver",
-                desc: "Your Kigali car rental is delivered free to Kigali International Airport or any hotel and address in the city.",
+                desc: "Your car is delivered free to Kigali International Airport or any hotel and address in the city.",
               },
               {
                 step: "4",
                 title: "Drive or Ride",
-                desc: "Take the wheel yourself, or add a professional driver for $20/day - either way, your Kigali car rental is ready to go.",
+                desc: "Take the wheel yourself, or add a professional driver for $20/day - either way, you're ready to go.",
               },
             ].map((item) => (
               <div key={item.step} className="text-center p-6">
@@ -240,10 +240,10 @@ export default async function Home() {
             Kigali Car Rental Service Areas
           </h2>
           <p className="text-gray-700 leading-relaxed text-sm sm:text-base mb-4">
-            Our Kigali car rental delivers free of charge across Kigali City, including Kigali International Airport (KGL), Kacyiru, Kimihurura, Nyarutarama, Remera, Kicukiro, Nyamirambo, and Gikondo. Wherever you're staying in Kigali, your Kigali car rental can be waiting for you.
+            We deliver free of charge across Kigali City, including Kigali International Airport (KGL), Kacyiru, Kimihurura, Nyarutarama, Remera, Kicukiro, Nyamirambo, and Gikondo. Wherever you're staying in Kigali, your car can be waiting for you.
           </p>
           <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-            Beyond the city, our Kigali car rental fleet is built for Rwanda's roads - Musanze and Volcanoes National Park for gorilla trekking, Akagera National Park for safari game drives, Nyungwe Forest for canopy walks, and Rubavu on Lake Kivu. A Kigali car rental from us is a car for the whole country, not just the capital.
+            Beyond the city, our fleet is built for Rwanda's roads - Musanze and Volcanoes National Park for gorilla trekking, Akagera National Park for safari game drives, Nyungwe Forest for canopy walks, and Rubavu on Lake Kivu. A car from us is ready for the whole country, not just the capital.
           </p>
         </div>
       </section>
@@ -257,19 +257,19 @@ export default async function Home() {
           <div className="grid sm:grid-cols-2 gap-4 text-gray-700 text-sm sm:text-base">
             <div className="flex items-start gap-3">
               <span className="text-blue-600 font-bold">✓</span>
-              <span>A valid driver's license (an International Driving Permit is recommended for foreign visitors booking a Kigali car rental)</span>
+              <span>A valid driver's license (an International Driving Permit is recommended for foreign visitors)</span>
             </div>
             <div className="flex items-start gap-3">
               <span className="text-blue-600 font-bold">✓</span>
-              <span>Minimum age of 21 to book a Kigali car rental, with a few premium vehicles requiring 25+</span>
+              <span>Minimum age of 21 to book, with a few premium vehicles requiring 25+</span>
             </div>
             <div className="flex items-start gap-3">
               <span className="text-blue-600 font-bold">✓</span>
-              <span>A refundable security deposit, held only for the length of your Kigali car rental</span>
+              <span>A refundable security deposit, held only for the length of your rental</span>
             </div>
             <div className="flex items-start gap-3">
               <span className="text-blue-600 font-bold">✓</span>
-              <span>Basic insurance is included on every Kigali car rental, with optional upgrades available</span>
+              <span>Basic insurance is included on every booking, with optional upgrades available</span>
             </div>
           </div>
         </div>
@@ -283,10 +283,10 @@ export default async function Home() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Sedans", desc: "Fuel-efficient Kigali car rental sedans for city driving, business trips, and airport transfers." },
-              { title: "SUVs", desc: "Spacious Kigali car rental SUVs with room for family, friends, and luggage on longer trips." },
-              { title: "4x4s", desc: "Rugged Kigali car rental 4x4s built for Akagera, Volcanoes, and Rwanda's unpaved roads." },
-              { title: "Luxury", desc: "Premium Kigali car rental options for executive travel, weddings, and special occasions." },
+              { title: "Sedans", desc: "Fuel-efficient sedans for city driving, business trips, and airport transfers." },
+              { title: "SUVs", desc: "Spacious SUVs with room for family, friends, and luggage on longer trips." },
+              { title: "4x4s", desc: "Rugged 4x4s built for Akagera, Volcanoes, and Rwanda's unpaved roads." },
+              { title: "Luxury", desc: "Premium options for executive travel, weddings, and special occasions." },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-xl border border-gray-200 p-6 text-center">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
