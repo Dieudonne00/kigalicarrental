@@ -8,8 +8,11 @@ import CarImage from "@/components/CarImage";
 // prices, images) was invisible to crawlers on first paint, same bug
 // pattern fixed elsewhere on the site.
 export default async function FeaturedFleet() {
+  // Show the whole real fleet on the homepage, not just a curated
+  // "featured" subset - a newly added car should never be invisible on
+  // the homepage just because nobody remembered to flip a featured flag.
   const carsRaw = await prisma.car.findMany({
-    where: { available: true, featured: true },
+    where: { available: true },
     orderBy: { createdAt: "desc" },
   });
 
@@ -27,7 +30,7 @@ export default async function FeaturedFleet() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
-            Featured Fleet
+            Our Fleet
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
             Discover our premium vehicles
@@ -47,11 +50,13 @@ export default async function FeaturedFleet() {
                     alt={`${car.brand} ${car.model} ${car.year} rental - Kigali Car Rental Rwanda`}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-3 right-3">
-                    <span className="inline-block px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-bold">
-                      Featured
-                    </span>
-                  </div>
+                  {car.featured && (
+                    <div className="absolute top-3 right-3">
+                      <span className="inline-block px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-bold">
+                        Featured
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-5 sm:p-6">
