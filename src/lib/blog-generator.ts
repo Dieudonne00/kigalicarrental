@@ -123,6 +123,17 @@ function countWords(html: string): number {
   return html.replace(/<[^>]*>/g, " ").split(/\s+/).filter(Boolean).length;
 }
 
+// A hallucinated "authoritative" citation is worse than no citation at all,
+// so the model is only ever allowed to link to these pre-verified real
+// government/tourism domains (checked live before adding this list), never
+// to invent its own URL. sanitizeOutboundLinks() strips anything else.
+const APPROVED_CITATION_DOMAINS = [
+  "rdb.rw",
+  "visitrwanda.com",
+  "migration.gov.rw",
+  "police.gov.rw",
+];
+
 function buildBlogPrompts(topic: BlogTopic, corrective?: string) {
   const systemPrompt = `You are a senior travel and automotive content writer for Kigali Car Rental (kigalicarrental.site), a real car rental company operating in Kigali, Rwanda. You write genuinely useful, locally accurate, specific articles - never generic filler, never keyword-stuffed. Respond with ONLY a single valid JSON object, no markdown fences, no commentary, matching exactly this shape:
 {
@@ -132,9 +143,11 @@ function buildBlogPrompts(topic: BlogTopic, corrective?: string) {
   "metaDescription": "string, under 155 characters, MUST contain the exact phrase \\"Kigali car rental\\", reads naturally, not stuffed",
   "tags": ["5 to 8 short SEO tag strings"],
   "metaKeywords": ["5 to 8 short SEO keyword phrases, the first one must be \\"Kigali car rental\\""],
-  "content": "string of clean HTML using only <h2>, <h3>, <p>, <ul>, <li>, <strong> tags - 900 to 1300 words, with AT LEAST 4 <h2> subheadings (not 2 or 3 - four minimum), no <html>/<body> wrapper, no images, no links. The exact phrase \\"Kigali car rental\\" must appear naturally in the opening paragraph, again in the closing paragraph, in the text of AT LEAST ONE <h2> or <h3> subheading (not just body prose), and at least 5 times total across the whole piece - never back-to-back, never forced into a sentence where it reads awkwardly"
+  "content": "string of clean HTML using only <h2>, <h3>, <p>, <ul>, <li>, <strong>, and (only per the citation rule below) <a> tags - 900 to 1300 words, with AT LEAST 4 <h2> subheadings (not 2 or 3 - four minimum), no <html>/<body> wrapper, no images. The exact phrase \\"Kigali car rental\\" must appear naturally in the opening paragraph, again in the closing paragraph, in the text of AT LEAST ONE <h2> or <h3> subheading (not just body prose), and at least 5 times total across the whole piece - never back-to-back, never forced into a sentence where it reads awkwardly"
 }
-Every single post exists to reinforce "Kigali car rental" as this site's core commercial phrase, regardless of the specific angle each post covers - a post about driving tips or chauffeur etiquette still needs to read as being from, and pointing back to, a Kigali car rental company. That said, never sacrifice natural, specific, locally-accurate writing to hit a keyword count - work the phrase into sentences that would read naturally even without an SEO goal.`;
+Every single post exists to reinforce "Kigali car rental" as this site's core commercial phrase, regardless of the specific angle each post covers - a post about driving tips or chauffeur etiquette still needs to read as being from, and pointing back to, a Kigali car rental company. That said, never sacrifice natural, specific, locally-accurate writing to hit a keyword count - work the phrase into sentences that would read naturally even without an SEO goal.
+
+Citation rule: if the topic naturally touches visa/immigration rules, driving laws, or Rwanda's national parks/tourism, you may cite ONE real authority inline as a plain <a href="https://DOMAIN">anchor text</a> link, using ONLY one of these exact domains and nothing else: ${APPROVED_CITATION_DOMAINS.join(", ")}. Never invent a URL, path, or any other domain. If the topic doesn't genuinely call for one, don't force a citation in at all.`;
 
   const userPrompt = `Write a blog post for this angle: "${topic.brief}".
 This post's own specific keyword/angle: "${topic.primaryKeyword}" - weave this in naturally alongside the required site keyword "Kigali car rental".
@@ -316,9 +329,28 @@ ${relatedLinks}
 ${morePosts}`;
 }
 
+// Defense in depth against the model inventing a URL despite the prompt's
+// citation rule - unwraps any <a> tag whose href isn't one of the
+// pre-verified domains, keeping the anchor's own text so the sentence still
+// reads fine, it just stops being a link.
+function sanitizeOutboundLinks(html: string): string {
+  return html.replace(/<a\b[^>]*href="([^"]*)"[^>]*>(.*?)<\/a>/gi, (match, href, text) => {
+    try {
+      const hostname = new URL(href).hostname.replace(/^www\./, "");
+      if (APPROVED_CITATION_DOMAINS.some((domain) => hostname === domain || hostname.endsWith(`.${domain}`))) {
+        return match;
+      }
+    } catch {
+      // Not a valid absolute URL - fall through to stripping it below.
+    }
+    return text;
+  });
+}
+
 export async function generateBlogPost() {
   const topic = await pickTopic();
   const generated = await writeWithGroq(topic);
+  generated.content = sanitizeOutboundLinks(generated.content);
 
   const [otherPostsPool, featuredImage] = await Promise.all([
     prisma.blogPost.findMany({
