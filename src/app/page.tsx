@@ -36,18 +36,23 @@ export const metadata: Metadata = {
 const whyChooseUs = [
   {
     title: "Kigali Car Rental with Free Airport Delivery",
-    desc: "Landing at Kigali International Airport? Our team meets you at arrivals with your vehicle ready to go - no shuttle, no waiting, no extra delivery fee. Every booking includes free airport meet & greet, so your trip starts the moment you land.",
+    desc: "Landing at Kigali International Airport? Our team meets you at arrivals with your vehicle ready to go - no shuttle, no waiting, no extra delivery fee. Every Kigali car rental booking includes free airport meet & greet, so your trip starts the moment you land.",
     iconPath: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z",
   },
   {
     title: "Kigali Car Rental You Control Yourself",
-    desc: "Prefer to drive yourself? Every car in our fleet is available self-drive, well-maintained, and ready for Kigali's streets or the open road beyond the city. If you'd rather not drive, the same car can come with a professional driver for just $20/day.",
+    desc: "Prefer to drive yourself? Every car in our fleet is available self-drive, well-maintained, and ready for Kigali's streets or the open road beyond the city. If you'd rather not drive, your Kigali car rental can come with a professional driver for just $20/day.",
     iconPath: "M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z",
   },
   {
     title: "Kigali Car Rental Backed by 24/7 Support",
-    desc: "A rental is only as good as the support behind it. Our local team is reachable around the clock for every booking - roadside help, route advice, or a late-night question, we're one call away, day or night.",
+    desc: "A rental is only as good as the support behind it. Our local team is reachable around the clock for every Kigali car rental booking - roadside help, route advice, or a late-night question, we're one call away, day or night.",
     iconPath: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z",
+  },
+  {
+    title: "Kigali Car Rental with No Hidden Fees",
+    desc: "The price you see for your Kigali car rental is the price you pay - daily rate, insurance, and delivery are all included up front, with no surprise charges waiting for you at pickup or return.",
+    iconPath: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
   },
 ];
 
@@ -129,25 +134,35 @@ export default async function Home() {
       <FeaturedFleet />
 
       {/* Why Choose Us */}
-      <section className="py-14 sm:py-20 bg-white">
+      <section className="py-14 sm:py-20 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-10 sm:mb-12 text-center">
-            Why Choose Our Kigali Car Rental Service?
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+          <div className="text-center mb-10 sm:mb-12">
+            <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs sm:text-sm font-bold mb-4 tracking-wide uppercase">
+              Why Kigali Car Rental
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900">
+              Why Choose Our Kigali Car Rental Service?
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {whyChooseUs.map((item) => (
-              <div key={item.title} className="p-6 sm:p-8 rounded-xl border border-gray-200 hover:border-blue-300 transition-colors">
-                <svg
-                  className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600 mb-4"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d={item.iconPath} />
-                </svg>
+              <div
+                key={item.title}
+                className="group bg-white p-6 sm:p-8 rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-blue-300 transition-all duration-300"
+              >
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-5 shadow-md group-hover:scale-110 transition-transform duration-300">
+                  <svg
+                    className="w-7 h-7 sm:w-8 sm:h-8 text-white"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d={item.iconPath} />
+                  </svg>
+                </div>
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{item.title}</h3>
                 <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{item.desc}</p>
               </div>
