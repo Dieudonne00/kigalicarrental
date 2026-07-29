@@ -179,7 +179,7 @@ export default async function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10 sm:mb-12">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-3">
-                What Our Kigali Car Rental Customers Say
+                What Our Customers Say
               </h2>
               <div className="flex items-center justify-center gap-2">
                 <span className="text-yellow-500 text-xl">
@@ -213,7 +213,7 @@ export default async function Home() {
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-10 sm:mb-12 text-center">
-            How Kigali Car Rental Works
+            How It Works
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {[
@@ -255,7 +255,7 @@ export default async function Home() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-3">
-              Kigali Car Rental Delivery Times by Area
+              Delivery Times by Area
             </h2>
             <p className="text-gray-700 leading-relaxed max-w-3xl mx-auto">
               Every Kigali car rental is dispatched free of charge from our Kimihurura office. Below is a realistic estimate of how long delivery takes to each part of the city, plus the extra time to expect if your pickup lands during evening rush hour.
@@ -308,7 +308,7 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-3">
-              What You Need for Kigali Car Rental
+              What You'll Need to Rent
             </h2>
             <p className="text-gray-700 leading-relaxed max-w-3xl mx-auto">
               Booking a Kigali car rental is simple - here's exactly what to have ready before your car arrives.
@@ -361,7 +361,7 @@ export default async function Home() {
       <section className="py-14 sm:py-20 bg-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-10 text-center">
-            Kigali Car Rental Fleet Categories
+            Our Fleet Categories
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -386,7 +386,7 @@ export default async function Home() {
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-4 text-center">
-            Kigali Car Rental vs. Taxi vs. Car Rental with Driver
+            Self-Drive vs. Taxi vs. Rental with Driver
           </h2>
           <p className="text-gray-700 leading-relaxed text-center max-w-3xl mx-auto mb-10">
             Not sure which option fits your trip? Here's an honest comparison of the three main ways to get around Kigali and Rwanda.

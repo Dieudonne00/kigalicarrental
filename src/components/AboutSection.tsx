@@ -15,7 +15,7 @@ export default function AboutSection({ fleetCount, reviewCount, averageRating }:
           <div>
             <div className="mb-8">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                Kigali Car Rental You Can Trust
+                A Company You Can Trust
               </h2>
               <div className="w-20 h-1 bg-blue-600 mb-6"></div>
             </div>
