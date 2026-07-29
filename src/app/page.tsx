@@ -1,3 +1,4 @@
+import Link from "next/link";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import FeaturedFleet from "@/components/FeaturedFleet";
@@ -236,14 +237,59 @@ export default async function Home() {
 
       {/* Service Areas */}
       <section className="py-14 sm:py-20 bg-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-6 text-center">
-            Kigali Car Rental Service Areas
-          </h2>
-          <p className="text-gray-700 leading-relaxed text-sm sm:text-base mb-4">
-            We deliver free of charge across Kigali City, including Kigali International Airport (KGL), Kacyiru, Kimihurura, Nyarutarama, Remera, Kicukiro, Nyamirambo, and Gikondo. Wherever you're staying in Kigali, your car can be waiting for you.
-          </p>
-          <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-3">
+              Kigali Car Rental Service Areas
+            </h2>
+            <p className="text-gray-700 leading-relaxed max-w-3xl mx-auto">
+              Free delivery across Kigali, with your car ready within 30 minutes of confirming your booking. Wherever you're staying in the city, a Kigali car rental from us can be waiting for you.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto mb-10">
+            {[
+              { name: "Kigali Airport Car Rental", desc: "Free meet & greet at KGL", href: "/kigali-airport-car-rental" },
+              { name: "Kimihurura", desc: "Hotels, offices, embassies" },
+              { name: "Nyarutarama", desc: "Golf course area, upscale homes" },
+              { name: "Kicukiro", desc: "Southern Kigali district" },
+              { name: "Kacyiru", desc: "Government & diplomatic zone" },
+              { name: "Remera", desc: "Stadium area, shopping" },
+              { name: "Nyamirambo", desc: "Old town, city center" },
+              { name: "Gikondo", desc: "Industrial & residential" },
+            ].map((area) => {
+              const cardContent = (
+                <>
+                  <svg
+                    className="w-6 h-6 sm:w-7 sm:h-7 text-blue-600 mx-auto mb-2"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <div className="font-bold text-gray-900 text-sm sm:text-base">{area.name}</div>
+                  <div className="text-xs sm:text-sm text-gray-500 mt-1">{area.desc}</div>
+                </>
+              );
+              const cardClassName =
+                "bg-white rounded-xl border border-gray-200 p-4 sm:p-5 text-center hover:border-blue-400 hover:shadow-md transition-all";
+              return area.href ? (
+                <Link key={area.name} href={area.href} className={cardClassName}>
+                  {cardContent}
+                </Link>
+              ) : (
+                <div key={area.name} className={cardClassName}>
+                  {cardContent}
+                </div>
+              );
+            })}
+          </div>
+
+          <p className="text-gray-700 leading-relaxed text-sm sm:text-base max-w-3xl mx-auto text-center">
             Beyond the city, our fleet is built for Rwanda's roads - Musanze and Volcanoes National Park for gorilla trekking, Akagera National Park for safari game drives, Nyungwe Forest for canopy walks, and Rubavu on Lake Kivu. A car from us is ready for the whole country, not just the capital.
           </p>
         </div>
