@@ -177,6 +177,15 @@ export default function CheapCarRentalKigaliClient({ initialCars }: { initialCar
         </div>
       </div>
 
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
+        <p className="text-gray-700 leading-relaxed mb-4">
+          Cheap doesn't have to mean unreliable. Every car in our budget lineup is inspected and serviced before it goes out - the difference between our economy tier and our SUVs isn't condition, it's size and features. If you're mainly driving around Kigali or making short trips to nearby districts, a compact sedan or hatchback covers that easily at a fraction of what a 4x4 costs per day.
+        </p>
+        <p className="text-gray-700 leading-relaxed">
+          Budget rentals still include the same basics as the rest of our fleet: free delivery within Kigali, basic insurance, and 24/7 support if something comes up. The only trade-off is size and ground clearance - if your trip stays on paved roads in and around the city, there's no reason to pay for a bigger vehicle than you need.
+        </p>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12" id="fleet">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Sidebar - Filters */}

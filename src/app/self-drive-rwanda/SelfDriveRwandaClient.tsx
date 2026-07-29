@@ -153,6 +153,18 @@ export default function SelfDriveRwandaClient({ initialCars }: { initialCars: an
         </div>
       </section>
 
+      {/* Real, specific intro copy rather than just stat badges */}
+      <section className="bg-white py-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Self-driving in Rwanda is more approachable than most first-time visitors expect. Kigali's main roads are paved, well signed, and drive on the right - familiar territory if you're used to driving in the US, mainland Europe, or most of East Africa. Traffic is lighter than in neighboring capitals, and Rwanda's reputation for order extends to the road: lane discipline is generally respected and traffic police are a visible, not intimidating, presence.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            Outside the city, roads to Musanze and Volcanoes National Park are sealed the whole way, while routes into Akagera and some rural stretches turn to gravel or dirt - this is where a 4x4 from our fleet earns its keep over a standard sedan. Every self-drive rental comes with unlimited mileage and 24/7 roadside support, so a flat tire or a wrong turn into the hills doesn't derail your trip.
+          </p>
+        </div>
+      </section>
+
       {/* Self Drive Benefits */}
       <div className="bg-gradient-to-r from-blue-500 to-blue-600 py-4 sticky top-0 z-30 shadow-lg">
         <div className="max-w-7xl mx-auto px-4">

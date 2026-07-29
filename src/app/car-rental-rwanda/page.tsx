@@ -27,6 +27,16 @@ export default function CarRentalRwanda() {
           </p>
         </div>
 
+        {/* Intro copy - real, specific content rather than a thin card grid */}
+        <div className="bg-white rounded-xl shadow-lg p-8 mb-12 max-w-4xl mx-auto">
+          <p className="text-gray-700 leading-relaxed mb-4">
+            Renting a car in Rwanda means covering more ground than Kigali alone in a single trip. Roads between the capital and Musanze, Rubavu, or Huye are paved and well maintained, but distances add up fast in a country built on hills - what looks like a short hop on the map can take two or three hours on winding mountain roads. Having your own vehicle means you set the pace instead of working around a tour bus schedule.
+          </p>
+          <p className="text-gray-700 leading-relaxed">
+            Our Rwanda fleet ranges from fuel-efficient sedans for city and highway driving to 4x4 SUVs built for the unpaved stretches near Akagera and Volcanoes National Park. Every rental includes basic insurance, and you can choose self-drive or add a professional driver for $20/day if you'd rather focus on the scenery than the road.
+          </p>
+        </div>
+
         {/* Why Choose Us */}
         <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
@@ -36,17 +46,17 @@ export default function CarRentalRwanda() {
             <div className="text-center">
               <div className="text-4xl mb-4">🚗</div>
               <h3 className="text-xl font-bold mb-2">Large Fleet</h3>
-              <p className="text-gray-600">Toyota RAV4, Prado, Sedans, 4x4 for all terrains</p>
+              <p className="text-gray-600">Toyota RAV4, Prado, Sedans, 4x4 for all terrains - see the full lineup on our fleet page.</p>
             </div>
             <div className="text-center">
               <div className="text-4xl mb-4">💰</div>
-              <h3 className="text-xl font-bold mb-2">Best Prices</h3>
-              <p className="text-gray-600">Competitive rates in Rwandan Francs (RWF)</p>
+              <h3 className="text-xl font-bold mb-2">Transparent Pricing</h3>
+              <p className="text-gray-600">Daily rates shown up front in USD, no hidden fees added at pickup.</p>
             </div>
             <div className="text-center">
               <div className="text-4xl mb-4">🏢</div>
               <h3 className="text-xl font-bold mb-2">Local Company</h3>
-              <p className="text-gray-600">Rwandan-owned, understanding local needs</p>
+              <p className="text-gray-600">Rwandan-owned and based in Kigali, with a team that knows the country's roads firsthand.</p>
             </div>
           </div>
         </div>
@@ -77,7 +87,7 @@ export default function CarRentalRwanda() {
         <div className="text-center bg-blue-600 text-white p-8 rounded-2xl">
           <h2 className="text-3xl font-bold mb-4">Ready to Explore Rwanda?</h2>
           <p className="text-xl mb-6 max-w-2xl mx-auto">
-            Book your car today and get 10% off for online bookings
+            Browse the fleet and book online, or reach out directly - we're ready when you are.
           </p>
           <div className="space-x-4">
             <Link
