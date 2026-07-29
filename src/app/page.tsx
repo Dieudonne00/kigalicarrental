@@ -56,7 +56,7 @@ export default async function Home() {
   // the parts that need live data - real price range and real review
   // aggregate - as additional properties on that SAME @id, so Google merges
   // them into one entity rather than seeing two conflicting definitions.
-  const [reviews, priceAgg] = await Promise.all([
+  const [reviews, priceAgg, fleetCount] = await Promise.all([
     prisma.review.findMany({
       where: { published: true },
       select: { id: true, customerName: true, rating: true, comment: true, createdAt: true },
@@ -68,6 +68,7 @@ export default async function Home() {
       _min: { dailyRate: true },
       _max: { dailyRate: true },
     }),
+    prisma.car.count({ where: { available: true } }),
   ]);
   const reviewCount = reviews.length;
   const averageRating =
@@ -297,7 +298,59 @@ export default async function Home() {
         </div>
       </section>
 
-      <AboutSection />
+      <AboutSection fleetCount={fleetCount} reviewCount={reviewCount} averageRating={averageRating} />
+
+      {/* Comparison content - real, honest, and genuinely useful for anyone
+          weighing options, not just an SEO device. */}
+      <section className="py-14 sm:py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-4 text-center">
+            Kigali Car Rental vs. Taxi vs. Car Rental with Driver
+          </h2>
+          <p className="text-gray-700 leading-relaxed text-center max-w-3xl mx-auto mb-10">
+            Not sure which option fits your trip? Here's an honest comparison of the three main ways to get around Kigali and Rwanda.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse bg-white rounded-xl overflow-hidden border border-gray-200 text-sm sm:text-base">
+              <thead>
+                <tr className="bg-blue-900 text-white">
+                  <th className="text-left p-4 font-bold">Factor</th>
+                  <th className="text-left p-4 font-bold">Kigali Car Rental (Self-Drive)</th>
+                  <th className="text-left p-4 font-bold">Taxi / Ride-Hailing</th>
+                  <th className="text-left p-4 font-bold">Kigali Car Rental with Driver</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-700">
+                <tr className="border-b border-gray-100">
+                  <td className="p-4 font-semibold">Best for</td>
+                  <td className="p-4">Multi-day trips, day trips outside Kigali, full control over your schedule</td>
+                  <td className="p-4">Short one-off trips within the city</td>
+                  <td className="p-4">Visitors who'd rather not navigate unfamiliar roads themselves</td>
+                </tr>
+                <tr className="border-b border-gray-100 bg-gray-50">
+                  <td className="p-4 font-semibold">Cost over multiple days</td>
+                  <td className="p-4">Fixed daily rate from $35/day, no surprises</td>
+                  <td className="p-4">Adds up fast - every trip is billed separately</td>
+                  <td className="p-4">Daily rate plus $20/day for the driver</td>
+                </tr>
+                <tr className="border-b border-gray-100">
+                  <td className="p-4 font-semibold">Trips outside Kigali</td>
+                  <td className="p-4">Included - drive to Musanze, Akagera, or Nyungwe on your own schedule</td>
+                  <td className="p-4">Rarely practical or affordable for national park trips</td>
+                  <td className="p-4">Included, with a driver who knows the routes</td>
+                </tr>
+                <tr className="bg-gray-50">
+                  <td className="p-4 font-semibold">Airport pickup</td>
+                  <td className="p-4">Free meet & greet, car ready when you land</td>
+                  <td className="p-4">Available, but you're on their schedule and pricing</td>
+                  <td className="p-4">Free meet & greet, driver ready when you land</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       <ServicesSection />
       <FeaturedBlogs />
       <FAQSection />

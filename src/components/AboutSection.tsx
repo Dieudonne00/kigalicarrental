@@ -1,4 +1,10 @@
-export default function AboutSection() {
+interface AboutSectionProps {
+  fleetCount: number;
+  reviewCount: number;
+  averageRating: number;
+}
+
+export default function AboutSection({ fleetCount, reviewCount, averageRating }: AboutSectionProps) {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,7 +26,7 @@ export default function AboutSection() {
               </p>
 
               <p className="text-gray-600 text-lg leading-relaxed">
-                What started as a small fleet of two vehicles has grown into one of the most trusted names in Kigali car rental, serving thousands of satisfied customers from across the globe who chose us for Kigali car rental and beyond.
+                We're a growing Kigali car rental company built on real service, not empty promises - every car in our fleet is inspected and maintained, every booking gets real support, and every review on this page is from a real customer who actually rented from us.
               </p>
 
               <div className="mt-8 p-6 bg-gray-50 rounded-xl border-l-4 border-blue-600">
@@ -94,20 +100,26 @@ export default function AboutSection() {
           </div>
         </div> {/* This closes the main grid */}
 
-        {/* Trust Badges - Now correctly outside the main grid */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
+        {/* Trust Badges - real numbers only, pulled from the live database.
+            This used to hardcode "10+ Years Experience," "1,500+ Happy
+            Clients," and "50+ Vehicles" - none of which were true. Never
+            fabricate a trust stat; if there's no real number for something,
+            leave it out rather than invent one. */}
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-3 gap-6">
           <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">10+</div>
-            <div className="text-gray-600">Years Experience</div>
+            <div className="text-3xl font-bold text-blue-600 mb-2">{fleetCount}</div>
+            <div className="text-gray-600">Vehicles in Our Fleet</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">1,500+</div>
-            <div className="text-gray-600">Happy Clients</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">50+</div>
-            <div className="text-gray-600">Vehicles</div>
-          </div>
+          {reviewCount > 0 && (
+            <div className="text-center">
+              <div className="text-3xl font-bold text-blue-600 mb-2">
+                {averageRating.toFixed(1)}★
+              </div>
+              <div className="text-gray-600">
+                From {reviewCount} Real Review{reviewCount === 1 ? "" : "s"}
+              </div>
+            </div>
+          )}
           <div className="text-center">
             <div className="text-3xl font-bold text-blue-600 mb-2">24/7</div>
             <div className="text-gray-600">Support</div>
