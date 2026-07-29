@@ -237,59 +237,52 @@ export default async function Home() {
 
       {/* Service Areas */}
       <section className="py-14 sm:py-20 bg-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-3">
-              Kigali Car Rental Service Areas
+              Kigali Car Rental Delivery Times by Area
             </h2>
             <p className="text-gray-700 leading-relaxed max-w-3xl mx-auto">
-              Free delivery across Kigali, with your car ready within 30 minutes of confirming your booking. Wherever you're staying in the city, a Kigali car rental from us can be waiting for you.
+              Every Kigali car rental is dispatched free of charge from our Kimihurura office. Below is a realistic estimate of how long delivery takes to each part of the city, plus the extra time to expect if your pickup lands during evening rush hour.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto mb-10">
-            {[
-              { name: "Kigali Airport Car Rental", desc: "Free meet & greet at KGL", href: "/kigali-airport-car-rental" },
-              { name: "Kimihurura", desc: "Hotels, offices, embassies" },
-              { name: "Nyarutarama", desc: "Golf course area, upscale homes" },
-              { name: "Kicukiro", desc: "Southern Kigali district" },
-              { name: "Kacyiru", desc: "Government & diplomatic zone" },
-              { name: "Remera", desc: "Stadium area, shopping" },
-              { name: "Nyamirambo", desc: "Old town, city center" },
-              { name: "Gikondo", desc: "Industrial & residential" },
-            ].map((area) => {
-              const cardContent = (
-                <>
-                  <svg
-                    className="w-6 h-6 sm:w-7 sm:h-7 text-blue-600 mx-auto mb-2"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <div className="font-bold text-gray-900 text-sm sm:text-base">{area.name}</div>
-                  <div className="text-xs sm:text-sm text-gray-500 mt-1">{area.desc}</div>
-                </>
-              );
-              const cardClassName =
-                "bg-white rounded-xl border border-gray-200 p-4 sm:p-5 text-center hover:border-blue-400 hover:shadow-md transition-all";
-              return area.href ? (
-                <Link key={area.name} href={area.href} className={cardClassName}>
-                  {cardContent}
-                </Link>
-              ) : (
-                <div key={area.name} className={cardClassName}>
-                  {cardContent}
-                </div>
-              );
-            })}
+          <div className="overflow-x-auto max-w-3xl mx-auto">
+            <table className="w-full border-collapse bg-white rounded-xl overflow-hidden border border-gray-200 text-sm sm:text-base">
+              <thead>
+                <tr className="bg-blue-900 text-white">
+                  <th className="text-left p-3 sm:p-4 font-bold">Kigali Car Rental Delivery Area</th>
+                  <th className="text-left p-3 sm:p-4 font-bold">Time After Confirmation</th>
+                  <th className="text-left p-3 sm:p-4 font-bold">Evening Traffic</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-700">
+                {[
+                  { area: "Kimihurura (our office)", time: "30 Min", traffic: "+10 Min" },
+                  { area: "Kacyiru", time: "30 Min", traffic: "+10 Min" },
+                  { area: "Nyarutarama", time: "30 Min", traffic: "+10 Min" },
+                  { area: "Remera", time: "30 Min", traffic: "+10 Min" },
+                  { area: "Gisozi", time: "30 Min", traffic: "+10 Min" },
+                  { area: "Nyarugenge (City Center)", time: "30 Min", traffic: "+10 Min" },
+                  { area: "Gikondo", time: "35 Min", traffic: "+10 Min" },
+                  { area: "Kicukiro", time: "40 Min", traffic: "+10 Min" },
+                  { area: "Nyamirambo", time: "40 Min", traffic: "+10 Min" },
+                  { area: "Kigali International Airport (KGL)", time: "40 Min", traffic: "+10 Min" },
+                ].map((row, i) => (
+                  <tr key={row.area} className={`border-b border-gray-100 last:border-0 ${i % 2 === 1 ? "bg-gray-50" : ""}`}>
+                    <td className="p-3 sm:p-4 font-semibold">{row.area}</td>
+                    <td className="p-3 sm:p-4">{row.time}</td>
+                    <td className="p-3 sm:p-4">{row.traffic}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+          <p className="text-xs text-gray-500 text-center mt-3 max-w-3xl mx-auto">
+            Estimates based on typical Kigali traffic conditions from our Kimihurura office - actual delivery time may vary. Need an even faster pickup? See our <Link href="/deals/last-minute" className="text-blue-700 underline">30-minute last-minute delivery option</Link>.
+          </p>
 
-          <p className="text-gray-700 leading-relaxed text-sm sm:text-base max-w-3xl mx-auto text-center">
+          <p className="text-gray-700 leading-relaxed text-sm sm:text-base max-w-3xl mx-auto text-center mt-10">
             Beyond the city, our fleet is built for Rwanda's roads - Musanze and Volcanoes National Park for gorilla trekking, Akagera National Park for safari game drives, Nyungwe Forest for canopy walks, and Rubavu on Lake Kivu. A car from us is ready for the whole country, not just the capital.
           </p>
         </div>
@@ -297,27 +290,54 @@ export default async function Home() {
 
       {/* Requirements */}
       <section className="py-14 sm:py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-6 text-center">
-            What You Need for Kigali Car Rental
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-4 text-gray-700 text-sm sm:text-base">
-            <div className="flex items-start gap-3">
-              <span className="text-blue-600 font-bold">✓</span>
-              <span>A valid driver's license (an International Driving Permit is recommended for foreign visitors)</span>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-blue-600 font-bold">✓</span>
-              <span>Minimum age of 21 to book, with a few premium vehicles requiring 25+</span>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-blue-600 font-bold">✓</span>
-              <span>A refundable security deposit, held only for the length of your rental</span>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-blue-600 font-bold">✓</span>
-              <span>Basic insurance is included on every booking, with optional upgrades available</span>
-            </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-3">
+              What You Need for Kigali Car Rental
+            </h2>
+            <p className="text-gray-700 leading-relaxed max-w-3xl mx-auto">
+              Booking a Kigali car rental is simple - here's exactly what to have ready before your car arrives.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                title: "Valid Driver's License",
+                desc: "A valid driver's license is required for every Kigali car rental. Foreign visitors should bring an International Driving Permit alongside their home license.",
+                iconPath: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z",
+              },
+              {
+                title: "Minimum Age 21",
+                desc: "Renters must be at least 21 to book, with a few premium and luxury vehicles requiring drivers to be 25 or older.",
+                iconPath: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
+              },
+              {
+                title: "Refundable Deposit",
+                desc: "Every Kigali car rental requires a refundable security deposit, held only for the length of your booking and returned in full afterward.",
+                iconPath: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z",
+              },
+              {
+                title: "Insurance Included",
+                desc: "Basic insurance comes standard on every booking, with optional upgraded coverage available if you'd like extra peace of mind.",
+                iconPath: "M9 12l2 2 4-5m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+              },
+            ].map((req) => (
+              <div key={req.title} className="bg-gray-50 rounded-xl border border-gray-200 p-6 text-center hover:border-blue-400 hover:shadow-md transition-all">
+                <svg
+                  className="w-10 h-10 text-blue-600 mx-auto mb-4"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path d={req.iconPath} />
+                </svg>
+                <h3 className="font-bold text-gray-900 mb-2">{req.title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{req.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
