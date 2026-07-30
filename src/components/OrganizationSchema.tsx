@@ -23,9 +23,14 @@ export default function OrganizationSchema() {
           url: `${SITE.URL}/logo.svg`,
           caption: CONTACT.COMPANY_NAME,
         },
+        // A real fleet photo (the red RAV4 that also carries the site's
+        // first genuine review), not the social-share card - schema.org's
+        // "image" for a LocalBusiness is meant to represent the business
+        // itself, so a clean photo fits better here than a text-overlaid
+        // OG card meant for link previews.
         image: {
           "@type": "ImageObject",
-          url: `${SITE.URL}/opengraph-image`,
+          url: `${SITE.URL}/og-hero-rav4.png`,
           width: 1200,
           height: 630,
         },
