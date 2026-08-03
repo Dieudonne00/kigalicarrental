@@ -44,6 +44,7 @@ const sections: { title: string; links: { label: string; href: string }[] }[] = 
   {
     title: "Destinations",
     links: [
+      { label: "Tours & Itineraries", href: "/tours" },
       { label: "Akagera Game Drive", href: "/akagera-game-drive" },
       { label: "Gorilla Trekking Car Hire", href: "/gorilla-trekking-car-hire" },
       { label: "Volcanoes National Park Car Hire", href: "/volcanoes-national-park-car-hire" },

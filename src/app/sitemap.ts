@@ -18,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE}/terms`,                   lastModified: new Date(), changeFrequency: "yearly",  priority: 0.2 },
     { url: `${BASE}/privacy`,                 lastModified: new Date(), changeFrequency: "yearly",  priority: 0.2 },
     { url: `${BASE}/akagera-game-drive`,      lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/tours`,                   lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE}/blog`,                    lastModified: new Date(), changeFrequency: "daily",   priority: 0.8 },
     // Keyword landing pages
     { url: `${BASE}/airport-transfer-kigali`,          lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
