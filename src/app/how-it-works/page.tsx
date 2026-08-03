@@ -92,7 +92,7 @@ export default function HowItWorksPage() {
     },
     {
       title: "Minimum Age",
-      description: "Drivers must be at least 21 years old (25 for luxury vehicles).",
+      description: "Drivers must be at least 23 years old.",
       icon: (
         <svg className="w-8 h-8" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
           <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -259,7 +259,7 @@ export default function HowItWorksPage() {
               },
               {
                 question: "What are the age requirements for renting?",
-                answer: "Drivers must be at least 21 years old with a valid driver's license. For luxury and premium vehicles, the minimum age is 25 years."
+                answer: "Drivers must be at least 23 years old with a valid driver's license."
               }
             ].map((faq, index) => (
               <div

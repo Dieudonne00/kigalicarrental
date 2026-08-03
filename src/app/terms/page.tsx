@@ -40,7 +40,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-bold text-gray-900 mb-2">2. Eligibility &amp; Documents</h2>
             <p>
-              Renters must be at least 21 years old and hold a valid driving licence (an International
+              Renters must be at least 23 years old and hold a valid driving licence (an International
               Driving Permit is recommended for foreign visitors) plus a passport or national ID. Drivers
               without a full licence cannot be added to a self-drive rental.
             </p>

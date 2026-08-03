@@ -11,6 +11,8 @@ import EastAfricaDestinations from "@/components/EastAfricaDestinations";
 import KigaliCarHireContent from "@/components/KigaliCarHireContent";
 import Testimonials from "@/components/Testimonials";
 import WhatsAppChatWidget from "@/components/WhatsAppChatWidget";
+import HowToBook from "@/components/HowToBook";
+import PriceList from "@/components/PriceList";
 
 const SITE = "https://kigalicarrental.site";
 const OG_IMAGE = "https://kigalicarrental.site/opengraph-image";
@@ -284,6 +286,24 @@ export default async function Home() {
     },
   });
 
+  const priceByCategory = new Map<string, { fromDaily: number; fromWeekly: number | null; fromMonthly: number | null; example: string }>();
+  for (const car of allCars) {
+    const cat = (car.category || "other").toLowerCase();
+    const existing = priceByCategory.get(cat);
+    if (!existing || car.dailyRate < existing.fromDaily) {
+      priceByCategory.set(cat, {
+        fromDaily: car.dailyRate,
+        fromWeekly: car.weeklyRate,
+        fromMonthly: car.monthlyRate,
+        example: car.name.trim(),
+      });
+    }
+  }
+  const categoryOrder = ["sedan", "economy", "suv", "van", "luxury"];
+  const categoryPrices = Array.from(priceByCategory.entries())
+    .sort((a, b) => categoryOrder.indexOf(a[0]) - categoryOrder.indexOf(b[0]))
+    .map(([category, v]) => ({ category, ...v }));
+
   return (
     <>
       <script
@@ -301,9 +321,11 @@ export default async function Home() {
       <main>
         <HeroSection />
         <FeaturedFleet cars={allCars} />
+        <HowToBook />
         <EastAfricaDestinations />
         <ServicesSection />
         <WhyChooseUs />
+        <PriceList prices={categoryPrices} />
         <Testimonials fleetCount={allCars.length} />
         <KigaliCarHireContent />
         <FAQSection />

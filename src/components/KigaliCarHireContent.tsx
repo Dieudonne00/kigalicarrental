@@ -78,7 +78,7 @@ export default function KigaliCarHireContent() {
                 {[
                   "Valid driving licence (international permit recommended for visitors)",
                   "Passport or national ID for identity verification",
-                  "Minimum age 21 years for self-drive hire",
+                  "Minimum age 23 years for self-drive hire",
                   "Deposit payable by mobile money, bank transfer or cash",
                   "No credit card required — we accept all local payment methods",
                 ].map((item) => (
