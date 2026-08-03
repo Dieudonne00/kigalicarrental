@@ -2,21 +2,65 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
-const NAV = [
+interface NavLink {
+  label: string;
+  href: string;
+}
+
+interface NavItem {
+  label: string;
+  href?: string;
+  children?: NavLink[];
+}
+
+const NAV: NavItem[] = [
   { label: "Fleet", href: "/fleet" },
-  { label: "Akagera Safari", href: "/akagera-game-drive" },
-  { label: "How It Works", href: "/how-it-works" },
-  { label: "Blog", href: "/blog" },
+  {
+    label: "Services",
+    children: [
+      { label: "Self-Drive Rwanda", href: "/self-drive-rwanda" },
+      { label: "Airport Transfer Kigali", href: "/airport-transfer-kigali" },
+      { label: "4x4 Car Hire Rwanda", href: "/4x4-car-hire-rwanda" },
+      { label: "Luxury Car Hire Kigali", href: "/luxury-car-hire-kigali" },
+      { label: "Long Term Car Hire", href: "/long-term-car-hire-kigali" },
+      { label: "Corporate Car Hire", href: "/corporate-car-hire-kigali" },
+      { label: "NGO Car Hire Kigali", href: "/ngo-car-hire-kigali" },
+      { label: "Wedding Car Hire Kigali", href: "/wedding-car-hire-kigali" },
+    ],
+  },
+  {
+    label: "Tours & Destinations",
+    children: [
+      { label: "All Tours & Itineraries", href: "/tours" },
+      { label: "Akagera Safari", href: "/akagera-game-drive" },
+      { label: "Gorilla Trekking — Volcanoes NP", href: "/gorilla-trekking-car-hire" },
+      { label: "Nyungwe Forest", href: "/nyungwe-forest-car-hire" },
+      { label: "Lake Kivu", href: "/lake-kivu-car-hire" },
+    ],
+  },
+  {
+    label: "Resources",
+    children: [
+      { label: "Blog", href: "/blog" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Car Hire Kigali 2026 Guide", href: "/car-hire-kigali-2026" },
+      { label: "Pay Online", href: "/pay" },
+      { label: "Site Map", href: "/site-map" },
+    ],
+  },
   { label: "About", href: "/about" },
-  { label: "Pay", href: "/pay" },
   { label: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [openDesktopMenu, setOpenDesktopMenu] = useState<string | null>(null);
+  const [openMobileMenu, setOpenMobileMenu] = useState<string | null>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -37,6 +81,16 @@ export default function Header() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
+  useEffect(() => {
+    const onClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenDesktopMenu(null);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
+
   return (
     <>
       <style>{`
@@ -44,10 +98,17 @@ export default function Header() {
         .kch-header.kch-scrolled{box-shadow:0 2px 24px rgba(0,0,0,.07)}
         .kch-inner{max-width:1280px;margin:0 auto;padding:0 32px;height:70px;display:flex;align-items:center;justify-content:space-between;gap:16px}
         .kch-logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none}
-        .kch-nav{display:none;align-items:center;gap:0}
+        .kch-nav{display:none;align-items:center;gap:0;position:relative}
         @media(min-width:1024px){.kch-nav{display:flex}.kch-hamburger{display:none!important}.kch-cta{display:flex!important}}
-        .kch-link{display:flex;align-items:center;padding:8px 11px;font-size:13.5px;font-weight:600;color:#111;text-decoration:none;border-radius:5px;letter-spacing:.01em;transition:color .15s,background .15s;white-space:nowrap}
+        .kch-link{display:flex;align-items:center;gap:4px;padding:8px 11px;font-size:13.5px;font-weight:600;color:#111;text-decoration:none;border-radius:5px;letter-spacing:.01em;transition:color .15s,background .15s;white-space:nowrap;background:none;border:none;cursor:pointer;font-family:inherit}
         .kch-link:hover{color:#1e3a8a;background:#f2faf2}
+        .kch-link.kch-open{color:#1e3a8a;background:#f2faf2}
+        .kch-chevron{transition:transform .15s}
+        .kch-link.kch-open .kch-chevron{transform:rotate(180deg)}
+        .kch-dropdown{position:absolute;top:calc(100% + 8px);left:0;min-width:240px;background:#fff;border:1px solid #e8e8e8;border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.12);padding:6px;z-index:1000}
+        .kch-dropdown-item{display:block;padding:10px 14px;font-size:13.5px;font-weight:600;color:#333;text-decoration:none;border-radius:6px;transition:background .12s,color .12s;white-space:nowrap}
+        .kch-dropdown-item:hover{background:#f2faf2;color:#1e3a8a}
+        .kch-nav-item{position:relative}
         .kch-cta{display:none;align-items:center;gap:14px;flex-shrink:0}
         .kch-phone{font-size:13px;font-weight:700;color:#111;text-decoration:none;letter-spacing:.01em;transition:color .15s;white-space:nowrap}
         .kch-phone:hover{color:#1e3a8a}
@@ -73,6 +134,14 @@ export default function Header() {
         .kch-drawer-nav{flex:1;overflow-y:auto;padding:4px 0}
         .kch-mob-link{display:block;padding:14px 24px;font-size:14px;font-weight:600;color:#111;text-decoration:none;border-bottom:1px solid #f4f4f4;transition:background .12s,color .12s}
         .kch-mob-link:hover{background:#f2faf2;color:#1e3a8a}
+        .kch-mob-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px 24px;font-size:14px;font-weight:600;color:#111;background:none;border:none;border-bottom:1px solid #f4f4f4;cursor:pointer;font-family:inherit;text-align:left}
+        .kch-mob-toggle:hover{background:#f2faf2;color:#1e3a8a}
+        .kch-mob-chevron{transition:transform .15s;flex-shrink:0}
+        .kch-mob-toggle.open .kch-mob-chevron{transform:rotate(180deg)}
+        .kch-mob-submenu{background:#fafafa;border-bottom:1px solid #f4f4f4}
+        .kch-mob-sublink{display:block;padding:12px 24px 12px 40px;font-size:13.5px;font-weight:500;color:#333;text-decoration:none;border-bottom:1px solid #f0f0f0}
+        .kch-mob-sublink:last-child{border-bottom:none}
+        .kch-mob-sublink:hover{background:#f2faf2;color:#1e3a8a}
         .kch-drawer-foot{padding:20px 24px;border-top:1px solid #ebebeb;flex-shrink:0;display:flex;flex-direction:column;gap:10px}
         .kch-drawer-book{display:block;text-align:center;background:#1e3a8a;color:#fff;font-size:14px;font-weight:700;padding:13px;border-radius:5px;text-decoration:none;letter-spacing:.025em;transition:background .15s}
         .kch-drawer-book:hover{background:#172554}
@@ -95,13 +164,44 @@ export default function Header() {
             />
           </Link>
 
-          <nav className="kch-nav" aria-label="Main navigation">
+          <nav className="kch-nav" aria-label="Main navigation" ref={navRef}>
             <Link href="/" className="kch-link">Home</Link>
-            {NAV.map((item) => (
-              <Link key={item.href} href={item.href} className="kch-link">
-                {item.label}
-              </Link>
-            ))}
+            {NAV.map((item) =>
+              item.children ? (
+                <div key={item.label} className="kch-nav-item">
+                  <button
+                    type="button"
+                    className={`kch-link${openDesktopMenu === item.label ? " kch-open" : ""}`}
+                    onClick={() => setOpenDesktopMenu(openDesktopMenu === item.label ? null : item.label)}
+                    aria-expanded={openDesktopMenu === item.label}
+                  >
+                    {item.label}
+                    <svg className="kch-chevron" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M6 9l6 6 6-6" />
+                    </svg>
+                  </button>
+                  {openDesktopMenu === item.label && (
+                    <div className="kch-dropdown" role="menu">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className="kch-dropdown-item"
+                          role="menuitem"
+                          onClick={() => setOpenDesktopMenu(null)}
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <Link key={item.href} href={item.href!} className="kch-link">
+                  {item.label}
+                </Link>
+              )
+            )}
           </nav>
 
           <div className="kch-cta">
@@ -166,16 +266,46 @@ export default function Header() {
               <Link href="/" className="kch-mob-link" onClick={() => setMobileOpen(false)}>
                 Home
               </Link>
-              {NAV.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="kch-mob-link"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {NAV.map((item) =>
+                item.children ? (
+                  <div key={item.label}>
+                    <button
+                      type="button"
+                      className={`kch-mob-toggle${openMobileMenu === item.label ? " open" : ""}`}
+                      onClick={() => setOpenMobileMenu(openMobileMenu === item.label ? null : item.label)}
+                      aria-expanded={openMobileMenu === item.label}
+                    >
+                      {item.label}
+                      <svg className="kch-mob-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                    </button>
+                    {openMobileMenu === item.label && (
+                      <div className="kch-mob-submenu">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="kch-mob-sublink"
+                            onClick={() => setMobileOpen(false)}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href!}
+                    className="kch-mob-link"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
             </nav>
 
             <div className="kch-drawer-foot">

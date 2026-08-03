@@ -1,15 +1,20 @@
 const steps = [
   {
     number: "01",
-    title: "Choose Your Vehicle",
+    title: "Browse Our Fleet",
     description:
-      "Browse the Kigali Car Rental fleet and filter by category, seats, or price. Every car shows real photos, specs, and daily rate up front.",
-    icon: (
-      <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-    ),
+      "Explore the Kigali Car Rental fleet and filter by category, seats, transmission, or price. Every car shows real photos and specs up front.",
+    icon: <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />,
   },
   {
     number: "02",
+    title: "Select Your Car",
+    description:
+      "Check availability and daily, weekly, or monthly rates for the vehicle you want. No hidden fees — the price shown is the price you pay.",
+    icon: <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />,
+  },
+  {
+    number: "03",
     title: "Confirm via WhatsApp or Online",
     description:
       "Send your pickup date, return date, and location by WhatsApp or our booking form. We confirm availability and lock in your rate within minutes.",
@@ -18,13 +23,25 @@ const steps = [
     ),
   },
   {
-    number: "03",
-    title: "Receive Your Car in Kigali",
+    number: "04",
+    title: "Pick Up Your Car",
     description:
-      "We deliver the car to Kigali International Airport or your hotel, free of charge. Present your licence and passport, and you're on the road.",
-    icon: (
-      <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-    ),
+      "We deliver to Kigali International Airport or your hotel, free of charge. Present your driving licence and passport, and we'll do a quick joint vehicle inspection before you drive off.",
+    icon: <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" />,
+  },
+  {
+    number: "05",
+    title: "Enjoy Your Journey",
+    description:
+      "Hit the road and explore Rwanda at your own pace. Every vehicle is fully insured, regularly serviced, and ready for city driving or upcountry travel.",
+    icon: <path d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />,
+  },
+  {
+    number: "06",
+    title: "Return the Vehicle",
+    description:
+      "Return the car at the agreed time and location, or arrange free drop-off. We inspect the vehicle together and settle any final charges on the spot.",
+    icon: <path d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />,
   },
 ];
 
@@ -37,14 +54,14 @@ export default function HowToBook() {
             How It Works
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 font-[family-name:var(--font-plus-jakarta)]">
-            Book Your Kigali Car Rental in 3 Steps
+            How Kigali Car Rental Works
           </h2>
           <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-            No paperwork at the counter, no waiting in line — Kigali car rental made simple from your phone.
+            No paperwork at the counter, no waiting in line — Kigali car rental made simple from your phone, start to finish.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-3 gap-5 md:gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {steps.map((step) => (
             <div key={step.number} className="relative bg-gray-50 rounded-2xl border border-gray-200 p-6 md:p-7 hover:border-[#1e3a8a]/40 hover:shadow-md transition-all">
               <span className="text-5xl font-extrabold text-gray-200 leading-none font-[family-name:var(--font-plus-jakarta)]">
