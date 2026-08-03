@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" role="img" aria-label="Kigali Car Rental">
+  <rect x="0" y="14" width="72" height="72" rx="16" fill="#1e3a8a" />
+  <g transform="translate(14, 30)" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 24 L8 10 a4 4 0 0 1 4-3 h24 a4 4 0 0 1 4 3 l4 14" />
+    <rect x="1" y="24" width="42" height="14" rx="4" />
+    <circle cx="11" cy="38" r="4.5" fill="#1e3a8a" stroke="#ffffff" stroke-width="3" />
+    <circle cx="33" cy="38" r="4.5" fill="#1e3a8a" stroke="#ffffff" stroke-width="3" />
+  </g>
+  <text x="88" y="46" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Kigali Car</text>
+  <text x="88" y="78" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" fill="#1e3a8a">Rental</text>
+</svg>

@@ -24,7 +24,7 @@ export default function ServicePageFooter({ current }: { current: string }) {
           <p className="text-sm text-gray-500 mb-2">Part of</p>
           <Link
             href="/"
-            className="text-2xl font-bold text-[#01B000] hover:text-[#019500] transition-colors font-[family-name:var(--font-plus-jakarta)]"
+            className="text-2xl font-bold text-[#1e3a8a] hover:text-[#172554] transition-colors font-[family-name:var(--font-plus-jakarta)]"
           >
             Kigali Car Rental
           </Link>
@@ -35,7 +35,7 @@ export default function ServicePageFooter({ current }: { current: string }) {
             <Link
               key={href}
               href={href}
-              className="text-xs text-gray-500 hover:text-[#01B000] hover:underline transition-colors px-2 py-1"
+              className="text-xs text-gray-500 hover:text-[#1e3a8a] hover:underline transition-colors px-2 py-1"
             >
               {label}
             </Link>

@@ -44,7 +44,7 @@ const reviews = [
     location: "Local Guide, 4 reviews",
     rating: 5,
     date: "10 months ago",
-    text: "Kigali Car Hire is a reliable car rental service in Kigali. I have used their services multiple times, and they have consistently met my needs and expectations.",
+    text: "Kigali Car Rental is a reliable car rental service in Kigali. I have used their services multiple times, and they have consistently met my needs and expectations.",
     badge: "Repeat Customer",
   },
 ];
@@ -95,7 +95,7 @@ export default function Testimonials() {
               href="https://share.google/bagc78zxCxtwqa1ZS"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#01B000] text-sm font-semibold hover:underline ml-1"
+              className="text-[#1e3a8a] text-sm font-semibold hover:underline ml-1"
             >
               See all on Google
             </a>
@@ -104,10 +104,10 @@ export default function Testimonials() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-10">
           {reviews.map((r) => (
-            <div key={r.name} className="bg-white rounded-xl border border-gray-200 p-5 flex flex-col hover:border-[#01B000]/40 hover:shadow-md transition-all">
+            <div key={r.name} className="bg-white rounded-xl border border-gray-200 p-5 flex flex-col hover:border-[#1e3a8a]/40 hover:shadow-md transition-all">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#01B000] flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#1e3a8a] flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                     {r.name.charAt(0)}
                   </div>
                   <div>
@@ -126,7 +126,7 @@ export default function Testimonials() {
               <p className="text-gray-600 text-sm mt-3 leading-relaxed flex-1">{r.text}</p>
               <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-100">
                 <span className="text-[10px] text-gray-400">{r.date}</span>
-                <span className="text-[10px] bg-green-50 text-[#01B000] font-semibold px-2 py-0.5 rounded-full">{r.badge}</span>
+                <span className="text-[10px] bg-blue-50 text-[#1e3a8a] font-semibold px-2 py-0.5 rounded-full">{r.badge}</span>
               </div>
             </div>
           ))}

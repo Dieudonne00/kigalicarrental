@@ -1,19 +1,18 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Kigali Car Hire | Rwanda's Trusted Car Rental Since 1990",
+  title: "About Kigali Car Rental | Rwanda's Trusted Car Rental Since 1990",
   description:
-    "Learn about Kigali Car Hire — Rwanda's most trusted car rental company since 1990. 50+ vehicles, 1,000+ happy customers, 24/7 service. Self-drive and chauffeur-driven cars from $30/day in Kigali.",
-  keywords:
-    "about kigali car hire, kigali car rental company, rwanda car hire company, trusted car rental kigali, kigali car hire history",
-  alternates: { canonical: "https://kigalicarhire.rw/about" },
+    "Learn about Kigali Car Rental — Rwanda's most trusted car rental company since 1990. 50+ vehicles, 1,000+ happy customers, 24/7 service. Self-drive and chauffeur-driven cars from $30/day in Kigali.",
+  keywords: "Kigali car rental",
+  alternates: { canonical: "https://kigalicarrental.site/about" },
   openGraph: {
-    title: "About Kigali Car Hire | Rwanda's Trusted Car Rental Since 1990",
+    title: "About Kigali Car Rental | Rwanda's Trusted Car Rental Since 1990",
     description:
       "Rwanda's most trusted car rental company since 1990. 50+ vehicles, 1,000+ happy customers, 24/7 service across Rwanda and East Africa.",
-    url: "https://kigalicarhire.rw/about",
-    siteName: "Kigali Car Hire",
-    images: [{ url: "https://kigalicarhire.rw/opengraph-image", width: 1200, height: 630, alt: "About Kigali Car Hire" }],
+    url: "https://kigalicarrental.site/about",
+    siteName: "Kigali Car Rental",
+    images: [{ url: "https://kigalicarrental.site/opengraph-image", width: 1200, height: 630, alt: "About Kigali Car Rental" }],
   },
 };
 
@@ -33,14 +32,14 @@ export default function AboutPage() {
         {/* Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16 md:py-32">
           <h1 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6 font-[family-name:var(--font-plus-jakarta)]">
-            About Kigali Car Hire
+            About Kigali Car Rental
           </h1>
           <p className="text-sm md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-6 md:mb-8">
             Your trusted partner for premium car rental services in Rwanda. Experience excellence, reliability, and convenience.
           </p>
           <a
             href="/contact"
-            className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-[#01B000] text-white font-bold text-sm md:text-base rounded-lg hover:bg-[#019500] transition-all"
+            className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-[#1e3a8a] text-white font-bold text-sm md:text-base rounded-lg hover:bg-[#172554] transition-all"
           >
             <svg
               className="w-4 h-4 md:w-5 md:h-5 mr-2"
@@ -67,7 +66,7 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-3 md:space-y-4 text-sm md:text-base text-gray-600 leading-relaxed">
               <p>
-                <strong className="text-gray-900">Kigali Car Hire</strong> was established in 1990 by Obed Dieudonne, a Kigali native with deep knowledge of Rwanda's roads, parks, and travel needs. What started as a small fleet has grown into Rwanda's most trusted car rental company, serving tourists, NGOs, diplomats, and business travellers across the country.
+                <strong className="text-gray-900">Kigali Car Rental</strong> was established in 1990 by Obed Dieudonne, a Kigali native with deep knowledge of Rwanda's roads, parks, and travel needs. What started as a small fleet has grown into Rwanda's most trusted car rental company, serving tourists, NGOs, diplomats, and business travellers across the country.
               </p>
               <p>
                 Based in Kigali on <strong className="text-gray-900">KG 648 St, Kigali, Rwanda</strong>, we operate 24/7 and offer two types of car hire: <strong className="text-gray-900">self-drive car hire</strong> for independent travellers, and <strong className="text-gray-900">chauffeur-driven car hire</strong> with professional local drivers who know every road in Rwanda.
@@ -91,7 +90,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-4 md:gap-8">
             {/* Mission */}
-            <div className="bg-gradient-to-br from-[#01B000] to-[#019500] rounded-2xl p-6 md:p-8 text-white">
+            <div className="bg-gradient-to-br from-[#1e3a8a] to-[#172554] rounded-2xl p-6 md:p-8 text-white">
               <div className="w-12 h-12 md:w-16 md:h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 md:mb-6">
                 <svg
                   className="w-6 h-6 md:w-8 md:h-8"
@@ -129,7 +128,7 @@ export default function AboutPage() {
               </div>
               <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Our Vision</h3>
               <p className="text-white/90 text-sm md:text-base leading-relaxed">
-                To be Rwanda's leading car rental company, recognized for innovation, sustainability, and customer satisfaction. We envision a future where every journey starts with Kigali Car Hire, making mobility accessible and enjoyable for everyone.
+                To be Rwanda's leading car rental company, recognized for innovation, sustainability, and customer satisfaction. We envision a future where every journey starts with Kigali Car Rental, making mobility accessible and enjoyable for everyone.
               </p>
             </div>
           </div>
@@ -207,9 +206,9 @@ export default function AboutPage() {
           ].map((feature, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl border-2 border-gray-200 p-4 md:p-6 hover:border-[#01B000] transition-all group"
+              className="bg-white rounded-xl border-2 border-gray-200 p-4 md:p-6 hover:border-[#1e3a8a] transition-all group"
             >
-              <div className="w-12 h-12 md:w-16 md:h-16 bg-[#01B000]/10 rounded-full flex items-center justify-center text-[#01B000] mb-3 md:mb-4 group-hover:bg-[#01B000] group-hover:text-white transition-all">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-[#1e3a8a]/10 rounded-full flex items-center justify-center text-[#1e3a8a] mb-3 md:mb-4 group-hover:bg-[#1e3a8a] group-hover:text-white transition-all">
                 <div className="scale-75 md:scale-100">
                   {feature.icon}
                 </div>
@@ -233,7 +232,7 @@ export default function AboutPage() {
               Our Core Values
             </h2>
             <p className="text-sm md:text-lg text-gray-600 max-w-2xl mx-auto">
-              The principles that guide everything we do at Kigali Car Hire.
+              The principles that guide everything we do at Kigali Car Rental.
             </p>
           </div>
 
@@ -258,9 +257,9 @@ export default function AboutPage() {
             ].map((value, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-4 md:p-6 text-center border-2 border-gray-200 hover:border-[#01B000] transition-all"
+                className="bg-white rounded-xl p-4 md:p-6 text-center border-2 border-gray-200 hover:border-[#1e3a8a] transition-all"
               >
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-[#01B000] text-white rounded-full flex items-center justify-center text-lg md:text-2xl font-bold mx-auto mb-3 md:mb-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 bg-[#1e3a8a] text-white rounded-full flex items-center justify-center text-lg md:text-2xl font-bold mx-auto mb-3 md:mb-4">
                   {index + 1}
                 </div>
                 <h3 className="text-sm md:text-xl font-bold text-gray-900 mb-2 md:mb-3">
@@ -285,7 +284,7 @@ export default function AboutPage() {
             { number: "24/7", label: "Customer Support" }
           ].map((stat, index) => (
             <div key={index} className="text-center">
-              <div className="text-2xl md:text-5xl font-bold text-[#01B000] mb-1 md:mb-2">
+              <div className="text-2xl md:text-5xl font-bold text-[#1e3a8a] mb-1 md:mb-2">
                 {stat.number}
               </div>
               <div className="text-gray-600 font-medium text-xs md:text-base">
@@ -297,18 +296,18 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-[#01B000] to-[#019500] text-white py-8 md:py-16">
+      <section className="bg-gradient-to-r from-[#1e3a8a] to-[#172554] text-white py-8 md:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4">
             Ready to Start Your Journey?
           </h2>
           <p className="text-sm md:text-lg text-white/90 mb-6 md:mb-8 max-w-2xl mx-auto">
-            Experience the difference with Kigali Car Hire. Browse our fleet and find your perfect vehicle today.
+            Experience the difference with Kigali Car Rental. Browse our fleet and find your perfect vehicle today.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
             <a
               href="/fleet"
-              className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-white text-[#01B000] rounded-lg font-bold text-sm md:text-base hover:bg-gray-100 transition-all"
+              className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-white text-[#1e3a8a] rounded-lg font-bold text-sm md:text-base hover:bg-gray-100 transition-all"
             >
               <svg
                 className="w-4 h-4 md:w-5 md:h-5 mr-2"
@@ -325,7 +324,7 @@ export default function AboutPage() {
             </a>
             <a
               href="/contact"
-              className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 border-2 border-white text-white rounded-lg font-bold text-sm md:text-base hover:bg-white hover:text-[#01B000] transition-all"
+              className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 border-2 border-white text-white rounded-lg font-bold text-sm md:text-base hover:bg-white hover:text-[#1e3a8a] transition-all"
             >
               <svg
                 className="w-4 h-4 md:w-5 md:h-5 mr-2"

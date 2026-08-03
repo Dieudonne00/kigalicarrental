@@ -1,19 +1,19 @@
 import { Metadata } from "next";
 
-const SITE = "https://kigalicarhire.rw";
+const SITE = "https://kigalicarrental.site";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | Kigali Car Hire",
+  title: "Terms & Conditions | Kigali Car Rental",
   description:
-    "Terms and conditions for renting a vehicle from Kigali Car Hire — Rwanda's trusted car rental service. Booking, payment, deposit, insurance and cancellation policy.",
+    "Terms and conditions for renting a vehicle from Kigali Car Rental — Rwanda's trusted car rental service. Booking, payment, deposit, insurance and cancellation policy.",
   alternates: { canonical: `${SITE}/terms` },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Terms & Conditions | Kigali Car Hire",
-    description: "Booking, payment, deposit, insurance and cancellation terms for Kigali Car Hire rentals.",
+    title: "Terms & Conditions | Kigali Car Rental",
+    description: "Booking, payment, deposit, insurance and cancellation terms for Kigali Car Rental rentals.",
     url: `${SITE}/terms`,
-    siteName: "Kigali Car Hire",
-    images: [{ url: `${SITE}/opengraph-image`, width: 1200, height: 630, alt: "Kigali Car Hire Terms & Conditions" }],
+    siteName: "Kigali Car Rental",
+    images: [{ url: `${SITE}/opengraph-image`, width: 1200, height: 630, alt: "Kigali Car Rental Terms & Conditions" }],
   },
 };
 
@@ -30,9 +30,9 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-bold text-gray-900 mb-2">1. Booking &amp; Confirmation</h2>
             <p>
-              A booking with Kigali Car Hire is confirmed once we send written confirmation by WhatsApp,
-              phone or email. Bookings can be made online at kigalicarhire.rw/book-now, by phone/WhatsApp
-              on +250 788 892 976, or by email at kigalicarhire1990@gmail.com. We confirm all requests
+              A booking with Kigali Car Rental is confirmed once we send written confirmation by WhatsApp,
+              phone or email. Bookings can be made online at kigalicarrental.site/book-now, by phone/WhatsApp
+              on +250 787 619 387, or by email at info@kigalicarrental.site. We confirm all requests
               within 30 minutes during business hours.
             </p>
           </section>
@@ -95,12 +95,12 @@ export default function TermsPage() {
             <h2 className="text-xl font-bold text-gray-900 mb-2">8. Contact</h2>
             <p>
               Questions about these terms can be sent to{" "}
-              <a href="mailto:kigalicarhire1990@gmail.com" className="text-[#01B000] font-semibold hover:underline">
-                kigalicarhire1990@gmail.com
+              <a href="mailto:info@kigalicarrental.site" className="text-[#1e3a8a] font-semibold hover:underline">
+                info@kigalicarrental.site
               </a>{" "}
               or WhatsApp{" "}
-              <a href="https://wa.me/250788892976" className="text-[#01B000] font-semibold hover:underline">
-                +250 788 892 976
+              <a href="https://wa.me/250787619387" className="text-[#1e3a8a] font-semibold hover:underline">
+                +250 787 619 387
               </a>
               .
             </p>

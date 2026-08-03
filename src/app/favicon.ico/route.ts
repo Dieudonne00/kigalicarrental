@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
 
 export function GET() {
-  return NextResponse.redirect("https://kigalicarhire.rw/icon.jpg", 308);
+  return NextResponse.redirect("https://kigalicarrental.site/icon.jpg", 308);
 }

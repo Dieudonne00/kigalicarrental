@@ -156,7 +156,7 @@ export default function BookingsPage() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "confirmed":
-        return "bg-green-100 text-green-800";
+        return "bg-blue-100 text-blue-800";
       case "pending":
         return "bg-yellow-100 text-yellow-800";
       case "completed":
@@ -185,7 +185,7 @@ export default function BookingsPage() {
             </div>
             <a
               href="/manager/fleet-status"
-              className="flex items-center gap-2 px-5 py-2.5 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] transition-all"
+              className="flex items-center gap-2 px-5 py-2.5 bg-[#1e3a8a] text-white rounded-lg font-bold hover:bg-[#172554] transition-all"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
               Add Manual Booking
@@ -199,7 +199,7 @@ export default function BookingsPage() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none"
+                className="px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none"
               >
                 <option value="all">All Bookings</option>
                 <option value="pending">Pending</option>
@@ -227,13 +227,13 @@ export default function BookingsPage() {
               </div>
               <div className="bg-white rounded-xl border-2 border-gray-200 p-4">
                 <div className="text-sm text-gray-600 mb-1">Confirmed</div>
-                <div className="text-2xl font-bold text-green-600">
+                <div className="text-2xl font-bold text-blue-600">
                   {bookings.filter((b) => b.status === "confirmed").length}
                 </div>
               </div>
               <div className="bg-white rounded-xl border-2 border-gray-200 p-4">
                 <div className="text-sm text-gray-600 mb-1">Total Revenue</div>
-                <div className="text-2xl font-bold text-[#01B000]">
+                <div className="text-2xl font-bold text-[#1e3a8a]">
                   $
                   {bookings
                     .filter((b) => b.status === "confirmed")
@@ -247,7 +247,7 @@ export default function BookingsPage() {
           {/* Bookings Table */}
           {loading ? (
             <div className="flex justify-center items-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#01B000]"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1e3a8a]"></div>
             </div>
           ) : bookings.length === 0 ? (
             <div className="bg-white rounded-xl border-2 border-gray-200 p-12 text-center">
@@ -372,14 +372,14 @@ export default function BookingsPage() {
                           </div>
                         </td>
                         <td className="px-6 py-4">
-                          <div className="text-lg font-bold text-[#01B000]">
+                          <div className="text-lg font-bold text-[#1e3a8a]">
                             ${booking.totalCost.toFixed(2)}
                           </div>
                         </td>
                         <td className="px-6 py-4">
                           <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${
                             booking.source === "online" ? "bg-blue-100 text-blue-700" :
-                            booking.source === "whatsapp" ? "bg-green-100 text-green-700" :
+                            booking.source === "whatsapp" ? "bg-blue-100 text-blue-700" :
                             booking.source === "walkin" ? "bg-purple-100 text-purple-700" :
                             "bg-orange-100 text-orange-700"
                           }`}>

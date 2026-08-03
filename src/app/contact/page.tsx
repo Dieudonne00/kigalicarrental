@@ -109,7 +109,7 @@ export default function ContactPage() {
             <div className="space-y-6">
               {/* Phone */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-[#01B000]/10 rounded-full flex items-center justify-center text-[#01B000] flex-shrink-0">
+                <div className="w-12 h-12 bg-[#1e3a8a]/10 rounded-full flex items-center justify-center text-[#1e3a8a] flex-shrink-0">
                   <svg
                     className="w-6 h-6"
                     fill="none"
@@ -124,15 +124,15 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 mb-1">Phone</h3>
-                  <a href="tel:+250788892976" className="text-gray-600 hover:text-[#01B000] transition-colors">
-                    +250 788 892 976
+                  <a href="tel:+250787619387" className="text-gray-600 hover:text-[#1e3a8a] transition-colors">
+                    +250 787 619 387
                   </a>
                 </div>
               </div>
 
               {/* Email */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-[#01B000]/10 rounded-full flex items-center justify-center text-[#01B000] flex-shrink-0">
+                <div className="w-12 h-12 bg-[#1e3a8a]/10 rounded-full flex items-center justify-center text-[#1e3a8a] flex-shrink-0">
                   <svg
                     className="w-6 h-6"
                     fill="none"
@@ -147,15 +147,15 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 mb-1">Email</h3>
-                  <a href="mailto:info@kigalicarhire.com" className="text-gray-600 hover:text-[#01B000] transition-colors">
-                    info@kigalicarhire.com
+                  <a href="mailto:info@kigalicarrental.site" className="text-gray-600 hover:text-[#1e3a8a] transition-colors">
+                    info@kigalicarrental.site
                   </a>
                 </div>
               </div>
 
               {/* Location */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-[#01B000]/10 rounded-full flex items-center justify-center text-[#01B000] flex-shrink-0">
+                <div className="w-12 h-12 bg-[#1e3a8a]/10 rounded-full flex items-center justify-center text-[#1e3a8a] flex-shrink-0">
                   <svg
                     className="w-6 h-6"
                     fill="none"
@@ -180,7 +180,7 @@ export default function ContactPage() {
 
               {/* Hours */}
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-[#01B000]/10 rounded-full flex items-center justify-center text-[#01B000] flex-shrink-0">
+                <div className="w-12 h-12 bg-[#1e3a8a]/10 rounded-full flex items-center justify-center text-[#1e3a8a] flex-shrink-0">
                   <svg
                     className="w-6 h-6"
                     fill="none"
@@ -209,7 +209,7 @@ export default function ContactPage() {
               <div className="flex gap-4">
                 <a
                   href="#"
-                  className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-[#01B000] hover:text-white transition-all"
+                  className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-[#1e3a8a] hover:text-white transition-all"
                   aria-label="Facebook"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -218,7 +218,7 @@ export default function ContactPage() {
                 </a>
                 <a
                   href="#"
-                  className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-[#01B000] hover:text-white transition-all"
+                  className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-[#1e3a8a] hover:text-white transition-all"
                   aria-label="Twitter"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -227,7 +227,7 @@ export default function ContactPage() {
                 </a>
                 <a
                   href="#"
-                  className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-[#01B000] hover:text-white transition-all"
+                  className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-[#1e3a8a] hover:text-white transition-all"
                   aria-label="Instagram"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -236,7 +236,7 @@ export default function ContactPage() {
                 </a>
                 <a
                   href="#"
-                  className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-[#01B000] hover:text-white transition-all"
+                  className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-[#1e3a8a] hover:text-white transition-all"
                   aria-label="LinkedIn"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -262,7 +262,7 @@ export default function ContactPage() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                   placeholder="Enter your full name"
                   required
                 />
@@ -279,7 +279,7 @@ export default function ContactPage() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                   placeholder="Enter your email address"
                   required
                 />
@@ -296,7 +296,7 @@ export default function ContactPage() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                   placeholder="Enter your phone number"
                 />
               </div>
@@ -312,7 +312,7 @@ export default function ContactPage() {
                   rows={5}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900 resize-none"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900 resize-none"
                   placeholder="Tell us about your car rental needs..."
                   required
                 ></textarea>
@@ -322,7 +322,7 @@ export default function ContactPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#01B000] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#019500] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-[#1e3a8a] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#172554] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
@@ -332,7 +332,7 @@ export default function ContactPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-[#01B000] to-[#019500] text-white py-16">
+      <section className="bg-gradient-to-r from-[#1e3a8a] to-[#172554] text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Rent Your Perfect Car?
@@ -342,7 +342,7 @@ export default function ContactPage() {
           </p>
           <a
             href="/fleet"
-            className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#01B000] rounded-lg font-bold hover:bg-gray-100 transition-all"
+            className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#1e3a8a] rounded-lg font-bold hover:bg-gray-100 transition-all"
           >
             <svg
               className="w-5 h-5 mr-2"
@@ -376,10 +376,10 @@ export default function ContactPage() {
 
             {/* Icon */}
             <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
-              modalContent.type === "success" ? "bg-green-100" : "bg-red-100"
+              modalContent.type === "success" ? "bg-blue-100" : "bg-red-100"
             }`}>
               {modalContent.type === "success" ? (
-                <svg className="w-8 h-8 text-green-600" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-8 h-8 text-blue-600" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               ) : (
@@ -391,7 +391,7 @@ export default function ContactPage() {
 
             {/* Title */}
             <h3 className={`text-2xl font-bold text-center mb-3 ${
-              modalContent.type === "success" ? "text-green-600" : "text-red-600"
+              modalContent.type === "success" ? "text-blue-600" : "text-red-600"
             }`}>
               {modalContent.type === "success" ? "Success!" : "Error"}
             </h3>
@@ -406,7 +406,7 @@ export default function ContactPage() {
               onClick={() => setShowModal(false)}
               className={`w-full px-6 py-3 rounded-lg font-bold text-white transition-all ${
                 modalContent.type === "success"
-                  ? "bg-[#01B000] hover:bg-[#019500]"
+                  ? "bg-[#1e3a8a] hover:bg-[#172554]"
                   : "bg-red-600 hover:bg-red-700"
               }`}
             >

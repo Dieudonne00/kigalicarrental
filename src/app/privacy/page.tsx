@@ -1,19 +1,19 @@
 import { Metadata } from "next";
 
-const SITE = "https://kigalicarhire.rw";
+const SITE = "https://kigalicarrental.site";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Kigali Car Hire",
+  title: "Privacy Policy | Kigali Car Rental",
   description:
-    "Privacy policy for Kigali Car Hire — how we collect, use and protect your personal information when you book a car rental in Rwanda.",
+    "Privacy policy for Kigali Car Rental — how we collect, use and protect your personal information when you book a car rental in Rwanda.",
   alternates: { canonical: `${SITE}/privacy` },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Privacy Policy | Kigali Car Hire",
-    description: "How Kigali Car Hire collects, uses and protects your personal information.",
+    title: "Privacy Policy | Kigali Car Rental",
+    description: "How Kigali Car Rental collects, uses and protects your personal information.",
     url: `${SITE}/privacy`,
-    siteName: "Kigali Car Hire",
-    images: [{ url: `${SITE}/opengraph-image`, width: 1200, height: 630, alt: "Kigali Car Hire Privacy Policy" }],
+    siteName: "Kigali Car Rental",
+    images: [{ url: `${SITE}/opengraph-image`, width: 1200, height: 630, alt: "Kigali Car Rental Privacy Policy" }],
   },
 };
 
@@ -30,7 +30,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-xl font-bold text-gray-900 mb-2">1. Information We Collect</h2>
             <p>
-              When you book a car with Kigali Car Hire we collect your name, phone number, email address,
+              When you book a car with Kigali Car Rental we collect your name, phone number, email address,
               driving licence and ID/passport details, and payment information necessary to process your
               rental and refundable deposit.
             </p>
@@ -49,7 +49,7 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-bold text-gray-900 mb-2">3. Payment Information</h2>
             <p>
               Mobile money and bank transfer payments are processed through MTN Mobile Money, Airtel Money
-              and our banking partners. Kigali Car Hire does not store your mobile money PIN or full bank
+              and our banking partners. Kigali Car Rental does not store your mobile money PIN or full bank
               account credentials.
             </p>
           </section>
@@ -90,12 +90,12 @@ export default function PrivacyPage() {
             <h2 className="text-xl font-bold text-gray-900 mb-2">8. Contact</h2>
             <p>
               For privacy questions or data requests, contact{" "}
-              <a href="mailto:kigalicarhire1990@gmail.com" className="text-[#01B000] font-semibold hover:underline">
-                kigalicarhire1990@gmail.com
+              <a href="mailto:info@kigalicarrental.site" className="text-[#1e3a8a] font-semibold hover:underline">
+                info@kigalicarrental.site
               </a>{" "}
               or WhatsApp{" "}
-              <a href="https://wa.me/250788892976" className="text-[#01B000] font-semibold hover:underline">
-                +250 788 892 976
+              <a href="https://wa.me/250787619387" className="text-[#1e3a8a] font-semibold hover:underline">
+                +250 787 619 387
               </a>
               .
             </p>

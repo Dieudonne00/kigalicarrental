@@ -45,14 +45,14 @@ export async function POST(request: NextRequest) {
     });
 
     const existingTitles = existingBlogs.length
-      ? existingBlogs.map((b) => `- ${b.title} (link: https://kigalicarhire.rw/blog/${b.slug})`).join("\n")
+      ? existingBlogs.map((b) => `- ${b.title} (link: https://kigalicarrental.site/blog/${b.slug})`).join("\n")
       : "No existing posts yet.";
 
     const internalLinks = INTERNAL_PAGES.map(
-      (p) => `- ${p.label}: https://kigalicarhire.rw${p.href}`
+      (p) => `- ${p.label}: https://kigalicarrental.site${p.href}`
     ).join("\n");
 
-    const prompt = `You are an expert SEO content writer for Kigali Car Hire (kigalicarhire.rw), Rwanda's #1 car rental company. Based in Kigali, Rwanda. Cars from $30/day. Self-drive and chauffeur-driven. WhatsApp: +250788892976. Book at https://kigalicarhire.rw/book-now.
+    const prompt = `You are an expert SEO content writer for Kigali Car Rental (kigalicarrental.site), Rwanda's #1 car rental company. Based in Kigali, Rwanda. Cars from $30/day. Self-drive and chauffeur-driven. WhatsApp: +250787619387. Book at https://kigalicarrental.site/book-now.
 
 Write a complete, SEO-optimized blog post about: "${topic}"
 Category: ${category}
@@ -69,7 +69,7 @@ WRITING RULES:
 3. Mention specific Rwanda/Kigali places, roads, parks, prices where relevant
 4. Use proper HTML tags: <h2>, <h3>, <p>, <ul>, <li>, <strong>, <a href="...">
 5. Anchor text for internal links must be natural (e.g. "hire a 4x4 in Rwanda", not just "click here")
-6. End with a CTA paragraph naturally linking to https://kigalicarhire.rw/book-now
+6. End with a CTA paragraph naturally linking to https://kigalicarrental.site/book-now
 7. Tone: friendly, expert, trustworthy — like a local who knows Rwanda well
 
 OUTPUT: Return ONLY a raw JSON object — no markdown fences, no explanation, just the JSON:
@@ -80,7 +80,7 @@ OUTPUT: Return ONLY a raw JSON object — no markdown fences, no explanation, ju
   "content": "<h2>...</h2><p>...</p> (full HTML article body)",
   "category": "${category}",
   "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"],
-  "metaTitle": "SEO meta title 50-60 chars including Kigali Car Hire",
+  "metaTitle": "SEO meta title 50-60 chars including Kigali Car Rental",
   "metaDescription": "Meta description 140-160 chars with keyword and CTA",
   "metaKeywords": ["kw1", "kw2", "kw3", "kw4", "kw5", "kw6", "kw7"]
 }`;
@@ -132,7 +132,7 @@ OUTPUT: Return ONLY a raw JSON object — no markdown fences, no explanation, ju
             return;
           }
 
-          parsed.author = "Kigali Car Hire Team";
+          parsed.author = "Kigali Car Rental Team";
           parsed.published = false;
           parsed.featured = false;
 

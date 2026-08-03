@@ -30,7 +30,7 @@ export async function POST(request: Request) {
         carId,
         customerName,
         customerPhone,
-        customerEmail: customerEmail || "manual@kigalicarhire.rw",
+        customerEmail: customerEmail || "info@kigalicarrental.site",
         pickupDate: new Date(pickupDate),
         returnDate: new Date(returnDate),
         pickupLocation: pickupLocation || "Kigali",

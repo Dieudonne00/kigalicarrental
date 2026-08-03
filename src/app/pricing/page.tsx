@@ -1,21 +1,20 @@
 import { Metadata } from "next";
 import Link from "next/link";
 
-const SITE = "https://kigalicarhire.rw";
+const SITE = "https://kigalicarrental.site";
 
 export const metadata: Metadata = {
-  title: "Pricing | Kigali Car Hire — Car Rental Rates from $30/day",
+  title: "Pricing | Kigali Car Rental — Car Rental Rates from $30/day",
   description:
-    "Kigali Car Hire pricing — economy cars from $30/day, SUVs and 4x4 Land Cruisers from $80/day, chauffeur service from $60/day, airport transfers from $30/trip. Weekly and monthly discounts available.",
-  keywords:
-    "kigali car hire prices, car rental rates kigali, car hire cost rwanda, cheap car hire kigali",
+    "Kigali Car Rental pricing — economy cars from $30/day, SUVs and 4x4 Land Cruisers from $80/day, chauffeur service from $60/day, airport transfers from $30/trip. Weekly and monthly discounts available.",
+  keywords: "Kigali car rental",
   alternates: { canonical: `${SITE}/pricing` },
   openGraph: {
-    title: "Pricing | Kigali Car Hire",
+    title: "Pricing | Kigali Car Rental",
     description: "Transparent car rental rates in Kigali, Rwanda — from $30/day.",
     url: `${SITE}/pricing`,
-    siteName: "Kigali Car Hire",
-    images: [{ url: `${SITE}/opengraph-image`, width: 1200, height: 630, alt: "Kigali Car Hire Pricing" }],
+    siteName: "Kigali Car Rental",
+    images: [{ url: `${SITE}/opengraph-image`, width: 1200, height: 630, alt: "Kigali Car Rental Pricing" }],
   },
 };
 
@@ -74,11 +73,11 @@ export default function PricingPage() {
             <div
               key={tier.name}
               className={`rounded-2xl border-2 p-6 flex flex-col bg-white ${
-                tier.highlighted ? "border-[#01B000] shadow-lg" : "border-gray-100"
+                tier.highlighted ? "border-[#1e3a8a] shadow-lg" : "border-gray-100"
               }`}
             >
               <h2 className="text-lg font-bold text-gray-900 mb-1">{tier.name}</h2>
-              <p className="text-3xl font-extrabold text-[#01B000] mb-1">
+              <p className="text-3xl font-extrabold text-[#1e3a8a] mb-1">
                 {tier.price}
                 <span className="text-sm font-medium text-gray-500">{tier.unit}</span>
               </p>
@@ -86,14 +85,14 @@ export default function PricingPage() {
               <ul className="space-y-2 mb-6 flex-1">
                 {tier.features.map((f) => (
                   <li key={f} className="text-sm text-gray-600 flex items-start gap-2">
-                    <span className="text-[#01B000] font-bold">&#10003;</span>
+                    <span className="text-[#1e3a8a] font-bold">&#10003;</span>
                     {f}
                   </li>
                 ))}
               </ul>
               <Link
                 href={tier.href}
-                className="text-center px-4 py-2.5 bg-[#01B000] text-white font-semibold rounded-lg hover:bg-[#019500] transition-colors"
+                className="text-center px-4 py-2.5 bg-[#1e3a8a] text-white font-semibold rounded-lg hover:bg-[#172554] transition-colors"
               >
                 View Details
               </Link>

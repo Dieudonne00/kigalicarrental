@@ -4,7 +4,7 @@ export default function AboutSection() {
       title: "Years in Rwanda",
       value: "35+",
       description:
-        "Kigali Car Hire has been providing trusted car rental services in Rwanda since 1990 — decades of local expertise you can rely on.",
+        "Kigali Car Rental has been providing trusted car rental services in Rwanda since 1990 — decades of local expertise you can rely on.",
     },
     {
       title: "Happy Customers",
@@ -38,7 +38,7 @@ export default function AboutSection() {
                 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight tracking-tight font-[family-name:var(--font-plus-jakarta)]"
                 style={{ lineHeight: "1.2" }}
               >
-                Kigali Car Hire — Rwanda&apos;s most trusted car rental service, with transparent
+                Kigali Car Rental — Rwanda&apos;s most trusted car rental service, with transparent
                 pricing, a quality fleet, and 24/7 customer support.
               </h3>
               <p className="mt-5 text-gray-600 text-lg leading-relaxed">
@@ -54,12 +54,12 @@ export default function AboutSection() {
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="bg-white border-2 border-gray-200 rounded-xl p-5 hover:border-[#01B000] transition-all duration-300"
+                  className="bg-white border-2 border-gray-200 rounded-xl p-5 hover:border-[#1e3a8a] transition-all duration-300"
                 >
                   <h4 className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">
                     {stat.title}
                   </h4>
-                  <p className="text-3xl font-bold text-[#01B000] mb-2 font-[family-name:var(--font-plus-jakarta)]">
+                  <p className="text-3xl font-bold text-[#1e3a8a] mb-2 font-[family-name:var(--font-plus-jakarta)]">
                     {stat.value}
                   </p>
                   <p className="text-gray-600 text-sm leading-relaxed">{stat.description}</p>

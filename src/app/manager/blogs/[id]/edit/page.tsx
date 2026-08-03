@@ -38,7 +38,7 @@ export default function EditBlogPage() {
     excerpt: "",
     content: "",
     featuredImage: null,
-    author: "Kigali Car Hire Team",
+    author: "Kigali Car Rental Team",
     category: "car-rental-tips",
     tags: [],
     metaTitle: null,
@@ -50,7 +50,7 @@ export default function EditBlogPage() {
 
   const suggestedKeywords = [
     "car rental Rwanda",
-    "Kigali car hire",
+    "Kigali car rental",
     "rent a car Kigali",
     "Rwanda car rental",
     "affordable car rental Rwanda",
@@ -148,7 +148,7 @@ export default function EditBlogPage() {
         <ManagerSidebar />
         <div className="flex-1 ml-64 p-8">
           <div className="flex justify-center items-center h-96">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#01B000]"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1e3a8a]"></div>
           </div>
         </div>
       </div>
@@ -190,7 +190,7 @@ export default function EditBlogPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, title: e.target.value })
                     }
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     placeholder="Enter blog post title"
                   />
                 </div>
@@ -207,7 +207,7 @@ export default function EditBlogPage() {
                       setFormData({ ...formData, excerpt: e.target.value })
                     }
                     rows={3}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     placeholder="Brief description of the blog post"
                   />
                 </div>
@@ -223,7 +223,7 @@ export default function EditBlogPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, category: e.target.value })
                     }
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                   >
                     <option value="car-rental-tips">Car Rental Tips</option>
                     <option value="travel-guides">Travel Guides</option>
@@ -244,7 +244,7 @@ export default function EditBlogPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, author: e.target.value })
                     }
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     placeholder="Author name"
                   />
                 </div>
@@ -263,7 +263,7 @@ export default function EditBlogPage() {
                         featuredImage: e.target.value || null,
                       })
                     }
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     placeholder="https://example.com/image.jpg"
                   />
                   {formData.featuredImage && (
@@ -300,7 +300,7 @@ export default function EditBlogPage() {
                 <input
                   type="text"
                   placeholder="Type a tag and press Enter"
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
                       e.preventDefault();
@@ -356,7 +356,7 @@ export default function EditBlogPage() {
                         metaTitle: e.target.value || null,
                       })
                     }
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     placeholder="Leave empty to use post title"
                   />
                 </div>
@@ -375,7 +375,7 @@ export default function EditBlogPage() {
                       })
                     }
                     rows={3}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     placeholder="Leave empty to use excerpt"
                   />
                 </div>
@@ -400,7 +400,7 @@ export default function EditBlogPage() {
                           className={`px-3 py-1 rounded-full text-sm font-medium transition-all ${
                             formData.metaKeywords.includes(keyword)
                               ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                              : "bg-[#01B000] text-white hover:bg-[#019500] cursor-pointer"
+                              : "bg-[#1e3a8a] text-white hover:bg-[#172554] cursor-pointer"
                           }`}
                         >
                           {keyword}
@@ -412,7 +412,7 @@ export default function EditBlogPage() {
                   <input
                     type="text"
                     placeholder="Type a keyword and press Enter"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900 mb-3"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900 mb-3"
                     onKeyDown={(e) => {
                       if (e.key === "Enter") {
                         e.preventDefault();
@@ -430,7 +430,7 @@ export default function EditBlogPage() {
                       {formData.metaKeywords.map((keyword) => (
                         <span
                           key={keyword}
-                          className="px-4 py-2 bg-[#01B000] text-white rounded-full text-sm font-medium flex items-center gap-2"
+                          className="px-4 py-2 bg-[#1e3a8a] text-white rounded-full text-sm font-medium flex items-center gap-2"
                         >
                           {keyword}
                           <button
@@ -464,7 +464,7 @@ export default function EditBlogPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, published: e.target.checked })
                     }
-                    className="w-5 h-5 text-[#01B000] border-gray-300 rounded focus:ring-[#01B000]"
+                    className="w-5 h-5 text-[#1e3a8a] border-gray-300 rounded focus:ring-[#1e3a8a]"
                   />
                   <label
                     htmlFor="published"
@@ -483,7 +483,7 @@ export default function EditBlogPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, featured: e.target.checked })
                     }
-                    className="w-5 h-5 text-[#01B000] border-gray-300 rounded focus:ring-[#01B000]"
+                    className="w-5 h-5 text-[#1e3a8a] border-gray-300 rounded focus:ring-[#1e3a8a]"
                   />
                   <label
                     htmlFor="featured"
@@ -500,7 +500,7 @@ export default function EditBlogPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="flex-1 px-6 py-4 bg-[#01B000] text-white font-bold rounded-lg hover:bg-[#019500] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 px-6 py-4 bg-[#1e3a8a] text-white font-bold rounded-lg hover:bg-[#172554] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {submitting ? "Updating..." : "Update Blog Post"}
               </button>

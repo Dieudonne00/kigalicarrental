@@ -150,7 +150,7 @@ function PaymentFlow() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F4F7F9] font-sans selection:bg-green-100 flex flex-col items-center justify-start md:justify-center p-4 pt-28 pb-12">
+    <div className="min-h-screen bg-[#F4F7F9] font-sans selection:bg-blue-100 flex flex-col items-center justify-start md:justify-center p-4 pt-28 pb-12">
       
       {/* Box Container - Responsive widths */}
       <div className="w-full max-w-[440px] bg-white border border-gray-100 rounded-[32px] md:rounded-[4px] flex flex-col transition-all duration-500 overflow-hidden">
@@ -162,8 +162,8 @@ function PaymentFlow() {
               <ArrowLeft className="w-5 h-5 text-gray-400" />
             </button>
           ) : (
-            <div className="w-9 h-9 bg-green-50 rounded-xl flex items-center justify-center">
-              <ShieldCheck className="w-5 h-5 text-[#01B000]" />
+            <div className="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center">
+              <ShieldCheck className="w-5 h-5 text-[#1e3a8a]" />
             </div>
           )}
           <span className="text-[11px] font-black text-gray-400 uppercase tracking-[0.2em]">
@@ -237,15 +237,15 @@ function PaymentFlow() {
               <div className="w-full p-4 bg-gray-50/50 rounded-2xl border border-gray-100 mb-8 flex items-center justify-between">
                 <span className="text-[10px] font-black text-gray-300 uppercase tracking-widest pl-1">Payment To</span>
                 <div className="flex items-center gap-2 pr-1">
-                  <div className="w-6 h-6 bg-[#01B000] rounded-full flex items-center justify-center font-bold text-[10px] text-white">K</div>
-                  <span className="text-[12px] font-black text-gray-900">Kigali Car Hire</span>
+                  <div className="w-6 h-6 bg-[#1e3a8a] rounded-full flex items-center justify-center font-bold text-[10px] text-white">K</div>
+                  <span className="text-[12px] font-black text-gray-900">Kigali Car Rental</span>
                 </div>
               </div>
 
               <button 
                 onClick={handleNextStep}
                 disabled={!formData.amount || parseFloat(formData.amount) <= 0}
-                className="w-full bg-[#019500] hover:bg-black text-white py-5 rounded-full font-black text-lg transition-all shadow-[0_20px_40px_-12px_rgba(1,149,0,0.3)] disabled:opacity-20 active:scale-95"
+                className="w-full bg-[#172554] hover:bg-black text-white py-5 rounded-full font-black text-lg transition-all shadow-[0_20px_40px_-12px_rgba(1,149,0,0.3)] disabled:opacity-20 active:scale-95"
               >
                 Continue
               </button>
@@ -299,7 +299,7 @@ function PaymentFlow() {
 
               <button 
                 onClick={handleNextStep}
-                className="w-full bg-[#019500] hover:bg-black text-white py-5 rounded-full font-black text-lg transition-all shadow-[0_20px_40px_-12px_rgba(1,149,0,0.3)] active:scale-95"
+                className="w-full bg-[#172554] hover:bg-black text-white py-5 rounded-full font-black text-lg transition-all shadow-[0_20px_40px_-12px_rgba(1,149,0,0.3)] active:scale-95"
               >
                 Proceed
               </button>
@@ -311,10 +311,10 @@ function PaymentFlow() {
               <div className="space-y-2">
                 <button 
                   onClick={() => setPaymentMethod("card")}
-                  className={`w-full p-4.5 rounded-2xl border-2 flex items-center justify-between transition-all ${paymentMethod === "card" ? "border-[#01B000] bg-green-50/10 shadow-sm" : "border-gray-50 hover:bg-gray-50"}`}
+                  className={`w-full p-4.5 rounded-2xl border-2 flex items-center justify-between transition-all ${paymentMethod === "card" ? "border-[#1e3a8a] bg-blue-50/10 shadow-sm" : "border-gray-50 hover:bg-gray-50"}`}
                 >
                   <div className="flex items-center gap-4 text-left">
-                    <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${paymentMethod === "card" ? "bg-[#01B000] text-white" : "bg-gray-100 text-gray-400"}`}>
+                    <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${paymentMethod === "card" ? "bg-[#1e3a8a] text-white" : "bg-gray-100 text-gray-400"}`}>
                       <CreditCard className="w-5 h-5" />
                     </div>
                     <div>
@@ -322,15 +322,15 @@ function PaymentFlow() {
                       <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest pl-0.5">Global Gateway</span>
                     </div>
                   </div>
-                  {paymentMethod === "card" && <CheckCircle2 className="w-5 h-5 text-[#01B000]" />}
+                  {paymentMethod === "card" && <CheckCircle2 className="w-5 h-5 text-[#1e3a8a]" />}
                 </button>
 
                 <button 
                   onClick={() => setPaymentMethod("mobile")}
-                  className={`w-full p-4.5 rounded-2xl border-2 flex items-center justify-between transition-all ${paymentMethod === "mobile" ? "border-[#01B000] bg-green-50/10 shadow-sm" : "border-gray-100 hover:bg-gray-50"}`}
+                  className={`w-full p-4.5 rounded-2xl border-2 flex items-center justify-between transition-all ${paymentMethod === "mobile" ? "border-[#1e3a8a] bg-blue-50/10 shadow-sm" : "border-gray-100 hover:bg-gray-50"}`}
                 >
                   <div className="flex items-center gap-4 text-left">
-                    <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${paymentMethod === "mobile" ? "bg-[#01B000] text-white" : "bg-gray-100 text-gray-400"}`}>
+                    <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${paymentMethod === "mobile" ? "bg-[#1e3a8a] text-white" : "bg-gray-100 text-gray-400"}`}>
                       <Smartphone className="w-5 h-5" />
                     </div>
                     <div>
@@ -338,7 +338,7 @@ function PaymentFlow() {
                       <span className="text-[10px] font-bold text-gray-300 uppercase tracking-widest pl-0.5">MoMo & Airtel</span>
                     </div>
                   </div>
-                  {paymentMethod === "mobile" && <CheckCircle2 className="w-5 h-5 text-[#01B000]" />}
+                  {paymentMethod === "mobile" && <CheckCircle2 className="w-5 h-5 text-[#1e3a8a]" />}
                 </button>
               </div>
 
@@ -354,7 +354,7 @@ function PaymentFlow() {
                 <button 
                   disabled={loading}
                   onClick={handleSubmit}
-                  className="w-full bg-[#019500] hover:bg-black text-white py-6 rounded-full font-black text-lg transition-all shadow-[0_20px_40px_-12px_rgba(1,149,0,0.3)] flex items-center justify-center gap-3 active:scale-95 disabled:opacity-50"
+                  className="w-full bg-[#172554] hover:bg-black text-white py-6 rounded-full font-black text-lg transition-all shadow-[0_20px_40px_-12px_rgba(1,149,0,0.3)] flex items-center justify-center gap-3 active:scale-95 disabled:opacity-50"
                 >
                   {loading ? <Loader2 className="w-6 h-6 animate-spin" /> : "Authorize Now"}
                 </button>
@@ -373,7 +373,7 @@ function PaymentFlow() {
            <div className="w-1.5 h-1.5 bg-gray-200 rounded-full" />
            
            <div className="flex items-center gap-1.5 leading-none">
-             <svg className="w-4 h-4 text-[#01B000]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+             <svg className="w-4 h-4 text-[#1e3a8a]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
              <span className="text-[10px] font-black text-gray-900 uppercase tracking-[0.15em] pt-0.5">COMPLIANT</span>
            </div>
         </div>
@@ -389,7 +389,7 @@ function PaymentFlow() {
 
 export default function PayPage() {
     return (
-        <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-white"><Loader2 className="w-10 h-10 animate-spin text-[#01B000]" /></div>}>
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-white"><Loader2 className="w-10 h-10 animate-spin text-[#1e3a8a]" /></div>}>
             <PaymentFlow />
         </Suspense>
     );

@@ -2,21 +2,20 @@ import { Metadata } from "next";
 import Link from "next/link";
 import ServicePageFooter from "@/components/ServicePageFooter";
 
-const SITE = "https://kigalicarhire.rw";
+const SITE = "https://kigalicarrental.site";
 
 export const metadata: Metadata = {
-  title: "Long Term Car Hire Kigali | Monthly and Weekly Car Rental Rwanda - Kigali Car Hire",
+  title: "Long Term Car Hire Kigali | Monthly and Weekly Car Rental Rwanda - Kigali Car Rental",
   description:
-    "Long term car hire in Kigali from $600/month. Weekly and monthly car rental in Rwanda for expats, NGO staff, embassy personnel and businesses. Full insurance, maintenance and 24/7 support included. Kigali Car Hire.",
-  keywords:
-    "long term car hire kigali, monthly car hire kigali, weekly car hire kigali, monthly car rental rwanda, long term car rental rwanda, expat car hire kigali, car hire kigali 1 month, car hire rwanda monthly rate, long stay car hire rwanda, weekly car rental kigali, ngo long term car hire rwanda, monthly vehicle hire rwanda, kigali car hire monthly, car rental kigali 30 days, extended car hire rwanda",
+    "Long term car hire in Kigali from $600/month. Weekly and monthly car rental in Rwanda for expats, NGO staff, embassy personnel and businesses. Full insurance, maintenance and 24/7 support included. Kigali Car Rental.",
+  keywords: "Kigali car rental",
   alternates: { canonical: `${SITE}/long-term-car-hire-kigali` },
   openGraph: {
     title: "Long Term Car Hire Kigali | Monthly and Weekly Car Rental Rwanda",
     description:
       "Long term car hire in Kigali from $600/month. Full insurance, maintenance and 24/7 support included for expats, NGOs and businesses.",
     url: `${SITE}/long-term-car-hire-kigali`,
-    siteName: "Kigali Car Hire",
+    siteName: "Kigali Car Rental",
     type: "website",
     locale: "en_RW",
   },
@@ -39,7 +38,7 @@ const faqSchema = {
       name: "Can I hire a car in Kigali for a full month without a driver?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Kigali Car Hire offers self-drive monthly car hire for customers with a valid driving licence. You can hire a car in Kigali for one month, three months, or longer and drive yourself with no daily mileage limit.",
+        text: "Yes. Kigali Car Rental offers self-drive monthly car hire for customers with a valid driving licence. You can hire a car in Kigali for one month, three months, or longer and drive yourself with no daily mileage limit.",
       },
     },
     {
@@ -47,7 +46,7 @@ const faqSchema = {
       name: "Does the monthly car hire price include insurance and maintenance?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. All long term car hire contracts from Kigali Car Hire include comprehensive third-party insurance, scheduled vehicle maintenance, and 24/7 roadside assistance. If the vehicle breaks down during your rental, we provide a replacement car at no extra cost.",
+        text: "Yes. All long term car hire contracts from Kigali Car Rental include comprehensive third-party insurance, scheduled vehicle maintenance, and 24/7 roadside assistance. If the vehicle breaks down during your rental, we provide a replacement car at no extra cost.",
       },
     },
     {
@@ -55,7 +54,7 @@ const faqSchema = {
       name: "Do you offer long term car hire for NGOs and embassies in Kigali?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Kigali Car Hire has dedicated long term contracts for NGOs, UN agencies, embassies, and diplomatic missions in Rwanda. We provide monthly invoicing, VAT exemption documentation for qualifying organisations, and fleet management for multi-vehicle contracts.",
+        text: "Yes. Kigali Car Rental has dedicated long term contracts for NGOs, UN agencies, embassies, and diplomatic missions in Rwanda. We provide monthly invoicing, VAT exemption documentation for qualifying organisations, and fleet management for multi-vehicle contracts.",
       },
     },
     {
@@ -71,7 +70,7 @@ const faqSchema = {
       name: "Can I hire a car in Kigali for 3 months or more?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Kigali Car Hire offers long term contracts of 1 month, 3 months, 6 months, and 12 months. The longer the contract, the better the daily rate. We can also negotiate a custom contract for organisations that need a vehicle for a specific project duration.",
+        text: "Yes. Kigali Car Rental offers long term contracts of 1 month, 3 months, 6 months, and 12 months. The longer the contract, the better the daily rate. We can also negotiate a custom contract for organisations that need a vehicle for a specific project duration.",
       },
     },
   ],
@@ -81,7 +80,7 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Kigali Car Hire", item: SITE },
+    { "@type": "ListItem", position: 1, name: "Kigali Car Rental", item: SITE },
     { "@type": "ListItem", position: 2, name: "Long Term Car Hire Kigali", item: `${SITE}/long-term-car-hire-kigali` },
   ],
 };
@@ -147,7 +146,7 @@ export default function LongTermCarHireKigaliPage() {
             <Link href="/book-now" className="bg-white text-amber-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-50 transition-all shadow-lg">
               Get Monthly Quote
             </Link>
-            <a href="https://wa.me/250788892976" target="_blank" rel="noopener noreferrer" className="bg-amber-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-700 transition-all border border-white/30">
+            <a href="https://wa.me/250787619387" target="_blank" rel="noopener noreferrer" className="bg-amber-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-amber-700 transition-all border border-white/30">
               WhatsApp Us
             </a>
           </div>
@@ -207,7 +206,7 @@ export default function LongTermCarHireKigaliPage() {
               What Is Included in Long Term Car Hire in Kigali
             </h2>
             <p className="text-gray-600 max-w-xl mx-auto">
-              Every weekly and monthly car hire contract from Kigali Car Hire includes the following at no extra charge.
+              Every weekly and monthly car hire contract from Kigali Car Rental includes the following at no extra charge.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -297,13 +296,13 @@ export default function LongTermCarHireKigaliPage() {
           </h2>
           <div className="prose prose-gray max-w-none text-gray-600 space-y-4">
             <p>
-              <strong className="text-gray-900">Long term car hire in Kigali</strong> is the most cost-effective way for expatriates, NGO workers, and business travellers to have reliable personal transport in Rwanda without the upfront cost of purchasing a vehicle. Kigali Car Hire offers flexible weekly and monthly car hire contracts tailored to the unique needs of the international community based in Rwanda.
+              <strong className="text-gray-900">Long term car hire in Kigali</strong> is the most cost-effective way for expatriates, NGO workers, and business travellers to have reliable personal transport in Rwanda without the upfront cost of purchasing a vehicle. Kigali Car Rental offers flexible weekly and monthly car hire contracts tailored to the unique needs of the international community based in Rwanda.
             </p>
             <p>
               Our <strong className="text-gray-900">monthly car rental in Kigali</strong> starts from $600 per month for a comfortable economy saloon, $900 per month for compact SUVs such as the Toyota RAV4, and from $1,200 per month for rugged 4x4 vehicles needed for upcountry travel. All monthly car hire rates include unlimited mileage within Rwanda, comprehensive insurance, scheduled maintenance, and 24/7 roadside assistance.
             </p>
             <p>
-              For organisations that need multiple vehicles — a fleet of cars for an NGO project, a programme vehicle for a UN agency field mission, or transport for a conference delegation — Kigali Car Hire offers fleet contracts with volume discounts and consolidated monthly billing. We are experienced in supplying vehicles to international humanitarian organisations across Rwanda and East Africa.
+              For organisations that need multiple vehicles — a fleet of cars for an NGO project, a programme vehicle for a UN agency field mission, or transport for a conference delegation — Kigali Car Rental offers fleet contracts with volume discounts and consolidated monthly billing. We are experienced in supplying vehicles to international humanitarian organisations across Rwanda and East Africa.
             </p>
             <p>
               <strong className="text-gray-900">Weekly car hire in Kigali</strong> is also available for medium-length stays of one to four weeks. Weekly rates are significantly cheaper than calculating the equivalent daily rate, making them the smart choice for researchers, consultants, journalists, and visitors spending 7 to 30 days in Rwanda.
@@ -355,8 +354,8 @@ export default function LongTermCarHireKigaliPage() {
             <Link href="/book-now" className="bg-white text-amber-700 px-8 py-4 rounded-lg font-bold hover:bg-amber-50 transition-all shadow-lg">
               Request Monthly Quote
             </Link>
-            <a href="tel:+250788892976" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-amber-700 transition-all">
-              Call +250 788 892 976
+            <a href="tel:+250787619387" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-amber-700 transition-all">
+              Call +250 787 619 387
             </a>
           </div>
         </div>

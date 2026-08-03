@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-const FALLBACK = "https://kigalicarhire.b-cdn.net/kigalicarhire.png";
+const FALLBACK = "/logo.svg";
 
 interface Props {
   src: string | null;

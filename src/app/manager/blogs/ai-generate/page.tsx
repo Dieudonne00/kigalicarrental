@@ -47,7 +47,7 @@ const ALL_TOPICS: { topic: string; category: string }[] = [
   { topic: "Rwanda Road Rules and Driving Tips for Tourists", category: "car-tips" },
   { topic: "How Much Does Car Hire Cost in Kigali? 2025 Price Guide", category: "car-tips" },
   { topic: "Best Car for Gorilla Trekking in Rwanda", category: "car-tips" },
-  { topic: "Kigali Car Hire with Driver vs Self-Drive: Which to Choose", category: "car-tips" },
+  { topic: "Kigali Car Rental with Driver vs Self-Drive: Which to Choose", category: "car-tips" },
   { topic: "Rwanda Car Hire Requirements: Documents You Need", category: "car-tips" },
   { topic: "How to Book a Hire Car Online in Kigali", category: "car-tips" },
   { topic: "Car Hire Payment Methods in Rwanda: MoMo, Cash and More", category: "car-tips" },
@@ -62,7 +62,7 @@ const ALL_TOPICS: { topic: string; category: string }[] = [
   { topic: "Long Term Car Hire Kigali vs Buying a Car in Rwanda", category: "car-tips" },
   { topic: "Luxury Car Hire Kigali: Top Vehicles and What They Cost", category: "car-tips" },
   { topic: "Rwanda Car Hire Age Requirements and Restrictions", category: "car-tips" },
-  { topic: "Kigali Car Hire vs Taxi App: Which is Cheaper for Long Trips", category: "car-tips" },
+  { topic: "Kigali Car Rental vs Taxi App: Which is Cheaper for Long Trips", category: "car-tips" },
   { topic: "What Happens If You Damage a Hire Car in Rwanda", category: "car-tips" },
   // Rwanda Tourism
   { topic: "Rwanda Tourism 2025: Complete Travel Guide", category: "rwanda-tourism" },
@@ -107,16 +107,16 @@ const ALL_TOPICS: { topic: string; category: string }[] = [
   { topic: "GPS and Navigation in Rwanda: Best Apps for Drivers", category: "car-maintenance" },
   { topic: "Rwanda Road Signs Explained for International Drivers", category: "car-maintenance" },
   // Company News
-  { topic: "Why Kigali Car Hire is Rwanda's Most Trusted Car Rental", category: "company-news" },
-  { topic: "Kigali Car Hire Fleet 2025: New Cars Now Available", category: "company-news" },
-  { topic: "How Kigali Car Hire Supports Rwanda Tourism", category: "company-news" },
-  { topic: "Kigali Car Hire Special Offers and Discounts 2025", category: "company-news" },
+  { topic: "Why Kigali Car Rental is Rwanda's Most Trusted Car Rental", category: "company-news" },
+  { topic: "Kigali Car Rental Fleet 2025: New Cars Now Available", category: "company-news" },
+  { topic: "How Kigali Car Rental Supports Rwanda Tourism", category: "company-news" },
+  { topic: "Kigali Car Rental Special Offers and Discounts 2025", category: "company-news" },
   { topic: "Our Airport Transfer Service: Fast and Reliable from KGL", category: "company-news" },
-  { topic: "Kigali Car Hire vs Other Rwanda Car Rental Companies", category: "company-news" },
-  { topic: "How to Contact Kigali Car Hire: WhatsApp, Phone and Email", category: "company-news" },
-  { topic: "Kigali Car Hire Customer Reviews: What Our Clients Say", category: "company-news" },
+  { topic: "Kigali Car Rental vs Other Rwanda Car Rental Companies", category: "company-news" },
+  { topic: "How to Contact Kigali Car Rental: WhatsApp, Phone and Email", category: "company-news" },
+  { topic: "Kigali Car Rental Customer Reviews: What Our Clients Say", category: "company-news" },
   { topic: "Our Commitment to Safe and Clean Vehicles in Rwanda", category: "company-news" },
-  { topic: "Kigali Car Hire: Serving Tourists, NGOs and Businesses Since 2015", category: "company-news" },
+  { topic: "Kigali Car Rental: Serving Tourists, NGOs and Businesses Since 2015", category: "company-news" },
 ];
 
 interface BulkStatus {
@@ -421,7 +421,7 @@ export default function AIBlogGeneratePage() {
                 onClick={() => setMode(m)}
                 className={`px-5 py-3 text-sm font-bold border-b-2 transition-colors ${
                   mode === m
-                    ? "border-[#01B000] text-[#01B000]"
+                    ? "border-[#1e3a8a] text-[#1e3a8a]"
                     : "border-transparent text-gray-500 hover:text-gray-700"
                 }`}
               >
@@ -446,7 +446,7 @@ export default function AIBlogGeneratePage() {
                   placeholder="E.g. How to hire a car in Kigali for gorilla trekking..."
                   rows={3}
                   disabled={singleStatus === "generating"}
-                  className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:border-[#01B000] focus:outline-none focus:ring-2 focus:ring-[#01B000]/20 resize-none disabled:opacity-50"
+                  className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:border-[#1e3a8a] focus:outline-none focus:ring-2 focus:ring-[#1e3a8a]/20 resize-none disabled:opacity-50"
                 />
                 <div className="mt-4">
                   <label className="text-sm font-medium text-gray-700 mb-2 block">Category</label>
@@ -454,7 +454,7 @@ export default function AIBlogGeneratePage() {
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                     disabled={singleStatus === "generating"}
-                    className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 focus:border-[#01B000] focus:outline-none disabled:opacity-50"
+                    className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-900 focus:border-[#1e3a8a] focus:outline-none disabled:opacity-50"
                   >
                     {CATEGORIES.map((c) => <option key={c.value} value={c.value}>{c.label}</option>)}
                   </select>
@@ -462,7 +462,7 @@ export default function AIBlogGeneratePage() {
                 <button
                   onClick={generate}
                   disabled={!topic.trim() || singleStatus === "generating"}
-                  className="mt-5 w-full flex items-center justify-center gap-2 bg-[#01B000] text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#019500] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  className="mt-5 w-full flex items-center justify-center gap-2 bg-[#1e3a8a] text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#172554] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                 >
                   {singleStatus === "generating" ? (
                     <><svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>Writing...</>
@@ -479,7 +479,7 @@ export default function AIBlogGeneratePage() {
                     <button
                       key={i}
                       onClick={() => { setTopic(s.topic); setCategory(s.category); setSingleStatus("idle"); setResult(null); }}
-                      className={`w-full text-left rounded-lg border px-3 py-2.5 text-xs transition-all hover:border-[#01B000] hover:bg-[#01B000]/5 ${topic === s.topic ? "border-[#01B000] bg-[#01B000]/5 text-[#01B000] font-medium" : "border-gray-100 bg-gray-50 text-gray-700"}`}
+                      className={`w-full text-left rounded-lg border px-3 py-2.5 text-xs transition-all hover:border-[#1e3a8a] hover:bg-[#1e3a8a]/5 ${topic === s.topic ? "border-[#1e3a8a] bg-[#1e3a8a]/5 text-[#1e3a8a] font-medium" : "border-gray-100 bg-gray-50 text-gray-700"}`}
                     >
                       {s.topic}
                     </button>
@@ -491,8 +491,8 @@ export default function AIBlogGeneratePage() {
             <div className="lg:col-span-3 space-y-5">
               {singleStatus === "idle" && (
                 <div className="bg-white rounded-2xl border border-gray-200 p-12 shadow-sm flex flex-col items-center justify-center text-center min-h-[400px]">
-                  <div className="w-16 h-16 bg-[#01B000]/10 rounded-2xl flex items-center justify-center mb-4">
-                    <svg className="w-8 h-8 text-[#01B000]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-16 h-16 bg-[#1e3a8a]/10 rounded-2xl flex items-center justify-center mb-4">
+                    <svg className="w-8 h-8 text-[#1e3a8a]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
                   </div>
@@ -524,10 +524,10 @@ export default function AIBlogGeneratePage() {
               )}
 
               {singleStatus === "published" && (
-                <div className="bg-green-50 rounded-2xl border border-green-200 p-6">
-                  <p className="font-bold text-green-800">Published!</p>
+                <div className="bg-blue-50 rounded-2xl border border-blue-200 p-6">
+                  <p className="font-bold text-blue-800">Published!</p>
                   <div className="flex gap-3 mt-3">
-                    <a href={`/blog/${publishedSlug}`} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-green-700 underline">View post</a>
+                    <a href={`/blog/${publishedSlug}`} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-blue-700 underline">View post</a>
                     <button onClick={resetSingle} className="text-sm font-semibold text-gray-600 underline">Write another</button>
                   </div>
                 </div>
@@ -536,9 +536,9 @@ export default function AIBlogGeneratePage() {
               {(singleStatus === "done" || singleStatus === "publishing") && result && (
                 <>
                   <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
-                    <div className="flex items-center gap-2 px-6 py-4 border-b border-gray-100 bg-green-50">
-                      <svg className="w-4 h-4 text-green-600" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                      <span className="text-sm font-semibold text-green-700">Article ready — review before publishing</span>
+                    <div className="flex items-center gap-2 px-6 py-4 border-b border-gray-100 bg-blue-50">
+                      <svg className="w-4 h-4 text-blue-600" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      <span className="text-sm font-semibold text-blue-700">Article ready — review before publishing</span>
                     </div>
                     <div className="p-6 space-y-4">
                       <div>
@@ -550,7 +550,7 @@ export default function AIBlogGeneratePage() {
                         <div className="bg-gray-50 rounded-xl p-4">
                           <p className="text-xs font-semibold text-gray-500 mb-1 uppercase">Meta Title</p>
                           <p className="text-sm text-gray-800">{result.metaTitle}</p>
-                          <p className={`text-xs mt-1 ${result.metaTitle.length > 60 ? "text-red-500" : "text-green-600"}`}>{result.metaTitle.length} chars</p>
+                          <p className={`text-xs mt-1 ${result.metaTitle.length > 60 ? "text-red-500" : "text-blue-600"}`}>{result.metaTitle.length} chars</p>
                         </div>
                         <div className="bg-gray-50 rounded-xl p-4">
                           <p className="text-xs font-semibold text-gray-500 mb-1 uppercase">Category</p>
@@ -560,21 +560,21 @@ export default function AIBlogGeneratePage() {
                       <div className="bg-gray-50 rounded-xl p-4">
                         <p className="text-xs font-semibold text-gray-500 mb-1 uppercase">Meta Description</p>
                         <p className="text-sm text-gray-800">{result.metaDescription}</p>
-                        <p className={`text-xs mt-1 ${result.metaDescription.length > 160 ? "text-red-500" : "text-green-600"}`}>{result.metaDescription.length} chars</p>
+                        <p className={`text-xs mt-1 ${result.metaDescription.length > 160 ? "text-red-500" : "text-blue-600"}`}>{result.metaDescription.length} chars</p>
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {result.tags?.map((tag) => <span key={tag} className="bg-gray-100 text-gray-600 text-xs px-2.5 py-1 rounded-full">{tag}</span>)}
                       </div>
                       <div className="flex items-center justify-between pt-4 border-t border-gray-100">
                         <label className="flex items-center gap-2.5 cursor-pointer">
-                          <div onClick={() => setFeatured((f) => !f)} className={`relative w-10 h-6 rounded-full transition-colors ${featured ? "bg-[#01B000]" : "bg-gray-200"}`}>
+                          <div onClick={() => setFeatured((f) => !f)} className={`relative w-10 h-6 rounded-full transition-colors ${featured ? "bg-[#1e3a8a]" : "bg-gray-200"}`}>
                             <div className={`absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-all ${featured ? "left-5" : "left-1"}`} />
                           </div>
                           <span className="text-sm font-medium text-gray-700">Featured</span>
                         </label>
                         <div className="flex gap-3">
                           <button onClick={resetSingle} className="text-sm text-gray-500 px-4 py-2 rounded-lg border border-gray-200 hover:border-gray-300">Start over</button>
-                          <button onClick={publish} disabled={singleStatus === "publishing"} className="flex items-center gap-2 bg-[#01B000] text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-[#019500] disabled:opacity-70">
+                          <button onClick={publish} disabled={singleStatus === "publishing"} className="flex items-center gap-2 bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-[#172554] disabled:opacity-70">
                             {singleStatus === "publishing" ? "Publishing..." : "Publish Now"}
                           </button>
                         </div>
@@ -584,7 +584,7 @@ export default function AIBlogGeneratePage() {
                   <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
                     <div className="px-6 py-4 border-b border-gray-100"><h3 className="text-sm font-semibold text-gray-700">Article Preview</h3></div>
                     <div
-                      className="p-6 max-h-[500px] overflow-y-auto [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-gray-900 [&_h2]:mt-5 [&_h2]:mb-3 [&_h3]:text-base [&_h3]:font-bold [&_h3]:text-gray-800 [&_h3]:mt-4 [&_h3]:mb-2 [&_p]:mb-3 [&_p]:text-gray-700 [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_li]:mb-1 [&_li]:text-gray-700 [&_a]:text-[#01B000] [&_a]:underline [&_strong]:font-semibold"
+                      className="p-6 max-h-[500px] overflow-y-auto [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-gray-900 [&_h2]:mt-5 [&_h2]:mb-3 [&_h3]:text-base [&_h3]:font-bold [&_h3]:text-gray-800 [&_h3]:mt-4 [&_h3]:mb-2 [&_p]:mb-3 [&_p]:text-gray-700 [&_p]:leading-relaxed [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_li]:mb-1 [&_li]:text-gray-700 [&_a]:text-[#1e3a8a] [&_a]:underline [&_strong]:font-semibold"
                       dangerouslySetInnerHTML={{ __html: result.content }}
                     />
                   </div>
@@ -603,7 +603,7 @@ export default function AIBlogGeneratePage() {
               <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-base font-bold text-gray-900">Select Topics</h2>
-                  <span className="text-sm font-bold text-[#01B000]">{selected.size} selected</span>
+                  <span className="text-sm font-bold text-[#1e3a8a]">{selected.size} selected</span>
                 </div>
 
                 {/* Category filter */}
@@ -611,7 +611,7 @@ export default function AIBlogGeneratePage() {
                   value={bulkFilter}
                   onChange={(e) => setBulkFilter(e.target.value)}
                   disabled={bulkRunning}
-                  className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 focus:border-[#01B000] focus:outline-none mb-3 disabled:opacity-50"
+                  className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 focus:border-[#1e3a8a] focus:outline-none mb-3 disabled:opacity-50"
                 >
                   <option value="all">All Categories ({ALL_TOPICS.length} topics)</option>
                   {CATEGORIES.map((c) => (
@@ -622,7 +622,7 @@ export default function AIBlogGeneratePage() {
                 </select>
 
                 <div className="flex gap-2 mb-3">
-                  <button onClick={selectAll} disabled={bulkRunning} className="flex-1 text-xs font-bold text-[#01B000] border border-[#01B000] rounded-lg py-2 hover:bg-[#01B000]/5 disabled:opacity-50">Select All</button>
+                  <button onClick={selectAll} disabled={bulkRunning} className="flex-1 text-xs font-bold text-[#1e3a8a] border border-[#1e3a8a] rounded-lg py-2 hover:bg-[#1e3a8a]/5 disabled:opacity-50">Select All</button>
                   <button onClick={selectNone} disabled={bulkRunning} className="flex-1 text-xs font-bold text-gray-500 border border-gray-200 rounded-lg py-2 hover:bg-gray-50 disabled:opacity-50">Clear</button>
                 </div>
 
@@ -636,9 +636,9 @@ export default function AIBlogGeneratePage() {
                         key={globalIdx}
                         onClick={() => !bulkRunning && toggleSelect(globalIdx)}
                         disabled={bulkRunning}
-                        className={`w-full text-left rounded-lg border px-3 py-2 text-xs transition-all flex items-center gap-2 ${isSelected ? "border-[#01B000] bg-[#01B000]/5" : "border-gray-100 bg-gray-50 hover:border-gray-200"} disabled:cursor-default`}
+                        className={`w-full text-left rounded-lg border px-3 py-2 text-xs transition-all flex items-center gap-2 ${isSelected ? "border-[#1e3a8a] bg-[#1e3a8a]/5" : "border-gray-100 bg-gray-50 hover:border-gray-200"} disabled:cursor-default`}
                       >
-                        <div className={`w-4 h-4 rounded flex-shrink-0 border-2 flex items-center justify-center ${isSelected ? "bg-[#01B000] border-[#01B000]" : "border-gray-300"}`}>
+                        <div className={`w-4 h-4 rounded flex-shrink-0 border-2 flex items-center justify-center ${isSelected ? "bg-[#1e3a8a] border-[#1e3a8a]" : "border-gray-300"}`}>
                           {isSelected && <svg className="w-2.5 h-2.5 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>}
                         </div>
                         <span className={`flex-1 leading-snug ${isSelected ? "text-gray-900 font-medium" : "text-gray-600"}`}>{t.topic}</span>
@@ -653,7 +653,7 @@ export default function AIBlogGeneratePage() {
                     <button
                       onClick={startBulk}
                       disabled={selected.size === 0}
-                      className="w-full flex items-center justify-center gap-2 bg-[#01B000] text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#019500] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                      className="w-full flex items-center justify-center gap-2 bg-[#1e3a8a] text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-[#172554] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                     >
                       Generate & Publish {selected.size} Articles
                     </button>
@@ -685,13 +685,13 @@ export default function AIBlogGeneratePage() {
                       {bulkRunning ? `Generating... ${bulkDone}/${bulkTotal}` : `Completed ${bulkDone}/${bulkTotal}`}
                     </h3>
                     <div className="flex items-center gap-3 text-xs">
-                      <span className="text-green-600 font-bold">{bulkSuccessCount} published</span>
+                      <span className="text-blue-600 font-bold">{bulkSuccessCount} published</span>
                       {bulkErrorCount > 0 && <span className="text-red-500 font-bold">{bulkErrorCount} failed</span>}
                     </div>
                   </div>
                   <div className="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
                     <div
-                      className="h-3 rounded-full bg-[#01B000] transition-all duration-500"
+                      className="h-3 rounded-full bg-[#1e3a8a] transition-all duration-500"
                       style={{ width: `${bulkTotal ? (bulkDone / bulkTotal) * 100 : 0}%` }}
                     />
                   </div>
@@ -724,20 +724,20 @@ export default function AIBlogGeneratePage() {
                           {s.state === "pending" && <div className="w-5 h-5 rounded-full bg-gray-200" />}
                           {s.state === "generating" && <svg className="w-5 h-5 text-orange-500 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>}
                           {s.state === "publishing" && <svg className="w-5 h-5 text-blue-500 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>}
-                          {s.state === "done" && <svg className="w-5 h-5 text-green-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
+                          {s.state === "done" && <svg className="w-5 h-5 text-blue-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
                           {s.state === "error" && <svg className="w-5 h-5 text-red-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>}
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm text-gray-800 truncate">{s.topic}</p>
                           {s.state === "error" && <p className="text-xs text-red-500 mt-0.5">{s.error}</p>}
                           {s.state === "done" && s.slug && (
-                            <a href={`/blog/${s.slug}`} target="_blank" rel="noopener noreferrer" className="text-xs text-[#01B000] hover:underline">
+                            <a href={`/blog/${s.slug}`} target="_blank" rel="noopener noreferrer" className="text-xs text-[#1e3a8a] hover:underline">
                               /blog/{s.slug}
                             </a>
                           )}
                         </div>
                         <span className={`text-xs font-medium px-2 py-0.5 rounded-full flex-shrink-0 ${
-                          s.state === "done" ? "bg-green-100 text-green-700" :
+                          s.state === "done" ? "bg-blue-100 text-blue-700" :
                           s.state === "error" ? "bg-red-100 text-red-700" :
                           s.state === "generating" ? "bg-orange-100 text-orange-700" :
                           s.state === "publishing" ? "bg-blue-100 text-blue-700" :

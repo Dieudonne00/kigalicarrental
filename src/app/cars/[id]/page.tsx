@@ -263,7 +263,7 @@ export default function CarDetailPage() {
           </h1>
           <Link
             href="/"
-            className="text-[#01B000] hover:underline font-bold"
+            className="text-[#1e3a8a] hover:underline font-bold"
           >
             Go back home
           </Link>
@@ -279,7 +279,7 @@ export default function CarDetailPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="mb-6">
-          <Link href="/" className="text-gray-600 hover:text-[#01B000]">
+          <Link href="/" className="text-gray-600 hover:text-[#1e3a8a]">
             Home
           </Link>
           <span className="mx-2 text-gray-400">/</span>
@@ -308,7 +308,7 @@ export default function CarDetailPage() {
                     </span>
                   )}
                   {car.featured && (
-                    <span className="inline-block px-4 py-2 bg-[#01B000] text-white rounded-full text-sm font-bold">
+                    <span className="inline-block px-4 py-2 bg-[#1e3a8a] text-white rounded-full text-sm font-bold">
                       Featured
                     </span>
                   )}
@@ -324,7 +324,7 @@ export default function CarDetailPage() {
                       onClick={() => setSelectedImage(index)}
                       className={`relative flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
                         selectedImage === index
-                          ? "border-[#01B000]"
+                          ? "border-[#1e3a8a]"
                           : "border-gray-200 hover:border-gray-300"
                       }`}
                     >
@@ -372,14 +372,14 @@ export default function CarDetailPage() {
                 </h2>
                 <div className="flex flex-wrap gap-4">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-2xl font-bold text-[#01B000]">
+                    <span className="text-2xl font-bold text-[#1e3a8a]">
                       ${car.dailyRate}
                     </span>
                     <span className="text-gray-600">/day</span>
                   </div>
                   {car.weeklyRate && (
                     <div className="flex items-baseline gap-2">
-                      <span className="text-xl font-bold text-[#01B000]">
+                      <span className="text-xl font-bold text-[#1e3a8a]">
                         ${car.weeklyRate}
                       </span>
                       <span className="text-gray-600">/week</span>
@@ -387,7 +387,7 @@ export default function CarDetailPage() {
                   )}
                   {car.monthlyRate && (
                     <div className="flex items-baseline gap-2">
-                      <span className="text-xl font-bold text-[#01B000]">
+                      <span className="text-xl font-bold text-[#1e3a8a]">
                         ${car.monthlyRate}
                       </span>
                       <span className="text-gray-600">/month</span>
@@ -414,7 +414,7 @@ export default function CarDetailPage() {
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <svg
-                      className="w-5 h-5 text-[#01B000]"
+                      className="w-5 h-5 text-[#1e3a8a]"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -434,7 +434,7 @@ export default function CarDetailPage() {
 
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <svg
-                      className="w-5 h-5 text-[#01B000]"
+                      className="w-5 h-5 text-[#1e3a8a]"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -454,7 +454,7 @@ export default function CarDetailPage() {
 
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <svg
-                      className="w-5 h-5 text-[#01B000]"
+                      className="w-5 h-5 text-[#1e3a8a]"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -472,7 +472,7 @@ export default function CarDetailPage() {
 
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <svg
-                      className="w-5 h-5 text-[#01B000]"
+                      className="w-5 h-5 text-[#1e3a8a]"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -493,7 +493,7 @@ export default function CarDetailPage() {
                   {car.mileage && (
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <svg
-                        className="w-5 h-5 text-[#01B000]"
+                        className="w-5 h-5 text-[#1e3a8a]"
                         fill="none"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -512,7 +512,7 @@ export default function CarDetailPage() {
 
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                     <svg
-                      className="w-5 h-5 text-[#01B000]"
+                      className="w-5 h-5 text-[#1e3a8a]"
                       fill="none"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -526,7 +526,7 @@ export default function CarDetailPage() {
                       <p className="text-xs text-gray-500">Availability</p>
                       <p
                         className={`font-bold ${
-                          car.available ? "text-green-600" : "text-red-600"
+                          car.available ? "text-blue-600" : "text-red-600"
                         }`}
                       >
                         {car.available ? "Available" : "Not Available"}
@@ -551,7 +551,7 @@ export default function CarDetailPage() {
                   disabled={!car.available}
                   className={`w-full py-3 rounded-lg font-bold text-white transition-all ${
                     car.available
-                      ? "bg-[#01B000] hover:bg-[#019500]"
+                      ? "bg-[#1e3a8a] hover:bg-[#172554]"
                       : "bg-gray-400 cursor-not-allowed"
                   }`}
                 >
@@ -569,7 +569,7 @@ export default function CarDetailPage() {
                       value={bookingData.customerName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     />
                   </div>
 
@@ -583,7 +583,7 @@ export default function CarDetailPage() {
                       value={bookingData.customerEmail}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     />
                   </div>
 
@@ -597,7 +597,7 @@ export default function CarDetailPage() {
                       value={bookingData.customerPhone}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     />
                   </div>
 
@@ -612,7 +612,7 @@ export default function CarDetailPage() {
                       onChange={handleInputChange}
                       min={new Date().toISOString().split("T")[0]}
                       required
-                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     />
                   </div>
 
@@ -624,7 +624,7 @@ export default function CarDetailPage() {
                       <select
                         value={rentalDuration}
                         onChange={(e) => setRentalDuration(e.target.value)}
-                        className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                        className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                         required
                       >
                         <option value="daily">Daily</option>
@@ -636,7 +636,7 @@ export default function CarDetailPage() {
                         min="1"
                         value={rentalQuantity}
                         onChange={(e) => setRentalQuantity(parseInt(e.target.value) || 1)}
-                        className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                        className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                         required
                       />
                     </div>
@@ -660,7 +660,7 @@ export default function CarDetailPage() {
                       value={bookingData.specialRequests}
                       onChange={handleInputChange}
                       rows={3}
-                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     />
                   </div>
 
@@ -670,7 +670,7 @@ export default function CarDetailPage() {
                         <span className="text-lg font-bold text-gray-900">
                           Total Cost
                         </span>
-                        <span className="text-2xl font-bold text-[#01B000]">
+                        <span className="text-2xl font-bold text-[#1e3a8a]">
                           ${totalCost.toFixed(2)}
                         </span>
                       </div>
@@ -688,7 +688,7 @@ export default function CarDetailPage() {
                     <button
                       type="submit"
                       disabled={bookingLoading}
-                      className="flex-1 py-3 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] transition-all disabled:opacity-50"
+                      className="flex-1 py-3 bg-[#1e3a8a] text-white rounded-lg font-bold hover:bg-[#172554] transition-all disabled:opacity-50"
                     >
                       {bookingLoading ? "Submitting..." : "Submit Booking"}
                     </button>
@@ -700,8 +700,8 @@ export default function CarDetailPage() {
                       Or book instantly via WhatsApp
                     </p>
                     <a
-                      href={`https://wa.me/250788892976?text=${encodeURIComponent(
-                        `Hi! I'm interested in renting the ${car?.name || "car"}.\n\nDetails:\n- Pickup: ${bookingData.pickupDate || "Not specified"}\n- Return: ${bookingData.returnDate || "Not specified"}\n- Duration: ${rentalQuantity} ${rentalDuration}\n- Estimated Cost: $${totalCost}\n\nCar: https://kigalicarhire.rw/cars/${carId}`
+                      href={`https://wa.me/250787619387?text=${encodeURIComponent(
+                        `Hi! I'm interested in renting the ${car?.name || "car"}.\n\nDetails:\n- Pickup: ${bookingData.pickupDate || "Not specified"}\n- Return: ${bookingData.returnDate || "Not specified"}\n- Duration: ${rentalQuantity} ${rentalDuration}\n- Estimated Cost: $${totalCost}\n\nCar: https://kigalicarrental.site/cars/${carId}`
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"

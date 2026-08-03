@@ -112,7 +112,7 @@ export default function ManagerBlogsPage() {
             </Link>
             <Link
               href="/manager/blogs/add"
-              className="inline-flex items-center px-6 py-3 bg-[#01B000] text-white font-bold rounded-lg hover:bg-[#019500] transition-all"
+              className="inline-flex items-center px-6 py-3 bg-[#1e3a8a] text-white font-bold rounded-lg hover:bg-[#172554] transition-all"
             >
               <svg
                 className="w-5 h-5 mr-2"
@@ -140,7 +140,7 @@ export default function ManagerBlogsPage() {
               <select
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
-                className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
               >
                 <option value="all">All Posts</option>
                 <option value="published">Published</option>
@@ -154,7 +154,7 @@ export default function ManagerBlogsPage() {
               <select
                 value={filterCategory}
                 onChange={(e) => setFilterCategory(e.target.value)}
-                className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
               >
                 {categories.map((cat) => (
                   <option key={cat} value={cat}>
@@ -174,7 +174,7 @@ export default function ManagerBlogsPage() {
           </div>
           <div className="bg-white rounded-xl border-2 border-gray-200 p-6">
             <div className="text-sm text-gray-600 mb-1">Published</div>
-            <div className="text-3xl font-bold text-[#01B000]">
+            <div className="text-3xl font-bold text-[#1e3a8a]">
               {blogs.filter((b) => b.published).length}
             </div>
           </div>
@@ -196,7 +196,7 @@ export default function ManagerBlogsPage() {
         <div className="bg-white rounded-xl border-2 border-gray-200 overflow-hidden">
           {loading ? (
             <div className="text-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#01B000] mx-auto"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1e3a8a] mx-auto"></div>
               <p className="mt-4 text-gray-600">Loading blog posts...</p>
             </div>
           ) : filteredBlogs.length === 0 ? (
@@ -215,7 +215,7 @@ export default function ManagerBlogsPage() {
               <p className="text-gray-600 text-lg">No blog posts found</p>
               <Link
                 href="/manager/blogs/add"
-                className="inline-block mt-4 text-[#01B000] hover:underline font-bold"
+                className="inline-block mt-4 text-[#1e3a8a] hover:underline font-bold"
               >
                 Create your first blog post
               </Link>
@@ -270,7 +270,7 @@ export default function ManagerBlogsPage() {
                           <span
                             className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
                               blog.published
-                                ? "bg-green-100 text-green-800"
+                                ? "bg-blue-100 text-blue-800"
                                 : "bg-yellow-100 text-yellow-800"
                             }`}
                           >

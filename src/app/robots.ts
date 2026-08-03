@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/manager/", "/api/", "/pay/"],
       },
     ],
-    sitemap: "https://kigalicarhire.rw/sitemap.xml",
-    host: "https://kigalicarhire.rw",
+    sitemap: "https://kigalicarrental.site/sitemap.xml",
+    host: "https://kigalicarrental.site",
   };
 }

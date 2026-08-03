@@ -129,8 +129,8 @@ export default function ManagerSidebar() {
           <div className="p-6 border-b-2 border-gray-200">
             <Link href="/manager/dashboard" className="flex items-center">
               <Image
-                src="https://kigalicarhire.b-cdn.net/kigalicarhire.png"
-                alt="Kigali Car Hire"
+                src="/logo.svg"
+                alt="Kigali Car Rental"
                 width={120}
                 height={40}
                 className="h-10 w-auto"
@@ -152,7 +152,7 @@ export default function ManagerSidebar() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg font-bold text-sm transition-all ${
                     isActive
-                      ? "bg-[#01B000] text-white shadow-md"
+                      ? "bg-[#1e3a8a] text-white shadow-md"
                       : "text-gray-700 hover:bg-gray-100"
                   }`}
                 >

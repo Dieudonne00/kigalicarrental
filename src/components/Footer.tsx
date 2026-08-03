@@ -12,7 +12,7 @@ export default function Footer() {
           <div>
             <Link href="/" className="inline-block mb-4">
               <Image
-                src="https://kigalicarhire.b-cdn.net/kigalicarhire.png"
+                src="/logo.svg"
                 alt="Kigali Car Rental Logo"
                 width={140}
                 height={46}
@@ -29,27 +29,27 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/" className="hover:text-[#01B000] transition-colors">
+                <Link href="/" className="hover:text-[#1e3a8a] transition-colors">
                   Kigali Car Rental
                 </Link>
               </li>
               <li>
-                <Link href="/fleet" className="hover:text-[#01B000] transition-colors">
+                <Link href="/fleet" className="hover:text-[#1e3a8a] transition-colors">
                   Our Fleet
                 </Link>
               </li>
               <li>
-                <Link href="/how-it-works" className="hover:text-[#01B000] transition-colors">
+                <Link href="/how-it-works" className="hover:text-[#1e3a8a] transition-colors">
                   How It Works
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="hover:text-[#01B000] transition-colors">
+                <Link href="/pricing" className="hover:text-[#1e3a8a] transition-colors">
                   Pricing
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#01B000] transition-colors">
+                <Link href="/about" className="hover:text-[#1e3a8a] transition-colors">
                   About Us
                 </Link>
               </li>
@@ -61,22 +61,22 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Support</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/contact" className="hover:text-[#01B000] transition-colors">
+                <Link href="/contact" className="hover:text-[#1e3a8a] transition-colors">
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="hover:text-[#01B000] transition-colors">
+                <Link href="/faq" className="hover:text-[#1e3a8a] transition-colors">
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-[#01B000] transition-colors">
+                <Link href="/terms" className="hover:text-[#1e3a8a] transition-colors">
                   Terms & Conditions
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="hover:text-[#01B000] transition-colors">
+                <Link href="/privacy" className="hover:text-[#1e3a8a] transition-colors">
                   Privacy Policy
                 </Link>
               </li>
@@ -88,34 +88,34 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-[#01B000] mt-0.5 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-[#1e3a8a] mt-0.5 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span>Kigali, Rwanda</span>
               </li>
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-[#01B000] mt-0.5 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-[#1e3a8a] mt-0.5 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:kigalicarhire1990@gmail.com" className="hover:text-[#01B000] transition-colors">
-                  kigalicarhire1990@gmail.com
+                <a href="mailto:info@kigalicarrental.site" className="hover:text-[#1e3a8a] transition-colors">
+                  info@kigalicarrental.site
                 </a>
               </li>
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-[#01B000] mt-0.5 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-[#1e3a8a] mt-0.5 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <a href="tel:+250788892976" className="hover:text-[#01B000] transition-colors">
-                  +250 788 892 976
+                <a href="tel:+250787619387" className="hover:text-[#1e3a8a] transition-colors">
+                  +250 787 619 387
                 </a>
               </li>
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-[#01B000] mt-0.5 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-[#1e3a8a] mt-0.5 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                 </svg>
-                <a href="https://wa.me/250788892976" target="_blank" rel="noopener noreferrer" className="hover:text-[#01B000] transition-colors">
-                  WhatsApp: +250 788 892 976
+                <a href="https://wa.me/250787619387" target="_blank" rel="noopener noreferrer" className="hover:text-[#1e3a8a] transition-colors">
+                  WhatsApp: +250 787 619 387
                 </a>
               </li>
             </ul>
@@ -126,7 +126,7 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#01B000] transition-colors"
+                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#1e3a8a] transition-colors"
                 aria-label="Facebook"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -137,7 +137,7 @@ export default function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#01B000] transition-colors"
+                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#1e3a8a] transition-colors"
                 aria-label="Twitter"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -148,7 +148,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#01B000] transition-colors"
+                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#1e3a8a] transition-colors"
                 aria-label="Instagram"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -159,7 +159,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#01B000] transition-colors"
+                className="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#1e3a8a] transition-colors"
                 aria-label="LinkedIn"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -175,7 +175,7 @@ export default function Footer() {
           <p className="text-xs text-gray-600 uppercase tracking-widest font-semibold mb-5">Our Services</p>
           <div className="flex flex-wrap gap-2">
             {[
-              { label: "Kigali Car Hire Fleet", href: "/fleet" },
+              { label: "Kigali Car Rental Fleet", href: "/fleet" },
               { label: "Airport Transfer Kigali", href: "/airport-transfer-kigali" },
               { label: "Self-Drive Car Hire Rwanda", href: "/self-drive-rwanda" },
               { label: "4x4 Car Hire Rwanda", href: "/4x4-car-hire-rwanda" },
@@ -189,7 +189,7 @@ export default function Footer() {
               <Link
                 key={href}
                 href={href}
-                className="inline-block px-3 py-1.5 bg-gray-800 hover:bg-[#01B000]/20 hover:text-[#01B000] text-gray-400 text-xs rounded-full border border-gray-700 hover:border-[#01B000]/40 transition-all duration-200"
+                className="inline-block px-3 py-1.5 bg-gray-800 hover:bg-[#1e3a8a]/20 hover:text-[#1e3a8a] text-gray-400 text-xs rounded-full border border-gray-700 hover:border-[#1e3a8a]/40 transition-all duration-200"
                 dangerouslySetInnerHTML={{ __html: label }}
               />
             ))}
@@ -201,7 +201,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
               <p>
-                &copy; {currentYear} Kigali Car Hire. All rights reserved.
+                &copy; {currentYear} Kigali Car Rental. All rights reserved.
               </p>
               <span className="hidden md:inline text-gray-600">|</span>
               <p className="flex items-center gap-2">
@@ -210,20 +210,20 @@ export default function Footer() {
                   href="https://wa.me/250787619387"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#01B000] hover:text-[#019000] transition-colors font-semibold"
+                  className="text-[#1e3a8a] hover:text-[#1e3a8a] transition-colors font-semibold"
                 >
-                  kigali car hire
+                  kigali car rental
                 </a>
               </p>
             </div>
             <div className="flex gap-6">
-              <Link href="/terms" className="hover:text-[#01B000] transition-colors">
+              <Link href="/terms" className="hover:text-[#1e3a8a] transition-colors">
                 Terms
               </Link>
-              <Link href="/privacy" className="hover:text-[#01B000] transition-colors">
+              <Link href="/privacy" className="hover:text-[#1e3a8a] transition-colors">
                 Privacy
               </Link>
-              <Link href="/site-map" className="hover:text-[#01B000] transition-colors">
+              <Link href="/site-map" className="hover:text-[#1e3a8a] transition-colors">
                 Sitemap
               </Link>
             </div>

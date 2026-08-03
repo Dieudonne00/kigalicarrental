@@ -3,14 +3,14 @@ import Link from "next/link";
 import ServicePageFooter from "@/components/ServicePageFooter";
 
 export const metadata: Metadata = {
-  title: "Wedding Car Hire Kigali | Bridal Car Rental Rwanda - Kigali Car Hire",
-  description: "Beautiful wedding cars for hire in Kigali from $80. Mercedes, BMW, Land Cruiser and decorated vehicles available. Book your bridal car today - +250 788 892 976.",
-  keywords: "wedding car hire kigali, bridal car hire kigali, wedding car rental rwanda, wedding car kigali, bridal car kigali, luxury wedding car hire rwanda, decorated car hire kigali",
-  alternates: { canonical: "https://kigalicarhire.rw/wedding-car-hire-kigali" },
+  title: "Wedding Car Hire Kigali | Bridal Car Rental Rwanda - Kigali Car Rental",
+  description: "Beautiful wedding cars for hire in Kigali from $80. Mercedes, BMW, Land Cruiser and decorated vehicles available. Book your bridal car today - +250 787 619 387.",
+  keywords: "Kigali car rental",
+  alternates: { canonical: "https://kigalicarrental.site/wedding-car-hire-kigali" },
   openGraph: {
-    title: "Wedding Car Hire Kigali | Kigali Car Hire",
+    title: "Wedding Car Hire Kigali | Kigali Car Rental",
     description: "Elegant wedding cars in Kigali. Mercedes, BMW, decorated vehicles from $80. Book for your special day.",
-    url: "https://kigalicarhire.rw/wedding-car-hire-kigali",
+    url: "https://kigalicarrental.site/wedding-car-hire-kigali",
   },
 };
 
@@ -31,7 +31,7 @@ const faqSchema = {
     {
       "@type": "Question",
       name: "Do you offer a full wedding convoy service in Kigali?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. Kigali Car Hire can provide multiple vehicles for a full wedding convoy including the bridal car, family cars, and guest transport. We coordinate timing and routes to make sure everything runs smoothly on your wedding day." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. Kigali Car Rental can provide multiple vehicles for a full wedding convoy including the bridal car, family cars, and guest transport. We coordinate timing and routes to make sure everything runs smoothly on your wedding day." },
     },
     {
       "@type": "Question",
@@ -53,7 +53,7 @@ export default function WeddingCarHireKigaliPage() {
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">Make your wedding day unforgettable with the perfect car. Mercedes, BMW, luxury SUVs, and full convoy services available. Decorated vehicles on request.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/book-now" className="bg-white text-rose-800 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all">Book Wedding Car</Link>
-            <a href="https://wa.me/250788892976" target="_blank" rel="noopener noreferrer" className="bg-rose-700 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-rose-600 transition-all border border-white/30">WhatsApp Us</a>
+            <a href="https://wa.me/250787619387" target="_blank" rel="noopener noreferrer" className="bg-rose-700 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-rose-600 transition-all border border-white/30">WhatsApp Us</a>
           </div>
         </div>
       </section>
@@ -78,7 +78,7 @@ export default function WeddingCarHireKigaliPage() {
         <div className="grid md:grid-cols-2 gap-10 mb-16">
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-4 font-[family-name:var(--font-plus-jakarta)]">The Perfect Wedding Car in Kigali</h2>
-            <p className="text-gray-600 mb-4">Your wedding day is one of the most important days of your life, and the car you arrive in sets the tone for everything that follows. Kigali Car Hire has been providing wedding car hire services across Kigali and Rwanda for years, helping couples arrive in style and comfort.</p>
+            <p className="text-gray-600 mb-4">Your wedding day is one of the most important days of your life, and the car you arrive in sets the tone for everything that follows. Kigali Car Rental has been providing wedding car hire services across Kigali and Rwanda for years, helping couples arrive in style and comfort.</p>
             <p className="text-gray-600 mb-4">We offer a wide range of vehicles suitable for weddings in Kigali, from elegant Mercedes-Benz and BMW saloons to large Toyota Land Cruisers for church processions and photo shoots. All wedding vehicles are cleaned and polished to perfection before your special day.</p>
             <p className="text-gray-600 mb-4">Our team can decorate your wedding car with ribbons, flowers, and personalised touches. We also coordinate full wedding convoys with multiple vehicles, ensuring that the entire bridal party and family travel in comfort and arrive on schedule.</p>
             <p className="text-gray-600 mb-6">We cover all venues across Kigali including hotels, churches, mosques, and event centres. We also provide wedding transport to destinations outside Kigali for destination weddings.</p>
@@ -96,7 +96,7 @@ export default function WeddingCarHireKigaliPage() {
               ].map((item) => (
                 <div key={item.pkg} className="flex justify-between items-center border-b border-gray-100 pb-3">
                   <span className="text-gray-700 text-sm">{item.pkg}</span>
-                  <span className="font-bold text-[#01B000]">{item.price}</span>
+                  <span className="font-bold text-[#1e3a8a]">{item.price}</span>
                 </div>
               ))}
             </div>
@@ -121,7 +121,7 @@ export default function WeddingCarHireKigaliPage() {
           <p className="text-white/90 mb-8 max-w-xl mx-auto">Dates fill up fast especially during wedding season. Contact us now to secure your vehicle and make your special day perfect.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/book-now" className="bg-white text-rose-600 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all">Book Now</Link>
-            <a href="tel:+250788892976" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-rose-600 transition-all">Call +250 788 892 976</a>
+            <a href="tel:+250787619387" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-rose-600 transition-all">Call +250 787 619 387</a>
           </div>
         </div>
       </div>

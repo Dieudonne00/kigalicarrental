@@ -163,7 +163,7 @@ export default function BookingRequestsPage() {
       case "quoted":
         return "bg-purple-100 text-purple-800";
       case "converted":
-        return "bg-green-100 text-green-800";
+        return "bg-blue-100 text-blue-800";
       case "cancelled":
         return "bg-red-100 text-red-800";
       default:
@@ -213,7 +213,7 @@ export default function BookingRequestsPage() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none"
+                className="px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none"
               >
                 <option value="all">All Requests</option>
                 <option value="new">New</option>
@@ -252,7 +252,7 @@ export default function BookingRequestsPage() {
               </div>
               <div className="bg-white rounded-xl border-2 border-gray-200 p-4">
                 <div className="text-sm text-gray-600 mb-1">Converted</div>
-                <div className="text-2xl font-bold text-green-600">
+                <div className="text-2xl font-bold text-blue-600">
                   {bookingRequests.filter((r) => r.status === "converted").length}
                 </div>
               </div>
@@ -262,7 +262,7 @@ export default function BookingRequestsPage() {
           {/* Booking Requests Table */}
           {loading ? (
             <div className="flex justify-center items-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#01B000]"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1e3a8a]"></div>
             </div>
           ) : bookingRequests.length === 0 ? (
             <div className="bg-white rounded-xl border-2 border-gray-200 p-12 text-center">
@@ -377,7 +377,7 @@ export default function BookingRequestsPage() {
                         <td className="px-6 py-4 text-right">
                           <button
                             onClick={() => openDetailModal(request)}
-                            className="inline-flex items-center px-3 py-1.5 text-sm font-bold text-[#01B000] hover:bg-green-50 rounded-lg transition-all mr-2"
+                            className="inline-flex items-center px-3 py-1.5 text-sm font-bold text-[#1e3a8a] hover:bg-blue-50 rounded-lg transition-all mr-2"
                           >
                             View
                           </button>
@@ -558,7 +558,7 @@ export default function BookingRequestsPage() {
                       id="status"
                       value={statusUpdate}
                       onChange={(e) => setStatusUpdate(e.target.value)}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     >
                       <option value="new">New</option>
                       <option value="contacted">Contacted</option>
@@ -579,7 +579,7 @@ export default function BookingRequestsPage() {
                       value={notesUpdate}
                       onChange={(e) => setNotesUpdate(e.target.value)}
                       rows={4}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900 resize-none"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900 resize-none"
                       placeholder="Add notes about this booking request..."
                     ></textarea>
                   </div>
@@ -591,7 +591,7 @@ export default function BookingRequestsPage() {
               <button
                 onClick={handleUpdateStatus}
                 disabled={updatingRequestId === selectedRequest.id}
-                className="flex-1 bg-[#01B000] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#019500] transition-all disabled:opacity-50"
+                className="flex-1 bg-[#1e3a8a] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#172554] transition-all disabled:opacity-50"
               >
                 {updatingRequestId === selectedRequest.id ? "Saving..." : "Save Changes"}
               </button>

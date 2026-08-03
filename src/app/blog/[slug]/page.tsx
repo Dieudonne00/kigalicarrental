@@ -89,7 +89,7 @@ async function getRelatedPosts(category: string, currentSlug: string): Promise<B
   }
 }
 
-const SITE = "https://kigalicarhire.rw";
+const SITE = "https://kigalicarrental.site";
 const OG_FALLBACK = "https://kigalicarhire.b-cdn.net/hero%20section%20cars.png";
 
 export async function generateMetadata({
@@ -119,7 +119,7 @@ export async function generateMetadata({
       type: "article",
       publishedTime: post.publishedAt || undefined,
       url: canonical,
-      siteName: "Kigali Car Hire",
+      siteName: "Kigali Car Rental",
       locale: "en_RW",
     },
     twitter: {
@@ -170,7 +170,7 @@ export default async function BlogPostPage({
     },
     publisher: {
       "@type": "Organization",
-      name: "Kigali Car Hire",
+      name: "Kigali Car Rental",
       url: SITE,
       logo: {
         "@type": "ImageObject",
@@ -187,7 +187,7 @@ export default async function BlogPostPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Kigali Car Hire", item: SITE },
+      { "@type": "ListItem", position: 1, name: "Kigali Car Rental", item: SITE },
       { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE}/blog` },
       { "@type": "ListItem", position: 3, name: post.title, item: canonical },
     ],
@@ -223,7 +223,7 @@ export default async function BlogPostPage({
 
           {/* Category badge */}
           <div className="mb-4">
-            <span className="inline-block px-4 py-1.5 bg-[#01B000] text-white text-sm font-semibold rounded-full tracking-wide">
+            <span className="inline-block px-4 py-1.5 bg-[#1e3a8a] text-white text-sm font-semibold rounded-full tracking-wide">
               {formatCategory(post.category)}
             </span>
           </div>
@@ -261,7 +261,7 @@ export default async function BlogPostPage({
       {/* Article body */}
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         {/* Excerpt lead */}
-        <p className="text-xl text-gray-500 leading-relaxed mb-10 border-l-4 border-[#01B000] pl-5 italic">
+        <p className="text-xl text-gray-500 leading-relaxed mb-10 border-l-4 border-[#1e3a8a] pl-5 italic">
           {post.excerpt}
         </p>
 
@@ -273,14 +273,14 @@ export default async function BlogPostPage({
             prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
             prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
             prose-p:text-gray-700 prose-p:leading-[1.9] prose-p:text-[1.05rem]
-            prose-a:text-[#01B000] prose-a:font-medium prose-a:no-underline hover:prose-a:underline
+            prose-a:text-[#1e3a8a] prose-a:font-medium prose-a:no-underline hover:prose-a:underline
             prose-strong:text-gray-900
             prose-ul:text-gray-700 prose-ol:text-gray-700
             prose-li:leading-relaxed
-            prose-blockquote:border-l-4 prose-blockquote:border-[#01B000] prose-blockquote:bg-green-50 prose-blockquote:rounded-r-lg prose-blockquote:py-1 prose-blockquote:pr-4 prose-blockquote:text-gray-700 prose-blockquote:not-italic
+            prose-blockquote:border-l-4 prose-blockquote:border-[#1e3a8a] prose-blockquote:bg-blue-50 prose-blockquote:rounded-r-lg prose-blockquote:py-1 prose-blockquote:pr-4 prose-blockquote:text-gray-700 prose-blockquote:not-italic
             prose-img:rounded-2xl prose-img:shadow-lg
             prose-hr:border-gray-200
-            prose-code:text-[#01B000] prose-code:bg-green-50 prose-code:px-1 prose-code:rounded
+            prose-code:text-[#1e3a8a] prose-code:bg-blue-50 prose-code:px-1 prose-code:rounded
           "
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
@@ -293,7 +293,7 @@ export default async function BlogPostPage({
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-4 py-1.5 bg-gray-100 text-gray-600 rounded-full text-sm font-medium hover:bg-[#01B000] hover:text-white transition-colors cursor-pointer"
+                  className="px-4 py-1.5 bg-gray-100 text-gray-600 rounded-full text-sm font-medium hover:bg-[#1e3a8a] hover:text-white transition-colors cursor-pointer"
                 >
                   {tag}
                 </span>
@@ -306,7 +306,7 @@ export default async function BlogPostPage({
         <div className="mt-12 pt-8 border-t border-gray-100 flex items-center justify-between gap-4 flex-wrap">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-[#01B000] font-semibold hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 text-[#1e3a8a] font-semibold hover:gap-3 transition-all"
           >
             <svg className="w-4 h-4" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
               <path d="M15 19l-7-7 7-7" />
@@ -315,7 +315,7 @@ export default async function BlogPostPage({
           </Link>
           <Link
             href="/contact"
-            className="px-6 py-2.5 bg-[#01B000] text-white font-semibold rounded-full hover:bg-[#019500] transition-colors text-sm"
+            className="px-6 py-2.5 bg-[#1e3a8a] text-white font-semibold rounded-full hover:bg-[#172554] transition-colors text-sm"
           >
             Book a Car
           </Link>
@@ -340,16 +340,16 @@ export default async function BlogPostPage({
                   <div className="relative h-48 overflow-hidden">
                     <BlogFeaturedImage src={rp.featuredImage} alt={rp.title} className="object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                    <span className="absolute bottom-3 left-3 px-2.5 py-1 bg-[#01B000] text-white text-xs font-semibold rounded-full">
+                    <span className="absolute bottom-3 left-3 px-2.5 py-1 bg-[#1e3a8a] text-white text-xs font-semibold rounded-full">
                       {formatCategory(rp.category)}
                     </span>
                   </div>
                   <div className="p-5">
-                    <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-[#01B000] transition-colors line-clamp-2 leading-snug">
+                    <h3 className="text-base font-bold text-gray-900 mb-2 group-hover:text-[#1e3a8a] transition-colors line-clamp-2 leading-snug">
                       {rp.title}
                     </h3>
                     <p className="text-gray-500 text-sm line-clamp-2 mb-4 leading-relaxed">{rp.excerpt}</p>
-                    <span className="inline-flex items-center gap-1 text-[#01B000] text-sm font-semibold">
+                    <span className="inline-flex items-center gap-1 text-[#1e3a8a] text-sm font-semibold">
                       Read article
                       <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M9 5l7 7-7 7" />
@@ -364,7 +364,7 @@ export default async function BlogPostPage({
       )}
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-r from-[#01B000] to-[#019500]">
+      <section className="py-16 bg-gradient-to-r from-[#1e3a8a] to-[#172554]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4 font-[family-name:var(--font-plus-jakarta)]">
             Ready to Explore Rwanda?
@@ -375,13 +375,13 @@ export default async function BlogPostPage({
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/fleet"
-              className="px-8 py-4 bg-white text-[#01B000] font-bold rounded-xl hover:bg-gray-50 transition-all shadow-lg"
+              className="px-8 py-4 bg-white text-[#1e3a8a] font-bold rounded-xl hover:bg-gray-50 transition-all shadow-lg"
             >
               Browse Our Fleet
             </Link>
             <Link
               href="/blog"
-              className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#01B000] transition-all"
+              className="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#1e3a8a] transition-all"
             >
               More Articles
             </Link>

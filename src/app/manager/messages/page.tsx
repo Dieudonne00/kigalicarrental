@@ -135,7 +135,7 @@ export default function MessagesPage() {
       case "read":
         return "bg-yellow-100 text-yellow-800";
       case "replied":
-        return "bg-green-100 text-green-800";
+        return "bg-blue-100 text-blue-800";
       default:
         return "bg-gray-100 text-gray-800";
     }
@@ -175,7 +175,7 @@ export default function MessagesPage() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none"
+                className="px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none"
               >
                 <option value="all">All Messages</option>
                 <option value="new">New</option>
@@ -202,7 +202,7 @@ export default function MessagesPage() {
               </div>
               <div className="bg-white rounded-xl border-2 border-gray-200 p-4">
                 <div className="text-sm text-gray-600 mb-1">Replied</div>
-                <div className="text-2xl font-bold text-green-600">
+                <div className="text-2xl font-bold text-blue-600">
                   {messages.filter((m) => m.status === "replied").length}
                 </div>
               </div>
@@ -212,7 +212,7 @@ export default function MessagesPage() {
           {/* Messages Table */}
           {loading ? (
             <div className="flex justify-center items-center py-12">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#01B000]"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1e3a8a]"></div>
             </div>
           ) : messages.length === 0 ? (
             <div className="bg-white rounded-xl border-2 border-gray-200 p-12 text-center">
@@ -308,7 +308,7 @@ export default function MessagesPage() {
                         <td className="px-6 py-4 text-right">
                           <button
                             onClick={() => openDetailModal(message)}
-                            className="inline-flex items-center px-3 py-1.5 text-sm font-bold text-[#01B000] hover:bg-green-50 rounded-lg transition-all mr-2"
+                            className="inline-flex items-center px-3 py-1.5 text-sm font-bold text-[#1e3a8a] hover:bg-blue-50 rounded-lg transition-all mr-2"
                           >
                             View
                           </button>
@@ -374,7 +374,7 @@ export default function MessagesPage() {
                     <p className="text-gray-900">
                       <a
                         href={`mailto:${selectedMessage.email}`}
-                        className="text-[#01B000] hover:underline"
+                        className="text-[#1e3a8a] hover:underline"
                       >
                         {selectedMessage.email}
                       </a>
@@ -386,7 +386,7 @@ export default function MessagesPage() {
                       <p className="text-gray-900">
                         <a
                           href={`tel:${selectedMessage.phone}`}
-                          className="text-[#01B000] hover:underline"
+                          className="text-[#1e3a8a] hover:underline"
                         >
                           {selectedMessage.phone}
                         </a>

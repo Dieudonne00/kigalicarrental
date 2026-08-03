@@ -3,14 +3,14 @@ import Link from "next/link";
 import ServicePageFooter from "@/components/ServicePageFooter";
 
 export const metadata: Metadata = {
-  title: "Luxury Car Hire Kigali | Mercedes BMW Lexus Rental Rwanda - Kigali Car Hire",
+  title: "Luxury Car Hire Kigali | Mercedes BMW Lexus Rental Rwanda - Kigali Car Rental",
   description: "Hire a luxury car in Kigali from $80 per day. Mercedes-Benz, BMW, Lexus and Range Rover available. Chauffeur-driven or self-drive. Perfect for business and weddings.",
-  keywords: "luxury car hire kigali, luxury car rental kigali, mercedes hire kigali, bmw rental kigali, luxury car kigali rwanda, executive car hire kigali, prestige car hire rwanda",
-  alternates: { canonical: "https://kigalicarhire.rw/luxury-car-hire-kigali" },
+  keywords: "Kigali car rental",
+  alternates: { canonical: "https://kigalicarrental.site/luxury-car-hire-kigali" },
   openGraph: {
-    title: "Luxury Car Hire Kigali | Mercedes BMW Lexus - Kigali Car Hire",
+    title: "Luxury Car Hire Kigali | Mercedes BMW Lexus - Kigali Car Rental",
     description: "Hire a luxury car in Kigali from $80/day. Mercedes, BMW, Lexus. Self-drive or chauffeur-driven.",
-    url: "https://kigalicarhire.rw/luxury-car-hire-kigali",
+    url: "https://kigalicarrental.site/luxury-car-hire-kigali",
   },
 };
 
@@ -21,7 +21,7 @@ const faqSchema = {
     {
       "@type": "Question",
       name: "What luxury cars are available for hire in Kigali?",
-      acceptedAnswer: { "@type": "Answer", text: "Kigali Car Hire offers Mercedes-Benz, BMW, Lexus, and Range Rover vehicles for luxury hire in Kigali. All vehicles are late model, immaculately maintained, and fully insured." },
+      acceptedAnswer: { "@type": "Answer", text: "Kigali Car Rental offers Mercedes-Benz, BMW, Lexus, and Range Rover vehicles for luxury hire in Kigali. All vehicles are late model, immaculately maintained, and fully insured." },
     },
     {
       "@type": "Question",
@@ -48,7 +48,7 @@ export default function LuxuryCarHireKigaliPage() {
             <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">Experience Kigali in style. Hire a Mercedes, BMW, Lexus, or Range Rover for business travel, airport transfers, weddings, or special occasions. Self-drive or chauffeur-driven.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book-now" className="bg-yellow-500 text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-all">Book a Luxury Car</Link>
-              <a href="https://wa.me/250788892976" target="_blank" rel="noopener noreferrer" className="bg-white text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all">WhatsApp Us</a>
+              <a href="https://wa.me/250787619387" target="_blank" rel="noopener noreferrer" className="bg-white text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all">WhatsApp Us</a>
             </div>
           </div>
         </section>
@@ -65,7 +65,7 @@ export default function LuxuryCarHireKigaliPage() {
                   <svg className="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900 mb-1">{car.name}</h2>
-                <p className="text-[#01B000] font-bold mb-2">{car.price}</p>
+                <p className="text-[#1e3a8a] font-bold mb-2">{car.price}</p>
                 <p className="text-gray-500 text-sm">{car.uses}</p>
               </div>
             ))}
@@ -74,13 +74,13 @@ export default function LuxuryCarHireKigaliPage() {
           <div className="grid md:grid-cols-2 gap-10 mb-16">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-4 font-[family-name:var(--font-plus-jakarta)]">Premium Car Hire for Every Occasion in Kigali</h2>
-              <p className="text-gray-600 mb-4">Kigali is a modern and rapidly growing city that attracts business executives, diplomats, conference delegates, and high-end tourists from around the world. Kigali Car Hire meets this demand with a premium fleet of luxury vehicles available for hire throughout Rwanda.</p>
+              <p className="text-gray-600 mb-4">Kigali is a modern and rapidly growing city that attracts business executives, diplomats, conference delegates, and high-end tourists from around the world. Kigali Car Rental meets this demand with a premium fleet of luxury vehicles available for hire throughout Rwanda.</p>
               <p className="text-gray-600 mb-4">Whether you need a chauffeured Mercedes for an important business meeting in Kigali, a stylish BMW for your wedding day, or a Lexus SUV for a comfortable long-distance journey, we have the vehicle and the service to match your expectations.</p>
               <p className="text-gray-600 mb-6">All luxury vehicles are kept in immaculate condition, are fully insured, and are fitted with climate control, leather seats, and modern technology. Our chauffeurs are professionally trained, discreet, and always smartly presented.</p>
               <div className="space-y-2">
                 {["Climate control and leather interiors", "Chauffeur service available", "Airport pickup and drop off", "Available 24 hours a day", "Suitable for weddings and events", "Corporate accounts available"].map((f) => (
                   <div key={f} className="flex items-center gap-2">
-                    <svg className="w-4 h-4 text-[#01B000]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
+                    <svg className="w-4 h-4 text-[#1e3a8a]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
                     <span className="text-gray-700 text-sm">{f}</span>
                   </div>
                 ))}
@@ -123,7 +123,7 @@ export default function LuxuryCarHireKigaliPage() {
             <p className="text-white/80 mb-8 max-w-xl mx-auto">Mercedes, BMW, Lexus and more. Available now with or without a driver. Call or WhatsApp for instant availability.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/book-now" className="bg-yellow-500 text-gray-900 px-8 py-4 rounded-lg font-bold hover:bg-yellow-400 transition-all">Book Now</Link>
-              <a href="tel:+250788892976" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-gray-900 transition-all">Call +250 788 892 976</a>
+              <a href="tel:+250787619387" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-gray-900 transition-all">Call +250 787 619 387</a>
             </div>
           </div>
         </div>

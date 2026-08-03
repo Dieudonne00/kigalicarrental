@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 
-const GMAIL_USER = process.env.GMAIL_USER || "kigalicarhire1990@gmail.com";
+const GMAIL_USER = process.env.GMAIL_USER || "info@kigalicarrental.site";
 const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD || "";
 
 // Create reusable transporter
@@ -48,7 +48,7 @@ export async function sendBookingNotificationToManager(
 ) {
   try {
     const mailOptions = {
-      from: "kigalicarhire1990@gmail.com",
+      from: "info@kigalicarrental.site",
       to: "dieudufinnovation@gmail.com",
       subject: `New Booking Request - ${bookingData.carName}`,
       html: `
@@ -67,7 +67,7 @@ export async function sendBookingNotificationToManager(
               padding: 20px;
             }
             .header {
-              background-color: #01B000;
+              background-color: #1e3a8a;
               color: white;
               padding: 20px;
               text-align: center;
@@ -90,7 +90,7 @@ export async function sendBookingNotificationToManager(
             .section-title {
               font-size: 18px;
               font-weight: bold;
-              color: #01B000;
+              color: #1e3a8a;
               margin-bottom: 10px;
             }
             .info-row {
@@ -108,7 +108,7 @@ export async function sendBookingNotificationToManager(
             .price {
               font-size: 24px;
               font-weight: bold;
-              color: #01B000;
+              color: #1e3a8a;
             }
             .footer {
               margin-top: 20px;
@@ -202,11 +202,11 @@ export async function sendBookingNotificationToManager(
 
               <div class="footer">
                 <p>Please log in to the manager dashboard to review and confirm this booking.</p>
-                <p style="margin-top: 10px; font-weight: bold; color: #01B000;">
-                  Contact: 0788892976
+                <p style="margin-top: 10px; font-weight: bold; color: #1e3a8a;">
+                  Contact: 0787619387
                 </p>
                 <p style="margin-top: 10px; color: #999; font-size: 12px;">
-                  This is an automated notification from Kigali Car Hire booking system.
+                  This is an automated notification from Kigali Car Rental booking system.
                 </p>
               </div>
             </div>
@@ -233,8 +233,8 @@ export async function sendContactFormNotification(data: {
 }) {
   try {
     const mailOptions = {
-      from: "kigalicarhire1990@gmail.com",
-      to: "kigalicarhire1990@gmail.com",
+      from: "info@kigalicarrental.site",
+      to: "info@kigalicarrental.site",
       subject: `New Contact Form Submission from ${data.name}`,
       html: `
         <!DOCTYPE html>
@@ -252,7 +252,7 @@ export async function sendContactFormNotification(data: {
               padding: 20px;
             }
             .header {
-              background-color: #01B000;
+              background-color: #1e3a8a;
               color: white;
               padding: 20px;
               text-align: center;
@@ -312,7 +312,7 @@ export async function sendContactFormNotification(data: {
               </div>
             </div>
             <div class="footer">
-              <p>This email was sent from Kigali Car Hire contact form</p>
+              <p>This email was sent from Kigali Car Rental contact form</p>
               <p>Login to your admin panel to manage this message</p>
             </div>
           </div>
@@ -350,7 +350,7 @@ export async function sendBookingRequestNotificationToManager(data: {
 }) {
   try {
     const mailOptions = {
-      from: "kigalicarhire1990@gmail.com",
+      from: "info@kigalicarrental.site",
       to: "dieudufinnovation@gmail.com",
       subject: `New Booking Request from ${data.fullName}`,
       html: `
@@ -369,7 +369,7 @@ export async function sendBookingRequestNotificationToManager(data: {
               padding: 20px;
             }
             .header {
-              background-color: #01B000;
+              background-color: #1e3a8a;
               color: white;
               padding: 20px;
               text-align: center;
@@ -387,9 +387,9 @@ export async function sendBookingRequestNotificationToManager(data: {
             .section-title {
               font-size: 18px;
               font-weight: bold;
-              color: #01B000;
+              color: #1e3a8a;
               margin-bottom: 10px;
-              border-bottom: 2px solid #01B000;
+              border-bottom: 2px solid #1e3a8a;
               padding-bottom: 5px;
             }
             .field {
@@ -501,7 +501,7 @@ export async function sendBookingRequestNotificationToManager(data: {
               </div>
             </div>
             <div class="footer">
-              <p>This email was sent from Kigali Car Hire booking request form</p>
+              <p>This email was sent from Kigali Car Rental booking request form</p>
               <p>Login to your admin panel to manage this booking request</p>
             </div>
           </div>
@@ -567,7 +567,7 @@ export async function sendDailyReportEmail(data: {
           const dayColor = d <= 1 ? "#dc2626" : d <= 3 ? "#d97706" : "#16a34a";
           return row([
             `<strong>${b.carName}</strong>${plate(b.licensePlate)}`,
-            `<strong>${b.customerName}</strong><br/><a href="tel:${b.customerPhone}" style="color:#01B000;font-size:12px;">${b.customerPhone}</a>`,
+            `<strong>${b.customerName}</strong><br/><a href="tel:${b.customerPhone}" style="color:#1e3a8a;font-size:12px;">${b.customerPhone}</a>`,
             `${fmtShort(b.pickupDate)} → <strong>${fmtShort(b.returnDate)}</strong>`,
             `<span style="color:${dayColor};font-weight:bold;">${d <= 0 ? "TODAY" : d === 1 ? "Tomorrow" : `${d} days`}</span>`,
             srcBadge(b.source),
@@ -578,7 +578,7 @@ export async function sendDailyReportEmail(data: {
     // Returning today
     const returningRows = data.returningToday.length === 0 ? emptyMsg("No cars returning today") :
       `<div style="background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:12px 16px;">
-        ${data.returningToday.map(b => `<div style="margin-bottom:6px;font-size:13px;">🚗 <strong>${b.carName}</strong>${plate(b.licensePlate)} — ${b.customerName} <a href="tel:${b.customerPhone}" style="color:#01B000;">${b.customerPhone}</a></div>`).join("")}
+        ${data.returningToday.map(b => `<div style="margin-bottom:6px;font-size:13px;">🚗 <strong>${b.carName}</strong>${plate(b.licensePlate)} — ${b.customerName} <a href="tel:${b.customerPhone}" style="color:#1e3a8a;">${b.customerPhone}</a></div>`).join("")}
       </div>`;
 
     // Overdue
@@ -613,7 +613,7 @@ export async function sendDailyReportEmail(data: {
           `<strong>${b.carName}</strong>`,
           `${b.customerName}<br/><span style="color:#6b7280;font-size:12px;">${b.customerPhone}</span>`,
           `${fmtShort(b.pickupDate)} → ${fmtShort(b.returnDate)}`,
-          `<strong style="color:#01B000;">$${b.totalCost.toFixed(0)}</strong>`,
+          `<strong style="color:#1e3a8a;">$${b.totalCost.toFixed(0)}</strong>`,
           srcBadge(b.source),
         ], i % 2 === 0 ? "white" : "#fafafa")).join("")}</tbody>
       </table>`;
@@ -625,7 +625,7 @@ export async function sendDailyReportEmail(data: {
           const d = daysUntil(b.pickupDate);
           return `<div style="margin-bottom:8px;font-size:13px;padding-bottom:8px;border-bottom:1px solid #f3f4f6;">
             📅 <strong style="color:#7c3aed;">${d === 0 ? "Today" : d === 1 ? "Tomorrow" : `In ${d} days`}</strong> (${fmtDate(b.pickupDate)}) —
-            <strong>${b.carName}</strong> → ${b.customerName} <a href="tel:${b.customerPhone}" style="color:#01B000;">${b.customerPhone}</a>
+            <strong>${b.carName}</strong> → ${b.customerName} <a href="tel:${b.customerPhone}" style="color:#1e3a8a;">${b.customerPhone}</a>
             · ${srcBadge(b.source)} · Returns ${fmtShort(b.returnDate)}
           </div>`;
         }).join("")}
@@ -637,10 +637,10 @@ export async function sendDailyReportEmail(data: {
 <div style="max-width:680px;margin:0 auto;padding:20px;">
 
   <!-- Header -->
-  <div style="background:linear-gradient(135deg,#01B000,#019500);color:white;padding:28px 32px;border-radius:12px 12px 0 0;">
+  <div style="background:linear-gradient(135deg,#1e3a8a,#172554);color:white;padding:28px 32px;border-radius:12px 12px 0 0;">
     <div style="font-size:13px;opacity:0.85;margin-bottom:6px;">DAILY FLEET REPORT</div>
     <h1 style="margin:0;font-size:24px;">${data.date.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" })}</h1>
-    <p style="margin:8px 0 0;opacity:0.9;font-size:14px;">Good morning — here's your Kigali Car Hire fleet briefing</p>
+    <p style="margin:8px 0 0;opacity:0.9;font-size:14px;">Good morning — here's your Kigali Car Rental fleet briefing</p>
   </div>
 
   <!-- Summary bar -->
@@ -678,8 +678,8 @@ export async function sendDailyReportEmail(data: {
     ${section("📆", `Upcoming Bookings — Next 7 Days (${data.upcomingBookings.length})`, "#7c3aed", upcomingContent)}
 
     <div style="text-align:center;padding-top:20px;border-top:1px solid #f3f4f6;">
-      <a href="https://kigalicarhire.rw/manager/fleet-status" style="display:inline-block;background:#01B000;color:white;padding:12px 28px;border-radius:8px;font-weight:bold;text-decoration:none;font-size:14px;">Open Fleet Dashboard →</a>
-      <p style="margin:14px 0 0;color:#9ca3af;font-size:12px;">Kigali Car Hire · Automated Daily Report · Sent at 7:00 AM EAT</p>
+      <a href="https://kigalicarrental.site/manager/fleet-status" style="display:inline-block;background:#1e3a8a;color:white;padding:12px 28px;border-radius:8px;font-weight:bold;text-decoration:none;font-size:14px;">Open Fleet Dashboard →</a>
+      <p style="margin:14px 0 0;color:#9ca3af;font-size:12px;">Kigali Car Rental · Automated Daily Report · Sent at 7:00 AM EAT</p>
     </div>
   </div>
 </div>
@@ -745,8 +745,8 @@ export async function sendServiceAlertsEmail(data: {
 <html>
 <body style="font-family:Arial,sans-serif;color:#333;margin:0;padding:0;">
 <div style="max-width:650px;margin:0 auto;padding:20px;">
-  <div style="background:#01B000;color:white;padding:24px;border-radius:8px 8px 0 0;text-align:center;">
-    <h1 style="margin:0;font-size:22px;">🚗 Kigali Car Hire — Service Alerts</h1>
+  <div style="background:#1e3a8a;color:white;padding:24px;border-radius:8px 8px 0 0;text-align:center;">
+    <h1 style="margin:0;font-size:22px;">🚗 Kigali Car Rental — Service Alerts</h1>
     <p style="margin:8px 0 0;opacity:0.9;">Generated ${new Date().toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}</p>
   </div>
   <div style="background:#fff8e1;padding:16px 24px;border:2px solid #f59e0b;border-top:none;">
@@ -788,8 +788,8 @@ export async function sendServiceAlertsEmail(data: {
     </table>` : ""}
 
     <div style="text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid #e0e0e0;">
-      <p style="margin:0;color:#555;font-size:13px;">Log in to <strong>kigalicarhire.rw/manager/fleet-status</strong> to take action.</p>
-      <p style="margin:6px 0 0;color:#999;font-size:12px;">Kigali Car Hire — Automated Service Alert</p>
+      <p style="margin:0;color:#555;font-size:13px;">Log in to <strong>kigalicarrental.site/manager/fleet-status</strong> to take action.</p>
+      <p style="margin:6px 0 0;color:#999;font-size:12px;">Kigali Car Rental — Automated Service Alert</p>
     </div>
   </div>
 </div>
@@ -799,7 +799,7 @@ export async function sendServiceAlertsEmail(data: {
     await transporter.sendMail({
       from: GMAIL_USER,
       to: GMAIL_USER,
-      subject: `⚠️ ${totalAlerts} Service Alert${totalAlerts !== 1 ? "s" : ""} — Kigali Car Hire Fleet`,
+      subject: `⚠️ ${totalAlerts} Service Alert${totalAlerts !== 1 ? "s" : ""} — Kigali Car Rental Fleet`,
       html,
     });
     console.log("Service alerts email sent");
@@ -817,7 +817,7 @@ export async function sendStatusUpdateToCustomer(
       switch (status) {
         case "confirmed":
           return {
-            color: "#01B000",
+            color: "#1e3a8a",
             icon: "✓",
             title: "Booking Confirmed",
             message:
@@ -825,11 +825,11 @@ export async function sendStatusUpdateToCustomer(
           };
         case "completed":
           return {
-            color: "#0066CC",
+            color: "#1e3a8a",
             icon: "✓",
             title: "Booking Completed",
             message:
-              "Thank you for choosing Kigali Car Hire! We hope you enjoyed your experience.",
+              "Thank you for choosing Kigali Car Rental! We hope you enjoyed your experience.",
           };
         case "cancelled":
           return {
@@ -860,7 +860,7 @@ export async function sendStatusUpdateToCustomer(
     const statusInfo = getStatusInfo(statusData.newStatus);
 
     const mailOptions = {
-      from: "kigalicarhire1990@gmail.com",
+      from: "info@kigalicarrental.site",
       to: statusData.customerEmail,
       subject: `${statusInfo.title} - ${statusData.carName}`,
       html: `
@@ -920,7 +920,7 @@ export async function sendStatusUpdateToCustomer(
             .section-title {
               font-size: 18px;
               font-weight: bold;
-              color: #01B000;
+              color: #1e3a8a;
               margin-bottom: 10px;
             }
             .info-row {
@@ -938,7 +938,7 @@ export async function sendStatusUpdateToCustomer(
             .price {
               font-size: 24px;
               font-weight: bold;
-              color: #01B000;
+              color: #1e3a8a;
             }
             .footer {
               margin-top: 20px;
@@ -1030,18 +1030,18 @@ export async function sendStatusUpdateToCustomer(
               </div>
 
               <div class="contact-box">
-                <p style="margin: 0; font-weight: bold; color: #01B000;">Need Help?</p>
+                <p style="margin: 0; font-weight: bold; color: #1e3a8a;">Need Help?</p>
                 <p style="margin: 5px 0 0 0;">
-                  Phone: <strong style="color: #01B000;">0788892976</strong>
+                  Phone: <strong style="color: #1e3a8a;">0787619387</strong>
                 </p>
                 <p style="margin: 5px 0 0 0;">
-                  Email: <a href="mailto:kigalicarhire1990@gmail.com" style="color: #01B000;">kigalicarhire1990@gmail.com</a>
+                  Email: <a href="mailto:info@kigalicarrental.site" style="color: #1e3a8a;">info@kigalicarrental.site</a>
                 </p>
               </div>
 
               <div class="footer">
                 <p style="margin-top: 10px; color: #999; font-size: 12px;">
-                  This is an automated notification from Kigali Car Hire booking system.
+                  This is an automated notification from Kigali Car Rental booking system.
                 </p>
               </div>
             </div>
@@ -1084,17 +1084,17 @@ export async function sendChatDigestEmail(questions: ChatDigestQuestion[]) {
       .join("");
 
     const mailOptions = {
-      from: "kigalicarhire1990@gmail.com",
+      from: "info@kigalicarrental.site",
       to: "dieudufinnovation@gmail.com",
-      subject: `Kigali Car Hire — ${questions.length} chat question${questions.length === 1 ? "" : "s"} today`,
+      subject: `Kigali Car Rental — ${questions.length} chat question${questions.length === 1 ? "" : "s"} today`,
       html: `
         <!DOCTYPE html>
         <html>
         <body style="font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px;">
           <div style="max-width: 700px; margin: 0 auto; background: white; border-radius: 8px; overflow: hidden;">
-            <div style="background: #01B000; padding: 20px; color: white;">
+            <div style="background: #1e3a8a; padding: 20px; color: white;">
               <h2 style="margin: 0;">Daily Chat Widget Digest</h2>
-              <p style="margin: 5px 0 0; opacity: 0.9;">${questions.length} question${questions.length === 1 ? "" : "s"} asked today on kigalicarhire.rw</p>
+              <p style="margin: 5px 0 0; opacity: 0.9;">${questions.length} question${questions.length === 1 ? "" : "s"} asked today on kigalicarrental.site</p>
             </div>
             <table style="width: 100%; border-collapse: collapse;">
               <thead>

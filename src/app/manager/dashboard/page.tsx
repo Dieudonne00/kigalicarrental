@@ -129,18 +129,18 @@ export default async function ManagerDashboard() {
 
         {/* Dashboard Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-[#01B000] transition-all">
+          <div className="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-[#1e3a8a] transition-all">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-bold text-gray-600 uppercase tracking-wide">
                   Total Cars
                 </p>
-                <p className="mt-2 text-3xl font-bold text-[#01B000] font-[family-name:var(--font-plus-jakarta)]">
+                <p className="mt-2 text-3xl font-bold text-[#1e3a8a] font-[family-name:var(--font-plus-jakarta)]">
                   {data.totalCars}
                 </p>
               </div>
               <svg
-                className="w-12 h-12 text-[#01B000] opacity-50"
+                className="w-12 h-12 text-[#1e3a8a] opacity-50"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -153,18 +153,18 @@ export default async function ManagerDashboard() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-[#01B000] transition-all">
+          <div className="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-[#1e3a8a] transition-all">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-bold text-gray-600 uppercase tracking-wide">
                   Active Bookings
                 </p>
-                <p className="mt-2 text-3xl font-bold text-[#01B000] font-[family-name:var(--font-plus-jakarta)]">
+                <p className="mt-2 text-3xl font-bold text-[#1e3a8a] font-[family-name:var(--font-plus-jakarta)]">
                   {data.activeBookings}
                 </p>
               </div>
               <svg
-                className="w-12 h-12 text-[#01B000] opacity-50"
+                className="w-12 h-12 text-[#1e3a8a] opacity-50"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -177,18 +177,18 @@ export default async function ManagerDashboard() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-[#01B000] transition-all">
+          <div className="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-[#1e3a8a] transition-all">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-bold text-gray-600 uppercase tracking-wide">
                   Available Cars
                 </p>
-                <p className="mt-2 text-3xl font-bold text-[#01B000] font-[family-name:var(--font-plus-jakarta)]">
+                <p className="mt-2 text-3xl font-bold text-[#1e3a8a] font-[family-name:var(--font-plus-jakarta)]">
                   {data.availableCars}
                 </p>
               </div>
               <svg
-                className="w-12 h-12 text-[#01B000] opacity-50"
+                className="w-12 h-12 text-[#1e3a8a] opacity-50"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -201,18 +201,18 @@ export default async function ManagerDashboard() {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-[#01B000] transition-all">
+          <div className="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-[#1e3a8a] transition-all">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-bold text-gray-600 uppercase tracking-wide">
                   Total Revenue
                 </p>
-                <p className="mt-2 text-3xl font-bold text-[#01B000] font-[family-name:var(--font-plus-jakarta)]">
+                <p className="mt-2 text-3xl font-bold text-[#1e3a8a] font-[family-name:var(--font-plus-jakarta)]">
                   ${data.totalRevenue.toLocaleString()}
                 </p>
               </div>
               <svg
-                className="w-12 h-12 text-[#01B000] opacity-50"
+                className="w-12 h-12 text-[#1e3a8a] opacity-50"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -236,7 +236,7 @@ export default async function ManagerDashboard() {
               </h2>
               <Link
                 href="/manager/booking-requests"
-                className="text-[#01B000] hover:text-[#019500] text-sm font-semibold"
+                className="text-[#1e3a8a] hover:text-[#172554] text-sm font-semibold"
               >
                 View All →
               </Link>
@@ -246,7 +246,7 @@ export default async function ManagerDashboard() {
                 {data.recentBookingRequests.map((request) => (
                   <div
                     key={request.id}
-                    className="p-3 bg-gray-50 rounded-lg border border-gray-200 hover:border-[#01B000] transition-all"
+                    className="p-3 bg-gray-50 rounded-lg border border-gray-200 hover:border-[#1e3a8a] transition-all"
                   >
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -260,7 +260,7 @@ export default async function ManagerDashboard() {
                                 : request.status === "contacted"
                                 ? "bg-blue-100 text-blue-800"
                                 : request.status === "converted"
-                                ? "bg-green-100 text-green-800"
+                                ? "bg-blue-100 text-blue-800"
                                 : "bg-gray-100 text-gray-800"
                             }`}
                           >
@@ -288,7 +288,7 @@ export default async function ManagerDashboard() {
               </h2>
               <Link
                 href="/manager/messages"
-                className="text-[#01B000] hover:text-[#019500] text-sm font-semibold"
+                className="text-[#1e3a8a] hover:text-[#172554] text-sm font-semibold"
               >
                 View All →
               </Link>
@@ -298,7 +298,7 @@ export default async function ManagerDashboard() {
                 {data.recentMessages.map((message) => (
                   <div
                     key={message.id}
-                    className="p-3 bg-gray-50 rounded-lg border border-gray-200 hover:border-[#01B000] transition-all"
+                    className="p-3 bg-gray-50 rounded-lg border border-gray-200 hover:border-[#1e3a8a] transition-all"
                   >
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -311,7 +311,7 @@ export default async function ManagerDashboard() {
                                 ? "bg-yellow-100 text-yellow-800"
                                 : message.status === "read"
                                 ? "bg-blue-100 text-blue-800"
-                                : "bg-green-100 text-green-800"
+                                : "bg-blue-100 text-blue-800"
                             }`}
                           >
                             {message.status}
@@ -341,7 +341,7 @@ export default async function ManagerDashboard() {
               </h2>
               <Link
                 href="/manager/cars"
-                className="text-[#01B000] hover:text-[#019500] text-sm font-semibold"
+                className="text-[#1e3a8a] hover:text-[#172554] text-sm font-semibold"
               >
                 View All →
               </Link>
@@ -351,7 +351,7 @@ export default async function ManagerDashboard() {
                 {data.popularCars.map((car) => (
                   <div
                     key={car.id}
-                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200 hover:border-[#01B000] transition-all"
+                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200 hover:border-[#1e3a8a] transition-all"
                   >
                     {car.images[0] && (
                       <img
@@ -369,7 +369,7 @@ export default async function ManagerDashboard() {
                     <span
                       className={`px-2 py-1 text-xs font-semibold rounded-full ${
                         car.available
-                          ? "bg-green-100 text-green-800"
+                          ? "bg-blue-100 text-blue-800"
                           : "bg-red-100 text-red-800"
                       }`}
                     >
@@ -391,7 +391,7 @@ export default async function ManagerDashboard() {
             <div className="space-y-3">
               <Link
                 href="/manager/cars/add"
-                className="w-full bg-[#01B000] text-white px-4 py-3 rounded-lg font-bold hover:bg-[#019500] transition-all shadow-md text-left flex items-center gap-3"
+                className="w-full bg-[#1e3a8a] text-white px-4 py-3 rounded-lg font-bold hover:bg-[#172554] transition-all shadow-md text-left flex items-center gap-3"
               >
                 <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M12 4v16m8-8H4" />

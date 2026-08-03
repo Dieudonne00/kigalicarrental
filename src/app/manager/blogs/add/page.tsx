@@ -17,7 +17,7 @@ export default function AddBlogPage() {
     excerpt: "",
     content: "",
     featuredImage: "",
-    author: "Kigali Car Hire Team",
+    author: "Kigali Car Rental Team",
     category: "car-tips",
     tags: [] as string[],
     metaTitle: "",
@@ -41,7 +41,7 @@ export default function AddBlogPage() {
   // Suggested SEO keywords for car rental in Rwanda
   const suggestedKeywords = [
     "car rental Rwanda",
-    "Kigali car hire",
+    "Kigali car rental",
     "rent a car Kigali",
     "Rwanda car rental",
     "affordable car rental Rwanda",
@@ -192,7 +192,7 @@ export default function AddBlogPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, title: e.target.value })
                     }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     placeholder="10 Essential Tips for Renting a Car in Rwanda"
                     required
                   />
@@ -209,7 +209,7 @@ export default function AddBlogPage() {
                       setFormData({ ...formData, excerpt: e.target.value })
                     }
                     rows={3}
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900 resize-none"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900 resize-none"
                     placeholder="A brief summary of your blog post (150-160 characters for SEO)"
                     required
                   />
@@ -229,7 +229,7 @@ export default function AddBlogPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, category: e.target.value })
                       }
-                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                       required
                     >
                       {categories.map((cat) => (
@@ -250,7 +250,7 @@ export default function AddBlogPage() {
                       onChange={(e) =>
                         setFormData({ ...formData, author: e.target.value })
                       }
-                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                      className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     />
                   </div>
                 </div>
@@ -291,11 +291,11 @@ export default function AddBlogPage() {
                   type="file"
                   accept="image/*"
                   onChange={handleImageUpload}
-                  className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                   disabled={uploadingImage}
                 />
                 {uploadingImage && (
-                  <p className="text-sm text-[#01B000] mt-2">Uploading...</p>
+                  <p className="text-sm text-[#1e3a8a] mt-2">Uploading...</p>
                 )}
                 {formData.featuredImage && (
                   <div className="mt-4">
@@ -323,13 +323,13 @@ export default function AddBlogPage() {
                     value={tagInput}
                     onChange={(e) => setTagInput(e.target.value)}
                     onKeyPress={(e) => e.key === "Enter" && (e.preventDefault(), addTag())}
-                    className="flex-1 px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="flex-1 px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     placeholder="Add a tag"
                   />
                   <button
                     type="button"
                     onClick={addTag}
-                    className="px-4 py-2 bg-[#01B000] text-white rounded-lg hover:bg-[#019500] transition-all"
+                    className="px-4 py-2 bg-[#1e3a8a] text-white rounded-lg hover:bg-[#172554] transition-all"
                   >
                     Add
                   </button>
@@ -357,7 +357,7 @@ export default function AddBlogPage() {
             </div>
 
             {/* SEO Optimization */}
-            <div className="bg-white rounded-xl border-2 border-[#01B000] p-6">
+            <div className="bg-white rounded-xl border-2 border-[#1e3a8a] p-6">
               <h2 className="text-xl font-bold text-gray-900 mb-4">
                 SEO Optimization
               </h2>
@@ -374,7 +374,7 @@ export default function AddBlogPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, metaTitle: e.target.value })
                     }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     placeholder="SEO-optimized title (50-60 characters)"
                     maxLength={60}
                   />
@@ -397,7 +397,7 @@ export default function AddBlogPage() {
                       })
                     }
                     rows={3}
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900 resize-none"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900 resize-none"
                     placeholder="SEO meta description (150-160 characters)"
                     maxLength={160}
                   />
@@ -422,7 +422,7 @@ export default function AddBlogPage() {
                         onClick={() => addKeyword(keyword)}
                         className={`px-3 py-1 rounded-full text-sm transition-all ${
                           formData.metaKeywords.includes(keyword)
-                            ? "bg-[#01B000] text-white"
+                            ? "bg-[#1e3a8a] text-white"
                             : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                         }`}
                       >
@@ -440,13 +440,13 @@ export default function AddBlogPage() {
                       onKeyPress={(e) =>
                         e.key === "Enter" && (e.preventDefault(), addCustomKeyword())
                       }
-                      className="flex-1 px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                      className="flex-1 px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                       placeholder="Add custom keyword"
                     />
                     <button
                       type="button"
                       onClick={addCustomKeyword}
-                      className="px-4 py-2 bg-[#01B000] text-white rounded-lg hover:bg-[#019500] transition-all"
+                      className="px-4 py-2 bg-[#1e3a8a] text-white rounded-lg hover:bg-[#172554] transition-all"
                     >
                       Add
                     </button>
@@ -457,13 +457,13 @@ export default function AddBlogPage() {
                       {formData.metaKeywords.map((keyword) => (
                         <span
                           key={keyword}
-                          className="inline-flex items-center gap-1 px-3 py-1 bg-[#01B000]/10 text-[#01B000] rounded-full text-sm font-medium"
+                          className="inline-flex items-center gap-1 px-3 py-1 bg-[#1e3a8a]/10 text-[#1e3a8a] rounded-full text-sm font-medium"
                         >
                           {keyword}
                           <button
                             type="button"
                             onClick={() => removeKeyword(keyword)}
-                            className="hover:text-[#019500]"
+                            className="hover:text-[#172554]"
                           >
                             ×
                           </button>
@@ -489,7 +489,7 @@ export default function AddBlogPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, published: e.target.checked })
                     }
-                    className="w-4 h-4 text-[#01B000] border-gray-300 rounded focus:ring-[#01B000]"
+                    className="w-4 h-4 text-[#1e3a8a] border-gray-300 rounded focus:ring-[#1e3a8a]"
                   />
                   <span className="text-sm font-bold text-gray-700">
                     Publish immediately (visible to public)
@@ -503,7 +503,7 @@ export default function AddBlogPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, featured: e.target.checked })
                     }
-                    className="w-4 h-4 text-[#01B000] border-gray-300 rounded focus:ring-[#01B000]"
+                    className="w-4 h-4 text-[#1e3a8a] border-gray-300 rounded focus:ring-[#1e3a8a]"
                   />
                   <span className="text-sm font-bold text-gray-700">
                     Featured post (show on homepage)
@@ -524,7 +524,7 @@ export default function AddBlogPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="flex-1 px-6 py-3 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] transition-all disabled:opacity-50"
+                className="flex-1 px-6 py-3 bg-[#1e3a8a] text-white rounded-lg font-bold hover:bg-[#172554] transition-all disabled:opacity-50"
               >
                 {submitting ? "Creating Post..." : "Create Blog Post"}
               </button>

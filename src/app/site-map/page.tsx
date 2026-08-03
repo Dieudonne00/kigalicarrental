@@ -2,12 +2,12 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 
-const SITE = "https://kigalicarhire.rw";
+const SITE = "https://kigalicarrental.site";
 
 export const metadata: Metadata = {
-  title: "Sitemap | Kigali Car Hire",
+  title: "Sitemap | Kigali Car Rental",
   description:
-    "Full sitemap of Kigali Car Hire — every page on kigalicarhire.rw including our fleet, service pages, destinations and blog.",
+    "Full sitemap of Kigali Car Rental — every page on kigalicarrental.site including our fleet, service pages, destinations and blog.",
   alternates: { canonical: `${SITE}/site-map` },
   robots: { index: true, follow: true },
 };
@@ -98,8 +98,8 @@ export default async function SitemapPage() {
           Sitemap
         </h1>
         <p className="text-gray-600 mb-10">
-          Every page on Kigali Car Hire. Looking for the XML version for search engines?{" "}
-          <a href="/sitemap.xml" className="text-[#01B000] font-semibold hover:underline">
+          Every page on Kigali Car Rental. Looking for the XML version for search engines?{" "}
+          <a href="/sitemap.xml" className="text-[#1e3a8a] font-semibold hover:underline">
             View sitemap.xml
           </a>
           .
@@ -114,7 +114,7 @@ export default async function SitemapPage() {
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-gray-600 hover:text-[#01B000] transition-colors">
+                    <Link href={link.href} className="text-gray-600 hover:text-[#1e3a8a] transition-colors">
                       {link.label}
                     </Link>
                   </li>

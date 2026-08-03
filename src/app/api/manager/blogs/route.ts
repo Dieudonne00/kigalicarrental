@@ -51,7 +51,7 @@ export async function POST(request: Request) {
         excerpt: data.excerpt,
         content: data.content,
         featuredImage: data.featuredImage || null,
-        author: data.author || "Kigali Car Hire Team",
+        author: data.author || "Kigali Car Rental Team",
         category: data.category,
         tags: data.tags || [],
         metaTitle: data.metaTitle || data.title,

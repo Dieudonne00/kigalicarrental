@@ -22,7 +22,7 @@ export default function RichTextEditor({
       Link.configure({
         openOnClick: false,
         HTMLAttributes: {
-          class: "text-[#01B000] underline",
+          class: "text-[#1e3a8a] underline",
         },
       }),
     ],
@@ -60,7 +60,7 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
           className={`px-3 py-1 rounded text-sm font-bold ${
             editor.isActive("heading", { level: 1 })
-              ? "bg-[#01B000] text-white"
+              ? "bg-[#1e3a8a] text-white"
               : "bg-white text-gray-700 hover:bg-gray-100"
           }`}
         >
@@ -71,7 +71,7 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
           className={`px-3 py-1 rounded text-sm font-bold ${
             editor.isActive("heading", { level: 2 })
-              ? "bg-[#01B000] text-white"
+              ? "bg-[#1e3a8a] text-white"
               : "bg-white text-gray-700 hover:bg-gray-100"
           }`}
         >
@@ -82,7 +82,7 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
           className={`px-3 py-1 rounded text-sm font-bold ${
             editor.isActive("heading", { level: 3 })
-              ? "bg-[#01B000] text-white"
+              ? "bg-[#1e3a8a] text-white"
               : "bg-white text-gray-700 hover:bg-gray-100"
           }`}
         >
@@ -97,7 +97,7 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().toggleBold().run()}
           className={`px-3 py-1 rounded text-sm font-bold ${
             editor.isActive("bold")
-              ? "bg-[#01B000] text-white"
+              ? "bg-[#1e3a8a] text-white"
               : "bg-white text-gray-700 hover:bg-gray-100"
           }`}
         >
@@ -108,7 +108,7 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().toggleItalic().run()}
           className={`px-3 py-1 rounded text-sm italic ${
             editor.isActive("italic")
-              ? "bg-[#01B000] text-white"
+              ? "bg-[#1e3a8a] text-white"
               : "bg-white text-gray-700 hover:bg-gray-100"
           }`}
         >
@@ -119,7 +119,7 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().toggleStrike().run()}
           className={`px-3 py-1 rounded text-sm line-through ${
             editor.isActive("strike")
-              ? "bg-[#01B000] text-white"
+              ? "bg-[#1e3a8a] text-white"
               : "bg-white text-gray-700 hover:bg-gray-100"
           }`}
         >
@@ -134,7 +134,7 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           className={`px-3 py-1 rounded text-sm ${
             editor.isActive("bulletList")
-              ? "bg-[#01B000] text-white"
+              ? "bg-[#1e3a8a] text-white"
               : "bg-white text-gray-700 hover:bg-gray-100"
           }`}
         >
@@ -145,7 +145,7 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           className={`px-3 py-1 rounded text-sm ${
             editor.isActive("orderedList")
-              ? "bg-[#01B000] text-white"
+              ? "bg-[#1e3a8a] text-white"
               : "bg-white text-gray-700 hover:bg-gray-100"
           }`}
         >
@@ -160,7 +160,7 @@ export default function RichTextEditor({
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           className={`px-3 py-1 rounded text-sm ${
             editor.isActive("blockquote")
-              ? "bg-[#01B000] text-white"
+              ? "bg-[#1e3a8a] text-white"
               : "bg-white text-gray-700 hover:bg-gray-100"
           }`}
         >
@@ -180,7 +180,7 @@ export default function RichTextEditor({
           }}
           className={`px-3 py-1 rounded text-sm ${
             editor.isActive("link")
-              ? "bg-[#01B000] text-white"
+              ? "bg-[#1e3a8a] text-white"
               : "bg-white text-gray-700 hover:bg-gray-100"
           }`}
         >

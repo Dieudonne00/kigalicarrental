@@ -13,7 +13,7 @@ export default function KigaliCarHireContent() {
             </h2>
 
             <p className="text-gray-600 mb-4 leading-relaxed">
-              <strong className="text-gray-900">Kigali Car Rental</strong> is Rwanda's leading car rental service, based in Kigali and operating across the entire country. Whether you are visiting Rwanda for gorilla trekking, attending a business conference, relocating as an expat, or simply exploring the city, renting a car in Kigali gives you the freedom to travel on your own schedule. Many visitors also search for it as <strong className="text-gray-900">Kigali Car Hire</strong> — it's the same trusted fleet and service, just a different way of saying it.
+              <strong className="text-gray-900">Kigali Car Rental</strong> is Rwanda's leading car rental service, based in Kigali and operating across the entire country. Whether you are visiting Rwanda for gorilla trekking, attending a business conference, relocating as an expat, or simply exploring the city, renting a car in Kigali gives you the freedom to travel on your own schedule. Many visitors also search for it as <strong className="text-gray-900">Kigali Car Rental</strong> — it's the same trusted fleet and service, just a different way of saying it.
             </p>
 
             <p className="text-gray-600 mb-4 leading-relaxed">
@@ -32,19 +32,19 @@ export default function KigaliCarHireContent() {
               Same Trusted Fleet, Whichever Term You Search
             </h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Some visitors search for <strong className="text-gray-900">car rental in Kigali</strong> rather than car hire — in Rwanda both terms mean exactly the same thing. Kigali Car Hire is the car rental company most residents and tourists already trust, with the same fleet, the same transparent pricing from $30/day, and the same 24/7 support whichever term you use to find us.
+              Some visitors search for <strong className="text-gray-900">car rental in Kigali</strong> rather than car hire — in Rwanda both terms mean exactly the same thing. Kigali Car Rental is the car rental company most residents and tourists already trust, with the same fleet, the same transparent pricing from $30/day, and the same 24/7 support whichever term you use to find us.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/book-now"
-                className="inline-flex items-center justify-center gap-2 bg-[#01B000] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#019500] transition-all"
+                className="inline-flex items-center justify-center gap-2 bg-[#1e3a8a] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#172554] transition-all"
               >
                 Book a Car in Kigali
               </Link>
               <Link
                 href="/fleet"
-                className="inline-flex items-center justify-center gap-2 border-2 border-gray-200 text-gray-800 px-6 py-3 rounded-lg font-bold hover:border-[#01B000] hover:text-[#01B000] transition-all"
+                className="inline-flex items-center justify-center gap-2 border-2 border-gray-200 text-gray-800 px-6 py-3 rounded-lg font-bold hover:border-[#1e3a8a] hover:text-[#1e3a8a] transition-all"
               >
                 View Full Fleet
               </Link>
@@ -68,7 +68,7 @@ export default function KigaliCarHireContent() {
                   "Families visiting Rwanda who want flexibility without depending on taxis",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
-                    <svg className="w-4 h-4 text-[#01B000] flex-shrink-0 mt-0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-[#1e3a8a] flex-shrink-0 mt-0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M5 13l4 4L19 7" />
                     </svg>
                     {item}
@@ -90,7 +90,7 @@ export default function KigaliCarHireContent() {
                   "No credit card required — we accept all local payment methods",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
-                    <svg className="w-4 h-4 text-[#01B000] flex-shrink-0 mt-0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-4 h-4 text-[#1e3a8a] flex-shrink-0 mt-0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     {item}
@@ -99,7 +99,7 @@ export default function KigaliCarHireContent() {
               </ul>
             </div>
 
-            <div className="bg-[#01B000]/5 rounded-xl p-6 border border-[#01B000]/20">
+            <div className="bg-[#1e3a8a]/5 rounded-xl p-6 border border-[#1e3a8a]/20">
               <h3 className="text-lg font-bold text-gray-900 mb-2 font-[family-name:var(--font-plus-jakarta)]">
                 Popular Kigali Car Rental Services
               </h3>
@@ -121,7 +121,7 @@ export default function KigaliCarHireContent() {
                   <Link
                     key={s.href}
                     href={s.href}
-                    className="text-sm text-[#01B000] font-medium hover:underline flex items-center gap-1"
+                    className="text-sm text-[#1e3a8a] font-medium hover:underline flex items-center gap-1"
                   >
                     <svg className="w-3 h-3 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M9 5l7 7-7 7" />

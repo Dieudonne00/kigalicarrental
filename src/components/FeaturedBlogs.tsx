@@ -36,7 +36,7 @@ export default function FeaturedBlogs() {
     return (
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#01B000] mx-auto" />
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1e3a8a] mx-auto" />
         </div>
       </section>
     );
@@ -50,7 +50,7 @@ export default function FeaturedBlogs() {
         {/* Header */}
         <div className="text-center mb-10 md:mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4 font-[family-name:var(--font-plus-jakarta)]">
-            Kigali Car Hire Blog & Travel Guides
+            Kigali Car Rental Blog & Travel Guides
           </h2>
           <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
             Tips, guides and insights about renting a car in Kigali and travelling across Rwanda.
@@ -72,7 +72,7 @@ export default function FeaturedBlogs() {
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                <span className="absolute top-3 left-3 px-2.5 py-1 bg-[#01B000] text-white text-xs font-semibold rounded-full">
+                <span className="absolute top-3 left-3 px-2.5 py-1 bg-[#1e3a8a] text-white text-xs font-semibold rounded-full">
                   {formatCategory(blog.category)}
                 </span>
               </div>
@@ -90,7 +90,7 @@ export default function FeaturedBlogs() {
                   </span>
                 </div>
 
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#01B000] transition-colors line-clamp-2 leading-snug font-[family-name:var(--font-plus-jakarta)]">
+                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#1e3a8a] transition-colors line-clamp-2 leading-snug font-[family-name:var(--font-plus-jakarta)]">
                   {blog.title}
                 </h3>
 
@@ -99,7 +99,7 @@ export default function FeaturedBlogs() {
                 </p>
 
                 <div className="mt-4 pt-4 border-t border-gray-50">
-                  <span className="inline-flex items-center gap-1.5 text-[#01B000] text-sm font-semibold group-hover:gap-2.5 transition-all">
+                  <span className="inline-flex items-center gap-1.5 text-[#1e3a8a] text-sm font-semibold group-hover:gap-2.5 transition-all">
                     Read article
                     <svg className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M9 5l7 7-7 7" />
@@ -115,7 +115,7 @@ export default function FeaturedBlogs() {
         <div className="text-center">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#01B000] text-white font-bold rounded-xl hover:bg-[#019500] transition-all shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#1e3a8a] text-white font-bold rounded-xl hover:bg-[#172554] transition-all shadow-lg hover:shadow-xl"
           >
             View All Rwanda Travel Guides
             <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">

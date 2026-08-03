@@ -12,23 +12,22 @@ import KigaliCarHireContent from "@/components/KigaliCarHireContent";
 import Testimonials from "@/components/Testimonials";
 import WhatsAppChatWidget from "@/components/WhatsAppChatWidget";
 
-const SITE = "https://kigalicarhire.rw";
-const OG_IMAGE = "https://kigalicarhire.rw/opengraph-image";
+const SITE = "https://kigalicarrental.site";
+const OG_IMAGE = "https://kigalicarrental.site/opengraph-image";
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Kigali Car Rental | Rent a Car in Rwanda from $30/day",
   description:
-    "Kigali Car Rental — Rwanda's trusted car rental company. From $30/day: SUVs, 4x4 Land Cruisers, luxury & economy. Free Kigali hotel delivery. Airport pickup 24/7. Self-drive or chauffeur. Call +250 788 892 976.",
-  keywords:
-    "kigali car rental, car rental kigali, rent a car kigali, rwanda car rental, self drive rwanda car rental, airport transfer kigali, car rental rwanda, kigali airport car rental, cheap car rental kigali, car rental near me kigali, kigali vehicle rental, rental car kigali rwanda, car rental kigali rwanda, kigali car hire",
+    "Kigali Car Rental — Rwanda's trusted car rental company. From $30/day: SUVs, 4x4 Land Cruisers, luxury & economy. Free Kigali hotel delivery. Airport pickup 24/7. Self-drive or chauffeur. Call +250 787 619 387.",
+  keywords: "Kigali car rental",
   openGraph: {
     title: "Kigali Car Rental | Rent a Car in Rwanda from $30/day",
     description:
       "Rwanda's trusted car rental from $30/day. 50+ vehicles: SUVs, 4x4 Land Cruisers, luxury & economy. Self-drive or chauffeur. Airport pickup 24/7. Free Kigali delivery.",
     url: SITE,
-    siteName: "Kigali Car Hire",
+    siteName: "Kigali Car Rental",
     type: "website",
     locale: "en_RW",
     images: [
@@ -57,7 +56,7 @@ const websiteSchema = {
   "@type": "WebSite",
   "@id": `${SITE}/#website`,
   url: SITE,
-  name: "Kigali Car Hire",
+  name: "Kigali Car Rental",
   description: "Rwanda's most trusted car rental service",
   potentialAction: {
     "@type": "SearchAction",
@@ -70,15 +69,15 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "CarRental"],
   "@id": `${SITE}/#business`,
-  name: "Kigali Car Hire",
+  name: "Kigali Car Rental",
   alternateName: ["Kigali Car Rental", "Car Rental Kigali Rwanda", "Kigali Car Rentals"],
   url: SITE,
-  telephone: "+250788892976",
-  email: "kigalicarhire1990@gmail.com",
+  telephone: "+250787619387",
+  email: "info@kigalicarrental.site",
   image: "https://media.kigalicarhire.rw/cars/car_4c54f821-ab5c-4922-af5b-f9c668468133.jpg",
-  logo: { "@type": "ImageObject", url: "https://kigalicarhire.b-cdn.net/kigalicarhire.png", width: 200, height: 60 },
+  logo: { "@type": "ImageObject", url: "/logo.svg", width: 200, height: 60 },
   description:
-    "Kigali Car Hire is Rwanda's trusted car rental service offering self-drive cars, chauffeur-driven vehicles, airport transfers and tours across Rwanda and East Africa. Cars from $30 per day.",
+    "Kigali Car Rental is Rwanda's trusted car rental service offering self-drive cars, chauffeur-driven vehicles, airport transfers and tours across Rwanda and East Africa. Cars from $30 per day.",
   foundingDate: "1990",
   founder: { "@type": "Person", name: "Obed Dieudonne" },
   numberOfEmployees: { "@type": "QuantitativeValue", value: 10 },
@@ -219,7 +218,7 @@ const localBusinessSchema = {
       reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
       author: { "@type": "Person", name: "Emmanuel Manirarora" },
       datePublished: "2024-08-01",
-      reviewBody: "Kigali Car Hire is a reliable car rental service in Kigali. I have used their services multiple times, and they have consistently met my needs and expectations.",
+      reviewBody: "Kigali Car Rental is a reliable car rental service in Kigali. I have used their services multiple times, and they have consistently met my needs and expectations.",
     },
     {
       "@type": "Review",
@@ -319,15 +318,15 @@ const faqSchema = {
       name: "How do I book a car rental in Kigali?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "You can book a car rental in Kigali through three ways: (1) online via our booking form at kigalicarhire.rw/book-now, (2) by calling or WhatsApp at +250 788 892 976, or (3) by email at kigalicarhire1990@gmail.com. We confirm all bookings within 30 minutes.",
+        text: "You can book a car rental in Kigali through three ways: (1) online via our booking form at kigalicarrental.site/book-now, (2) by calling or WhatsApp at +250 787 619 387, or (3) by email at info@kigalicarrental.site. We confirm all bookings within 30 minutes.",
       },
     },
     {
       "@type": "Question",
-      name: "Is Kigali Car Hire the same as Kigali car rental?",
+      name: "Is Kigali Car Rental the same as Kigali car rental?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Kigali Car Hire and Kigali car rental refer to the same trusted service — renting a vehicle in Kigali, Rwanda. Whichever term you search, you'll find the same fleet, the same rates from $30 per day, and the same 24/7 support.",
+        text: "Yes. Kigali Car Rental and Kigali car rental refer to the same trusted service — renting a vehicle in Kigali, Rwanda. Whichever term you search, you'll find the same fleet, the same rates from $30 per day, and the same 24/7 support.",
       },
     },
   ],

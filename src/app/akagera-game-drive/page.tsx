@@ -67,7 +67,7 @@ export default function AkageraGameDrivePage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-[#01B000] text-white font-bold text-sm md:text-base rounded-lg hover:bg-[#019500] transition-all shadow-lg hover:shadow-xl"
+            className="inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-[#1e3a8a] text-white font-bold text-sm md:text-base rounded-lg hover:bg-[#172554] transition-all shadow-lg hover:shadow-xl"
           >
             <svg
               className="w-4 h-4 md:w-5 md:h-5 mr-2"
@@ -90,7 +90,7 @@ export default function AkageraGameDrivePage() {
         {/* Information Section */}
         <div className="grid md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-16">
           <div className="bg-white rounded-xl border-2 border-gray-200 p-6 md:p-8">
-            <div className="w-12 h-12 md:w-16 md:h-16 bg-green-50 rounded-xl flex items-center justify-center text-[#01B000] mb-4 md:mb-6">
+            <div className="w-12 h-12 md:w-16 md:h-16 bg-blue-50 rounded-xl flex items-center justify-center text-[#1e3a8a] mb-4 md:mb-6">
               <svg
                 className="w-8 h-8 md:w-10 md:h-10"
                 fill="none"
@@ -113,7 +113,7 @@ export default function AkageraGameDrivePage() {
             <ul className="space-y-2">
               <li className="flex items-start">
                 <svg
-                  className="w-5 h-5 text-[#01B000] mr-2 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-[#1e3a8a] mr-2 mt-0.5 flex-shrink-0"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -127,7 +127,7 @@ export default function AkageraGameDrivePage() {
               </li>
               <li className="flex items-start">
                 <svg
-                  className="w-5 h-5 text-[#01B000] mr-2 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-[#1e3a8a] mr-2 mt-0.5 flex-shrink-0"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -141,7 +141,7 @@ export default function AkageraGameDrivePage() {
               </li>
               <li className="flex items-start">
                 <svg
-                  className="w-5 h-5 text-[#01B000] mr-2 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-[#1e3a8a] mr-2 mt-0.5 flex-shrink-0"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -157,7 +157,7 @@ export default function AkageraGameDrivePage() {
           </div>
 
           <div className="bg-white rounded-xl border-2 border-gray-200 p-8">
-            <div className="w-16 h-16 bg-green-50 rounded-xl flex items-center justify-center text-[#01B000] mb-6">
+            <div className="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center text-[#1e3a8a] mb-6">
               <svg
                 className="w-10 h-10"
                 fill="none"
@@ -176,7 +176,7 @@ export default function AkageraGameDrivePage() {
             <ul className="space-y-2">
               <li className="flex items-start">
                 <svg
-                  className="w-5 h-5 text-[#01B000] mr-2 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-[#1e3a8a] mr-2 mt-0.5 flex-shrink-0"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -190,7 +190,7 @@ export default function AkageraGameDrivePage() {
               </li>
               <li className="flex items-start">
                 <svg
-                  className="w-5 h-5 text-[#01B000] mr-2 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-[#1e3a8a] mr-2 mt-0.5 flex-shrink-0"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -204,7 +204,7 @@ export default function AkageraGameDrivePage() {
               </li>
               <li className="flex items-start">
                 <svg
-                  className="w-5 h-5 text-[#01B000] mr-2 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-[#1e3a8a] mr-2 mt-0.5 flex-shrink-0"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -218,7 +218,7 @@ export default function AkageraGameDrivePage() {
               </li>
               <li className="flex items-start">
                 <svg
-                  className="w-5 h-5 text-[#01B000] mr-2 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-[#1e3a8a] mr-2 mt-0.5 flex-shrink-0"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -232,7 +232,7 @@ export default function AkageraGameDrivePage() {
               </li>
               <li className="flex items-start">
                 <svg
-                  className="w-5 h-5 text-[#01B000] mr-2 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-[#1e3a8a] mr-2 mt-0.5 flex-shrink-0"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -256,7 +256,7 @@ export default function AkageraGameDrivePage() {
 
           {loading ? (
             <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#01B000]"></div>
+              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-[#1e3a8a]"></div>
               <p className="mt-4 text-gray-600 text-sm md:text-base">Loading vehicles...</p>
             </div>
           ) : cars.length === 0 ? (
@@ -269,7 +269,7 @@ export default function AkageraGameDrivePage() {
               {cars.map((car) => (
                 <div
                   key={car.id}
-                  className="bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-[#01B000] transition-all duration-300 hover:shadow-lg"
+                  className="bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-[#1e3a8a] transition-all duration-300 hover:shadow-lg"
                 >
                   <div className="relative h-32 md:h-48">
                     <img
@@ -278,7 +278,7 @@ export default function AkageraGameDrivePage() {
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute top-2 md:top-4 right-2 md:right-4">
-                      <span className="bg-[#01B000] text-white px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[10px] md:text-sm font-bold">
+                      <span className="bg-[#1e3a8a] text-white px-2 md:px-3 py-0.5 md:py-1 rounded-full text-[10px] md:text-sm font-bold">
                         Game Drive
                       </span>
                     </div>
@@ -326,7 +326,7 @@ export default function AkageraGameDrivePage() {
                     <div className="border-t pt-4">
                       <div className="flex items-baseline justify-between mb-4">
                         <div>
-                          <span className="text-2xl font-bold text-[#01B000]">
+                          <span className="text-2xl font-bold text-[#1e3a8a]">
                             ${car.dailyRate}
                           </span>
                           <span className="text-gray-600 ml-1">/day</span>
@@ -335,7 +335,7 @@ export default function AkageraGameDrivePage() {
 
                       <Link
                         href={`/cars/${car.id}`}
-                        className="block w-full text-center bg-[#01B000] text-white py-3 rounded-lg font-bold hover:bg-[#019500] transition-all"
+                        className="block w-full text-center bg-[#1e3a8a] text-white py-3 rounded-lg font-bold hover:bg-[#172554] transition-all"
                       >
                         Book Now
                       </Link>
@@ -357,8 +357,8 @@ export default function AkageraGameDrivePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="tel:+250788892976"
-              className="inline-flex items-center justify-center px-6 py-3 bg-[#01B000] text-white font-bold rounded-lg hover:bg-[#019500] transition-all"
+              href="tel:+250787619387"
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#1e3a8a] text-white font-bold rounded-lg hover:bg-[#172554] transition-all"
             >
               <svg
                 className="w-5 h-5 mr-2"
@@ -371,11 +371,11 @@ export default function AkageraGameDrivePage() {
               >
                 <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              Call Us: +250 788 892 976
+              Call Us: +250 787 619 387
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 text-gray-900 font-bold rounded-lg hover:border-[#01B000] hover:bg-[#01B000] hover:text-white transition-all"
+              className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 text-gray-900 font-bold rounded-lg hover:border-[#1e3a8a] hover:bg-[#1e3a8a] hover:text-white transition-all"
             >
               Contact Us
             </Link>

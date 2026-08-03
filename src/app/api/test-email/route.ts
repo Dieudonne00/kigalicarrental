@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function GET() {
-  const user = process.env.GMAIL_USER || "kigalicarhire1990@gmail.com";
+  const user = process.env.GMAIL_USER || "info@kigalicarrental.site";
   const pass = process.env.GMAIL_APP_PASSWORD || "";
 
   if (!pass) {
@@ -22,7 +22,7 @@ export async function GET() {
     await transporter.sendMail({
       from: user,
       to: user,
-      subject: "Test email from Kigali Car Hire",
+      subject: "Test email from Kigali Car Rental",
       text: "Email is working correctly!",
     });
     return NextResponse.json({ success: true, message: "Test email sent! Check your inbox." });

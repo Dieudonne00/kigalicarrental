@@ -48,7 +48,7 @@ export async function getPesaPalToken() {
  */
 export async function submitPesaPalOrder(token: string, order: PesaPalOrder, customCallbackUrl?: string) {
     try {
-        const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://kigalicarhire.rw';
+        const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_APP_URL || 'https://kigalicarrental.site';
         const callback_url = customCallbackUrl || `${siteUrl}/pay/callback`;
         
         const response = await fetch(`${BASE_URL}/api/Transactions/SubmitOrderRequest`, {

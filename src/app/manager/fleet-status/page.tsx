@@ -70,7 +70,7 @@ function InsuranceBadge({ insuranceEnd }: { insuranceEnd: string | null }) {
   if (d < 0) return <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-700">Expired {Math.abs(d)}d ago</span>;
   if (d <= 7) return <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-700">Expires in {d}d!</span>;
   if (d <= 30) return <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">Expires in {d}d</span>;
-  return <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700">Valid ({d}d left)</span>;
+  return <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-700">Valid ({d}d left)</span>;
 }
 
 function OilBadge({ nextOilChange }: { nextOilChange: string | null }) {
@@ -79,7 +79,7 @@ function OilBadge({ nextOilChange }: { nextOilChange: string | null }) {
   if (d < 0) return <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-700">Overdue {Math.abs(d)}d!</span>;
   if (d <= 3) return <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-700">Due in {d}d!</span>;
   if (d <= 7) return <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">Due in {d}d</span>;
-  return <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700">OK ({d}d)</span>;
+  return <span className="px-2 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-700">OK ({d}d)</span>;
 }
 
 function HiringBadge({ status, returnDate }: { status: HiringStatus; returnDate?: string | null }) {
@@ -91,7 +91,7 @@ function HiringBadge({ status, returnDate }: { status: HiringStatus; returnDate?
     return <span className={`px-2.5 py-1 rounded-full text-xs font-bold ${cls}`}>{label}</span>;
   }
   if (status === "upcoming") return <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700">Upcoming</span>;
-  return <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">Available</span>;
+  return <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">Available</span>;
 }
 
 const sourceLabel = (s: string) => ({ phone: "📞 Phone", whatsapp: "💬 WhatsApp", walkin: "🚶 Walk-in", online: "🌐 Online" }[s] || s);
@@ -251,7 +251,7 @@ export default function FleetStatusPage() {
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Select Car <span className="text-red-500">*</span></label>
               <select value={globalCarId} onChange={e => setGlobalCarId(e.target.value)}
-                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-sm">
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-sm">
                 <option value="">— choose a car —</option>
                 {cars.map(c => (
                   <option key={c.id} value={c.id}>
@@ -268,7 +268,7 @@ export default function FleetStatusPage() {
             <div className="grid grid-cols-2 gap-2">
               {[["phone", "📞 Phone Call"], ["whatsapp", "💬 WhatsApp"], ["walkin", "🚶 Walk-in"], ["online", "🌐 Online"]] .map(([v, l]) => (
                 <button key={v} onClick={() => setBookingForm(p => ({ ...p, source: v }))}
-                  className={`py-2 rounded-lg text-sm font-bold border-2 transition-all ${bookingForm.source === v ? "border-[#01B000] bg-[#01B000]/10 text-[#01B000]" : "border-gray-200 text-gray-600 hover:border-gray-300"}`}>
+                  className={`py-2 rounded-lg text-sm font-bold border-2 transition-all ${bookingForm.source === v ? "border-[#1e3a8a] bg-[#1e3a8a]/10 text-[#1e3a8a]" : "border-gray-200 text-gray-600 hover:border-gray-300"}`}>
                   {l}
                 </button>
               ))}
@@ -280,13 +280,13 @@ export default function FleetStatusPage() {
               <label className="block text-sm font-bold text-gray-700 mb-1">Customer Name <span className="text-red-500">*</span></label>
               <input type="text" placeholder="Full name" value={bookingForm.customerName}
                 onChange={e => setBookingForm(p => ({ ...p, customerName: e.target.value }))}
-                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-sm" />
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-sm" />
             </div>
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Phone <span className="text-red-500">*</span></label>
               <input type="tel" placeholder="+250 7..." value={bookingForm.customerPhone}
                 onChange={e => setBookingForm(p => ({ ...p, customerPhone: e.target.value }))}
-                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-sm" />
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-sm" />
             </div>
           </div>
 
@@ -294,7 +294,7 @@ export default function FleetStatusPage() {
             <label className="block text-sm font-bold text-gray-700 mb-1">Email (optional)</label>
             <input type="email" placeholder="customer@email.com" value={bookingForm.customerEmail}
               onChange={e => setBookingForm(p => ({ ...p, customerEmail: e.target.value }))}
-              className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-sm" />
+              className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-sm" />
           </div>
 
           <div className="grid grid-cols-2 gap-3">
@@ -302,13 +302,13 @@ export default function FleetStatusPage() {
               <label className="block text-sm font-bold text-gray-700 mb-1">Pickup Date <span className="text-red-500">*</span></label>
               <input type="date" value={bookingForm.pickupDate}
                 onChange={e => setBookingForm(p => ({ ...p, pickupDate: e.target.value }))}
-                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-sm" />
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-sm" />
             </div>
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Return Date <span className="text-red-500">*</span></label>
               <input type="date" value={bookingForm.returnDate}
                 onChange={e => setBookingForm(p => ({ ...p, returnDate: e.target.value }))}
-                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-sm" />
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-sm" />
             </div>
           </div>
 
@@ -317,13 +317,13 @@ export default function FleetStatusPage() {
               <label className="block text-sm font-bold text-gray-700 mb-1">Pickup Location</label>
               <input type="text" value={bookingForm.pickupLocation}
                 onChange={e => setBookingForm(p => ({ ...p, pickupLocation: e.target.value }))}
-                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-sm" />
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-sm" />
             </div>
             <div>
               <label className="block text-sm font-bold text-gray-700 mb-1">Return Location</label>
               <input type="text" placeholder="Same as pickup" value={bookingForm.returnLocation}
                 onChange={e => setBookingForm(p => ({ ...p, returnLocation: e.target.value }))}
-                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-sm" />
+                className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-sm" />
             </div>
           </div>
 
@@ -333,7 +333,7 @@ export default function FleetStatusPage() {
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-bold">$</span>
               <input type="number" min="0" step="1" placeholder="0" value={bookingForm.totalCost}
                 onChange={e => setBookingForm(p => ({ ...p, totalCost: e.target.value }))}
-                className="w-full pl-7 pr-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-sm" />
+                className="w-full pl-7 pr-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-sm" />
             </div>
           </div>
 
@@ -341,14 +341,14 @@ export default function FleetStatusPage() {
             <label className="block text-sm font-bold text-gray-700 mb-1">Notes</label>
             <textarea rows={2} placeholder="Any notes about this booking, special requests..." value={bookingForm.notes}
               onChange={e => setBookingForm(p => ({ ...p, notes: e.target.value }))}
-              className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-sm resize-none" />
+              className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-sm resize-none" />
           </div>
         </div>
         <div className="flex gap-3 p-6 border-t border-gray-200 sticky bottom-0 bg-white rounded-b-2xl">
           <button onClick={() => { setBookingCar(null); setGlobalBookingOpen(false); }}
             className="flex-1 px-4 py-2.5 border-2 border-gray-300 text-gray-700 rounded-lg font-bold hover:bg-gray-50">Cancel</button>
           <button onClick={saveBooking} disabled={savingBooking}
-            className="flex-1 px-4 py-2.5 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] disabled:opacity-60 flex items-center justify-center gap-2">
+            className="flex-1 px-4 py-2.5 bg-[#1e3a8a] text-white rounded-lg font-bold hover:bg-[#172554] disabled:opacity-60 flex items-center justify-center gap-2">
             {savingBooking && <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />}
             Confirm Booking
           </button>
@@ -381,7 +381,7 @@ export default function FleetStatusPage() {
                 Service Alerts
               </button>
               <button onClick={openGlobalBooking}
-                className="flex items-center gap-2 px-5 py-2 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] transition-all text-sm">
+                className="flex items-center gap-2 px-5 py-2 bg-[#1e3a8a] text-white rounded-lg font-bold hover:bg-[#172554] transition-all text-sm">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
                 Add Manual Booking
               </button>
@@ -393,7 +393,7 @@ export default function FleetStatusPage() {
             {[
               { label: "Total Cars", val: cars.length, color: "border-gray-200", text: "text-gray-900" },
               { label: "Active / Upcoming", val: onHireCount, color: "border-blue-200", text: "text-blue-600" },
-              { label: "Available", val: availableCount, color: "border-green-200", text: "text-green-600" },
+              { label: "Available", val: availableCount, color: "border-blue-200", text: "text-blue-600" },
               { label: "Alerts", val: alertCount, color: alertCount > 0 ? "border-red-300" : "border-gray-200", text: alertCount > 0 ? "text-red-600" : "text-gray-400" },
             ].map(({ label, val, color, text }) => (
               <div key={label} className={`bg-white rounded-xl border-2 ${color} p-4`}>
@@ -407,7 +407,7 @@ export default function FleetStatusPage() {
           <div className="flex gap-1 mb-5 bg-white p-1.5 rounded-xl border-2 border-gray-200 w-fit">
             {(["all", "onhire", "available", "alerts"] as const).map(f => (
               <button key={f} onClick={() => setFilter(f)}
-                className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${filter === f ? "bg-[#01B000] text-white shadow-sm" : "text-gray-600 hover:bg-gray-100"}`}>
+                className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${filter === f ? "bg-[#1e3a8a] text-white shadow-sm" : "text-gray-600 hover:bg-gray-100"}`}>
                 {f === "all" ? `All (${cars.length})` : f === "onhire" ? `On Hire (${onHireCount})` : f === "available" ? `Available (${availableCount})` : `Alerts${alertCount > 0 ? ` (${alertCount})` : ""}`}
               </button>
             ))}
@@ -415,7 +415,7 @@ export default function FleetStatusPage() {
 
           {/* Car List */}
           {loading ? (
-            <div className="flex justify-center py-16"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#01B000]" /></div>
+            <div className="flex justify-center py-16"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#1e3a8a]" /></div>
           ) : filtered.length === 0 ? (
             <div className="bg-white rounded-xl border-2 border-gray-200 p-12 text-center">
               <p className="text-gray-500 text-lg">No cars match this filter</p>
@@ -461,7 +461,7 @@ export default function FleetStatusPage() {
                             {booking || overdue ? (
                               <div className="text-sm space-y-0.5">
                                 <div className="font-bold text-gray-900">{booking?.customerName || overdue?.customerName}</div>
-                                <a href={`tel:${booking?.customerPhone || overdue?.customerPhone}`} className="text-[#01B000] font-medium text-xs hover:underline">{booking?.customerPhone || overdue?.customerPhone}</a>
+                                <a href={`tel:${booking?.customerPhone || overdue?.customerPhone}`} className="text-[#1e3a8a] font-medium text-xs hover:underline">{booking?.customerPhone || overdue?.customerPhone}</a>
                                 {booking && <>
                                   <div className="text-xs text-gray-500">Pickup: <strong>{fmt(booking.pickupDate)}</strong></div>
                                   <div className={`text-xs font-medium ${car.hiringStatus === "overdue" ? "text-red-600" : "text-gray-700"}`}>
@@ -509,7 +509,7 @@ export default function FleetStatusPage() {
                           Edit Service
                         </button>
                         <button onClick={() => openPerCarBooking(car)}
-                          className="flex items-center justify-center gap-1 px-3 py-2 text-xs font-bold text-white bg-[#01B000] hover:bg-[#019500] rounded-lg transition-all">
+                          className="flex items-center justify-center gap-1 px-3 py-2 text-xs font-bold text-white bg-[#1e3a8a] hover:bg-[#172554] rounded-lg transition-all">
                           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
                           Add Booking
                         </button>
@@ -541,7 +541,7 @@ export default function FleetStatusPage() {
                 <label className="block text-sm font-bold text-gray-700 mb-1">License / Number Plate</label>
                 <input type="text" placeholder="e.g. RAA 001A" value={serviceForm.licensePlate}
                   onChange={e => setServiceForm(p => ({ ...p, licensePlate: e.target.value.toUpperCase() }))}
-                  className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none font-mono tracking-widest text-lg" />
+                  className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none font-mono tracking-widest text-lg" />
               </div>
               <div className="border-t border-gray-100 pt-4">
                 <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">🛡️ Insurance</p>
@@ -550,13 +550,13 @@ export default function FleetStatusPage() {
                     <label className="block text-xs font-bold text-gray-600 mb-1">Start Date</label>
                     <input type="date" value={serviceForm.insuranceStart}
                       onChange={e => setServiceForm(p => ({ ...p, insuranceStart: e.target.value }))}
-                      className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-sm" />
+                      className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-sm" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-gray-600 mb-1">Expiry Date</label>
                     <input type="date" value={serviceForm.insuranceEnd}
                       onChange={e => setServiceForm(p => ({ ...p, insuranceEnd: e.target.value }))}
-                      className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-sm" />
+                      className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-sm" />
                   </div>
                 </div>
               </div>
@@ -567,13 +567,13 @@ export default function FleetStatusPage() {
                     <label className="block text-xs font-bold text-gray-600 mb-1">Last Oil Change</label>
                     <input type="date" value={serviceForm.lastOilChange}
                       onChange={e => setServiceForm(p => ({ ...p, lastOilChange: e.target.value }))}
-                      className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-sm" />
+                      className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-sm" />
                   </div>
                   <div>
                     <label className="block text-xs font-bold text-gray-600 mb-1">Next Due Date</label>
                     <input type="date" value={serviceForm.nextOilChange}
                       onChange={e => setServiceForm(p => ({ ...p, nextOilChange: e.target.value }))}
-                      className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-sm" />
+                      className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-sm" />
                   </div>
                 </div>
               </div>
@@ -581,7 +581,7 @@ export default function FleetStatusPage() {
             <div className="flex gap-3 p-6 border-t border-gray-200">
               <button onClick={() => setEditCar(null)} className="flex-1 px-4 py-2.5 border-2 border-gray-300 text-gray-700 rounded-lg font-bold hover:bg-gray-50">Cancel</button>
               <button onClick={saveService} disabled={savingService}
-                className="flex-1 px-4 py-2.5 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] disabled:opacity-60 flex items-center justify-center gap-2">
+                className="flex-1 px-4 py-2.5 bg-[#1e3a8a] text-white rounded-lg font-bold hover:bg-[#172554] disabled:opacity-60 flex items-center justify-center gap-2">
                 {savingService && <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />}
                 Save Changes
               </button>

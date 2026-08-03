@@ -82,14 +82,14 @@ body {
 
 .ProseMirror blockquote {
   padding-left: 1rem;
-  border-left: 3px solid #01B000;
+  border-left: 3px solid #1e3a8a;
   margin: 1rem 0;
   font-style: italic;
   color: #6b7280;
 }
 
 .ProseMirror a {
-  color: #01B000;
+  color: #1e3a8a;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -186,14 +186,14 @@ body {
 
 .prose blockquote {
   padding-left: 1rem !important;
-  border-left: 3px solid #01B000 !important;
+  border-left: 3px solid #1e3a8a !important;
   margin: 1rem 0 !important;
   font-style: italic !important;
   color: #6b7280 !important;
 }
 
 .prose a {
-  color: #01B000 !important;
+  color: #1e3a8a !important;
   text-decoration: underline !important;
 }
 

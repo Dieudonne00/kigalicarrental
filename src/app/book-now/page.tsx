@@ -136,7 +136,7 @@ export default function BookNowPage() {
           {/* Trip Details Card */}
           <div className="bg-white rounded-xl shadow-sm border-2 border-gray-200 p-6 md:p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <svg className="w-6 h-6 text-[#01B000]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-6 h-6 text-[#1e3a8a]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               Trip Details
@@ -155,7 +155,7 @@ export default function BookNowPage() {
                   required
                   value={formData.pickupDate}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                 />
               </div>
 
@@ -171,7 +171,7 @@ export default function BookNowPage() {
                   required
                   value={formData.pickupTime}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                 />
               </div>
 
@@ -187,7 +187,7 @@ export default function BookNowPage() {
                   required
                   value={formData.returnDate}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                 />
               </div>
 
@@ -203,7 +203,7 @@ export default function BookNowPage() {
                   required
                   value={formData.returnTime}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                 />
               </div>
 
@@ -220,7 +220,7 @@ export default function BookNowPage() {
                   value={formData.pickupLocation}
                   onChange={handleChange}
                   placeholder="e.g., Kigali International Airport, Hotel name, Address"
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                 />
               </div>
 
@@ -236,7 +236,7 @@ export default function BookNowPage() {
                         setFormData({ ...formData, dropoffLocation: "" });
                       }
                     }}
-                    className="w-5 h-5 text-[#01B000] border-gray-300 rounded focus:ring-[#01B000]"
+                    className="w-5 h-5 text-[#1e3a8a] border-gray-300 rounded focus:ring-[#1e3a8a]"
                   />
                   <span className="text-sm font-medium text-gray-700">
                     Drop-off at the same location
@@ -258,7 +258,7 @@ export default function BookNowPage() {
                     value={formData.dropoffLocation}
                     onChange={handleChange}
                     placeholder="e.g., Kigali International Airport, Hotel name, Address"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                   />
                 </div>
               )}
@@ -268,7 +268,7 @@ export default function BookNowPage() {
           {/* Car Preferences Card */}
           <div className="bg-white rounded-xl shadow-sm border-2 border-gray-200 p-6 md:p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <svg className="w-6 h-6 text-[#01B000]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-6 h-6 text-[#1e3a8a]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
               </svg>
               Your Preferences
@@ -285,7 +285,7 @@ export default function BookNowPage() {
                   name="carType"
                   value={formData.carType}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                 >
                   <option value="">Any type</option>
                   <option value="sedan">Sedan</option>
@@ -307,7 +307,7 @@ export default function BookNowPage() {
                   name="transmission"
                   value={formData.transmission}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                 >
                   <option value="">No preference</option>
                   <option value="automatic">Automatic</option>
@@ -325,7 +325,7 @@ export default function BookNowPage() {
                   name="seats"
                   value={formData.seats}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                 >
                   <option value="">Select number</option>
                   <option value="2">2 passengers</option>
@@ -346,7 +346,7 @@ export default function BookNowPage() {
                   name="budget"
                   value={formData.budget}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                 >
                   <option value="">Select budget</option>
                   <option value="0-50">$0 - $50</option>
@@ -367,7 +367,7 @@ export default function BookNowPage() {
                   name="purpose"
                   value={formData.purpose}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                 >
                   <option value="">Select purpose</option>
                   <option value="business">Business Trip</option>
@@ -391,7 +391,7 @@ export default function BookNowPage() {
                   onChange={handleChange}
                   rows={4}
                   placeholder="Tell us about any special requirements: child seats, GPS, driver, luggage space, etc."
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900 resize-none"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900 resize-none"
                 ></textarea>
               </div>
             </div>
@@ -400,7 +400,7 @@ export default function BookNowPage() {
           {/* Contact Information Card */}
           <div className="bg-white rounded-xl shadow-sm border-2 border-gray-200 p-6 md:p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <svg className="w-6 h-6 text-[#01B000]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-6 h-6 text-[#1e3a8a]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
               Contact Information
@@ -420,7 +420,7 @@ export default function BookNowPage() {
                   value={formData.fullName}
                   onChange={handleChange}
                   placeholder="Enter your full name"
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                 />
               </div>
 
@@ -437,7 +437,7 @@ export default function BookNowPage() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Enter your email address"
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                 />
               </div>
 
@@ -454,7 +454,7 @@ export default function BookNowPage() {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="Enter your phone number"
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                 />
               </div>
 
@@ -470,7 +470,7 @@ export default function BookNowPage() {
                   value={formData.whatsapp}
                   onChange={handleChange}
                   placeholder="If different from phone number"
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                 />
               </div>
             </div>
@@ -480,14 +480,14 @@ export default function BookNowPage() {
           <div className="flex flex-col sm:flex-row gap-4">
             <button
               type="submit"
-              className="flex-1 bg-[#01B000] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#019500] transition-all shadow-lg hover:shadow-xl"
+              className="flex-1 bg-[#1e3a8a] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#172554] transition-all shadow-lg hover:shadow-xl"
             >
               Submit Booking Request
             </button>
             <button
               type="button"
               onClick={() => window.location.href = '/fleet'}
-              className="flex-1 bg-white border-2 border-gray-200 text-gray-700 px-8 py-4 rounded-lg font-bold hover:border-[#01B000] hover:text-[#01B000] transition-all"
+              className="flex-1 bg-white border-2 border-gray-200 text-gray-700 px-8 py-4 rounded-lg font-bold hover:border-[#1e3a8a] hover:text-[#1e3a8a] transition-all"
             >
               Browse Fleet Instead
             </button>
@@ -523,8 +523,8 @@ export default function BookNowPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Feature 1 */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-[#01B000]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-[#01B000]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="w-16 h-16 bg-[#1e3a8a]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-[#1e3a8a]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
@@ -536,8 +536,8 @@ export default function BookNowPage() {
 
             {/* Feature 2 */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-[#01B000]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-[#01B000]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="w-16 h-16 bg-[#1e3a8a]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-[#1e3a8a]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
@@ -549,8 +549,8 @@ export default function BookNowPage() {
 
             {/* Feature 3 */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-[#01B000]/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-[#01B000]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="w-16 h-16 bg-[#1e3a8a]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-[#1e3a8a]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
@@ -579,10 +579,10 @@ export default function BookNowPage() {
 
             {/* Icon */}
             <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${
-              modalContent.type === "success" ? "bg-green-100" : "bg-red-100"
+              modalContent.type === "success" ? "bg-blue-100" : "bg-red-100"
             }`}>
               {modalContent.type === "success" ? (
-                <svg className="w-8 h-8 text-green-600" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-8 h-8 text-blue-600" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               ) : (
@@ -594,7 +594,7 @@ export default function BookNowPage() {
 
             {/* Title */}
             <h3 className={`text-2xl font-bold text-center mb-3 ${
-              modalContent.type === "success" ? "text-green-600" : "text-red-600"
+              modalContent.type === "success" ? "text-blue-600" : "text-red-600"
             }`}>
               {modalContent.type === "success" ? "Success!" : "Error"}
             </h3>
@@ -628,7 +628,7 @@ export default function BookNowPage() {
                     });
                     window.location.href = `/pay?${params.toString()}`;
                   }}
-                  className="w-full px-6 py-3 rounded-lg font-bold text-white bg-[#01B000] hover:bg-[#019500] transition-all flex items-center justify-center gap-2"
+                  className="w-full px-6 py-3 rounded-lg font-bold text-white bg-[#1e3a8a] hover:bg-[#172554] transition-all flex items-center justify-center gap-2"
                 >
                   <span>💳</span> Pay Online Now
                 </button>

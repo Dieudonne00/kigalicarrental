@@ -47,12 +47,12 @@ export default function Header() {
         .kch-nav{display:none;align-items:center;gap:0}
         @media(min-width:1024px){.kch-nav{display:flex}.kch-hamburger{display:none!important}.kch-cta{display:flex!important}}
         .kch-link{display:flex;align-items:center;padding:8px 11px;font-size:13.5px;font-weight:600;color:#111;text-decoration:none;border-radius:5px;letter-spacing:.01em;transition:color .15s,background .15s;white-space:nowrap}
-        .kch-link:hover{color:#01920f;background:#f2faf2}
+        .kch-link:hover{color:#1e3a8a;background:#f2faf2}
         .kch-cta{display:none;align-items:center;gap:14px;flex-shrink:0}
         .kch-phone{font-size:13px;font-weight:700;color:#111;text-decoration:none;letter-spacing:.01em;transition:color .15s;white-space:nowrap}
-        .kch-phone:hover{color:#01920f}
-        .kch-book{display:inline-flex;align-items:center;background:#01920f;color:#fff;font-size:13.5px;font-weight:700;padding:10px 22px;border-radius:5px;text-decoration:none;letter-spacing:.025em;transition:background .15s,transform .1s;white-space:nowrap}
-        .kch-book:hover{background:#016e0b;transform:translateY(-1px)}
+        .kch-phone:hover{color:#1e3a8a}
+        .kch-book{display:inline-flex;align-items:center;background:#1e3a8a;color:#fff;font-size:13.5px;font-weight:700;padding:10px 22px;border-radius:5px;text-decoration:none;letter-spacing:.025em;transition:background .15s,transform .1s;white-space:nowrap}
+        .kch-book:hover{background:#172554;transform:translateY(-1px)}
         .kch-book:active{transform:translateY(0)}
         .kch-hamburger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;padding:8px;background:none;border:none;cursor:pointer;border-radius:5px;transition:background .15s}
         .kch-hamburger:hover{background:#f5f5f5}
@@ -72,12 +72,12 @@ export default function Header() {
         .kch-drawer-close:hover{background:#e8e8e8}
         .kch-drawer-nav{flex:1;overflow-y:auto;padding:4px 0}
         .kch-mob-link{display:block;padding:14px 24px;font-size:14px;font-weight:600;color:#111;text-decoration:none;border-bottom:1px solid #f4f4f4;transition:background .12s,color .12s}
-        .kch-mob-link:hover{background:#f2faf2;color:#01920f}
+        .kch-mob-link:hover{background:#f2faf2;color:#1e3a8a}
         .kch-drawer-foot{padding:20px 24px;border-top:1px solid #ebebeb;flex-shrink:0;display:flex;flex-direction:column;gap:10px}
-        .kch-drawer-book{display:block;text-align:center;background:#01920f;color:#fff;font-size:14px;font-weight:700;padding:13px;border-radius:5px;text-decoration:none;letter-spacing:.025em;transition:background .15s}
-        .kch-drawer-book:hover{background:#016e0b}
+        .kch-drawer-book{display:block;text-align:center;background:#1e3a8a;color:#fff;font-size:14px;font-weight:700;padding:13px;border-radius:5px;text-decoration:none;letter-spacing:.025em;transition:background .15s}
+        .kch-drawer-book:hover{background:#172554}
         .kch-drawer-call{display:block;text-align:center;border:1.5px solid #ddd;color:#111;font-size:13.5px;font-weight:600;padding:12px;border-radius:5px;text-decoration:none;transition:border-color .15s,color .15s}
-        .kch-drawer-call:hover{border-color:#01920f;color:#01920f}
+        .kch-drawer-call:hover{border-color:#1e3a8a;color:#1e3a8a}
         .kch-spacer{height:70px}
       `}</style>
 
@@ -86,7 +86,7 @@ export default function Header() {
 
           <Link href="/" className="kch-logo" aria-label="Kigali Car Rental — Home">
             <Image
-              src="https://kigalicarhire.b-cdn.net/kigalicarhire.png"
+              src="/logo.svg"
               alt="Kigali Car Rental — Car Hire Rwanda"
               width={148}
               height={48}
@@ -105,8 +105,8 @@ export default function Header() {
           </nav>
 
           <div className="kch-cta">
-            <a href="tel:+250788892976" className="kch-phone" aria-label="Call Kigali Car Rental">
-              +250 788 892 976
+            <a href="tel:+250787619387" className="kch-phone" aria-label="Call Kigali Car Rental">
+              +250 787 619 387
             </a>
             <Link href="/book-now" className="kch-book">
               Book Now
@@ -145,7 +145,7 @@ export default function Header() {
           >
             <div className="kch-drawer-head">
               <Image
-                src="https://kigalicarhire.b-cdn.net/kigalicarhire.png"
+                src="/logo.svg"
                 alt="Kigali Car Rental"
                 width={120}
                 height={38}
@@ -182,8 +182,8 @@ export default function Header() {
               <Link href="/book-now" className="kch-drawer-book" onClick={() => setMobileOpen(false)}>
                 Book Now
               </Link>
-              <a href="tel:+250788892976" className="kch-drawer-call" aria-label="Call Kigali Car Rental">
-                Call +250 788 892 976
+              <a href="tel:+250787619387" className="kch-drawer-call" aria-label="Call Kigali Car Rental">
+                Call +250 787 619 387
               </a>
             </div>
           </div>

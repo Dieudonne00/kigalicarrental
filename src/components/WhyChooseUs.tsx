@@ -58,7 +58,7 @@ const reasons = [
     ),
     title: "Trusted Since 1990",
     description:
-      "Over 35 years serving visitors and residents in Rwanda. Thousands of happy customers choose Kigali Car Hire for reliable, quality service.",
+      "Over 35 years serving visitors and residents in Rwanda. Thousands of happy customers choose Kigali Car Rental for reliable, quality service.",
   },
 ];
 
@@ -82,9 +82,9 @@ export default function WhyChooseUs() {
           {reasons.map((r, i) => (
             <div
               key={i}
-              className="flex gap-4 p-6 rounded-2xl border border-gray-100 hover:border-[#01B000]/40 hover:shadow-md transition-all duration-300 group"
+              className="flex gap-4 p-6 rounded-2xl border border-gray-100 hover:border-[#1e3a8a]/40 hover:shadow-md transition-all duration-300 group"
             >
-              <div className="shrink-0 w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-[#01B000] group-hover:bg-[#01B000] group-hover:text-white transition-all duration-300">
+              <div className="shrink-0 w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-[#1e3a8a] group-hover:bg-[#1e3a8a] group-hover:text-white transition-all duration-300">
                 {r.icon}
               </div>
               <div>
@@ -98,7 +98,7 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Bottom CTA strip */}
-        <div className="bg-gradient-to-r from-[#01B000] to-[#019500] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-white">
+        <div className="bg-gradient-to-r from-[#1e3a8a] to-[#172554] rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-white">
           <div>
             <h3 className="text-2xl font-bold mb-1 font-[family-name:var(--font-plus-jakarta)]">
               Ready to rent a car in Kigali?
@@ -109,14 +109,14 @@ export default function WhyChooseUs() {
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <a
-              href="tel:+250788892976"
-              className="px-6 py-3 bg-white text-[#01B000] font-bold rounded-xl hover:bg-gray-50 transition-all shadow text-center"
+              href="tel:+250787619387"
+              className="px-6 py-3 bg-white text-[#1e3a8a] font-bold rounded-xl hover:bg-gray-50 transition-all shadow text-center"
             >
-              +250 788 892 976
+              +250 787 619 387
             </a>
             <a
               href="/book-now"
-              className="px-6 py-3 bg-white/10 border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#01B000] transition-all text-center"
+              className="px-6 py-3 bg-white/10 border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-[#1e3a8a] transition-all text-center"
             >
               Book Online
             </a>

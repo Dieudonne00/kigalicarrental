@@ -69,9 +69,9 @@ export default function ServicesSection() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl border-2 border-gray-200 p-4 md:p-8 hover:border-[#01B000] transition-all duration-300 hover:shadow-lg group"
+              className="bg-white rounded-xl border-2 border-gray-200 p-4 md:p-8 hover:border-[#1e3a8a] transition-all duration-300 hover:shadow-lg group"
             >
-              <div className="w-10 h-10 md:w-16 md:h-16 bg-green-50 rounded-xl flex items-center justify-center text-[#01B000] mb-3 md:mb-6 group-hover:bg-[#01B000] group-hover:text-white transition-all duration-300">
+              <div className="w-10 h-10 md:w-16 md:h-16 bg-blue-50 rounded-xl flex items-center justify-center text-[#1e3a8a] mb-3 md:mb-6 group-hover:bg-[#1e3a8a] group-hover:text-white transition-all duration-300">
                 <div className="scale-75 md:scale-100">{service.icon}</div>
               </div>
 
@@ -86,7 +86,7 @@ export default function ServicesSection() {
               <ul className="space-y-1 md:space-y-2">
                 {service.features.map((feature, i) => (
                   <li key={i} className="flex items-center text-[10px] md:text-sm">
-                    <svg className="w-3 h-3 md:w-5 md:h-5 text-[#01B000] mr-1 md:mr-2 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-3 h-3 md:w-5 md:h-5 text-[#1e3a8a] mr-1 md:mr-2 flex-shrink-0" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                       <path d="M5 13l4 4L19 7" />
                     </svg>
                     <span className="text-gray-700">{feature}</span>
@@ -109,17 +109,17 @@ export default function ServicesSection() {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="tel:+250788892976"
-                className="inline-flex items-center justify-center px-6 py-3 bg-[#01B000] text-white font-bold rounded-lg hover:bg-[#019500] transition-all"
+                href="tel:+250787619387"
+                className="inline-flex items-center justify-center px-6 py-3 bg-[#1e3a8a] text-white font-bold rounded-lg hover:bg-[#172554] transition-all"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                Call: +250 788 892 976
+                Call: +250 787 619 387
               </a>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 text-gray-900 font-bold rounded-lg hover:border-[#01B000] hover:bg-[#01B000] hover:text-white transition-all"
+                className="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 text-gray-900 font-bold rounded-lg hover:border-[#1e3a8a] hover:bg-[#1e3a8a] hover:text-white transition-all"
               >
                 Get a Free Quote
               </Link>

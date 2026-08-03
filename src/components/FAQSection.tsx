@@ -25,11 +25,11 @@ const faqs = [
   },
   {
     q: "Is Kigali car rental available 24 hours a day?",
-    a: "Yes. We are available 24/7 for bookings, airport pickups, and roadside assistance. You can reach us by phone (+250 788 892 976), WhatsApp or email at kigalicarhire1990@gmail.com at any time.",
+    a: "Yes. We are available 24/7 for bookings, airport pickups, and roadside assistance. You can reach us by phone (+250 787 619 387), WhatsApp or email at info@kigalicarrental.site at any time.",
   },
   {
-    q: "Is Kigali Car Hire the same as Kigali car rental?",
-    a: "Yes. Kigali Car Hire and Kigali car rental refer to the same trusted service — renting a vehicle in Kigali, Rwanda. Whichever term you search, you'll find the same fleet, the same rates from $30 per day, and the same 24/7 support.",
+    q: "Is Kigali Car Rental the same as Kigali car rental?",
+    a: "Yes. Kigali Car Rental and Kigali car rental refer to the same trusted service — renting a vehicle in Kigali, Rwanda. Whichever term you search, you'll find the same fleet, the same rates from $30 per day, and the same 24/7 support.",
   },
 ];
 
@@ -57,7 +57,7 @@ export default function FAQSection() {
               <div
                 key={i}
                 className={`bg-white rounded-2xl border-2 transition-all duration-300 ${
-                  isOpen ? "border-[#01B000] shadow-md" : "border-gray-100 hover:border-gray-200"
+                  isOpen ? "border-[#1e3a8a] shadow-md" : "border-gray-100 hover:border-gray-200"
                 }`}
               >
                 <button
@@ -70,7 +70,7 @@ export default function FAQSection() {
                   </span>
                   <span
                     className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
-                      isOpen ? "bg-[#01B000] text-white rotate-45" : "bg-gray-100 text-gray-500"
+                      isOpen ? "bg-[#1e3a8a] text-white rotate-45" : "bg-gray-100 text-gray-500"
                     }`}
                   >
                     <svg className="w-4 h-4" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" viewBox="0 0 24 24" stroke="currentColor">
@@ -96,8 +96,8 @@ export default function FAQSection() {
         {/* Bottom note */}
         <p className="text-center text-gray-500 mt-8 text-sm">
           Still have questions?{" "}
-          <a href="tel:+250788892976" className="text-[#01B000] font-semibold hover:underline">
-            Call us at +250 788 892 976
+          <a href="tel:+250787619387" className="text-[#1e3a8a] font-semibold hover:underline">
+            Call us at +250 787 619 387
           </a>{" "}
           — we are available 24/7.
         </p>

@@ -2,21 +2,20 @@ import { Metadata } from "next";
 import Link from "next/link";
 import ServicePageFooter from "@/components/ServicePageFooter";
 
-const SITE = "https://kigalicarhire.rw";
+const SITE = "https://kigalicarrental.site";
 
 export const metadata: Metadata = {
-  title: "NGO Car Hire Kigali | UN Agency Vehicle Hire Rwanda | Embassy Car Rental - Kigali Car Hire",
+  title: "NGO Car Hire Kigali | UN Agency Vehicle Hire Rwanda | Embassy Car Rental - Kigali Car Rental",
   description:
-    "NGO car hire in Kigali for UN agencies, INGOs, embassies, and diplomatic missions in Rwanda. Monthly contracts, fleet hire, VAT exemption invoicing, and 24/7 support. Kigali Car Hire — trusted by the international community since 1990.",
-  keywords:
-    "ngo car hire kigali, un car hire rwanda, embassy car hire kigali, ingo vehicle hire rwanda, humanitarian car hire kigali, ngo car rental rwanda, un agency car hire kigali, ngo transport kigali, diplomatic car hire rwanda, humanitarian vehicle rwanda, ngo fleet hire kigali, unhcr car hire rwanda, undp car hire rwanda, world bank car hire kigali, red cross car hire rwanda, ngo car hire rwanda monthly, international organisation car hire kigali, programme vehicle hire rwanda",
+    "NGO car hire in Kigali for UN agencies, INGOs, embassies, and diplomatic missions in Rwanda. Monthly contracts, fleet hire, VAT exemption invoicing, and 24/7 support. Kigali Car Rental — trusted by the international community since 1990.",
+  keywords: "Kigali car rental",
   alternates: { canonical: `${SITE}/ngo-car-hire-kigali` },
   openGraph: {
     title: "NGO Car Hire Kigali | UN Agency Vehicle Hire Rwanda | Embassy Car Rental",
     description:
       "NGO and UN agency car hire in Kigali. Monthly contracts, fleet hire, and VAT exemption invoicing for humanitarian and diplomatic organisations in Rwanda.",
     url: `${SITE}/ngo-car-hire-kigali`,
-    siteName: "Kigali Car Hire",
+    siteName: "Kigali Car Rental",
     type: "website",
     locale: "en_RW",
   },
@@ -31,7 +30,7 @@ const faqSchema = {
       name: "Do you offer NGO car hire contracts in Kigali?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Kigali Car Hire has dedicated vehicle hire contracts for NGOs, INGOs, UN agencies, and humanitarian organisations working in Rwanda. We offer monthly invoicing, consolidated billing for multi-vehicle fleets, and documentation for VAT exemption for qualifying international organisations.",
+        text: "Yes. Kigali Car Rental has dedicated vehicle hire contracts for NGOs, INGOs, UN agencies, and humanitarian organisations working in Rwanda. We offer monthly invoicing, consolidated billing for multi-vehicle fleets, and documentation for VAT exemption for qualifying international organisations.",
       },
     },
     {
@@ -39,7 +38,7 @@ const faqSchema = {
       name: "Which UN agencies and NGOs do you work with in Rwanda?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Kigali Car Hire provides vehicles for staff from UNHCR, UNDP, UNICEF, WFP, WHO, the African Development Bank, the World Bank, Oxfam, Save the Children, MSF, Partners In Health, GIZ, USAID implementing partners, and many other international organisations operating in Rwanda.",
+        text: "Kigali Car Rental provides vehicles for staff from UNHCR, UNDP, UNICEF, WFP, WHO, the African Development Bank, the World Bank, Oxfam, Save the Children, MSF, Partners In Health, GIZ, USAID implementing partners, and many other international organisations operating in Rwanda.",
       },
     },
     {
@@ -55,7 +54,7 @@ const faqSchema = {
       name: "Do you provide VAT exemption documentation for NGO car hire in Rwanda?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Kigali Car Hire works with the Rwanda Revenue Authority exemption process and can provide documentation supporting VAT exemption claims for qualifying international organisations and diplomatic missions. Contact us with your organisation's exemption letter and we will process the required paperwork.",
+        text: "Yes. Kigali Car Rental works with the Rwanda Revenue Authority exemption process and can provide documentation supporting VAT exemption claims for qualifying international organisations and diplomatic missions. Contact us with your organisation's exemption letter and we will process the required paperwork.",
       },
     },
     {
@@ -63,7 +62,7 @@ const faqSchema = {
       name: "Can we hire a fleet of cars for a humanitarian operation in Rwanda?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Kigali Car Hire can supply fleets of 2 to 20 vehicles for NGO operations, emergency responses, and large-scale field missions anywhere in Rwanda. Fleet contracts include a dedicated operations coordinator, consolidated monthly invoicing, and a replacement vehicle guarantee.",
+        text: "Yes. Kigali Car Rental can supply fleets of 2 to 20 vehicles for NGO operations, emergency responses, and large-scale field missions anywhere in Rwanda. Fleet contracts include a dedicated operations coordinator, consolidated monthly invoicing, and a replacement vehicle guarantee.",
       },
     },
   ],
@@ -73,7 +72,7 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Kigali Car Hire", item: SITE },
+    { "@type": "ListItem", position: 1, name: "Kigali Car Rental", item: SITE },
     { "@type": "ListItem", position: 2, name: "NGO Car Hire Kigali", item: `${SITE}/ngo-car-hire-kigali` },
   ],
 };
@@ -138,7 +137,7 @@ export default function NgoCarHireKigaliPage() {
             <Link href="/book-now" className="bg-white text-blue-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-all shadow-lg">
               Request NGO Quote
             </Link>
-            <a href="mailto:kigalicarhire1990@gmail.com" className="bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-600 transition-all border border-white/30">
+            <a href="mailto:info@kigalicarrental.site" className="bg-blue-700 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-600 transition-all border border-white/30">
               Email Our Team
             </a>
           </div>
@@ -197,7 +196,7 @@ export default function NgoCarHireKigaliPage() {
               </h2>
               <div className="space-y-4 text-gray-600">
                 <p>
-                  Kigali is home to over 300 international NGOs, UN agencies, and humanitarian organisations — making it one of Africa's busiest aid and development hubs. Kigali Car Hire has been providing <strong className="text-gray-900">NGO vehicle hire in Rwanda</strong> since 1990 and understands the specific requirements of the international community.
+                  Kigali is home to over 300 international NGOs, UN agencies, and humanitarian organisations — making it one of Africa's busiest aid and development hubs. Kigali Car Rental has been providing <strong className="text-gray-900">NGO vehicle hire in Rwanda</strong> since 1990 and understands the specific requirements of the international community.
                 </p>
                 <p>
                   Our <strong className="text-gray-900">NGO car hire contracts</strong> are structured around the way humanitarian organisations work: monthly billing cycles, consolidated invoices for multi-vehicle fleets, replacement vehicle guarantees so your programme never loses transport, and documentation supporting VAT exemption for qualifying international organisations.
@@ -279,7 +278,7 @@ export default function NgoCarHireKigaliPage() {
       {/* Internal links */}
       <section className="py-10 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto px-4">
-          <h3 className="font-bold text-gray-900 mb-4">Related Kigali Car Hire Services</h3>
+          <h3 className="font-bold text-gray-900 mb-4">Related Kigali Car Rental Services</h3>
           <div className="flex flex-wrap gap-3">
             {[
               { label: "Corporate Car Hire Kigali", href: "/corporate-car-hire-kigali" },
@@ -306,11 +305,11 @@ export default function NgoCarHireKigaliPage() {
             Contact our team with your organisation name, required vehicles, and deployment dates. We respond within 2 hours with a full proposal.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:kigalicarhire1990@gmail.com" className="bg-white text-blue-900 px-8 py-4 rounded-lg font-bold hover:bg-blue-50 transition-all shadow-lg">
+            <a href="mailto:info@kigalicarrental.site" className="bg-white text-blue-900 px-8 py-4 rounded-lg font-bold hover:bg-blue-50 transition-all shadow-lg">
               Email Our Operations Team
             </a>
-            <a href="https://wa.me/250788892976" target="_blank" rel="noopener noreferrer" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-blue-900 transition-all">
-              WhatsApp +250 788 892 976
+            <a href="https://wa.me/250787619387" target="_blank" rel="noopener noreferrer" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-blue-900 transition-all">
+              WhatsApp +250 787 619 387
             </a>
           </div>
         </div>

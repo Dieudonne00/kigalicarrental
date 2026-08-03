@@ -69,7 +69,7 @@ export default function CarsPage() {
           </div>
           <button
             onClick={() => router.push("/manager/cars/add")}
-            className="bg-[#01B000] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#019500] transition-all shadow-md flex items-center gap-2"
+            className="bg-[#1e3a8a] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#172554] transition-all shadow-md flex items-center gap-2"
           >
             <svg
               className="w-5 h-5"
@@ -178,7 +178,7 @@ export default function CarsPage() {
                         <span
                           className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold ${
                             car.available
-                              ? "bg-green-100 text-green-800"
+                              ? "bg-blue-100 text-blue-800"
                               : "bg-red-100 text-red-800"
                           }`}
                         >

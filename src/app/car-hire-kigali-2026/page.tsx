@@ -2,25 +2,24 @@ import { Metadata } from "next";
 import Link from "next/link";
 import ServicePageFooter from "@/components/ServicePageFooter";
 
-const SITE = "https://kigalicarhire.rw";
+const SITE = "https://kigalicarrental.site";
 const OG_IMAGE = "https://kigalicarhire.b-cdn.net/hero%20section%20cars.png";
 
 export const metadata: Metadata = {
-  title: "Car Hire Kigali 2026 | Best Car Rental Rwanda 2026 Guide - Kigali Car Hire",
+  title: "Car Hire Kigali 2026 | Best Car Rental Rwanda 2026 Guide - Kigali Car Rental",
   description:
-    "Car hire Kigali 2026 — complete guide to renting a car in Rwanda in 2026. Updated prices, new fleet additions, 2026 travel tips, and how to book. From $30/day. Kigali Car Hire, Rwanda's most trusted car rental.",
-  keywords:
-    "car hire kigali 2026, kigali car rental 2026, rent a car kigali 2026, best car hire kigali 2026, car hire rwanda 2026, rwanda car rental 2026, self drive rwanda 2026, kigali car hire guide 2026, car rental kigali prices 2026, 4x4 hire rwanda 2026, gorilla trekking car hire 2026, airport transfer kigali 2026, cheap car hire kigali 2026, kigali car hire rates 2026, rwanda road trip 2026",
+    "Car hire Kigali 2026 — complete guide to renting a car in Rwanda in 2026. Updated prices, new fleet additions, 2026 travel tips, and how to book. From $30/day. Kigali Car Rental, Rwanda's most trusted car rental.",
+  keywords: "Kigali car rental",
   alternates: { canonical: `${SITE}/car-hire-kigali-2026` },
   openGraph: {
     title: "Car Hire Kigali 2026 | Best Car Rental Rwanda 2026 Guide",
     description:
       "Complete 2026 guide to car hire in Kigali. Updated prices, fleet details, booking tips, and Rwanda travel advice. From $30/day.",
     url: `${SITE}/car-hire-kigali-2026`,
-    siteName: "Kigali Car Hire",
+    siteName: "Kigali Car Rental",
     type: "website",
     locale: "en_RW",
-    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Car Hire Kigali 2026 — Kigali Car Hire Rwanda" }],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Car Hire Kigali 2026 — Kigali Car Rental Rwanda" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -47,7 +46,7 @@ const faqSchema = {
       name: "What is the best car hire company in Kigali in 2026?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Kigali Car Hire is Rwanda's most trusted car rental company in 2026 with a 4.9 out of 5 Google rating from 38 verified reviews. We have operated in Rwanda since 1990 and offer self-drive cars, chauffeur-driven vehicles, airport transfers, and safari car hire across all of Rwanda and East Africa.",
+        text: "Kigali Car Rental is Rwanda's most trusted car rental company in 2026 with a 4.9 out of 5 Google rating from 38 verified reviews. We have operated in Rwanda since 1990 and offer self-drive cars, chauffeur-driven vehicles, airport transfers, and safari car hire across all of Rwanda and East Africa.",
       },
     },
     {
@@ -81,7 +80,7 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Kigali Car Hire", item: SITE },
+    { "@type": "ListItem", position: 1, name: "Kigali Car Rental", item: SITE },
     { "@type": "ListItem", position: 2, name: "Car Hire Kigali 2026", item: `${SITE}/car-hire-kigali-2026` },
   ],
 };
@@ -108,9 +107,9 @@ const tips2026 = [
   { tip: "Book your car with your gorilla permit", detail: "Gorilla trekking permits for Rwanda in 2026 cost $1,500. Book your 4x4 car hire at the same time — both sell out months in advance during high season." },
   { tip: "Fuel in Rwanda is widely available", detail: "Petrol stations are available throughout Kigali and in all major towns. Rural stations exist in Musanze, Rubavu, Huye, and Kayonza. Fill up before entering national parks." },
   { tip: "Rwanda drives on the right", detail: "Rwanda uses right-hand traffic. Most hire cars are left-hand drive. Roads in Kigali are generally good. Upcountry roads vary — a 4x4 is recommended outside main tarmac routes." },
-  { tip: "Free delivery anywhere in Kigali", detail: "Kigali Car Hire delivers and collects your vehicle from any hotel, office, or residential address in Kigali at no extra charge. Airport pickup is also available 24/7." },
+  { tip: "Free delivery anywhere in Kigali", detail: "Kigali Car Rental delivers and collects your vehicle from any hotel, office, or residential address in Kigali at no extra charge. Airport pickup is also available 24/7." },
   { tip: "Pay in USD, RWF, or mobile money", detail: "We accept US dollars, Rwandan francs, MTN Mobile Money, Airtel Money, and bank transfers. No credit card required. No hidden fees or surprise charges." },
-  { tip: "WhatsApp is the fastest way to book", detail: "Send us a message on WhatsApp (+250 788 892 976) with your pickup date, number of days, and vehicle preference. We reply within 30 minutes and confirm your booking same day." },
+  { tip: "WhatsApp is the fastest way to book", detail: "Send us a message on WhatsApp (+250 787 619 387) with your pickup date, number of days, and vehicle preference. We reply within 30 minutes and confirm your booking same day." },
 ];
 
 export default function CarHireKigali2026Page() {
@@ -120,7 +119,7 @@ export default function CarHireKigali2026Page() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#01B000] to-[#017A00] text-white py-20 md:py-32">
+      <section className="bg-gradient-to-br from-[#1e3a8a] to-[#172554] text-white py-20 md:py-32">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <nav className="mb-6">
             <ol className="flex items-center justify-center gap-2 text-sm text-white/70">
@@ -139,13 +138,13 @@ export default function CarHireKigali2026Page() {
             The complete 2026 guide to car hire in Kigali, Rwanda. Updated prices, 50+ vehicles, and everything you need to plan your trip.
           </p>
           <p className="text-base text-white/80 max-w-2xl mx-auto mb-10">
-            Kigali Car Hire — Rwanda's most trusted car rental company since 1990. Rated 4.9/5 on Google. Self-drive from $30/day.
+            Kigali Car Rental — Rwanda's most trusted car rental company since 1990. Rated 4.9/5 on Google. Self-drive from $30/day.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/book-now" className="bg-white text-[#01B000] px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-50 transition-all shadow-lg">
+            <Link href="/book-now" className="bg-white text-[#1e3a8a] px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-all shadow-lg">
               Book for 2026
             </Link>
-            <Link href="/fleet" className="bg-[#019500] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#017A00] transition-all border border-white/30">
+            <Link href="/fleet" className="bg-[#172554] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#172554] transition-all border border-white/30">
               View Full Fleet
             </Link>
           </div>
@@ -160,13 +159,13 @@ export default function CarHireKigali2026Page() {
               Car Hire Prices in Kigali 2026
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              2026 car hire rates from Kigali Car Hire. All prices include third-party insurance, unlimited mileage, and free delivery in Kigali. Prices in USD.
+              2026 car hire rates from Kigali Car Rental. All prices include third-party insurance, unlimited mileage, and free delivery in Kigali. Prices in USD.
             </p>
           </div>
           <div className="overflow-x-auto rounded-2xl border-2 border-gray-200 bg-white shadow-sm">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-[#01B000] text-white">
+                <tr className="bg-[#1e3a8a] text-white">
                   <th className="px-5 py-4 text-left font-bold">Vehicle</th>
                   <th className="px-5 py-4 text-center font-bold">Daily</th>
                   <th className="px-5 py-4 text-center font-bold">Weekly</th>
@@ -178,11 +177,11 @@ export default function CarHireKigali2026Page() {
                 {prices2026.map((r, i) => (
                   <tr key={r.vehicle} className={i % 2 === 0 ? "bg-white" : "bg-gray-50"}>
                     <td className="px-5 py-4 font-semibold text-gray-900">{r.vehicle}</td>
-                    <td className="px-5 py-4 text-center font-bold text-[#01B000]">{r.daily}</td>
+                    <td className="px-5 py-4 text-center font-bold text-[#1e3a8a]">{r.daily}</td>
                     <td className="px-5 py-4 text-center text-gray-700">{r.weekly}</td>
                     <td className="px-5 py-4 text-center text-gray-700">{r.monthly}</td>
                     <td className="px-5 py-4 text-center hidden md:table-cell">
-                      <span className="bg-green-50 text-[#01B000] text-xs font-semibold px-3 py-1 rounded-full">{r.best}</span>
+                      <span className="bg-blue-50 text-[#1e3a8a] text-xs font-semibold px-3 py-1 rounded-full">{r.best}</span>
                     </td>
                   </tr>
                 ))}
@@ -190,10 +189,10 @@ export default function CarHireKigali2026Page() {
             </table>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-            <Link href="/fleet" className="inline-flex items-center justify-center gap-2 bg-[#01B000] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#019500] transition-all">
+            <Link href="/fleet" className="inline-flex items-center justify-center gap-2 bg-[#1e3a8a] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#172554] transition-all">
               Browse All Cars
             </Link>
-            <Link href="/book-now" className="inline-flex items-center justify-center gap-2 border-2 border-[#01B000] text-[#01B000] px-6 py-3 rounded-lg font-bold hover:bg-[#01B000] hover:text-white transition-all">
+            <Link href="/book-now" className="inline-flex items-center justify-center gap-2 border-2 border-[#1e3a8a] text-[#1e3a8a] px-6 py-3 rounded-lg font-bold hover:bg-[#1e3a8a] hover:text-white transition-all">
               Book Online
             </Link>
           </div>
@@ -213,13 +212,13 @@ export default function CarHireKigali2026Page() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {destinations2026.map((d) => (
-              <Link key={d.place} href={d.link} className="group bg-gray-50 rounded-xl border-2 border-gray-200 p-6 hover:border-[#01B000] transition-colors">
+              <Link key={d.place} href={d.link} className="group bg-gray-50 rounded-xl border-2 border-gray-200 p-6 hover:border-[#1e3a8a] transition-colors">
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="font-bold text-gray-900 group-hover:text-[#01B000] transition-colors">{d.place}</h3>
-                  <span className="bg-green-100 text-[#01B000] text-xs font-bold px-2 py-0.5 rounded-full flex-shrink-0 ml-2">{d.distance}</span>
+                  <h3 className="font-bold text-gray-900 group-hover:text-[#1e3a8a] transition-colors">{d.place}</h3>
+                  <span className="bg-blue-100 text-[#1e3a8a] text-xs font-bold px-2 py-0.5 rounded-full flex-shrink-0 ml-2">{d.distance}</span>
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed">{d.note}</p>
-                <span className="inline-flex items-center gap-1 text-[#01B000] text-sm font-semibold mt-4">
+                <span className="inline-flex items-center gap-1 text-[#1e3a8a] text-sm font-semibold mt-4">
                   Car hire details
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 5l7 7-7 7" /></svg>
                 </span>
@@ -242,7 +241,7 @@ export default function CarHireKigali2026Page() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {tips2026.map((t) => (
-              <div key={t.tip} className="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-[#01B000]/40 transition-colors">
+              <div key={t.tip} className="bg-white rounded-xl border-2 border-gray-200 p-6 hover:border-[#1e3a8a]/40 transition-colors">
                 <h3 className="font-bold text-gray-900 mb-2">{t.tip}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{t.detail}</p>
               </div>
@@ -259,19 +258,19 @@ export default function CarHireKigali2026Page() {
           </h2>
           <div className="space-y-5 text-gray-600 leading-relaxed">
             <p>
-              <strong className="text-gray-900">Car hire in Kigali in 2026</strong> is easier, more affordable, and more flexible than ever before. Kigali Car Hire offers over 50 vehicles across every category — from economy saloons at $30 per day to executive Land Cruisers at $120 per day — all available for self-drive or chauffeur-driven hire anywhere in Rwanda.
+              <strong className="text-gray-900">Car hire in Kigali in 2026</strong> is easier, more affordable, and more flexible than ever before. Kigali Car Rental offers over 50 vehicles across every category — from economy saloons at $30 per day to executive Land Cruisers at $120 per day — all available for self-drive or chauffeur-driven hire anywhere in Rwanda.
             </p>
             <p>
               Rwanda's roads have improved significantly in recent years, and 2026 is an excellent time to explore the country by car. The Kigali to Musanze road (for Volcanoes National Park gorilla trekking) is fully tarmacked and takes 2.5 hours. The Kigali to Gisenyi/Lake Kivu route is scenic and well-maintained. Off the main highways, a 4x4 vehicle is recommended.
             </p>
             <p>
-              <strong className="text-gray-900">How to hire a car in Kigali in 2026:</strong> Contact Kigali Car Hire by WhatsApp (+250 788 892 976), phone, or online booking form. Confirm your vehicle, pickup date, and number of days. Present your driving licence and passport. Pay your deposit by mobile money, bank transfer, or cash. We deliver the car to your hotel or Kigali International Airport at no extra cost.
+              <strong className="text-gray-900">How to hire a car in Kigali in 2026:</strong> Contact Kigali Car Rental by WhatsApp (+250 787 619 387), phone, or online booking form. Confirm your vehicle, pickup date, and number of days. Present your driving licence and passport. Pay your deposit by mobile money, bank transfer, or cash. We deliver the car to your hotel or Kigali International Airport at no extra cost.
             </p>
             <p>
-              Kigali Car Hire is Rwanda's highest-rated car rental company on Google in 2026, with a 4.9 out of 5 star rating from 38 verified reviews. We have operated continuously in Rwanda since 1990 and are the trusted car hire partner for tourists, business travellers, expatriates, NGO workers, and diplomatic missions in Kigali.
+              Kigali Car Rental is Rwanda's highest-rated car rental company on Google in 2026, with a 4.9 out of 5 star rating from 38 verified reviews. We have operated continuously in Rwanda since 1990 and are the trusted car hire partner for tourists, business travellers, expatriates, NGO workers, and diplomatic missions in Kigali.
             </p>
             <p>
-              Whether you are planning a gorilla trekking safari, an Akagera game drive, a Lake Kivu beach holiday, a Nyungwe chimpanzee trek, or simply need reliable daily transport in Kigali, Kigali Car Hire is your first choice for <strong className="text-gray-900">car hire in Rwanda in 2026</strong>.
+              Whether you are planning a gorilla trekking safari, an Akagera game drive, a Lake Kivu beach holiday, a Nyungwe chimpanzee trek, or simply need reliable daily transport in Kigali, Kigali Car Rental is your first choice for <strong className="text-gray-900">car hire in Rwanda in 2026</strong>.
             </p>
           </div>
           <div className="mt-10 flex flex-wrap gap-3">
@@ -285,7 +284,7 @@ export default function CarHireKigali2026Page() {
               { label: "Lake Kivu Car Hire", href: "/lake-kivu-car-hire" },
               { label: "Nyungwe Forest Car Hire", href: "/nyungwe-forest-car-hire" },
             ].map((l) => (
-              <Link key={l.href} href={l.href} className="text-sm bg-green-50 text-[#01B000] border border-green-200 px-4 py-2 rounded-lg font-medium hover:bg-green-100 transition-colors">
+              <Link key={l.href} href={l.href} className="text-sm bg-blue-50 text-[#1e3a8a] border border-blue-200 px-4 py-2 rounded-lg font-medium hover:bg-blue-100 transition-colors">
                 {l.label}
               </Link>
             ))}
@@ -311,7 +310,7 @@ export default function CarHireKigali2026Page() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-[#01B000]">
+      <section className="py-16 bg-[#1e3a8a]">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-4 font-[family-name:var(--font-plus-jakarta)]">
             Book Your Car Hire in Kigali for 2026
@@ -320,11 +319,11 @@ export default function CarHireKigali2026Page() {
             Rwanda's highest-rated car rental company. Free hotel delivery. 24/7 support. Self-drive from $30/day.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/book-now" className="bg-white text-[#01B000] px-8 py-4 rounded-lg font-bold hover:bg-green-50 transition-all shadow-lg">
+            <Link href="/book-now" className="bg-white text-[#1e3a8a] px-8 py-4 rounded-lg font-bold hover:bg-blue-50 transition-all shadow-lg">
               Book Now — 2026
             </Link>
-            <a href="tel:+250788892976" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-[#01B000] transition-all">
-              Call +250 788 892 976
+            <a href="tel:+250787619387" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-[#1e3a8a] transition-all">
+              Call +250 787 619 387
             </a>
           </div>
         </div>

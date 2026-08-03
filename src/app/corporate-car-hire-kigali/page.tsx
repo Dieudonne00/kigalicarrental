@@ -3,14 +3,14 @@ import Link from "next/link";
 import ServicePageFooter from "@/components/ServicePageFooter";
 
 export const metadata: Metadata = {
-  title: "Corporate Car Hire Kigali | Business Car Rental Rwanda - Kigali Car Hire",
-  description: "Corporate car hire in Kigali for businesses, NGOs, embassies, and conference delegates. Fleet rates, monthly contracts, and dedicated account managers. Call +250 788 892 976.",
-  keywords: "corporate car hire kigali, business car hire kigali, corporate car rental rwanda, ngo car hire rwanda, embassy car hire kigali, conference car hire kigali, executive car hire rwanda, monthly car hire kigali",
-  alternates: { canonical: "https://kigalicarhire.rw/corporate-car-hire-kigali" },
+  title: "Corporate Car Hire Kigali | Business Car Rental Rwanda - Kigali Car Rental",
+  description: "Corporate car hire in Kigali for businesses, NGOs, embassies, and conference delegates. Fleet rates, monthly contracts, and dedicated account managers. Call +250 787 619 387.",
+  keywords: "Kigali car rental",
+  alternates: { canonical: "https://kigalicarrental.site/corporate-car-hire-kigali" },
   openGraph: {
-    title: "Corporate Car Hire Kigali | Kigali Car Hire",
+    title: "Corporate Car Hire Kigali | Kigali Car Rental",
     description: "Corporate car hire for businesses and NGOs in Kigali. Fleet rates and monthly contracts available.",
-    url: "https://kigalicarhire.rw/corporate-car-hire-kigali",
+    url: "https://kigalicarrental.site/corporate-car-hire-kigali",
   },
 };
 
@@ -21,7 +21,7 @@ const faqSchema = {
     {
       "@type": "Question",
       name: "Do you offer corporate accounts for car hire in Kigali?",
-      acceptedAnswer: { "@type": "Answer", text: "Yes. Kigali Car Hire offers dedicated corporate accounts for businesses, NGOs, embassies, and international organisations based in Rwanda. Corporate accounts receive preferential rates, monthly invoicing, and a dedicated account manager." },
+      acceptedAnswer: { "@type": "Answer", text: "Yes. Kigali Car Rental offers dedicated corporate accounts for businesses, NGOs, embassies, and international organisations based in Rwanda. Corporate accounts receive preferential rates, monthly invoicing, and a dedicated account manager." },
     },
     {
       "@type": "Question",
@@ -48,7 +48,7 @@ export default function CorporateCarHireKigaliPage() {
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">Reliable corporate car hire solutions for businesses, NGOs, embassies, and conference delegates in Rwanda. Fleet rates, monthly contracts, and dedicated account managers.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/book-now" className="bg-white text-blue-800 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-all">Request a Quote</Link>
-            <a href="tel:+250788892976" className="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-500 transition-all border border-white/30">Call Us Now</a>
+            <a href="tel:+250787619387" className="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-500 transition-all border border-white/30">Call Us Now</a>
           </div>
         </div>
       </section>
@@ -74,7 +74,7 @@ export default function CorporateCarHireKigaliPage() {
         <div className="grid md:grid-cols-2 gap-10 mb-16">
           <div>
             <h2 className="text-3xl font-bold text-gray-900 mb-4 font-[family-name:var(--font-plus-jakarta)]">Rwanda's Leading Corporate Car Hire Company</h2>
-            <p className="text-gray-600 mb-4">Kigali is one of Africa's fastest growing business destinations, hosting major international conferences, UN agencies, NGO headquarters, diplomatic missions, and multinational corporations. Kigali Car Hire understands the demands of corporate travel in Rwanda and provides solutions built specifically for organisations.</p>
+            <p className="text-gray-600 mb-4">Kigali is one of Africa's fastest growing business destinations, hosting major international conferences, UN agencies, NGO headquarters, diplomatic missions, and multinational corporations. Kigali Car Rental understands the demands of corporate travel in Rwanda and provides solutions built specifically for organisations.</p>
             <p className="text-gray-600 mb-4">Our corporate car hire service covers everything from single executive airport transfers to supplying a full fleet for a week-long international summit. We work with embassies, the African Union, the East African Community, international NGOs, and global corporations operating in Rwanda.</p>
             <p className="text-gray-600 mb-4">All corporate vehicles are maintained to the highest standard, fully insured, and staffed by professional, background-checked drivers. Our operations team manages all logistics so your team can focus on their work.</p>
             <p className="text-gray-600 mb-6">Monthly car hire contracts are available for organisations posting staff to Rwanda. Contracts include full vehicle maintenance, insurance, and a replacement vehicle in case of breakdown.</p>
@@ -110,7 +110,7 @@ export default function CorporateCarHireKigaliPage() {
           <p className="text-white/80 mb-8 max-w-xl mx-auto">Get preferential rates, dedicated support, and flexible billing. Contact our corporate team to discuss your organisation's requirements.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/book-now" className="bg-white text-blue-800 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all">Request Quote</Link>
-            <a href="mailto:kigalicarhire1990@gmail.com" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-blue-800 transition-all">Email Our Team</a>
+            <a href="mailto:info@kigalicarrental.site" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-blue-800 transition-all">Email Our Team</a>
           </div>
         </div>
       </div>

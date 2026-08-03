@@ -29,14 +29,14 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-[90vh] bg-white overflow-hidden py-24">
       {/* Subtle background pattern instead of heavy PNG (was causing LCP 5s+) */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-green-50/30" />
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-blue-50/30" />
 
       {/* Accent gradients */}
       <div className="absolute top-0 right-0 w-1/3 h-1/3">
         <div className="absolute inset-0 bg-gradient-to-bl from-yellow-200/15 via-yellow-100/8 to-transparent" />
       </div>
       <div className="absolute top-0 right-0 w-1/2 h-full">
-        <div className="absolute inset-0 bg-gradient-to-l from-[#01B000]/12 via-[#01B000]/6 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-l from-[#1e3a8a]/12 via-[#1e3a8a]/6 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent backdrop-blur-sm" />
       </div>
 
@@ -44,8 +44,8 @@ export default function HeroSection() {
         <div className="text-center mb-8 pt-8 max-w-4xl mx-auto">
 
           {/* Trust badge */}
-          <div className="inline-flex items-center gap-2 bg-[#01B000]/10 border border-[#01B000]/20 text-[#01B000] text-sm font-semibold px-4 py-2 rounded-full mb-6">
-            <span className="w-2 h-2 bg-[#01B000] rounded-full animate-pulse" />
+          <div className="inline-flex items-center gap-2 bg-[#1e3a8a]/10 border border-[#1e3a8a]/20 text-[#1e3a8a] text-sm font-semibold px-4 py-2 rounded-full mb-6">
+            <span className="w-2 h-2 bg-[#1e3a8a] rounded-full animate-pulse" />
             #1 Trusted Car Rental in Kigali, Rwanda
           </div>
 
@@ -55,8 +55,8 @@ export default function HeroSection() {
           </h1>
 
           {/* Keyword-rich subheading */}
-          <p className="text-xl sm:text-2xl font-semibold text-[#01B000] mb-4">
-            Kigali Car Hire — Self-Drive, Chauffeur & Airport Transfers
+          <p className="text-xl sm:text-2xl font-semibold text-[#1e3a8a] mb-4">
+            Kigali Car Rental — Self-Drive, Chauffeur & Airport Transfers
           </p>
 
           <p className="text-base sm:text-lg text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
@@ -69,7 +69,7 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
             <Link
               href="/book-now"
-              className="w-full sm:w-auto bg-[#01B000] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#019500] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
+              className="w-full sm:w-auto bg-[#1e3a8a] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#172554] transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
             >
               <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
@@ -78,7 +78,7 @@ export default function HeroSection() {
             </Link>
             <Link
               href="/fleet"
-              className="w-full sm:w-auto bg-white text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-50 transition-all border-2 border-gray-200 hover:border-[#01B000] flex items-center justify-center gap-3"
+              className="w-full sm:w-auto bg-white text-gray-900 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-50 transition-all border-2 border-gray-200 hover:border-[#1e3a8a] flex items-center justify-center gap-3"
             >
               <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                 <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -86,7 +86,7 @@ export default function HeroSection() {
               View Our Fleet
             </Link>
             <a
-              href="https://wa.me/250788892976"
+              href="https://wa.me/250787619387"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto bg-[#25D366] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#22bc5c] transition-all shadow-lg flex items-center justify-center gap-3"
@@ -107,7 +107,7 @@ export default function HeroSection() {
               { value: "Since 1990", label: "Years Serving Rwanda" },
             ].map((stat) => (
               <div key={stat.label} className="bg-white/80 backdrop-blur-sm border border-gray-100 rounded-xl px-3 py-3 shadow-sm">
-                <div className="text-lg font-bold text-[#01B000]">{stat.value}</div>
+                <div className="text-lg font-bold text-[#1e3a8a]">{stat.value}</div>
                 <div className="text-xs text-gray-500 font-medium">{stat.label}</div>
               </div>
             ))}
@@ -118,7 +118,7 @@ export default function HeroSection() {
         <div ref={imageRef} className="flex justify-center mt-6">
           <Image
             src="https://kigalicarhire.b-cdn.net/hero%20section%20cars.png"
-            alt="Kigali Car Hire fleet — quality cars available for rental in Rwanda"
+            alt="Kigali Car Rental fleet — quality cars available for rental in Rwanda"
             width={1200}
             height={400}
             className="w-full max-w-5xl h-auto rounded-2xl transition-transform duration-300 ease-out"

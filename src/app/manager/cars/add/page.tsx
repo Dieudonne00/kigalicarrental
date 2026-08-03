@@ -241,7 +241,7 @@ export default function AddCarPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     placeholder="e.g., Toyota Camry 2024"
                   />
                 </div>
@@ -256,7 +256,7 @@ export default function AddCarPage() {
                       setFormData({ ...formData, description: e.target.value })
                     }
                     rows={3}
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     placeholder="Enter car description, features, and highlights..."
                   />
                 </div>
@@ -271,7 +271,7 @@ export default function AddCarPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, category: e.target.value })
                     }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                   >
                     <option value="sedan">Sedan</option>
                     <option value="suv">SUV</option>
@@ -292,7 +292,7 @@ export default function AddCarPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, brand: e.target.value })
                     }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                   >
                     <option value="">Select a brand</option>
                     <option value="Toyota">Toyota</option>
@@ -333,7 +333,7 @@ export default function AddCarPage() {
                         year: parseInt(e.target.value),
                       })
                     }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     min="2000"
                     max={new Date().getFullYear() + 1}
                   />
@@ -349,7 +349,7 @@ export default function AddCarPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, fuelType: e.target.value })
                     }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                   >
                     <option value="petrol">Petrol</option>
                     <option value="diesel">Diesel</option>
@@ -368,7 +368,7 @@ export default function AddCarPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, transmission: e.target.value })
                     }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                   >
                     <option value="automatic">Automatic</option>
                     <option value="manual">Manual</option>
@@ -389,7 +389,7 @@ export default function AddCarPage() {
                         seats: parseInt(e.target.value),
                       })
                     }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                     min="2"
                     max="12"
                   />
@@ -416,7 +416,7 @@ export default function AddCarPage() {
                         dailyRate: parseFloat(e.target.value),
                       })
                     }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                   />
                 </div>
 
@@ -434,7 +434,7 @@ export default function AddCarPage() {
                         weeklyRate: parseFloat(e.target.value),
                       })
                     }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                   />
                 </div>
 
@@ -452,7 +452,7 @@ export default function AddCarPage() {
                         monthlyRate: parseFloat(e.target.value),
                       })
                     }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
+                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none text-gray-900"
                   />
                 </div>
               </div>
@@ -484,14 +484,14 @@ export default function AddCarPage() {
                     className={`flex flex-col items-center justify-center w-full h-40 border-2 border-dashed rounded-lg cursor-pointer transition-all ${
                       uploadingThumbnail
                         ? "border-gray-300 bg-gray-50 cursor-not-allowed"
-                        : "border-[#01B000] bg-white hover:bg-gray-50"
+                        : "border-[#1e3a8a] bg-white hover:bg-gray-50"
                     }`}
                   >
                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
                       {uploadingThumbnail ? (
                         <>
                           <svg
-                            className="w-10 h-10 mb-3 text-[#01B000] animate-spin"
+                            className="w-10 h-10 mb-3 text-[#1e3a8a] animate-spin"
                             fill="none"
                             viewBox="0 0 24 24"
                           >
@@ -509,14 +509,14 @@ export default function AddCarPage() {
                               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                             ></path>
                           </svg>
-                          <p className="text-sm text-[#01B000] font-bold">
+                          <p className="text-sm text-[#1e3a8a] font-bold">
                             Uploading thumbnail...
                           </p>
                         </>
                       ) : (
                         <>
                           <svg
-                            className="w-10 h-10 mb-3 text-[#01B000]"
+                            className="w-10 h-10 mb-3 text-[#1e3a8a]"
                             fill="none"
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -527,7 +527,7 @@ export default function AddCarPage() {
                             <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                           </svg>
                           <p className="mb-2 text-sm font-bold text-gray-700">
-                            <span className="text-[#01B000]">Click to upload</span> or
+                            <span className="text-[#1e3a8a]">Click to upload</span> or
                             drag and drop
                           </p>
                           <p className="text-xs text-gray-500">
@@ -546,7 +546,7 @@ export default function AddCarPage() {
                       <img
                         src={thumbnail}
                         alt="Car thumbnail"
-                        className="w-64 h-48 object-cover rounded-lg border-2 border-[#01B000]"
+                        className="w-64 h-48 object-cover rounded-lg border-2 border-[#1e3a8a]"
                         onLoad={() => setThumbnailLoaded(true)}
                       />
                       <button
@@ -693,7 +693,7 @@ export default function AddCarPage() {
                         <p className="text-xs text-gray-400">Large files may take a few minutes — please wait</p>
                       </>
                     ) : videoUrl ? (
-                      <p className="text-sm text-green-600 font-bold">✓ Video uploaded — click to replace</p>
+                      <p className="text-sm text-blue-600 font-bold">✓ Video uploaded — click to replace</p>
                     ) : (
                       <>
                         <svg className="w-8 h-8 text-purple-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -725,7 +725,7 @@ export default function AddCarPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, available: e.target.checked })
                     }
-                    className="w-5 h-5 text-[#01B000] border-2 border-gray-300 rounded focus:ring-[#01B000]"
+                    className="w-5 h-5 text-[#1e3a8a] border-2 border-gray-300 rounded focus:ring-[#1e3a8a]"
                   />
                   <span className="text-sm font-bold text-gray-700">
                     Available for rent
@@ -739,7 +739,7 @@ export default function AddCarPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, featured: e.target.checked })
                     }
-                    className="w-5 h-5 text-[#01B000] border-2 border-gray-300 rounded focus:ring-[#01B000]"
+                    className="w-5 h-5 text-[#1e3a8a] border-2 border-gray-300 rounded focus:ring-[#1e3a8a]"
                   />
                   <span className="text-sm font-bold text-gray-700">
                     Feature on homepage
@@ -753,7 +753,7 @@ export default function AddCarPage() {
                     onChange={(e) =>
                       setFormData({ ...formData, gameDrive: e.target.checked })
                     }
-                    className="w-5 h-5 text-[#01B000] border-2 border-gray-300 rounded focus:ring-[#01B000]"
+                    className="w-5 h-5 text-[#1e3a8a] border-2 border-gray-300 rounded focus:ring-[#1e3a8a]"
                   />
                   <span className="text-sm font-bold text-gray-700">
                     Available for Akagera Game Drive
@@ -775,7 +775,7 @@ export default function AddCarPage() {
             <button
               type="submit"
               disabled={loading}
-              className="px-6 py-3 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] transition-all shadow-md disabled:opacity-50"
+              className="px-6 py-3 bg-[#1e3a8a] text-white rounded-lg font-bold hover:bg-[#172554] transition-all shadow-md disabled:opacity-50"
             >
               {loading ? "Saving..." : "Add Car"}
             </button>

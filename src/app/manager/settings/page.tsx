@@ -32,7 +32,7 @@ export default function SettingsPage() {
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none"
+                  className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none"
                   placeholder="Your name"
                 />
               </div>
@@ -42,11 +42,11 @@ export default function SettingsPage() {
                 </label>
                 <input
                   type="email"
-                  className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none"
+                  className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none"
                   placeholder="your.email@example.com"
                 />
               </div>
-              <button className="bg-[#01B000] text-white px-6 py-2 rounded-lg font-bold hover:bg-[#019500] transition-all shadow-md">
+              <button className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-bold hover:bg-[#172554] transition-all shadow-md">
                 Save Changes
               </button>
             </div>
@@ -64,7 +64,7 @@ export default function SettingsPage() {
                 </label>
                 <input
                   type="password"
-                  className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none"
+                  className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none"
                 />
               </div>
               <div>
@@ -73,7 +73,7 @@ export default function SettingsPage() {
                 </label>
                 <input
                   type="password"
-                  className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none"
+                  className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none"
                 />
               </div>
               <div>
@@ -82,10 +82,10 @@ export default function SettingsPage() {
                 </label>
                 <input
                   type="password"
-                  className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none"
+                  className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1e3a8a] focus:outline-none"
                 />
               </div>
-              <button className="bg-[#01B000] text-white px-6 py-2 rounded-lg font-bold hover:bg-[#019500] transition-all shadow-md">
+              <button className="bg-[#1e3a8a] text-white px-6 py-2 rounded-lg font-bold hover:bg-[#172554] transition-all shadow-md">
                 Update Password
               </button>
             </div>

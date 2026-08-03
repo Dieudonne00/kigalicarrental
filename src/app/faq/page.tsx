@@ -1,21 +1,20 @@
 import { Metadata } from "next";
 import FAQSection from "@/components/FAQSection";
 
-const SITE = "https://kigalicarhire.rw";
+const SITE = "https://kigalicarrental.site";
 
 export const metadata: Metadata = {
-  title: "FAQ | Kigali Car Hire — Car Rental Questions Answered",
+  title: "FAQ | Kigali Car Rental — Car Rental Questions Answered",
   description:
     "Answers to common questions about car hire in Kigali — pricing, self-drive, airport pickup, required documents, hotel delivery and cross-border travel.",
-  keywords:
-    "kigali car hire faq, car rental questions kigali, car hire rwanda faq, self drive rwanda questions",
+  keywords: "Kigali car rental",
   alternates: { canonical: `${SITE}/faq` },
   openGraph: {
-    title: "FAQ | Kigali Car Hire",
+    title: "FAQ | Kigali Car Rental",
     description: "Answers to common questions about car hire in Kigali, Rwanda.",
     url: `${SITE}/faq`,
-    siteName: "Kigali Car Hire",
-    images: [{ url: `${SITE}/opengraph-image`, width: 1200, height: 630, alt: "Kigali Car Hire FAQ" }],
+    siteName: "Kigali Car Rental",
+    images: [{ url: `${SITE}/opengraph-image`, width: 1200, height: 630, alt: "Kigali Car Rental FAQ" }],
   },
 };
 
@@ -28,7 +27,7 @@ const faqSchema = {
       name: "How much does car hire in Kigali cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Kigali Car Hire prices start from $30 per day for economy cars. SUVs and 4x4s range from $60 to $120 per day. Discounted weekly and monthly rates are available.",
+        text: "Kigali Car Rental prices start from $30 per day for economy cars. SUVs and 4x4s range from $60 to $120 per day. Discounted weekly and monthly rates are available.",
       },
     },
     {
@@ -36,7 +35,7 @@ const faqSchema = {
       name: "Do you offer self-drive car hire in Kigali?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Kigali Car Hire offers self-drive rentals to customers with a valid driving licence, so you can explore Rwanda at your own pace.",
+        text: "Yes. Kigali Car Rental offers self-drive rentals to customers with a valid driving licence, so you can explore Rwanda at your own pace.",
       },
     },
     {
@@ -44,7 +43,7 @@ const faqSchema = {
       name: "Can I get an airport pickup from Kigali International Airport?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Kigali Car Hire provides 24/7 airport pickup and drop-off at Kigali International Airport with fixed pricing and no surprise fees.",
+        text: "Yes. Kigali Car Rental provides 24/7 airport pickup and drop-off at Kigali International Airport with fixed pricing and no surprise fees.",
       },
     },
     {
@@ -71,7 +70,7 @@ export default function FAQPage() {
             Frequently Asked Questions
           </h1>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-            Everything you need to know about renting a car with Kigali Car Hire.
+            Everything you need to know about renting a car with Kigali Car Rental.
           </p>
         </div>
         <FAQSection />

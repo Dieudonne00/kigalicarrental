@@ -46,9 +46,9 @@ export default function SuccessModal({
       <div className="relative bg-white/95 backdrop-blur-sm rounded-2xl border-2 border-gray-200 shadow-2xl max-w-md w-full p-8 animate-in fade-in zoom-in duration-200">
         {/* Success Icon */}
         <div className="flex justify-center mb-6">
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
+          <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center">
             <svg
-              className="w-10 h-10 text-[#01B000]"
+              className="w-10 h-10 text-[#1e3a8a]"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -78,7 +78,7 @@ export default function SuccessModal({
               onClick={() => {
                 window.location.href = payUrl;
               }}
-              className="w-full py-4 bg-[#01B000] hover:bg-[#019500] text-white font-bold rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+              className="w-full py-4 bg-[#1e3a8a] hover:bg-[#172554] text-white font-bold rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
             >
               <span>💳</span> {payText}
             </button>
@@ -86,7 +86,7 @@ export default function SuccessModal({
 
           <button
             onClick={onClose}
-            className={`w-full py-3 ${payUrl ? 'bg-gray-100 text-gray-700 hover:bg-gray-200' : 'bg-[#01B000] hover:bg-[#019500] text-white'} font-bold rounded-lg transition-all`}
+            className={`w-full py-3 ${payUrl ? 'bg-gray-100 text-gray-700 hover:bg-gray-200' : 'bg-[#1e3a8a] hover:bg-[#172554] text-white'} font-bold rounded-lg transition-all`}
           >
             {payUrl ? "Close" : "Close"}
           </button>

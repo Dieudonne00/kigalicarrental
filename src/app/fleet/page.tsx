@@ -6,14 +6,14 @@ import FleetClient from "./FleetClient";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Car Hire Fleet Kigali | SUVs, 4x4, Luxury & Economy Cars — Kigali Car Hire",
+  title: "Car Hire Fleet Kigali | SUVs, 4x4, Luxury & Economy Cars — Kigali Car Rental",
   description: "Browse our full fleet of cars available for hire in Kigali, Rwanda. Economy cars from $30/day, SUVs from $60/day, 4x4 Land Cruisers from $90/day. All fully insured. Book online now.",
-  keywords: "car hire fleet kigali, cars for hire kigali, kigali rental cars, suv hire kigali, 4x4 hire kigali, economy car kigali, luxury car hire kigali rwanda",
-  alternates: { canonical: "https://kigalicarhire.rw/fleet" },
+  keywords: "Kigali car rental",
+  alternates: { canonical: "https://kigalicarrental.site/fleet" },
   openGraph: {
     title: "Car Hire Fleet Kigali | SUVs, 4x4, Luxury & Economy Cars",
     description: "Browse all cars available for hire in Kigali. Economy from $30/day, 4x4 Land Cruisers from $90/day. Fully insured. Book online or WhatsApp.",
-    url: "https://kigalicarhire.rw/fleet",
+    url: "https://kigalicarrental.site/fleet",
   },
 };
 
@@ -52,7 +52,7 @@ export default async function FleetPage() {
           <div className="absolute inset-0 bg-black/55"></div>
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-          <span className="inline-block bg-[#01B000] text-white text-sm font-bold px-4 py-1 rounded-full mb-6">
+          <span className="inline-block bg-[#1e3a8a] text-white text-sm font-bold px-4 py-1 rounded-full mb-6">
             {cars.length} Cars Available Now
           </span>
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-[family-name:var(--font-plus-jakarta)]">
@@ -63,7 +63,7 @@ export default async function FleetPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-[#01B000] text-white font-bold rounded-lg hover:bg-[#019500] transition-all"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#1e3a8a] text-white font-bold rounded-lg hover:bg-[#172554] transition-all"
           >
             Need Help? Contact Us
           </Link>

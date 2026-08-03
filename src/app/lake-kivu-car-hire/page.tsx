@@ -3,14 +3,14 @@ import Link from "next/link";
 import ServicePageFooter from "@/components/ServicePageFooter";
 
 export const metadata: Metadata = {
-  title: "Lake Kivu Car Hire | Kigali to Lake Kivu Transfer - Kigali Car Hire",
+  title: "Lake Kivu Car Hire | Kigali to Lake Kivu Transfer - Kigali Car Rental",
   description: "Car hire from Kigali to Lake Kivu from $50 per day. Explore Gisenyi, Kibuye, and Cyangugu by car. Self-drive or chauffeur available. Book online now.",
-  keywords: "lake kivu car hire, kigali to lake kivu car hire, gisenyi car hire, rubavu car hire, lake kivu transfer kigali, car hire gisenyi rwanda, kibuye car hire rwanda",
-  alternates: { canonical: "https://kigalicarhire.rw/lake-kivu-car-hire" },
+  keywords: "Kigali car rental",
+  alternates: { canonical: "https://kigalicarrental.site/lake-kivu-car-hire" },
   openGraph: {
-    title: "Lake Kivu Car Hire | Kigali Car Hire",
+    title: "Lake Kivu Car Hire | Kigali Car Rental",
     description: "Car hire from Kigali to Lake Kivu. Explore Gisenyi, Kibuye, and Cyangugu by car from $50/day.",
-    url: "https://kigalicarhire.rw/lake-kivu-car-hire",
+    url: "https://kigalicarrental.site/lake-kivu-car-hire",
   },
 };
 
@@ -59,9 +59,9 @@ export default function LakeKivuCarHirePage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-4 font-[family-name:var(--font-plus-jakarta)]">Drive from Kigali to Lake Kivu</h2>
             <p className="text-gray-600 mb-4">Lake Kivu is one of the African Great Lakes and one of Rwanda's most beautiful natural attractions. Stretching along the border between Rwanda and the Democratic Republic of Congo, the lake offers stunning views, clear waters, and a relaxed atmosphere that is very different from busy Kigali.</p>
             <p className="text-gray-600 mb-4">The drive from Kigali to Gisenyi on the northern shore of Lake Kivu is one of the most scenic roads in Africa. You pass through rolling hills, tea plantations, and mountain villages before descending to the sparkling blue waters of the lake.</p>
-            <p className="text-gray-600 mb-4">Kigali Car Hire provides affordable car hire for exploring Lake Kivu and Rwanda's western province. All major routes around the lake are paved and a standard car or SUV is suitable for most journeys. For those wanting to explore the Congo Nile Trail or more remote lakeside areas, a 4x4 is advisable.</p>
+            <p className="text-gray-600 mb-4">Kigali Car Rental provides affordable car hire for exploring Lake Kivu and Rwanda's western province. All major routes around the lake are paved and a standard car or SUV is suitable for most journeys. For those wanting to explore the Congo Nile Trail or more remote lakeside areas, a 4x4 is advisable.</p>
             <p className="text-gray-600 mb-6">We offer one-way hire between Kigali and Lake Kivu, multi-day rental packages, and chauffeured transfers for those who prefer to sit back and enjoy the scenery.</p>
-            <Link href="/fleet" className="inline-block bg-[#01B000] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#019500] transition-all">View Available Cars</Link>
+            <Link href="/fleet" className="inline-block bg-[#1e3a8a] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#172554] transition-all">View Available Cars</Link>
           </div>
           <div className="bg-white rounded-xl border-2 border-gray-200 p-8">
             <h3 className="text-xl font-bold text-gray-900 mb-6">Lake Kivu Distances from Kigali</h3>
@@ -75,7 +75,7 @@ export default function LakeKivuCarHirePage() {
                 <div key={d.dest} className="border-b border-gray-100 pb-3">
                   <div className="flex justify-between mb-1">
                     <span className="font-semibold text-gray-900 text-sm">{d.dest}</span>
-                    <span className="text-[#01B000] font-bold text-sm">{d.km}</span>
+                    <span className="text-[#1e3a8a] font-bold text-sm">{d.km}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-500 text-xs">{d.road}</span>
@@ -84,7 +84,7 @@ export default function LakeKivuCarHirePage() {
                 </div>
               ))}
             </div>
-            <Link href="/book-now" className="mt-6 block w-full text-center bg-[#01B000] text-white py-3 rounded-lg font-bold hover:bg-[#019500] transition-all">Book Now</Link>
+            <Link href="/book-now" className="mt-6 block w-full text-center bg-[#1e3a8a] text-white py-3 rounded-lg font-bold hover:bg-[#172554] transition-all">Book Now</Link>
           </div>
         </div>
 
@@ -105,7 +105,7 @@ export default function LakeKivuCarHirePage() {
           <p className="text-white/80 mb-8 max-w-xl mx-auto">Explore Lake Kivu at your own pace. Book a self-drive car or chauffeured transfer from Kigali today.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/book-now" className="bg-white text-blue-800 px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-all">Book Online</Link>
-            <a href="https://wa.me/250788892976" target="_blank" rel="noopener noreferrer" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-blue-800 transition-all">WhatsApp Us</a>
+            <a href="https://wa.me/250787619387" target="_blank" rel="noopener noreferrer" className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-blue-800 transition-all">WhatsApp Us</a>
           </div>
         </div>
       </div>

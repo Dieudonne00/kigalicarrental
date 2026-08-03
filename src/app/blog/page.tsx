@@ -1,24 +1,23 @@
 import { Metadata } from "next";
 import BlogListing from "@/components/BlogListing";
 
-const SITE = "https://kigalicarhire.rw";
+const SITE = "https://kigalicarrental.site";
 const OG_IMAGE = "https://kigalicarhire.b-cdn.net/hero%20section%20cars.png";
 
 export const metadata: Metadata = {
-  title: "Kigali Car Hire Blog | Rwanda Travel Guides and Car Rental Tips",
+  title: "Kigali Car Rental Blog | Rwanda Travel Guides and Car Rental Tips",
   description:
-    "Kigali Car Hire blog — expert guides on renting a car in Rwanda, self-drive tips, gorilla trekking routes, Akagera safari, Lake Kivu travel, and East Africa road trips. 150+ articles.",
-  keywords:
-    "kigali car hire blog, car hire kigali tips, rwanda travel guide, self drive rwanda tips, gorilla trekking car hire guide, akagera safari car rental, lake kivu road trip, nyungwe forest car hire, rwanda road trip guide, car rental kigali advice",
+    "Kigali Car Rental blog — expert guides on renting a car in Rwanda, self-drive tips, gorilla trekking routes, Akagera safari, Lake Kivu travel, and East Africa road trips. 150+ articles.",
+  keywords: "Kigali car rental",
   alternates: {
     canonical: `${SITE}/blog`,
   },
   openGraph: {
-    title: "Kigali Car Hire Blog | Rwanda Travel Guides and Car Rental Tips",
+    title: "Kigali Car Rental Blog | Rwanda Travel Guides and Car Rental Tips",
     description:
-      "Kigali Car Hire blog — guides on renting a car in Rwanda, self-drive tips, gorilla trekking, safari routes and East Africa travel.",
+      "Kigali Car Rental blog — guides on renting a car in Rwanda, self-drive tips, gorilla trekking, safari routes and East Africa travel.",
     url: `${SITE}/blog`,
-    siteName: "Kigali Car Hire",
+    siteName: "Kigali Car Rental",
     type: "website",
     locale: "en_RW",
     images: [
@@ -26,15 +25,15 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Kigali Car Hire Blog — Rwanda travel guides and car rental tips",
+        alt: "Kigali Car Rental Blog — Rwanda travel guides and car rental tips",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kigali Car Hire Blog | Rwanda Travel Guides and Car Rental Tips",
+    title: "Kigali Car Rental Blog | Rwanda Travel Guides and Car Rental Tips",
     description:
-      "Kigali Car Hire blog — guides on renting a car in Rwanda, self-drive tips, gorilla trekking, safari routes and East Africa travel.",
+      "Kigali Car Rental blog — guides on renting a car in Rwanda, self-drive tips, gorilla trekking, safari routes and East Africa travel.",
     images: [OG_IMAGE],
   },
 };
@@ -46,7 +45,7 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       position: 1,
-      name: "Kigali Car Hire",
+      name: "Kigali Car Rental",
       item: SITE,
     },
     {
@@ -61,13 +60,13 @@ const breadcrumbSchema = {
 const blogSchema = {
   "@context": "https://schema.org",
   "@type": "Blog",
-  name: "Kigali Car Hire Blog",
+  name: "Kigali Car Rental Blog",
   url: `${SITE}/blog`,
   description:
     "Expert guides on renting a car in Rwanda, self-drive tips, gorilla trekking routes, safari travel and East Africa road trips.",
   publisher: {
     "@type": "Organization",
-    name: "Kigali Car Hire",
+    name: "Kigali Car Rental",
     url: SITE,
     logo: {
       "@type": "ImageObject",
