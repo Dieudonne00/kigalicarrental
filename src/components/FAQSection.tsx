@@ -27,10 +27,6 @@ const faqs = [
     q: "Is Kigali car rental available 24 hours a day?",
     a: "Yes. We are available 24/7 for bookings, airport pickups, and roadside assistance. You can reach us by phone (+250 787 619 387), WhatsApp or email at info@kigalicarrental.site at any time.",
   },
-  {
-    q: "Is Kigali Car Rental the same as Kigali car rental?",
-    a: "Yes. Kigali Car Rental and Kigali car rental refer to the same trusted service — renting a vehicle in Kigali, Rwanda. Whichever term you search, you'll find the same fleet, the same rates from $30 per day, and the same 24/7 support.",
-  },
 ];
 
 export default function FAQSection() {

@@ -7,7 +7,7 @@ const OG_IMAGE = "https://kigalicarhire.b-cdn.net/hero%20section%20cars.png";
 export const metadata: Metadata = {
   title: "Kigali Car Rental Blog | Rwanda Travel Guides and Car Rental Tips",
   description:
-    "Kigali Car Rental blog — expert guides on renting a car in Rwanda, self-drive tips, gorilla trekking routes, Akagera safari, Lake Kivu travel, and East Africa road trips. 150+ articles.",
+    "Kigali Car Rental blog — expert guides on renting a car in Rwanda, self-drive tips, gorilla trekking routes, Akagera safari, Lake Kivu travel, and East Africa road trips. 250+ articles.",
   keywords: "Kigali car rental",
   alternates: {
     canonical: `${SITE}/blog`,

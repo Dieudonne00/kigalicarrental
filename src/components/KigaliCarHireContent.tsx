@@ -13,7 +13,7 @@ export default function KigaliCarHireContent() {
             </h2>
 
             <p className="text-gray-600 mb-4 leading-relaxed">
-              <strong className="text-gray-900">Kigali Car Rental</strong> is Rwanda's leading car rental service, based in Kigali and operating across the entire country. Whether you are visiting Rwanda for gorilla trekking, attending a business conference, relocating as an expat, or simply exploring the city, renting a car in Kigali gives you the freedom to travel on your own schedule. Many visitors also search for it as <strong className="text-gray-900">Kigali Car Rental</strong> — it's the same trusted fleet and service, just a different way of saying it.
+              <strong className="text-gray-900">Kigali Car Rental</strong> is a car rental service based in Kigali, operating across the entire country. Whether you are visiting Rwanda for gorilla trekking, attending a business conference, relocating as an expat, or simply exploring the city, renting a car in Kigali gives you the freedom to travel on your own schedule.
             </p>
 
             <p className="text-gray-600 mb-4 leading-relaxed">
@@ -21,18 +21,11 @@ export default function KigaliCarHireContent() {
             </p>
 
             <p className="text-gray-600 mb-4 leading-relaxed">
-              Our Kigali car rental fleet includes over 50 vehicles across every category: economy saloons for budget travellers, rugged 4x4 SUVs for safari and off-road adventures, luxury cars for executives and weddings, and minibuses for groups and corporate events. Every vehicle is fully insured, regularly serviced, and delivered clean and ready.
+              Our Kigali car rental fleet spans every category: economy saloons for budget travellers, rugged 4x4 SUVs for safari and off-road adventures, luxury cars for executives and weddings, and minibuses for groups and corporate events. Every vehicle is fully insured, regularly serviced, and delivered clean and ready.
             </p>
 
             <p className="text-gray-600 mb-6 leading-relaxed">
               <strong className="text-gray-900">Car rental in Kigali starts from just $30 per day</strong> for economy vehicles and $60 per day for 4x4 SUVs. Weekly and monthly rates offer significant discounts. We offer free car delivery to any hotel or address in Kigali city, with 24/7 phone and WhatsApp support for all customers throughout their rental.
-            </p>
-
-            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 font-[family-name:var(--font-plus-jakarta)]">
-              Same Trusted Fleet, Whichever Term You Search
-            </h3>
-            <p className="text-gray-600 mb-6 leading-relaxed">
-              Some visitors search for <strong className="text-gray-900">car rental in Kigali</strong> rather than car hire — in Rwanda both terms mean exactly the same thing. Kigali Car Rental is the car rental company most residents and tourists already trust, with the same fleet, the same transparent pricing from $30/day, and the same 24/7 support whichever term you use to find us.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">

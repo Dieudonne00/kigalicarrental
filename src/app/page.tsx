@@ -57,7 +57,7 @@ const websiteSchema = {
   "@id": `${SITE}/#website`,
   url: SITE,
   name: "Kigali Car Rental",
-  description: "Rwanda's most trusted car rental service",
+  description: "Self-drive and chauffeur-driven car rental in Kigali, Rwanda",
   potentialAction: {
     "@type": "SearchAction",
     target: `${SITE}/fleet?q={search_term_string}`,
@@ -256,14 +256,6 @@ const faqSchema = {
       acceptedAnswer: {
         "@type": "Answer",
         text: "You can book a car rental in Kigali through three ways: (1) online via our booking form at kigalicarrental.site/book-now, (2) by calling or WhatsApp at +250 787 619 387, or (3) by email at info@kigalicarrental.site. We confirm all bookings within 30 minutes.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Is Kigali Car Rental the same as Kigali car rental?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Kigali Car Rental and Kigali car rental refer to the same trusted service — renting a vehicle in Kigali, Rwanda. Whichever term you search, you'll find the same fleet, the same rates from $30 per day, and the same 24/7 support.",
       },
     },
   ],

@@ -73,7 +73,7 @@ export default function CorporateCarHireKigaliPage() {
 
         <div className="grid md:grid-cols-2 gap-10 mb-16">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4 font-[family-name:var(--font-plus-jakarta)]">Rwanda's Leading Corporate Car Hire Company</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4 font-[family-name:var(--font-plus-jakarta)]">Corporate Car Hire in Kigali, Rwanda</h2>
             <p className="text-gray-600 mb-4">Kigali is one of Africa's fastest growing business destinations, hosting major international conferences, UN agencies, NGO headquarters, diplomatic missions, and multinational corporations. Kigali Car Rental understands the demands of corporate travel in Rwanda and provides solutions built specifically for organisations.</p>
             <p className="text-gray-600 mb-4">Our corporate car hire service covers everything from single executive airport transfers to supplying a full fleet for a week-long international summit. We work with embassies, the African Union, the East African Community, international NGOs, and global corporations operating in Rwanda.</p>
             <p className="text-gray-600 mb-4">All corporate vehicles are maintained to the highest standard, fully insured, and staffed by professional, background-checked drivers. Our operations team manages all logistics so your team can focus on their work.</p>
