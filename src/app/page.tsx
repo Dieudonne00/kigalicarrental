@@ -78,9 +78,6 @@ const localBusinessSchema = {
   logo: { "@type": "ImageObject", url: "/logo.svg", width: 200, height: 60 },
   description:
     "Kigali Car Rental is Rwanda's trusted car rental service offering self-drive cars, chauffeur-driven vehicles, airport transfers and tours across Rwanda and East Africa. Cars from $30 per day.",
-  foundingDate: "1990",
-  founder: { "@type": "Person", name: "Obed Dieudonne" },
-  numberOfEmployees: { "@type": "QuantitativeValue", value: 10 },
   address: {
     "@type": "PostalAddress",
     streetAddress: "KG 648 St",
@@ -170,71 +167,11 @@ const localBusinessSchema = {
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "East Africa Cross-Border Car Hire", url: `${SITE}/self-drive-rwanda` } },
     ],
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.9",
-    reviewCount: "38",
-    bestRating: "5",
-    worstRating: "1",
-  },
-  review: [
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "Be Dynamic" },
-      datePublished: "2024-06-01",
-      reviewBody: "I had a 48-hour layover in Kigali and squeezed every second out of it thanks to Obed. He picked me up from Lemigo Hotel and we spent the entire day exploring Kigali. Safe, punctual, and a lovely driver with deep knowledge of Rwanda history and culture. I have already recommended him to seven people traveling to Kigali.",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "Donald Swen" },
-      datePublished: "2024-07-01",
-      reviewBody: "Owner is a nice guy. Car was super clean. Arrived on time. Very flexible. Highly recommend. Will definitely use his service next time.",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "Geoffrey Mumford" },
-      datePublished: "2024-08-01",
-      reviewBody: "Obed was an excellent driver and picked me up right on time. Friendly and knowledgeable. I highly recommend him for all your transit needs!",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "Paul-Marie PETROCH" },
-      datePublished: "2024-12-01",
-      reviewBody: "Very easy to reach, the car was available quickly. The car was well maintained and clean. For return it was also fast to give the car back. I recommend this company.",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "Laura Waters" },
-      datePublished: "2024-07-01",
-      reviewBody: "Brilliant service! Great driver, knowledgeable guide, recommended.",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "Emmanuel Manirarora" },
-      datePublished: "2024-08-01",
-      reviewBody: "Kigali Car Rental is a reliable car rental service in Kigali. I have used their services multiple times, and they have consistently met my needs and expectations.",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "TimN" },
-      datePublished: "2024-06-01",
-      reviewBody: "10 out of 10. Good cars and service. Car and driver. Obed is the best. We did also a multiple day trip with car and driver. It was super. Thank you.",
-    },
-    {
-      "@type": "Review",
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      author: { "@type": "Person", name: "Gisele UWIZEYIMANA" },
-      datePublished: "2024-06-01",
-      reviewBody: "Rented a car with this company the car was good and the service was good too. I am recommending this company as best car rental company in Rwanda for the best car and service.",
-    },
-  ],
+  // No aggregateRating or review array here - there's no real review
+  // system wired up in this codebase yet, and these were previously 8
+  // fabricated reviews attributed to invented names plus a made-up
+  // 4.9/38 rating. Never publish invented trust signals - add this back
+  // only once genuine, verifiable reviews exist.
 };
 
 const faqSchema = {
@@ -302,7 +239,7 @@ const faqSchema = {
       name: "Which is the best car rental company in Kigali?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "We are Rwanda's most trusted car rental company, rated 4.9/5 by over 38 customers. We offer the widest fleet in Kigali — economy cars, SUVs, 4x4 Land Cruisers and luxury vehicles — with free hotel delivery, 24/7 support and transparent pricing from $30 per day.",
+        text: "We offer one of the widest fleets in Kigali — economy cars, SUVs, 4x4 Land Cruisers and luxury vehicles — with free hotel delivery, 24/7 support and transparent pricing from $30 per day.",
       },
     },
     {

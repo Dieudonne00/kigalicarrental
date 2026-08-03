@@ -1,22 +1,27 @@
 import { Metadata } from "next";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export const metadata: Metadata = {
-  title: "About Kigali Car Rental | Rwanda's Trusted Car Rental Since 1990",
+  title: "About Kigali Car Rental | Trusted Car Rental in Rwanda",
   description:
-    "Learn about Kigali Car Rental — Rwanda's most trusted car rental company since 1990. 50+ vehicles, 1,000+ happy customers, 24/7 service. Self-drive and chauffeur-driven cars from $30/day in Kigali.",
+    "Learn about Kigali Car Rental - a car rental company offering self-drive and chauffeur-driven cars from $30/day in Kigali, with 24/7 service across Rwanda and East Africa.",
   keywords: "Kigali car rental",
   alternates: { canonical: "https://kigalicarrental.site/about" },
   openGraph: {
-    title: "About Kigali Car Rental | Rwanda's Trusted Car Rental Since 1990",
+    title: "About Kigali Car Rental | Trusted Car Rental in Rwanda",
     description:
-      "Rwanda's most trusted car rental company since 1990. 50+ vehicles, 1,000+ happy customers, 24/7 service across Rwanda and East Africa.",
+      "Self-drive and chauffeur-driven car rental in Kigali, with 24/7 service across Rwanda and East Africa.",
     url: "https://kigalicarrental.site/about",
     siteName: "Kigali Car Rental",
     images: [{ url: "https://kigalicarrental.site/opengraph-image", width: 1200, height: 630, alt: "About Kigali Car Rental" }],
   },
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const fleetCount = await prisma.car.count({ where: { available: true } });
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -66,13 +71,13 @@ export default function AboutPage() {
             </h2>
             <div className="space-y-3 md:space-y-4 text-sm md:text-base text-gray-600 leading-relaxed">
               <p>
-                <strong className="text-gray-900">Kigali Car Rental</strong> was established in 1990 by Obed Dieudonne, a Kigali native with deep knowledge of Rwanda's roads, parks, and travel needs. What started as a small fleet has grown into Rwanda's most trusted car rental company, serving tourists, NGOs, diplomats, and business travellers across the country.
+                <strong className="text-gray-900">Kigali Car Rental</strong> is a Kigali-based car rental company serving tourists, NGOs, diplomats, and business travellers across Rwanda.
               </p>
               <p>
                 Based in Kigali on <strong className="text-gray-900">KG 648 St, Kigali, Rwanda</strong>, we operate 24/7 and offer two types of car hire: <strong className="text-gray-900">self-drive car hire</strong> for independent travellers, and <strong className="text-gray-900">chauffeur-driven car hire</strong> with professional local drivers who know every road in Rwanda.
               </p>
               <p>
-                Our fleet of 50+ vehicles covers every category — economy sedans from <strong className="text-gray-900">$30/day</strong>, rugged 4x4 Land Cruisers for gorilla trekking and safari, luxury cars for weddings and executive travel, and minibuses for groups and corporate events. Every vehicle is fully insured, regularly serviced, and delivered clean to your hotel or address anywhere in Kigali.
+                Our fleet of {fleetCount} vehicles covers every category — economy sedans from <strong className="text-gray-900">$30/day</strong>, rugged 4x4 Land Cruisers for gorilla trekking and safari, luxury cars for weddings and executive travel, and minibuses for groups and corporate events. Every vehicle is fully insured, regularly serviced, and delivered clean to your hotel or address anywhere in Kigali.
               </p>
             </div>
           </div>
@@ -278,10 +283,10 @@ export default function AboutPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
           {[
-            { number: "1,000+", label: "Happy Customers" },
-            { number: "50+", label: "Quality Vehicles" },
-            { number: "Est. 1990", label: "Serving Rwanda" },
-            { number: "24/7", label: "Customer Support" }
+            { number: `${fleetCount}`, label: "Vehicles in Our Fleet" },
+            { number: "24/7", label: "Customer Support" },
+            { number: "$30", label: "Starting Price / Day" },
+            { number: "6", label: "Countries We Serve" }
           ].map((stat, index) => (
             <div key={index} className="text-center">
               <div className="text-2xl md:text-5xl font-bold text-[#1e3a8a] mb-1 md:mb-2">

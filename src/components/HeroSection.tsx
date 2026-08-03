@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 
 // Layout adapted from carrentalinkigali.com's proven booking-search hero
 // pattern (light panel, single-row search bar, trust row, photo banner) -
@@ -118,18 +117,6 @@ export default function HeroSection() {
             24/7 Roadside Support Across Rwanda
           </span>
         </div>
-      </div>
-
-      {/* Photo banner */}
-      <div className="w-full h-[200px] sm:h-[280px] md:h-[340px] overflow-hidden bg-blue-50">
-        <Image
-          src="https://kigalicarhire.b-cdn.net/hero%20section%20cars.png"
-          alt="Kigali Car Rental fleet - quality cars available for rental in Rwanda"
-          width={1600}
-          height={340}
-          className="w-full h-full object-cover"
-          priority
-        />
       </div>
     </section>
   );
