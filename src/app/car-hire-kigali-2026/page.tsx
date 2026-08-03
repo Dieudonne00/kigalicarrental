@@ -8,7 +8,7 @@ const OG_IMAGE = "https://kigalicarhire.b-cdn.net/hero%20section%20cars.png";
 export const metadata: Metadata = {
   title: "Car Hire Kigali 2026 | Best Car Rental Rwanda 2026 Guide - Kigali Car Rental",
   description:
-    "Car hire Kigali 2026 — complete guide to renting a car in Rwanda in 2026. Updated prices, new fleet additions, 2026 travel tips, and how to book. From $30/day. Kigali Car Rental, Rwanda's most trusted car rental.",
+    "Car hire Kigali 2026 — complete guide to renting a car in Rwanda in 2026. Updated prices, fleet details, 2026 travel tips, and how to book. From $30/day with Kigali Car Rental.",
   keywords: "Kigali car rental",
   alternates: { canonical: `${SITE}/car-hire-kigali-2026` },
   openGraph: {
@@ -46,7 +46,7 @@ const faqSchema = {
       name: "What is the best car hire company in Kigali in 2026?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Kigali Car Rental is Rwanda's most trusted car rental company in 2026 with a 4.9 out of 5 Google rating from 38 verified reviews. We have operated in Rwanda since 1990 and offer self-drive cars, chauffeur-driven vehicles, airport transfers, and safari car hire across all of Rwanda and East Africa.",
+        text: "Kigali Car Rental offers self-drive cars, chauffeur-driven vehicles, airport transfers, and safari car hire across all of Rwanda and East Africa, with transparent pricing and 24/7 support.",
       },
     },
     {
@@ -54,7 +54,7 @@ const faqSchema = {
       name: "Do I need an international driving permit to hire a car in Kigali in 2026?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "An international driving permit (IDP) is recommended for foreign nationals hiring a self-drive car in Rwanda in 2026. Your home country driving licence is accepted alongside the IDP. Citizens from East African Community countries can use their national driving licence. Age requirement is 21 years or older.",
+        text: "An international driving permit (IDP) is recommended for foreign nationals hiring a self-drive car in Rwanda in 2026. Your home country driving licence is accepted alongside the IDP. Citizens from East African Community countries can use their national driving licence. Minimum age is 23 years.",
       },
     },
     {
@@ -135,10 +135,10 @@ export default function CarHireKigali2026Page() {
             Car Hire Kigali 2026
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto mb-4">
-            The complete 2026 guide to car hire in Kigali, Rwanda. Updated prices, 50+ vehicles, and everything you need to plan your trip.
+            The complete 2026 guide to car hire in Kigali, Rwanda. Updated prices, a full fleet, and everything you need to plan your trip.
           </p>
           <p className="text-base text-white/80 max-w-2xl mx-auto mb-10">
-            Kigali Car Rental — Rwanda's most trusted car rental company since 1990. Rated 4.9/5 on Google. Self-drive from $30/day.
+            Kigali Car Rental — self-drive and chauffeur-driven car hire across Rwanda. Transparent pricing from $30/day, 24/7 support.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/book-now" className="bg-white text-[#1e3a8a] px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-all shadow-lg">
@@ -258,7 +258,7 @@ export default function CarHireKigali2026Page() {
           </h2>
           <div className="space-y-5 text-gray-600 leading-relaxed">
             <p>
-              <strong className="text-gray-900">Car hire in Kigali in 2026</strong> is easier, more affordable, and more flexible than ever before. Kigali Car Rental offers over 50 vehicles across every category — from economy saloons at $30 per day to executive Land Cruisers at $120 per day — all available for self-drive or chauffeur-driven hire anywhere in Rwanda.
+              <strong className="text-gray-900">Car hire in Kigali in 2026</strong> is easier, more affordable, and more flexible than ever before. Kigali Car Rental offers a full range of vehicles across every category — from economy saloons at $30 per day to executive Land Cruisers at $120 per day — all available for self-drive or chauffeur-driven hire anywhere in Rwanda.
             </p>
             <p>
               Rwanda's roads have improved significantly in recent years, and 2026 is an excellent time to explore the country by car. The Kigali to Musanze road (for Volcanoes National Park gorilla trekking) is fully tarmacked and takes 2.5 hours. The Kigali to Gisenyi/Lake Kivu route is scenic and well-maintained. Off the main highways, a 4x4 vehicle is recommended.
@@ -267,7 +267,7 @@ export default function CarHireKigali2026Page() {
               <strong className="text-gray-900">How to hire a car in Kigali in 2026:</strong> Contact Kigali Car Rental by WhatsApp (+250 787 619 387), phone, or online booking form. Confirm your vehicle, pickup date, and number of days. Present your driving licence and passport. Pay your deposit by mobile money, bank transfer, or cash. We deliver the car to your hotel or Kigali International Airport at no extra cost.
             </p>
             <p>
-              Kigali Car Rental is Rwanda's highest-rated car rental company on Google in 2026, with a 4.9 out of 5 star rating from 38 verified reviews. We have operated continuously in Rwanda since 1990 and are the trusted car hire partner for tourists, business travellers, expatriates, NGO workers, and diplomatic missions in Kigali.
+              Kigali Car Rental is a car hire partner for tourists, business travellers, expatriates, NGO workers, and diplomatic missions in Kigali, with transparent pricing and 24/7 support.
             </p>
             <p>
               Whether you are planning a gorilla trekking safari, an Akagera game drive, a Lake Kivu beach holiday, a Nyungwe chimpanzee trek, or simply need reliable daily transport in Kigali, Kigali Car Rental is your first choice for <strong className="text-gray-900">car hire in Rwanda in 2026</strong>.
@@ -316,7 +316,7 @@ export default function CarHireKigali2026Page() {
             Book Your Car Hire in Kigali for 2026
           </h2>
           <p className="text-white/85 text-lg mb-8 max-w-xl mx-auto">
-            Rwanda's highest-rated car rental company. Free hotel delivery. 24/7 support. Self-drive from $30/day.
+            Transparent pricing, free hotel delivery, and 24/7 support. Self-drive from $30/day.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/book-now" className="bg-white text-[#1e3a8a] px-8 py-4 rounded-lg font-bold hover:bg-blue-50 transition-all shadow-lg">

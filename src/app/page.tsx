@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Kigali Car Rental | Rent a Car in Rwanda from $30/day",
     description:
-      "Rwanda's trusted car rental from $30/day. 50+ vehicles: SUVs, 4x4 Land Cruisers, luxury & economy. Self-drive or chauffeur. Airport pickup 24/7. Free Kigali delivery.",
+      "Rwanda's trusted car rental from $30/day. SUVs, 4x4 Land Cruisers, luxury & economy. Self-drive or chauffeur. Airport pickup 24/7. Free Kigali delivery.",
     url: SITE,
     siteName: "Kigali Car Rental",
     type: "website",
@@ -86,9 +86,9 @@ const localBusinessSchema = {
     postalCode: "0000",
     addressCountry: "RW",
   },
-  sameAs: [
-    "https://share.google/bagc78zxCxtwqa1ZS",
-  ],
+  // No sameAs entry here - the previous "https://share.google/bagc78zxCxtwqa1ZS" link
+  // actually resolves to a page referencing "Kigali car hire," not this rebranded
+  // Kigali Car Rental entity. Add a real, verified profile URL back once one exists.
   geo: {
     "@type": "GeoCoordinates",
     latitude: -1.9440727,
@@ -312,7 +312,7 @@ export default async function Home() {
         <EastAfricaDestinations />
         <ServicesSection />
         <WhyChooseUs />
-        <Testimonials />
+        <Testimonials fleetCount={allCars.length} />
         <KigaliCarHireContent />
         <FAQSection />
         <FeaturedBlogs />

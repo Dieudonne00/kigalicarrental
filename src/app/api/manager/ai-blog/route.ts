@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
       (p) => `- ${p.label}: https://kigalicarrental.site${p.href}`
     ).join("\n");
 
-    const prompt = `You are an expert SEO content writer for Kigali Car Rental (kigalicarrental.site), Rwanda's #1 car rental company. Based in Kigali, Rwanda. Cars from $30/day. Self-drive and chauffeur-driven. WhatsApp: +250787619387. Book at https://kigalicarrental.site/book-now.
+    const prompt = `You are an expert SEO content writer for Kigali Car Rental (kigalicarrental.site), a car rental company based in Kigali, Rwanda. Cars from $30/day. Self-drive and chauffeur-driven. WhatsApp: +250787619387. Book at https://kigalicarrental.site/book-now.
 
 Write a complete, SEO-optimized blog post about: "${topic}"
 Category: ${category}
@@ -71,6 +71,7 @@ WRITING RULES:
 5. Anchor text for internal links must be natural (e.g. "hire a 4x4 in Rwanda", not just "click here")
 6. End with a CTA paragraph naturally linking to https://kigalicarrental.site/book-now
 7. Tone: friendly, expert, trustworthy — like a local who knows Rwanda well
+8. Never invent statistics, review counts, star ratings, founding dates, customer counts, or awards. Only state prices, locations, and facts given above or verifiably true of Rwanda/Kigali in general.
 
 OUTPUT: Return ONLY a raw JSON object — no markdown fences, no explanation, just the JSON:
 {

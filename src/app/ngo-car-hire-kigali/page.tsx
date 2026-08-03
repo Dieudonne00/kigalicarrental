@@ -7,7 +7,7 @@ const SITE = "https://kigalicarrental.site";
 export const metadata: Metadata = {
   title: "NGO Car Hire Kigali | UN Agency Vehicle Hire Rwanda | Embassy Car Rental - Kigali Car Rental",
   description:
-    "NGO car hire in Kigali for UN agencies, INGOs, embassies, and diplomatic missions in Rwanda. Monthly contracts, fleet hire, VAT exemption invoicing, and 24/7 support. Kigali Car Rental — trusted by the international community since 1990.",
+    "NGO car hire in Kigali for UN agencies, INGOs, embassies, and diplomatic missions in Rwanda. Monthly contracts, fleet hire, VAT exemption invoicing, and 24/7 support from Kigali Car Rental.",
   keywords: "Kigali car rental",
   alternates: { canonical: `${SITE}/ngo-car-hire-kigali` },
   openGraph: {
@@ -149,9 +149,9 @@ export default function NgoCarHireKigaliPage() {
         <div className="max-w-5xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
-              { num: "35+", label: "Years in Rwanda" },
-              { num: "4.9/5", label: "Google Rating" },
-              { num: "38", label: "Verified Reviews" },
+              { num: "100%", label: "Fully Insured Fleet" },
+              { num: "Monthly", label: "Billing Contracts" },
+              { num: "VAT", label: "Exempt Invoicing" },
               { num: "24/7", label: "Operations Support" },
             ].map((s) => (
               <div key={s.label}>
@@ -196,7 +196,7 @@ export default function NgoCarHireKigaliPage() {
               </h2>
               <div className="space-y-4 text-gray-600">
                 <p>
-                  Kigali is home to over 300 international NGOs, UN agencies, and humanitarian organisations — making it one of Africa's busiest aid and development hubs. Kigali Car Rental has been providing <strong className="text-gray-900">NGO vehicle hire in Rwanda</strong> since 1990 and understands the specific requirements of the international community.
+                  Kigali is home to over 300 international NGOs, UN agencies, and humanitarian organisations — making it one of Africa's busiest aid and development hubs. Kigali Car Rental provides <strong className="text-gray-900">NGO vehicle hire in Rwanda</strong> built around the specific requirements of the international community.
                 </p>
                 <p>
                   Our <strong className="text-gray-900">NGO car hire contracts</strong> are structured around the way humanitarian organisations work: monthly billing cycles, consolidated invoices for multi-vehicle fleets, replacement vehicle guarantees so your programme never loses transport, and documentation supporting VAT exemption for qualifying international organisations.

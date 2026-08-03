@@ -25,32 +25,31 @@ const OG_IMAGE = "https://kigalicarrental.site/opengraph-image";
 
 export const metadata: Metadata = {
   title: {
-    default: "Kigali Car Rental | #1 Car Rental in Rwanda — from $30/day",
+    default: "Kigali Car Rental | Car Rental in Kigali, Rwanda — from $30/day",
     template: "%s | Kigali Car Rental",
   },
   description:
-    "Kigali Car Rental — Rwanda's most trusted car rental. From $30/day: SUVs, 4x4 Land Cruisers, luxury & economy cars. Airport pickup 24/7. Self-drive or chauffeur. WhatsApp +250 787 619 387.",
-  keywords:
-    "kigali car rental, car hire kigali, car rental kigali, rent a car kigali rwanda, self drive rwanda, airport transfer kigali, 4x4 hire rwanda, gorilla trekking car hire, chauffeur service kigali, kigali vehicle rental",
+    "Kigali Car Rental — self-drive and chauffeur-driven car rental in Kigali. From $30/day: SUVs, 4x4 Land Cruisers, luxury & economy cars. Airport pickup 24/7. WhatsApp +250 787 619 387.",
+  keywords: "Kigali car rental",
   metadataBase: new URL("https://kigalicarrental.site"),
   verification: {
     google: "xHopaPwEJGui02kgKU5AHndOdIRei2piro21JOdMeGk",
   },
   openGraph: {
-    title: "Kigali Car Rental | #1 Car Rental in Rwanda — from $30/day",
+    title: "Kigali Car Rental | Car Rental in Kigali, Rwanda — from $30/day",
     description:
-      "Rwanda's trusted car rental from $30/day. 50+ vehicles: SUVs, 4x4 Land Cruisers, luxury & economy. Airport pickup 24/7. Free Kigali delivery. Self-drive or chauffeur.",
+      "Self-drive and chauffeur-driven car rental in Kigali from $30/day. SUVs, 4x4 Land Cruisers, luxury & economy. Airport pickup 24/7. Free Kigali delivery.",
     type: "website",
     locale: "en_RW",
     siteName: "Kigali Car Rental",
     url: "https://kigalicarrental.site",
-    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Kigali Car Rental — #1 car rental in Rwanda from $30/day" }],
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Kigali Car Rental — car rental in Kigali, Rwanda from $30/day" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kigali Car Rental | #1 Car Rental in Rwanda — from $30/day",
+    title: "Kigali Car Rental | Car Rental in Kigali, Rwanda — from $30/day",
     description:
-      "Rwanda's trusted car rental from $30/day. SUVs, 4x4, luxury & economy. Airport pickup 24/7. Free Kigali delivery.",
+      "Self-drive and chauffeur-driven car rental in Kigali from $30/day. SUVs, 4x4, luxury & economy. Airport pickup 24/7. Free Kigali delivery.",
     images: [OG_IMAGE],
   },
 };

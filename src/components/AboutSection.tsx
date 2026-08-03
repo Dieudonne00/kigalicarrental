@@ -1,22 +1,22 @@
 export default function AboutSection() {
   const stats = [
     {
-      title: "Years in Rwanda",
-      value: "35+",
+      title: "Fully Insured Fleet",
+      value: "100%",
       description:
-        "Kigali Car Rental has been providing trusted car rental services in Rwanda since 1990 — decades of local expertise you can rely on.",
+        "Every car in our Kigali car rental fleet is fully insured and serviced before it goes out for self-drive or chauffeured hire.",
     },
     {
-      title: "Happy Customers",
-      value: "1,000+",
+      title: "Customer Support",
+      value: "24/7",
       description:
-        "Over a thousand satisfied customers — tourists, business travellers, and locals who trust us for reliable car hire in Kigali.",
+        "Reachable by phone and WhatsApp any time — for pickup, delivery, roadside help, or a last-minute booking change.",
     },
     {
-      title: "Cars in Our Fleet",
-      value: "50+",
+      title: "Starting Daily Rate",
+      value: "$30",
       description:
-        "From compact city cars to rugged 4x4 SUVs, our growing fleet covers every need across Rwanda — maintained, insured, and ready to go.",
+        "Economy sedans start from $30/day, with SUVs, 4x4 Land Cruisers, and minibuses available across every budget.",
     },
   ];
 
@@ -38,7 +38,7 @@ export default function AboutSection() {
                 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight tracking-tight font-[family-name:var(--font-plus-jakarta)]"
                 style={{ lineHeight: "1.2" }}
               >
-                Kigali Car Rental — Rwanda&apos;s most trusted car rental service, with transparent
+                Kigali Car Rental — a Kigali car rental service built on transparent
                 pricing, a quality fleet, and 24/7 customer support.
               </h3>
               <p className="mt-5 text-gray-600 text-lg leading-relaxed">

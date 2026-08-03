@@ -100,7 +100,7 @@ const ALL_TOPICS: { topic: string; category: string }[] = [
   { topic: "GPS and Navigation in Rwanda: Best Apps for Drivers", category: "car-maintenance" },
   { topic: "Rwanda Road Signs Explained for International Drivers", category: "car-maintenance" },
   // Company News
-  { topic: "Why Kigali Car Rental is Rwanda's Most Trusted Car Rental", category: "company-news" },
+  { topic: "5 Reasons Travellers Choose Kigali Car Rental", category: "company-news" },
   { topic: "Kigali Car Rental Fleet 2025: New Cars Now Available", category: "company-news" },
   { topic: "How Kigali Car Rental Supports Rwanda Tourism", category: "company-news" },
   { topic: "Kigali Car Rental Special Offers and Discounts 2025", category: "company-news" },
@@ -177,7 +177,7 @@ export async function GET(request: NextRequest) {
       (p) => `- ${p.label}: https://kigalicarrental.site${p.href}`
     ).join("\n");
 
-    const prompt = `You are an expert SEO content writer for Kigali Car Rental (kigalicarrental.site), Rwanda's #1 car rental company. Based in Kigali, Rwanda. Cars from $30/day. Self-drive and chauffeur-driven. WhatsApp: +250787619387. Book at https://kigalicarrental.site/book-now.
+    const prompt = `You are an expert SEO content writer for Kigali Car Rental (kigalicarrental.site), a car rental company based in Kigali, Rwanda. Cars from $30/day. Self-drive and chauffeur-driven. WhatsApp: +250787619387. Book at https://kigalicarrental.site/book-now.
 
 Write a complete, SEO-optimized blog post about: "${topic}"
 Category: ${category}
@@ -196,6 +196,7 @@ WRITING RULES:
 5. Anchor text for internal links must be natural (not just "click here")
 6. End with a CTA paragraph naturally linking to https://kigalicarrental.site/book-now
 7. Tone: friendly, expert, trustworthy — like a local who knows Rwanda well
+8. Never invent statistics, review counts, star ratings, founding dates, customer counts, or awards. Only state prices, locations, and facts given above or verifiably true of Rwanda/Kigali in general.
 
 OUTPUT: Return ONLY a raw JSON object — no markdown fences, no explanation:
 {

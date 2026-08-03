@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import FleetClient from "./FleetClient";
 
@@ -41,34 +40,60 @@ export default async function FleetPage() {
     },
   });
 
+  const minRate = cars.length ? Math.min(...cars.map((c) => c.dailyRate)) : 30;
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero */}
-      <section className="relative min-h-[500px] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url(https://kigalicarhire.b-cdn.net/hero%20section%20cars.png)" }}
-        >
-          <div className="absolute inset-0 bg-black/55"></div>
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
-          <span className="inline-block bg-[#1e3a8a] text-white text-sm font-bold px-4 py-1 rounded-full mb-6">
-            {cars.length} Cars Available Now
+      <section className="bg-gradient-to-b from-blue-50 to-blue-50/40 pt-28 sm:pt-32 pb-10 px-4 sm:px-[5%]">
+        <div className="max-w-5xl mx-auto text-center">
+          <span className="inline-flex items-center gap-1.5 bg-[#1e3a8a]/10 border border-[#1e3a8a]/25 text-[#1e3a8a] text-xs font-bold px-4 py-1.5 rounded-full mb-5">
+            <svg className="w-3.5 h-3.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M5 13l4 4L19 7" /></svg>
+            {cars.length} Vehicles Available Now
           </span>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-[family-name:var(--font-plus-jakarta)]">
-            Car Hire Fleet in Kigali
+          <h1 className="font-[family-name:var(--font-plus-jakarta)] text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-5">
+            Kigali Car Rental Fleet <span className="text-[#1e3a8a]">— From ${minRate}/Day</span>
           </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
-            Economy cars, SUVs, 4x4 Land Cruisers and luxury vehicles — all fully insured, serviced, and ready for self-drive or chauffeur hire across Rwanda and East Africa.
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-8">
+            Browse our full <strong>Kigali car rental</strong> fleet — economy sedans, SUVs, 4x4 Land Cruisers and minibuses, available for self-drive or with a professional driver. Free delivery to Kigali Airport or your hotel.
           </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-[#1e3a8a] text-white font-bold rounded-lg hover:bg-[#172554] transition-all"
-          >
-            Need Help? Contact Us
-          </Link>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <a href="#fleet-grid" className="inline-flex items-center justify-center gap-2 bg-[#1e3a8a] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#172554] transition-all">
+              Browse Full Fleet
+            </a>
+            <a
+              href="https://wa.me/250787619387?text=Hi%2C+I%27m+browsing+the+Kigali+Car+Rental+fleet+and+want+to+check+availability."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 border-2 border-gray-200 text-gray-700 px-6 py-3 rounded-lg font-bold hover:border-[#1e3a8a] hover:text-[#1e3a8a] transition-all"
+            >
+              Get Instant Quote
+            </a>
+          </div>
         </div>
       </section>
+
+      {/* Trust bar */}
+      <div className="bg-blue-50/60 border-y border-blue-100 py-5 px-4 sm:px-[5%]">
+        <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-gray-700">
+          <span className="flex items-center gap-2">
+            <svg className="w-4 h-4 text-[#1e3a8a]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            Free Airport Delivery — KGL
+          </span>
+          <span className="flex items-center gap-2">
+            <svg className="w-4 h-4 text-[#1e3a8a]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 12l2 2 4-5m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            Full Insurance Included
+          </span>
+          <span className="flex items-center gap-2">
+            <svg className="w-4 h-4 text-[#1e3a8a]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            24/7 Roadside Support Across Rwanda
+          </span>
+          <span className="flex items-center gap-2">
+            <svg className="w-4 h-4 text-[#1e3a8a]" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+            No Hidden Fees — Transparent Pricing
+          </span>
+        </div>
+      </div>
 
       {/* Server-rendered car list passed to client for filtering */}
       <FleetClient initialCars={cars as any} />

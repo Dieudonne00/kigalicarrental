@@ -107,7 +107,7 @@ const ALL_TOPICS: { topic: string; category: string }[] = [
   { topic: "GPS and Navigation in Rwanda: Best Apps for Drivers", category: "car-maintenance" },
   { topic: "Rwanda Road Signs Explained for International Drivers", category: "car-maintenance" },
   // Company News
-  { topic: "Why Kigali Car Rental is Rwanda's Most Trusted Car Rental", category: "company-news" },
+  { topic: "5 Reasons Travellers Choose Kigali Car Rental", category: "company-news" },
   { topic: "Kigali Car Rental Fleet 2025: New Cars Now Available", category: "company-news" },
   { topic: "How Kigali Car Rental Supports Rwanda Tourism", category: "company-news" },
   { topic: "Kigali Car Rental Special Offers and Discounts 2025", category: "company-news" },
