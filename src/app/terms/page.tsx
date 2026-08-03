@@ -1,89 +1,112 @@
-import type { Metadata } from "next";
-import ModernLayout from "@/components/ModernLayout";
-import { CONTACT } from "@/lib/constants";
+import { Metadata } from "next";
+
+const SITE = "https://kigalicarhire.rw";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions | Kigali Car Rental",
+  title: "Terms & Conditions | Kigali Car Hire",
   description:
-    "Terms and conditions for renting a vehicle from Kigali Car Rental in Rwanda, including eligibility, payment, insurance, and cancellation policy.",
-  alternates: { canonical: "/terms" },
+    "Terms and conditions for renting a vehicle from Kigali Car Hire — Rwanda's trusted car rental service. Booking, payment, deposit, insurance and cancellation policy.",
+  alternates: { canonical: `${SITE}/terms` },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: "Terms & Conditions | Kigali Car Hire",
+    description: "Booking, payment, deposit, insurance and cancellation terms for Kigali Car Hire rentals.",
+    url: `${SITE}/terms`,
+    siteName: "Kigali Car Hire",
+    images: [{ url: `${SITE}/opengraph-image`, width: 1200, height: 630, alt: "Kigali Car Hire Terms & Conditions" }],
+  },
 };
 
 export default function TermsPage() {
   return (
-    <ModernLayout title="Terms & Conditions" subtitle="Please read these terms carefully before renting a vehicle from us.">
-      <div className="prose max-w-none space-y-6 text-gray-700">
-        <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">1. Rental Eligibility</h2>
-          <p>
-            To rent a vehicle, you must be at least 23 years of age, hold a valid driving license
-            (an International Driving Permit is required for most foreign visitors in addition to
-            your home license), and provide a valid passport or national ID at the time of pickup.
-          </p>
-        </section>
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 font-[family-name:var(--font-plus-jakarta)]">
+          Terms &amp; Conditions
+        </h1>
+        <p className="text-gray-500 mb-10">Last updated: July 2026</p>
 
-        <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">2. Booking &amp; Payment</h2>
-          <p>
-            Bookings are confirmed once a deposit or full payment has been received, as agreed at
-            the time of booking. Rates quoted are in USD unless otherwise stated and cover the
-            vehicle only, unless additional services (driver, extra insurance, delivery) are
-            specified.
-          </p>
-        </section>
+        <div className="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed">
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">1. Booking &amp; Confirmation</h2>
+            <p>
+              A booking with Kigali Car Hire is confirmed once we send written confirmation by WhatsApp,
+              phone or email. Bookings can be made online at kigalicarhire.rw/book-now, by phone/WhatsApp
+              on +250 788 892 976, or by email at kigalicarhire1990@gmail.com. We confirm all requests
+              within 30 minutes during business hours.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">3. Insurance &amp; Liability</h2>
-          <p>
-            All vehicles include basic insurance coverage. The renter is responsible for the
-            vehicle during the rental period and liable for damage, loss, or traffic violations
-            incurred while the vehicle is in their possession, except where covered by the
-            applicable insurance policy. Additional coverage options are available on request.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">2. Eligibility &amp; Documents</h2>
+            <p>
+              Renters must be at least 21 years old and hold a valid driving licence (an International
+              Driving Permit is recommended for foreign visitors) plus a passport or national ID. Drivers
+              without a full licence cannot be added to a self-drive rental.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">4. Fuel &amp; Mileage</h2>
-          <p>
-            Vehicles are provided with a full tank of fuel and should be returned with a full
-            tank, unless otherwise agreed. Any specific mileage limits will be communicated
-            clearly at the time of booking.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">3. Payment &amp; Deposit</h2>
+            <p>
+              We accept MTN Mobile Money, Airtel Money, bank transfer and cash. A refundable security
+              deposit is required for self-drive rentals and is returned in full at the end of the rental
+              period, subject to the vehicle being returned in its original condition with a full fuel tank.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">5. Cancellations &amp; Changes</h2>
-          <p>
-            Cancellation and refund terms depend on how far in advance you cancel relative to your
-            pickup date. Contact us as early as possible if your plans change so we can advise on
-            the applicable policy for your booking.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">4. Insurance</h2>
+            <p>
+              All rentals include third-party insurance. The renter is responsible for any damage caused
+              by negligence, reckless driving, or driving under the influence of alcohol or drugs, which
+              is not covered by insurance.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">6. Vehicle Return</h2>
-          <p>
-            Vehicles must be returned on the agreed date, time, and location in the same condition
-            as at pickup, ordinary wear and tear excepted. Late returns may incur additional
-            charges.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">5. Fuel Policy</h2>
+            <p>
+              Vehicles are provided with a full tank of fuel and must be returned with a full tank. A
+              refuelling charge plus service fee applies if the vehicle is returned with less fuel than
+              at pickup.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">7. Contact</h2>
-          <p>
-            Questions about these terms can be directed to us at{" "}
-            <a href={`mailto:${CONTACT.EMAIL}`} className="text-blue-600 font-semibold">
-              {CONTACT.EMAIL}
-            </a>{" "}
-            or{" "}
-            <a href={`tel:${CONTACT.PHONE}`} className="text-blue-600 font-semibold">
-              {CONTACT.PHONE}
-            </a>
-            .
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">6. Cancellations</h2>
+            <p>
+              Cancellations made more than 48 hours before the pickup time receive a full refund of any
+              deposit paid. Cancellations within 48 hours of pickup may be subject to a cancellation fee
+              to cover vehicle preparation costs.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">7. Cross-Border Travel</h2>
+            <p>
+              Cross-border travel to Uganda, Tanzania, Kenya, Burundi or DRC must be approved in advance
+              so we can arrange the correct permits and cross-border insurance. Unauthorised cross-border
+              travel voids insurance coverage.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">8. Contact</h2>
+            <p>
+              Questions about these terms can be sent to{" "}
+              <a href="mailto:kigalicarhire1990@gmail.com" className="text-[#01B000] font-semibold hover:underline">
+                kigalicarhire1990@gmail.com
+              </a>{" "}
+              or WhatsApp{" "}
+              <a href="https://wa.me/250788892976" className="text-[#01B000] font-semibold hover:underline">
+                +250 788 892 976
+              </a>
+              .
+            </p>
+          </section>
+        </div>
       </div>
-    </ModernLayout>
+    </div>
   );
 }

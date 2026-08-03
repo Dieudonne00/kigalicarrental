@@ -1,105 +1,82 @@
 import { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 
-const baseUrl = "https://www.kigalicarrental.site";
-
-// Every real, public (non-manager) static route in the app. lastModified is
-// the real date each route's page last changed in git (checked 2026-07-25),
-// not "now" - a sitemap where every lastmod is always the current request
-// time teaches Google to distrust the field entirely. Every route below is
-// 2026-07-25 because Footer.tsx (rendered on every page) genuinely changed
-// that day - update a route's date here whenever you actually change what
-// it renders, whether that's the page itself or a shared component.
-const STATIC_ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]; lastModified: string }[] = [
-  { path: "", priority: 1, changeFrequency: "daily", lastModified: "2026-07-26" },
-  { path: "/car-rental-rwanda", priority: 0.9, changeFrequency: "daily", lastModified: "2026-07-25" },
-  { path: "/car-hire-rwanda", priority: 0.9, changeFrequency: "daily", lastModified: "2026-07-25" },
-  { path: "/fleet", priority: 0.9, changeFrequency: "daily", lastModified: "2026-07-25" },
-  { path: "/kigali-airport-car-rental", priority: 0.8, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/luxury-car-rental-kigali", priority: 0.8, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/cheap-car-rental-kigali", priority: 0.8, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/self-drive-rwanda", priority: 0.8, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/self-drive-car-rental-kigali", priority: 0.8, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/driver-car-hire-kigali", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/chauffeur-service-rwanda", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/private-driver-kigali", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/rwanda-guided-transport", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/airport-driver-service", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/city-tour-driver", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/business-driver-service", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/event-transport-driver", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/4x4-car-rental-rwanda", priority: 0.8, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/safari-car-rental-rwanda", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/land-cruiser-rental-rwanda", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/prado-rental-kigali", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/rooftop-tent-car-rental-rwanda", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/camping-car-rental-rwanda", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/akagera-safari-rental", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/akagera-game-drive", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/volcanoes-4x4-rental", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/nyungwe-forest-safari", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/long-term-car-rental-rwanda", priority: 0.7, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/long-term/monthly", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/deals/last-minute", priority: 0.6, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/book-now", priority: 0.7, changeFrequency: "monthly", lastModified: "2026-07-25" },
-  { path: "/how-it-works", priority: 0.5, changeFrequency: "monthly", lastModified: "2026-07-25" },
-  { path: "/about", priority: 0.5, changeFrequency: "monthly", lastModified: "2026-07-25" },
-  { path: "/contact", priority: 0.5, changeFrequency: "monthly", lastModified: "2026-07-25" },
-  { path: "/blog", priority: 0.5, changeFrequency: "weekly", lastModified: "2026-07-25" },
-  { path: "/faq", priority: 0.4, changeFrequency: "monthly", lastModified: "2026-07-25" },
-  { path: "/terms", priority: 0.3, changeFrequency: "yearly", lastModified: "2026-07-25" },
-  { path: "/privacy", priority: 0.3, changeFrequency: "yearly", lastModified: "2026-07-25" },
-  { path: "/site-map", priority: 0.3, changeFrequency: "monthly", lastModified: "2026-07-25" },
-];
-
-// 1 hour, not 24 - the blog cron publishes new posts once daily at 8am, and
-// a stale sitemap for up to a full day after that undercuts the freshness
-// signal we want Google to see new posts on.
-export const revalidate = 3600;
+const BASE = "https://kigalicarhire.rw";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticEntries: MetadataRoute.Sitemap = STATIC_ROUTES.map((route) => ({
-    url: `${baseUrl}${route.path}`,
-    lastModified: route.lastModified,
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
-  }));
+  // Static pages
+  const staticPages: MetadataRoute.Sitemap = [
+    { url: BASE,                              lastModified: new Date(), changeFrequency: "weekly",  priority: 1.0 },
+    { url: `${BASE}/fleet`,                   lastModified: new Date(), changeFrequency: "daily",   priority: 0.9 },
+    { url: `${BASE}/book-now`,                lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE}/about`,                   lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/contact`,                 lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/how-it-works`,            lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE}/pricing`,                 lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/faq`,                     lastModified: new Date(), changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE}/site-map`,                lastModified: new Date(), changeFrequency: "monthly", priority: 0.3 },
+    { url: `${BASE}/terms`,                   lastModified: new Date(), changeFrequency: "yearly",  priority: 0.2 },
+    { url: `${BASE}/privacy`,                 lastModified: new Date(), changeFrequency: "yearly",  priority: 0.2 },
+    { url: `${BASE}/akagera-game-drive`,      lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE}/blog`,                    lastModified: new Date(), changeFrequency: "daily",   priority: 0.8 },
+    // Keyword landing pages
+    { url: `${BASE}/airport-transfer-kigali`,          lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/gorilla-trekking-car-hire`,        lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/self-drive-rwanda`,                lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/4x4-car-hire-rwanda`,              lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/luxury-car-hire-kigali`,           lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/wedding-car-hire-kigali`,          lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/corporate-car-hire-kigali`,        lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/volcanoes-national-park-car-hire`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/lake-kivu-car-hire`,               lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/nyungwe-forest-car-hire`,          lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/long-term-car-hire-kigali`,        lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/ngo-car-hire-kigali`,              lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE}/car-hire-kigali-2026`,             lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+  ];
 
-  let cars: { id: string; updatedAt: Date; images: string[] }[] = [];
-  let blogPosts: { slug: string; updatedAt: Date; featuredImage: string | null }[] = [];
-
+  // Dynamic car pages
+  let carPages: MetadataRoute.Sitemap = [];
   try {
-    [cars, blogPosts] = await Promise.all([
-      prisma.car.findMany({
-        where: { available: true },
-        select: { id: true, updatedAt: true, images: true },
-      }),
-      prisma.blogPost.findMany({
-        where: { published: true },
-        select: { slug: true, updatedAt: true, featuredImage: true },
-      }),
-    ]);
-  } catch (error) {
-    console.error("Sitemap: failed to fetch dynamic routes from database", error);
+    const cars = await prisma.car.findMany({
+      where: { available: true },
+      select: { id: true, updatedAt: true },
+    });
+    carPages = cars.map((car) => ({
+      url: `${BASE}/cars/${car.id}`,
+      lastModified: car.updatedAt,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }));
+  } catch {
+    // DB unavailable at build time — skip dynamic car pages
   }
 
-  // Image sitemap extension - real fleet photos, helps Google Images
-  // discover and index them independent of the page's own crawl.
-  const carEntries: MetadataRoute.Sitemap = cars.map((car) => ({
-    url: `${baseUrl}/cars/${car.id}`,
-    lastModified: car.updatedAt,
-    changeFrequency: "weekly",
-    priority: 0.6,
-    images: car.images.filter((img) => !img.startsWith("blob:")),
-  }));
+  // Dynamic blog pages
+  let blogPages: MetadataRoute.Sitemap = [];
+  try {
+    const posts = await prisma.blogPost.findMany({
+      where: { published: true },
+      select: { slug: true, updatedAt: true },
+    });
+    blogPages = posts.map((post) => ({
+      url: `${BASE}/blog/${post.slug}`,
+      lastModified: post.updatedAt,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    }));
+  } catch {
+    // DB unavailable at build time — skip dynamic blog pages
+  }
 
-  const blogEntries: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.updatedAt,
-    changeFrequency: "monthly",
-    priority: 0.5,
-    ...(post.featuredImage && !post.featuredImage.startsWith("blob:") && { images: [post.featuredImage] }),
-  }));
-
-  return [...staticEntries, ...carEntries, ...blogEntries];
+  return [...staticPages, ...carPages, ...blogPages];
 }
+
+
+
+
+
+
+
+
+

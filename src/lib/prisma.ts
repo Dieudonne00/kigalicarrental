@@ -4,9 +4,11 @@ const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined
 }
 
-export const prisma = globalForPrisma.prisma ?? new PrismaClient({
-  datasourceUrl: process.env.DATABASE_URL, // <-- THIS LINE IS CRITICAL
-  log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
-})
+export const prisma =
+  globalForPrisma.prisma ??
+  new PrismaClient({
+    log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+  })
 
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+// Always reuse singleton in all environments — critical for serverless
+globalForPrisma.prisma = prisma

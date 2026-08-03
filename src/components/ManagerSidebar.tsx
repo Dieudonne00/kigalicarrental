@@ -30,6 +30,17 @@ export default function ManagerSidebar() {
       ),
     },
     {
+      name: "Fleet Status",
+      href: "/manager/fleet-status",
+      icon: (
+        <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+          <path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2 2h10l2-2z" />
+          <path d="M13 6l3.5 8H21l-1-4h-3.5" />
+        </svg>
+      ),
+    },
+    {
       name: "Bookings",
       href: "/manager/bookings",
       icon: (
@@ -62,15 +73,6 @@ export default function ManagerSidebar() {
       icon: (
         <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
           <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
-    },
-    {
-      name: "Reviews",
-      href: "/manager/reviews",
-      icon: (
-        <svg className="w-5 h-5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-          <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
         </svg>
       ),
     },
@@ -127,11 +129,11 @@ export default function ManagerSidebar() {
           <div className="p-6 border-b-2 border-gray-200">
             <Link href="/manager/dashboard" className="flex items-center">
               <Image
-                src="/logo.svg"
-                alt="Kigali Car Rental"
-                width={40}
+                src="https://kigalicarhire.b-cdn.net/kigalicarhire.png"
+                alt="Kigali Car Hire"
+                width={120}
                 height={40}
-                className="h-10 w-10 rounded-lg"
+                className="h-10 w-auto"
               />
             </Link>
             <p className="mt-2 text-xs font-bold text-gray-500 uppercase tracking-wide">

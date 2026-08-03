@@ -5,7 +5,6 @@ import ManagerSidebar from "@/components/ManagerSidebar";
 import SuccessModal from "@/components/SuccessModal";
 import ErrorModal from "@/components/ErrorModal";
 import ConfirmModal from "@/components/ConfirmModal";
-import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 
 interface Car {
   id: string;
@@ -30,6 +29,8 @@ interface Booking {
   returnLocation: string | null;
   totalCost: number;
   status: string;
+  source: string;
+  notes: string | null;
   specialRequests: string | null;
   createdAt: string;
   updatedAt: string;
@@ -182,6 +183,13 @@ export default function BookingsPage() {
                 Manage customer bookings and reservations
               </p>
             </div>
+            <a
+              href="/manager/fleet-status"
+              className="flex items-center gap-2 px-5 py-2.5 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] transition-all"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
+              Add Manual Booking
+            </a>
           </div>
 
           {/* Filters */}
@@ -288,6 +296,9 @@ export default function BookingsPage() {
                         Total Cost
                       </th>
                       <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                        Source
+                      </th>
+                      <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                         Status
                       </th>
                       <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
@@ -310,7 +321,7 @@ export default function BookingsPage() {
                           <div className="flex items-center gap-3">
                             <img
                               src={
-                                booking.car.images[0] || CAR_IMAGE_FALLBACK
+                                booking.car.images[0] || "/placeholder-car.jpg"
                               }
                               alt={booking.car.name}
                               className="w-12 h-12 rounded-lg object-cover"
@@ -364,6 +375,16 @@ export default function BookingsPage() {
                           <div className="text-lg font-bold text-[#01B000]">
                             ${booking.totalCost.toFixed(2)}
                           </div>
+                        </td>
+                        <td className="px-6 py-4">
+                          <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${
+                            booking.source === "online" ? "bg-blue-100 text-blue-700" :
+                            booking.source === "whatsapp" ? "bg-green-100 text-green-700" :
+                            booking.source === "walkin" ? "bg-purple-100 text-purple-700" :
+                            "bg-orange-100 text-orange-700"
+                          }`}>
+                            {{ phone: "📞 Phone", whatsapp: "💬 WhatsApp", walkin: "🚶 Walk-in", online: "🌐 Online" }[booking.source] || booking.source}
+                          </span>
                         </td>
                         <td className="px-6 py-4">
                           <select

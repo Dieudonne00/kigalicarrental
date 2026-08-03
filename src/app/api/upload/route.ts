@@ -1,12 +1,7 @@
 export const runtime = "nodejs";
-
 import { NextResponse } from "next/server";
 
-// Cloudinary's account was disabled ("cloud_name is disabled" on every
-// upload call) - new images now go to our own self-hosted media-api
-// service on the VPS (/var/www/media-api), which resizes/converts to
-// WebP via sharp and serves the result from media.kigalicarhire.rw.
-const MEDIA_API_URL = process.env.MEDIA_API_URL || "https://media.kigalicarhire.rw";
+const MEDIA_BASE = "https://media.kigalicarhire.rw";
 const MEDIA_SECRET = process.env.MEDIA_SECRET || "kch-media-2026";
 
 export async function POST(request: Request) {
@@ -18,29 +13,41 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
-    const forwardData = new FormData();
-    forwardData.append("file", file, file.name);
+    const isVideo = file.type.startsWith("video/");
+    const endpoint = isVideo ? "/upload/video" : "/upload/image";
 
-    const uploadResponse = await fetch(`${MEDIA_API_URL}/upload/image`, {
+    const uploadForm = new FormData();
+    uploadForm.append("file", file);
+
+    const response = await fetch(`${MEDIA_BASE}${endpoint}`, {
       method: "POST",
       headers: { "x-secret-key": MEDIA_SECRET },
-      body: forwardData,
+      body: uploadForm,
     });
 
-    if (!uploadResponse.ok) {
-      const errorText = await uploadResponse.text();
-      console.error("media-api upload failed:", uploadResponse.status, errorText);
-      return NextResponse.json({ error: "Upload failed" }, { status: 500 });
+    const rawText = await response.text();
+
+    if (!response.ok) {
+      throw new Error(`VPS upload failed: ${response.status} - ${rawText}`);
     }
 
-    const result = await uploadResponse.json();
+    let result;
+    try {
+      result = JSON.parse(rawText);
+    } catch {
+      throw new Error(`Invalid JSON from VPS: ${rawText}`);
+    }
 
-    return NextResponse.json(
-      { url: result.url, publicId: result.filename },
-      { status: 200 }
-    );
+    if (!result.url) {
+      throw new Error(`No URL returned: ${rawText}`);
+    }
+
+    return NextResponse.json({ url: result.url, publicId: result.filename }, { status: 200 });
   } catch (error) {
     console.error("Upload error:", error);
-    return NextResponse.json({ error: "Upload failed" }, { status: 500 });
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Upload failed" },
+      { status: 500 }
+    );
   }
 }

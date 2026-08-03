@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
-import { sendBookingNotificationToManager } from "@/lib/email";
+import { PrismaClient } from "@prisma/client";
+import { sendBookingRequestNotificationToManager } from "@/lib/email";
+
+const prisma = new PrismaClient();
 
 // POST - Create a new booking request
 export async function POST(request: NextRequest) {
@@ -57,27 +59,34 @@ export async function POST(request: NextRequest) {
       },
     });
 
-  // Send email notification to manager (non-blocking)
-  sendBookingNotificationToManager({
-    bookingId: bookingRequest.id,
-    customerName: fullName,
-    customerEmail: email,
-    customerPhone: phone,
-    carName: carType,
-    carBrand: carType?.split(" ")[0] || "Car",
-    carModel: carType,
-    pickupDate,
-    returnDate,
-    pickupLocation,
-    returnLocation: dropoffLocation || pickupLocation,
-    totalCost: budget || 0,
-    specialRequests: additionalRequirements || "",
-  }).catch((error) => {
-    console.error("Failed to send email notification:", error);
-  });
+    // Send email notification to manager (non-blocking)
+    sendBookingRequestNotificationToManager({
+      fullName,
+      email,
+      phone,
+      whatsapp,
+      pickupDate,
+      pickupTime,
+      returnDate,
+      returnTime,
+      pickupLocation,
+      dropoffLocation,
+      carType,
+      transmission,
+      seats,
+      budget,
+      purpose,
+      additionalRequirements,
+    }).catch((error) => {
+      console.error("Failed to send email notification:", error);
+    });
 
     return NextResponse.json(
-      { success: true, bookingRequest },
+      {
+        success: true,
+        message: "Booking request submitted successfully",
+        bookingRequest,
+      },
       { status: 201 }
     );
   } catch (error) {

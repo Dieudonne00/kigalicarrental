@@ -1,128 +1,71 @@
-interface AboutSectionProps {
-  fleetCount: number;
-  reviewCount: number;
-  averageRating: number;
-}
+export default function AboutSection() {
+  const stats = [
+    {
+      title: "Years in Rwanda",
+      value: "35+",
+      description:
+        "Kigali Car Hire has been providing trusted car rental services in Rwanda since 1990 — decades of local expertise you can rely on.",
+    },
+    {
+      title: "Happy Customers",
+      value: "1,000+",
+      description:
+        "Over a thousand satisfied customers — tourists, business travellers, and locals who trust us for reliable car hire in Kigali.",
+    },
+    {
+      title: "Cars in Our Fleet",
+      value: "50+",
+      description:
+        "From compact city cars to rugged 4x4 SUVs, our growing fleet covers every need across Rwanda — maintained, insured, and ready to go.",
+    },
+  ];
 
-export default function AboutSection({ fleetCount, reviewCount, averageRating }: AboutSectionProps) {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Left Column - Our Story */}
-          <div>
-            <div className="mb-8">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-                A Company You Can Trust
-              </h2>
-              <div className="w-20 h-1 bg-blue-600 mb-6"></div>
-            </div>
-
-            <div className="space-y-6">
-              <p className="text-gray-600 text-lg leading-relaxed">
-                <span className="font-semibold text-gray-800">Kigali Car Rental</span> was founded in the heart of Kigali with a simple mission: to provide reliable, safe, and comfortable Kigali car rental for both locals and visitors exploring Rwanda.
-              </p>
-
-              <p className="text-gray-600 text-lg leading-relaxed">
-                We're a growing Kigali car rental company built on real service, not empty promises - every car in our fleet is inspected and maintained, every booking gets real support, and every review on this page is from a real customer who actually rented from us.
-              </p>
-
-              <div className="mt-8 p-6 bg-gray-50 rounded-xl border-l-4 border-blue-600">
-                <p className="text-gray-700 italic">
-                  "Our commitment goes beyond just renting cars. We're part of your Rwanda experience, ensuring every journey is smooth, safe, and memorable."
-                </p>
-              </div>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-[25%_75%] gap-12">
+          {/* Left column */}
+          <div className="flex items-start">
+            <h2 className="text-2xl font-bold text-gray-900 font-[family-name:var(--font-plus-jakarta)]">
+              About Us
+            </h2>
           </div>
 
-          {/* Right Column - Values & Location */}
+          {/* Right column */}
           <div>
-            {/* Core Values */}
             <div className="mb-10">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Why Choose Us for Kigali Car Rental
+              <h3
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight tracking-tight font-[family-name:var(--font-plus-jakarta)]"
+                style={{ lineHeight: "1.2" }}
+              >
+                Kigali Car Hire — Rwanda&apos;s most trusted car rental service, with transparent
+                pricing, a quality fleet, and 24/7 customer support.
               </h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="flex items-start gap-4 p-4 hover:bg-gray-50 rounded-lg transition-colors">
-                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-blue-600 text-lg">✓</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-800 mb-1">Rwandan Expertise</h4>
-                    <p className="text-gray-600 text-sm">
-                      Local knowledge of roads, routes, and best practices for driving in Rwanda.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 hover:bg-gray-50 rounded-lg transition-colors">
-                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-blue-600 text-lg">🚗</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-800 mb-1">Well-Maintained Fleet</h4>
-                    <p className="text-gray-600 text-sm">
-                      Regular servicing and safety checks on all vehicles for your peace of mind.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 hover:bg-gray-50 rounded-lg transition-colors">
-                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-blue-600 text-lg">⭐</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-800 mb-1">Customer First</h4>
-                    <p className="text-gray-600 text-sm">
-                      Personalized service with 24/7 support for any questions or assistance needed.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 hover:bg-gray-50 rounded-lg transition-colors">
-                  <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-blue-600 text-lg">📍</span>
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-800 mb-1">Central Kigali Location</h4>
-                    <p className="text-gray-600 text-sm">
-                      Easily accessible from anywhere in the city with free delivery in Kigali.
-                    </p>
-                  </div>
-                </div>
-              </div>
+              <p className="mt-5 text-gray-600 text-lg leading-relaxed">
+                We are a Kigali-based car hire company offering self-drive and chauffeur-driven
+                vehicles for tourists, business travellers, NGOs, and residents across Rwanda.
+                Whether you need a car for a day in Kigali, a week-long safari to Akagera, or a
+                permanent monthly hire, we have the right vehicle at the right price.
+              </p>
             </div>
-            
-            {/* This closing div was missing - for the Right Column */}
-          </div>
-        </div> {/* This closes the main grid */}
 
-        {/* Trust Badges - real numbers only, pulled from the live database.
-            This used to hardcode "10+ Years Experience," "1,500+ Happy
-            Clients," and "50+ Vehicles" - none of which were true. Never
-            fabricate a trust stat; if there's no real number for something,
-            leave it out rather than invent one. */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-3 gap-6">
-          <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">{fleetCount}</div>
-            <div className="text-gray-600">Vehicles in Our Fleet</div>
-          </div>
-          {reviewCount > 0 && (
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">
-                {averageRating.toFixed(1)}★
-              </div>
-              <div className="text-gray-600">
-                From {reviewCount} Real Review{reviewCount === 1 ? "" : "s"}
-              </div>
+            {/* Stats cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {stats.map((stat, index) => (
+                <div
+                  key={index}
+                  className="bg-white border-2 border-gray-200 rounded-xl p-5 hover:border-[#01B000] transition-all duration-300"
+                >
+                  <h4 className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-2">
+                    {stat.title}
+                  </h4>
+                  <p className="text-3xl font-bold text-[#01B000] mb-2 font-[family-name:var(--font-plus-jakarta)]">
+                    {stat.value}
+                  </p>
+                  <p className="text-gray-600 text-sm leading-relaxed">{stat.description}</p>
+                </div>
+              ))}
             </div>
-          )}
-          <div className="text-center">
-            <div className="text-3xl font-bold text-blue-600 mb-2">24/7</div>
-            <div className="text-gray-600">Support</div>
           </div>
         </div>
       </div>

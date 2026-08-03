@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 
 export async function GET(request: Request) {
   try {
@@ -10,7 +9,7 @@ export async function GET(request: Request) {
 
     // Build query
     const where: any = {
-      available: true,
+      available: true, // Only show available cars publicly
     };
 
     if (featured === "true") {
@@ -31,7 +30,7 @@ export async function GET(request: Request) {
           where: {
             status: "confirmed",
             returnDate: {
-              gte: new Date(),
+              gte: new Date(), // Only current/future bookings
             },
           },
           select: {
@@ -41,21 +40,12 @@ export async function GET(request: Request) {
       },
     });
 
-    // FIX: Always ensure imageUrl exists in response
-    const carsWithBookingStatus = cars.map((car: any) => {
-      // Use whatever image field exists, or create a test one
-      const imageUrl = car.imageUrl ||
-                      car.image ||
-                      (car.images && car.images[0]) ||
-                      CAR_IMAGE_FALLBACK;
-
-      return {
-        ...car,
-        imageUrl: imageUrl, // CRITICAL: Add this field
-        hasActiveBooking: car.bookings.length > 0,
-        bookings: undefined,
-      };
-    });
+    // Add hasActiveBooking flag to each car
+    const carsWithBookingStatus = cars.map((car: any) => ({
+      ...car,
+      hasActiveBooking: car.bookings.length > 0,
+      bookings: undefined, // Remove bookings array from response
+    }));
 
     return NextResponse.json({ cars: carsWithBookingStatus }, { status: 200 });
   } catch (error) {

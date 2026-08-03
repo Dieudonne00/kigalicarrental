@@ -18,7 +18,6 @@ export default function EditCarPage() {
     description: "",
     category: "sedan",
     brand: "",
-    model: "",
     year: new Date().getFullYear(),
     fuelType: "petrol",
     transmission: "automatic",
@@ -32,12 +31,17 @@ export default function EditCarPage() {
     gameDrive: false,
   });
 
-  // One unified, unlimited, all-optional photo list - see the add-car form
-  // for the full rationale. Existing photos load in as already-uploaded
-  // (cdnUrl === previewUrl, uploading: false).
-  const [photos, setPhotos] = useState<
-    { id: string; previewUrl: string; cdnUrl: string; uploading: boolean; failed: boolean }[]
-  >([]);
+  const [thumbnail, setThumbnail] = useState<string>("");
+  const [galleryImages, setGalleryImages] = useState<string[]>([]);
+  const [uploadingThumbnail, setUploadingThumbnail] = useState(false);
+  const [uploadingGallery, setUploadingGallery] = useState(false);
+  const [thumbnailLoaded, setThumbnailLoaded] = useState(false);
+  const [videoUrl, setVideoUrl] = useState<string>("");
+  const [uploadingVideo, setUploadingVideo] = useState(false);
+
+  // Track CDN URLs separately from preview URLs
+  const [thumbnailCdnUrl, setThumbnailCdnUrl] = useState<string>("");
+  const [galleryCdnUrls, setGalleryCdnUrls] = useState<string[]>([]);
 
   // Fetch car data
   useEffect(() => {
@@ -59,7 +63,6 @@ export default function EditCarPage() {
           description: car.description || "",
           category: car.category,
           brand: car.brand,
-          model: car.model || "",
           year: car.year,
           fuelType: car.fuelType,
           transmission: car.transmission,
@@ -73,21 +76,22 @@ export default function EditCarPage() {
           gameDrive: car.gameDrive || false,
         });
 
-        // Seed the photo list from the car's existing images - filter out
-        // any dead blob: URLs from before that class of bug was fixed
-        // rather than showing a broken preview for them.
+        if (car.videoUrl) setVideoUrl(car.videoUrl);
+
+        // Set images - filter out broken blob URLs
         const validImages = car.images.filter(
           (img) => img && !img.startsWith("blob:")
         );
-        setPhotos(
-          validImages.map((url, index) => ({
-            id: `existing-${index}-${url}`,
-            previewUrl: url,
-            cdnUrl: url,
-            uploading: false,
-            failed: false,
-          }))
-        );
+        if (validImages.length > 0) {
+          setThumbnail(validImages[0]);
+          setThumbnailCdnUrl(validImages[0]); // Store original CDN URL
+          setThumbnailLoaded(true);
+          if (validImages.length > 1) {
+            const gallery = validImages.slice(1);
+            setGalleryImages(gallery);
+            setGalleryCdnUrls(gallery); // Store original CDN URLs
+          }
+        }
       } catch (error) {
         console.error("Error fetching car:", error);
         alert("Failed to load car data");
@@ -121,103 +125,158 @@ export default function EditCarPage() {
     }
   };
 
-  const handlePhotosUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (!files || files.length === 0) return;
+  const handleThumbnailUpload = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
 
-    const newPhotos = Array.from(files).map((file) => ({
-      id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
-      file,
-      previewUrl: URL.createObjectURL(file),
-      cdnUrl: "",
-      uploading: true,
-      failed: false,
-    }));
+    const oldThumbnailUrl = thumbnailCdnUrl;
 
-    setPhotos((prev) => [...prev, ...newPhotos]);
-    e.target.value = "";
+    // Show local preview immediately
+    const localUrl = URL.createObjectURL(file);
+    setThumbnail(localUrl);
+    setThumbnailLoaded(true);
+    setUploadingThumbnail(true);
 
-    await Promise.all(
-      newPhotos.map(async (p) => {
-        try {
-          const uploadFormData = new FormData();
-          uploadFormData.append("file", p.file);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
 
-          const response = await fetch("/api/upload", {
-            method: "POST",
-            body: uploadFormData,
-          });
+      console.log("Starting thumbnail upload for:", file.name);
 
-          if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || "Upload failed");
-          }
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
 
-          const data = await response.json();
-          setPhotos((prev) =>
-            prev.map((x) => (x.id === p.id ? { ...x, cdnUrl: data.url, uploading: false } : x))
-          );
-        } catch (error) {
-          console.error("Photo upload error:", error);
-          setPhotos((prev) =>
-            prev.map((x) => (x.id === p.id ? { ...x, uploading: false, failed: true } : x))
-          );
-        }
-      })
-    );
-  };
+      console.log("Upload response status:", response.status);
 
-  const handleRemovePhoto = async (id: string) => {
-    const photo = photos.find((p) => p.id === id);
-    setPhotos((prev) => prev.filter((p) => p.id !== id));
-    // Only ever delete a photo that was actually saved on a previous submit
-    // (existing-* ids) - anything uploaded this session but not yet saved
-    // has nothing in the DB record to worry about, and this form doesn't
-    // own that decision until Save is actually pressed.
-    if (photo && photo.id.startsWith("existing-") && photo.cdnUrl) {
-      await deleteFromBunny(photo.cdnUrl);
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Upload failed with error:", errorData);
+        throw new Error(errorData.error || "Upload failed");
+      }
+
+      const data = await response.json();
+      console.log("Thumbnail uploaded successfully to:", data.url);
+
+      // Store new CDN URL
+      setThumbnailCdnUrl(data.url);
+
+      // Delete old thumbnail from Bunny CDN
+      if (oldThumbnailUrl) {
+        await deleteFromBunny(oldThumbnailUrl);
+      }
+    } catch (error) {
+      console.error("Thumbnail upload error:", error);
+      console.log("Keeping local preview despite upload error");
+    } finally {
+      setUploadingThumbnail(false);
     }
   };
 
-  const handleSetMainPhoto = (id: string) => {
-    setPhotos((prev) => {
-      const idx = prev.findIndex((p) => p.id === id);
-      if (idx <= 0) return prev;
-      const copy = [...prev];
-      const [item] = copy.splice(idx, 1);
-      copy.unshift(item);
-      return copy;
-    });
+  const handleGalleryUpload = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+
+    // Show local previews immediately
+    const localUrls = Array.from(files).map((file) =>
+      URL.createObjectURL(file)
+    );
+    setGalleryImages((prev) => [...prev, ...localUrls]);
+    setUploadingGallery(true);
+
+    try {
+      console.log(`Starting upload of ${files.length} gallery images`);
+
+      const uploadPromises = Array.from(files).map(async (file, index) => {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const response = await fetch("/api/upload", {
+          method: "POST",
+          body: formData,
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.error(`Upload failed for ${file.name}:`, errorData);
+          throw new Error(errorData.error || "Upload failed");
+        }
+
+        const data = await response.json();
+        console.log(`Gallery image ${index + 1} uploaded to:`, data.url);
+
+        return data.url;
+      });
+
+      const uploadedUrls = await Promise.all(uploadPromises);
+      console.log("All gallery images uploaded successfully");
+
+      // Store CDN URLs
+      setGalleryCdnUrls((prev) => [...prev, ...uploadedUrls]);
+    } catch (error) {
+      console.error("Gallery upload error:", error);
+      console.log("Keeping local previews despite upload error");
+    } finally {
+      setUploadingGallery(false);
+    }
   };
 
-  const uploadingAnyPhoto = photos.some((p) => p.uploading);
+  const handleRemoveGalleryImage = async (index: number) => {
+    const imageToDelete = galleryCdnUrls[index];
+
+    // Remove from state
+    setGalleryImages((prev) => prev.filter((_, i) => i !== index));
+    setGalleryCdnUrls((prev) => prev.filter((_, i) => i !== index));
+
+    // Delete from Bunny CDN
+    if (imageToDelete) {
+      await deleteFromBunny(imageToDelete);
+    }
+  };
+
+  const handleVideoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingVideo(true);
+    try {
+      // Fetch token server-side so the secret never lives in the client bundle
+      const tokenRes = await fetch("/api/upload-token");
+      const { secret, uploadUrl } = await tokenRes.json();
+
+      // Upload directly to VPS — bypasses Vercel's 4.5 MB body limit
+      const fd = new FormData();
+      fd.append("file", file);
+      const res = await fetch(`${uploadUrl}/upload/video`, {
+        method: "POST",
+        headers: { "x-secret-key": secret },
+        body: fd,
+      });
+      if (!res.ok) throw new Error("Video upload failed");
+      const data = await res.json();
+      setVideoUrl(data.url);
+    } catch (err) {
+      console.error("Video upload error:", err);
+      alert("Video upload failed. Please try again.");
+    } finally {
+      setUploadingVideo(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (uploadingAnyPhoto) {
-      alert("Please wait for the photo upload to finish before saving.");
-      return;
-    }
-
-    const failedPhotos = photos.filter((p) => p.failed);
-    if (failedPhotos.length > 0) {
-      alert("One or more photos failed to upload - remove them or retry before saving.");
-      return;
-    }
-
     // Use CDN URLs for database storage
-    const allImages = photos.map((p) => p.cdnUrl).filter(Boolean);
+    const allImages = thumbnailCdnUrl
+      ? [thumbnailCdnUrl, ...galleryCdnUrls]
+      : galleryCdnUrls;
 
     if (allImages.length === 0) {
-      alert("Please upload at least one photo");
-      return;
-    }
-    // Defense in depth - a blob: URL is a browser-local preview reference
-    // only, never valid to persist (see the add-car form's history of this
-    // exact bug).
-    if (allImages.some((url) => url.startsWith("blob:"))) {
-      alert("An image upload failed - please re-upload before saving.");
+      alert("Please upload at least one image (thumbnail or gallery)");
       return;
     }
 
@@ -227,6 +286,8 @@ export default function EditCarPage() {
       const payload = {
         ...formData,
         images: allImages,
+        videoUrl: videoUrl || null,
+        model: formData.brand,
         hourlyRate: formData.dailyRate / 8,
         mileage: null,
       };
@@ -378,25 +439,6 @@ export default function EditCarPage() {
 
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-2">
-                    Model *
-                    <span className="ml-2 text-xs font-normal text-gray-500">
-                      (e.g., RAV4, Land Cruiser Prado, Corolla)
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.model}
-                    onChange={(e) =>
-                      setFormData({ ...formData, model: e.target.value })
-                    }
-                    className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:border-[#01B000] focus:outline-none text-gray-900"
-                    placeholder="e.g., RAV4"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-bold text-gray-700 mb-2">
                     Year *
                   </label>
                   <input
@@ -536,103 +578,258 @@ export default function EditCarPage() {
 
             {/* Images */}
             <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-4">Photos</h3>
-              <label className="block text-sm font-bold text-gray-700 mb-2">
-                Car Photos *
-                <span className="ml-2 text-xs font-normal text-gray-500">
-                  (Upload as many angles as you want - the first one is shown as the main photo everywhere)
-                </span>
-              </label>
-              <div className="relative">
-                <input
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  onChange={handlePhotosUpload}
-                  className="hidden"
-                  id="photos-upload"
-                />
-                <label
-                  htmlFor="photos-upload"
-                  className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-lg cursor-pointer transition-all border-[#01B000] bg-white hover:bg-gray-50"
-                >
-                  <div className="flex flex-col items-center justify-center pt-4 pb-5">
-                    <svg
-                      className="w-8 h-8 mb-2 text-[#01B000]"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <p className="mb-1 text-sm font-bold text-gray-700">
-                      <span className="text-[#01B000]">Click to upload</span> or drag and drop
-                    </p>
-                    <p className="text-xs text-gray-500">PNG, JPG, JPEG - any number of photos</p>
-                  </div>
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Images</h3>
+
+              {/* Thumbnail Upload */}
+              <div className="mb-6">
+                <label className="block text-sm font-bold text-gray-700 mb-2">
+                  Car Thumbnail *
+                  <span className="ml-2 text-xs font-normal text-gray-500">
+                    (Main image shown in listings)
+                  </span>
                 </label>
+                <div className="relative">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleThumbnailUpload}
+                    disabled={uploadingThumbnail}
+                    className="hidden"
+                    id="thumbnail-upload"
+                  />
+                  <label
+                    htmlFor="thumbnail-upload"
+                    className={`flex flex-col items-center justify-center w-full h-40 border-2 border-dashed rounded-lg cursor-pointer transition-all ${
+                      uploadingThumbnail
+                        ? "border-gray-300 bg-gray-50 cursor-not-allowed"
+                        : "border-[#01B000] bg-white hover:bg-gray-50"
+                    }`}
+                  >
+                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                      {uploadingThumbnail ? (
+                        <>
+                          <svg
+                            className="w-10 h-10 mb-3 text-[#01B000] animate-spin"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
+                          </svg>
+                          <p className="text-sm text-[#01B000] font-bold">
+                            Uploading thumbnail...
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          <svg
+                            className="w-10 h-10 mb-3 text-[#01B000]"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                          <p className="mb-2 text-sm font-bold text-gray-700">
+                            <span className="text-[#01B000]">Click to upload</span> or
+                            drag and drop
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            PNG, JPG, JPEG (Single file)
+                          </p>
+                        </>
+                      )}
+                    </div>
+                  </label>
+                </div>
+
+                {/* Thumbnail Preview */}
+                {thumbnail && (
+                  <div className="mt-4">
+                    <div className="relative inline-block group">
+                      <img
+                        src={thumbnail}
+                        alt="Car thumbnail"
+                        className="w-64 h-48 object-cover rounded-lg border-2 border-[#01B000]"
+                        onLoad={() => setThumbnailLoaded(true)}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setThumbnail("");
+                          setThumbnailLoaded(false);
+                        }}
+                        className="absolute top-2 right-2 bg-red-600 text-white rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-700"
+                      >
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
 
-              {photos.length > 0 && (
-                <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  {photos.map((photo, index) => (
-                    <div key={photo.id} className="relative group">
-                      <img
-                        src={photo.previewUrl}
-                        alt={`Car photo ${index + 1}`}
-                        className={`w-full h-32 object-cover rounded-lg border-2 ${
-                          index === 0 ? "border-[#01B000]" : "border-gray-200"
-                        }`}
-                      />
-                      {photo.uploading && (
-                        <div className="absolute inset-0 bg-black/40 rounded-lg flex items-center justify-center">
-                          <svg className="w-6 h-6 text-white animate-spin" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                          </svg>
-                        </div>
-                      )}
-                      {photo.failed && (
-                        <div className="absolute inset-0 bg-red-600/70 rounded-lg flex items-center justify-center">
-                          <span className="text-white text-xs font-bold px-2 text-center">Upload failed</span>
-                        </div>
-                      )}
-                      {index === 0 && !photo.uploading && !photo.failed && (
-                        <span className="absolute top-2 left-2 bg-[#01B000] text-white text-xs font-bold px-2 py-1 rounded">
-                          Main
-                        </span>
-                      )}
-                      <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                        {index !== 0 && !photo.uploading && !photo.failed && (
-                          <button
-                            type="button"
-                            onClick={() => handleSetMainPhoto(photo.id)}
-                            className="bg-blue-600 text-white rounded-full p-1.5 hover:bg-blue-700"
-                            title="Set as main photo"
+              {/* Gallery Upload */}
+              <div>
+                <label className="block text-sm font-bold text-gray-700 mb-2">
+                  Car Gallery
+                  <span className="ml-2 text-xs font-normal text-gray-500">
+                    (Additional images for detail view)
+                  </span>
+                </label>
+                <div className="relative">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleGalleryUpload}
+                    disabled={uploadingGallery}
+                    className="hidden"
+                    id="gallery-upload"
+                  />
+                  <label
+                    htmlFor="gallery-upload"
+                    className={`flex flex-col items-center justify-center w-full h-40 border-2 border-dashed rounded-lg cursor-pointer transition-all ${
+                      uploadingGallery
+                        ? "border-gray-300 bg-gray-50 cursor-not-allowed"
+                        : "border-blue-500 bg-white hover:bg-gray-50"
+                    }`}
+                  >
+                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                      {uploadingGallery ? (
+                        <>
+                          <svg
+                            className="w-10 h-10 mb-3 text-blue-500 animate-spin"
+                            fill="none"
+                            viewBox="0 0 24 24"
                           >
-                            <svg className="w-4 h-4" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                              <path d="M11 17l-5-5m0 0l5-5m-5 5h12" />
-                            </svg>
-                          </button>
-                        )}
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
+                          </svg>
+                          <p className="text-sm text-blue-500 font-bold">
+                            Uploading gallery images...
+                          </p>
+                        </>
+                      ) : (
+                        <>
+                          <svg
+                            className="w-10 h-10 mb-3 text-blue-500"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                          </svg>
+                          <p className="mb-2 text-sm font-bold text-gray-700">
+                            <span className="text-blue-500">Click to upload</span> or
+                            drag and drop
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            PNG, JPG, JPEG (Multiple files allowed)
+                          </p>
+                        </>
+                      )}
+                    </div>
+                  </label>
+                </div>
+
+                {/* Gallery Preview Grid */}
+                {galleryImages.length > 0 && (
+                  <div className="mt-4 grid grid-cols-3 gap-4">
+                    {galleryImages.map((url, index) => (
+                      <div key={index} className="relative group">
+                        <img
+                          src={url}
+                          alt={`Gallery image ${index + 1}`}
+                          className="w-full h-32 object-cover rounded-lg border-2 border-gray-200"
+                        />
                         <button
                           type="button"
-                          onClick={() => handleRemovePhoto(photo.id)}
-                          className="bg-red-600 text-white rounded-full p-1.5 hover:bg-red-700"
-                          title="Remove photo"
+                          onClick={() => handleRemoveGalleryImage(index)}
+                          className="absolute top-2 right-2 bg-red-600 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
                         >
                           <svg className="w-4 h-4" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
                             <path d="M6 18L18 6M6 6l12 12" />
                           </svg>
                         </button>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              )}
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Video Upload — inside Images section */}
+              <div className="mt-6 pt-6 border-t border-gray-100">
+                <label className="block text-sm font-bold text-gray-700 mb-2">
+                  Car Video
+                  <span className="ml-2 text-xs font-normal text-gray-500">(Optional — uploaded to your server, shown on car page)</span>
+                </label>
+                <input type="file" accept="video/*" onChange={handleVideoUpload} disabled={uploadingVideo} className="hidden" id="video-upload" />
+                <label htmlFor="video-upload" className={`flex flex-col items-center justify-center w-full h-40 border-2 border-dashed rounded-lg cursor-pointer transition-all ${uploadingVideo ? "border-gray-300 bg-gray-50 cursor-not-allowed" : "border-purple-500 bg-white hover:bg-gray-50"}`}>
+                  <div className="flex flex-col items-center justify-center gap-1">
+                    {uploadingVideo ? (
+                      <>
+                        <svg className="w-8 h-8 text-purple-500 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+                        <p className="text-sm text-purple-500 font-bold">Uploading video directly to server...</p>
+                        <p className="text-xs text-gray-400">Large files may take a few minutes — please wait</p>
+                      </>
+                    ) : videoUrl ? (
+                      <p className="text-sm text-green-600 font-bold">✓ Video uploaded — click to replace</p>
+                    ) : (
+                      <>
+                        <svg className="w-8 h-8 text-purple-500" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                          <path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" />
+                        </svg>
+                        <p className="text-sm font-bold text-gray-700"><span className="text-purple-500">Click to upload</span> a car video</p>
+                        <p className="text-xs text-gray-500">MP4, MOV, AVI · up to 500 MB — uploads direct to VPS</p>
+                      </>
+                    )}
+                  </div>
+                </label>
+                {videoUrl && (
+                  <div className="mt-3 flex items-center gap-3">
+                    <video src={videoUrl} className="w-48 h-28 rounded-lg border-2 border-purple-400 object-cover" controls />
+                    <button type="button" onClick={() => setVideoUrl("")} className="text-red-600 text-sm font-bold hover:underline">Remove video</button>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Description */}
@@ -712,10 +909,10 @@ export default function EditCarPage() {
               </button>
               <button
                 type="submit"
-                disabled={submitting || uploadingAnyPhoto}
+                disabled={submitting}
                 className="flex-1 bg-[#01B000] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#019500] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {submitting ? "Updating Car..." : uploadingAnyPhoto ? "Uploading photos..." : "Update Car"}
+                {submitting ? "Updating Car..." : "Update Car"}
               </button>
             </div>
           </div>

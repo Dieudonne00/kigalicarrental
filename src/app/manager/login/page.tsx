@@ -46,11 +46,11 @@ export default function ManagerLogin() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <Image
-            src="/logo.svg"
-            alt="Kigali Car Rental Logo"
-            width={64}
-            height={64}
-            className="h-16 w-16 rounded-xl"
+            src="https://kigalicarhire.b-cdn.net/kigalicarhire.png"
+            alt="Kigali Car Hire Logo"
+            width={180}
+            height={60}
+            className="h-16 w-auto"
           />
         </div>
         <h2 className="mt-6 text-center text-3xl font-bold text-gray-900 font-[family-name:var(--font-plus-jakarta)]">
@@ -85,7 +85,7 @@ export default function ManagerLogin() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-gray-900"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-[#01B000] focus:border-[#01B000] outline-none transition-all text-gray-900"
                 placeholder="manager@kigalicarhire.com"
               />
             </div>
@@ -105,7 +105,7 @@ export default function ManagerLogin() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-gray-900"
+                className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-[#01B000] focus:border-[#01B000] outline-none transition-all text-gray-900"
                 placeholder="Enter your password"
               />
             </div>
@@ -114,7 +114,7 @@ export default function ManagerLogin() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-[#01B000] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#019500] transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? "Signing in..." : "Sign In"}
               </button>
@@ -125,7 +125,7 @@ export default function ManagerLogin() {
           <div className="mt-6">
             <Link
               href="/"
-              className="flex items-center justify-center gap-2 w-full text-gray-600 hover:text-blue-600 transition-all font-bold text-sm"
+              className="flex items-center justify-center gap-2 w-full text-gray-600 hover:text-[#01B000] transition-all font-bold text-sm"
             >
               <svg
                 className="w-4 h-4"

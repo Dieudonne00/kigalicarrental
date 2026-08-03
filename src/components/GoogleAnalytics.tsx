@@ -2,12 +2,13 @@ import Script from 'next/script'
 
 export default function GoogleAnalytics() {
   const GA_MEASUREMENT_ID = 'G-87YP7KE8K3'
+  const AW_CONVERSION_ID = 'AW-18125989006'
 
   return (
     <>
       <Script
         strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${AW_CONVERSION_ID}`}
       />
       <Script
         id="google-analytics"
@@ -17,6 +18,7 @@ export default function GoogleAnalytics() {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
+            gtag('config', '${AW_CONVERSION_ID}');
             gtag('config', '${GA_MEASUREMENT_ID}', {
               page_path: window.location.pathname,
             });
@@ -26,3 +28,8 @@ export default function GoogleAnalytics() {
     </>
   )
 }
+
+
+
+
+

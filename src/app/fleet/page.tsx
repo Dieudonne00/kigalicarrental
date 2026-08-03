@@ -1,64 +1,80 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import { CAR_IMAGE_FALLBACK } from "@/lib/constants";
 import FleetClient from "./FleetClient";
-import HomeLinkCTA from "@/components/HomeLinkCTA";
-import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
-// Revalidate hourly rather than fully static - the ItemList schema below
-// reflects the live fleet, and cars are added/removed from the manager
-// panel without a redeploy.
-export const revalidate = 3600;
+export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Our Fleet | Kigali Car Rental",
-  description:
-    "Browse our full fleet of rental cars in Kigali, Rwanda. Filter by category, transmission, seats, and price to find the perfect sedan, SUV, or 4x4 for your trip.",
-  alternates: {
-    canonical: "/fleet",
-  },
+  title: "Car Hire Fleet Kigali | SUVs, 4x4, Luxury & Economy Cars — Kigali Car Hire",
+  description: "Browse our full fleet of cars available for hire in Kigali, Rwanda. Economy cars from $30/day, SUVs from $60/day, 4x4 Land Cruisers from $90/day. All fully insured. Book online now.",
+  keywords: "car hire fleet kigali, cars for hire kigali, kigali rental cars, suv hire kigali, 4x4 hire kigali, economy car kigali, luxury car hire kigali rwanda",
+  alternates: { canonical: "https://kigalicarhire.rw/fleet" },
   openGraph: {
-    title: "Our Fleet | Kigali Car Rental",
-    description:
-      "Browse our full fleet of rental cars in Kigali, Rwanda. Filter by category, transmission, seats, and price to find the perfect sedan, SUV, or 4x4 for your trip.",
-    url: "/fleet",
-    type: "website",
+    title: "Car Hire Fleet Kigali | SUVs, 4x4, Luxury & Economy Cars",
+    description: "Browse all cars available for hire in Kigali. Economy from $30/day, 4x4 Land Cruisers from $90/day. Fully insured. Book online or WhatsApp.",
+    url: "https://kigalicarhire.rw/fleet",
   },
 };
 
 export default async function FleetPage() {
-  let cars: Awaited<ReturnType<typeof prisma.car.findMany>> = [];
-  try {
-    cars = await prisma.car.findMany({
-      where: { available: true },
-      orderBy: { createdAt: "desc" },
-    });
-  } catch (error) {
-    console.error("Fleet page: failed to fetch cars for structured data", error);
-  }
-
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: cars.map((car, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      url: `https://www.kigalicarrental.site/cars/${car.id}`,
-      name: `${car.brand} ${car.model} ${car.year}`,
-    })),
-  };
-
-  const initialCars = cars.map((c) => ({ ...c, imageUrl: c.images?.[0] || CAR_IMAGE_FALLBACK }));
+  const cars = await prisma.car.findMany({
+    where: { available: true },
+    orderBy: [{ featured: "desc" }, { createdAt: "desc" }],
+    select: {
+      id: true,
+      name: true,
+      brand: true,
+      model: true,
+      year: true,
+      category: true,
+      transmission: true,
+      seats: true,
+      fuelType: true,
+      dailyRate: true,
+      weeklyRate: true,
+      monthlyRate: true,
+      images: true,
+      videoUrl: true,
+      featured: true,
+      available: true,
+    },
+  });
 
   return (
-    <>
-      <BreadcrumbSchema name="Our Fleet" path="/fleet" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
-      <FleetClient initialCars={initialCars} />
-      <HomeLinkCTA before="Ready to book? Head back to" after="to start your reservation." />
-    </>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero */}
+      <section className="relative min-h-[500px] flex items-center justify-center overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url(https://kigalicarhire.b-cdn.net/hero%20section%20cars.png)" }}
+        >
+          <div className="absolute inset-0 bg-black/55"></div>
+        </div>
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
+          <span className="inline-block bg-[#01B000] text-white text-sm font-bold px-4 py-1 rounded-full mb-6">
+            {cars.length} Cars Available Now
+          </span>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 font-[family-name:var(--font-plus-jakarta)]">
+            Car Hire Fleet in Kigali
+          </h1>
+          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed mb-8">
+            Economy cars, SUVs, 4x4 Land Cruisers and luxury vehicles — all fully insured, serviced, and ready for self-drive or chauffeur hire across Rwanda and East Africa.
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center px-8 py-4 bg-[#01B000] text-white font-bold rounded-lg hover:bg-[#019500] transition-all"
+          >
+            Need Help? Contact Us
+          </Link>
+        </div>
+      </section>
+
+      {/* Server-rendered car list passed to client for filtering */}
+      <FleetClient initialCars={cars as any} />
+    </div>
   );
 }
+
+
+

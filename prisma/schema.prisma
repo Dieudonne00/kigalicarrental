@@ -26,16 +26,21 @@ model Car {
   dailyRate     Float
   weeklyRate    Float?
   monthlyRate   Float?
-  images        String[] @default([]) // Array of image URLs
+  images        String[] // Array of image URLs
+  videoUrl      String?  // Optional car video
   available     Boolean  @default(true)
   featured      Boolean  @default(false)
   gameDrive     Boolean  @default(false) // For Akagera Game Drive
   specifications Json?   // Additional specs as JSON
+  licensePlate  String?
+  insuranceStart DateTime?
+  insuranceEnd   DateTime?
+  lastOilChange  DateTime?
+  nextOilChange  DateTime?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
   bookings      Booking[]
-  reviews       Review[]
 
   @@index([category])
   @@index([available])
@@ -61,8 +66,8 @@ model Booking {
   status        String   @default("pending") // pending, confirmed, completed, cancelled
 
   specialRequests String?
-
-  review        Review?
+  source        String   @default("online") // online, phone, whatsapp, walkin
+  notes         String?
 
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
@@ -70,30 +75,6 @@ model Booking {
   @@index([carId])
   @@index([status])
   @@index([customerEmail])
-}
-
-model Review {
-  id            String   @id @default(cuid())
-  bookingId     String   @unique
-  booking       Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
-  carId         String
-  car           Car      @relation(fields: [carId], references: [id], onDelete: Cascade)
-
-  customerName  String
-  rating        Int      // 1-5
-  comment       String
-
-  // Moderation gate - unlike the AI blog pipeline, unmoderated public reviews
-  // are a real abuse vector (anyone who guesses/leaks a bookingId could try
-  // to post, and a bad-faith review is far more damaging unreviewed than a
-  // slightly-late blog post), so these start hidden until a manager approves.
-  published     Boolean  @default(false)
-
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-
-  @@index([carId])
-  @@index([published])
 }
 
 model ContactMessage {
@@ -135,14 +116,14 @@ model BlogPost {
   title           String
   slug            String   @unique // URL-friendly version of title
   excerpt         String   // Short description for previews
-  content         String   // Full blog content (supports HTML/Markdown)
+  content         String   @db.Text // Full blog content (supports HTML/Markdown)
   featuredImage   String?  // Main image URL
   author          String   @default("Kigali Car Hire Team")
   category        String   // car-tips, travel-guides, company-news, rwanda-tourism, car-maintenance
-  tags            String[] @default([]) // SEO keywords: car rental Rwanda, Kigali tourism, etc.
+  tags            String[] // SEO keywords: car rental Rwanda, Kigali tourism, etc.
   metaTitle       String?  // SEO meta title
   metaDescription String?  // SEO meta description
-  metaKeywords    String[] @default([]) // SEO keywords array
+  metaKeywords    String[] // SEO keywords array
   published       Boolean  @default(false)
   featured        Boolean  @default(false) // Show on homepage
   views           Int      @default(0)
@@ -174,7 +155,7 @@ model BookingRequest {
   seats                 String?
   budget                String?
   purpose               String?
-  additionalRequirements String?  
+  additionalRequirements String?  @db.Text
 
   // Contact Information
   fullName              String
@@ -185,7 +166,7 @@ model BookingRequest {
   // Status and management
   status                String   @default("new") // new, contacted, quoted, converted, cancelled
   assignedCarId         String?  // If a car is assigned later
-  notes                 String?  // Admin notes
+  notes                 String?  @db.Text // Admin notes
 
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
@@ -195,19 +176,16 @@ model BookingRequest {
   @@index([createdAt])
 }
 
-model PageVisit {
-  id        String   @id @default(cuid())
-  path      String
-  createdAt DateTime @default(now())
+model ChatQuestion {
+  id          String    @id @default(cuid())
+  question    String    @db.Text
+  answer      String?   @db.Text
+  name        String?
+  phone       String?
+  page        String?   // which page the widget was on when asked
+  emailedAt   DateTime? // set once included in the daily digest email
+  createdAt   DateTime  @default(now())
 
   @@index([createdAt])
-}
-
-model GeneratedTopicLog {
-  id        String   @id @default(cuid())
-  topicKey  String
-  createdAt DateTime @default(now())
-
-  @@index([topicKey])
-  @@index([createdAt])
+  @@index([emailedAt])
 }

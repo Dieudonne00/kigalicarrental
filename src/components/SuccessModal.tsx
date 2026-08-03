@@ -7,6 +7,8 @@ interface SuccessModalProps {
   onClose: () => void;
   title: string;
   message: string;
+  payUrl?: string;
+  payText?: string;
 }
 
 export default function SuccessModal({
@@ -14,6 +16,8 @@ export default function SuccessModal({
   onClose,
   title,
   message,
+  payUrl,
+  payText = "Pay Online Now",
 }: SuccessModalProps) {
   useEffect(() => {
     if (isOpen) {
@@ -67,13 +71,26 @@ export default function SuccessModal({
           {message}
         </p>
 
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="w-full py-3 bg-[#01B000] hover:bg-[#019500] text-white font-bold rounded-lg transition-all"
-        >
-          Close
-        </button>
+        {/* Action Buttons */}
+        <div className="flex flex-col gap-3">
+          {payUrl && (
+            <button
+              onClick={() => {
+                window.location.href = payUrl;
+              }}
+              className="w-full py-4 bg-[#01B000] hover:bg-[#019500] text-white font-bold rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+            >
+              <span>💳</span> {payText}
+            </button>
+          )}
+
+          <button
+            onClick={onClose}
+            className={`w-full py-3 ${payUrl ? 'bg-gray-100 text-gray-700 hover:bg-gray-200' : 'bg-[#01B000] hover:bg-[#019500] text-white'} font-bold rounded-lg transition-all`}
+          >
+            {payUrl ? "Close" : "Close"}
+          </button>
+        </div>
       </div>
     </div>
   );

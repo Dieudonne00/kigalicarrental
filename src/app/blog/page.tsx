@@ -1,88 +1,115 @@
 import { Metadata } from "next";
 import BlogListing from "@/components/BlogListing";
-import { prisma } from "@/lib/prisma";
 
-export const revalidate = 3600;
+const SITE = "https://kigalicarhire.rw";
+const OG_IMAGE = "https://kigalicarhire.b-cdn.net/hero%20section%20cars.png";
 
 export const metadata: Metadata = {
-  title: "Kigali Car Rental Blog | Rwanda Travel Tips & Car Hire Guides",
+  title: "Kigali Car Hire Blog | Rwanda Travel Guides and Car Rental Tips",
   description:
-    "Discover expert Kigali car rental tips, Rwanda travel guides, and insider advice from Kigali Car Rental. Learn everything about self-drive adventures, safaris, and road trips.",
+    "Kigali Car Hire blog — expert guides on renting a car in Rwanda, self-drive tips, gorilla trekking routes, Akagera safari, Lake Kivu travel, and East Africa road trips. 150+ articles.",
   keywords:
-    "Kigali car rental, Kigali car rental blog, Rwanda car rental tips, Kigali car rental guide, Rwanda travel tips, self drive Rwanda, Rwanda road trip guide, safari car hire Rwanda",
+    "kigali car hire blog, car hire kigali tips, rwanda travel guide, self drive rwanda tips, gorilla trekking car hire guide, akagera safari car rental, lake kivu road trip, nyungwe forest car hire, rwanda road trip guide, car rental kigali advice",
   alternates: {
-    canonical: "/blog",
+    canonical: `${SITE}/blog`,
   },
   openGraph: {
-    title: "Kigali Car Rental Blog | Travel Tips & Car Hire Guides in Rwanda",
+    title: "Kigali Car Hire Blog | Rwanda Travel Guides and Car Rental Tips",
     description:
-      "Expert travel guides, Kigali car rental tips, and Rwanda road trip advice from Kigali Car Rental.",
+      "Kigali Car Hire blog — guides on renting a car in Rwanda, self-drive tips, gorilla trekking, safari routes and East Africa travel.",
+    url: `${SITE}/blog`,
+    siteName: "Kigali Car Hire",
     type: "website",
+    locale: "en_RW",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "Kigali Car Hire Blog — Rwanda travel guides and car rental tips",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kigali Car Rentals Blog | Rwanda Travel & Car Hire Tips",
+    title: "Kigali Car Hire Blog | Rwanda Travel Guides and Car Rental Tips",
     description:
-      "Smart tips and expert guides for renting cars and exploring Rwanda with confidence.",
+      "Kigali Car Hire blog — guides on renting a car in Rwanda, self-drive tips, gorilla trekking, safari routes and East Africa travel.",
+    images: [OG_IMAGE],
   },
 };
 
-export default async function BlogPage() {
-  const blogs = await prisma.blogPost.findMany({
-    where: { published: true },
-    orderBy: { publishedAt: "desc" },
-    select: {
-      id: true,
-      title: true,
-      slug: true,
-      excerpt: true,
-      featuredImage: true,
-      author: true,
-      category: true,
-      publishedAt: true,
-      views: true,
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Kigali Car Hire",
+      item: SITE,
     },
-  });
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Blog",
+      item: `${SITE}/blog`,
+    },
+  ],
+};
 
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "Kigali Car Hire Blog",
+  url: `${SITE}/blog`,
+  description:
+    "Expert guides on renting a car in Rwanda, self-drive tips, gorilla trekking routes, safari travel and East Africa road trips.",
+  publisher: {
+    "@type": "Organization",
+    name: "Kigali Car Hire",
+    url: SITE,
+    logo: {
+      "@type": "ImageObject",
+      url: OG_IMAGE,
+    },
+  },
+};
+
+export default function BlogPage() {
   return (
     <main className="min-h-screen bg-gray-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
+      />
       {/* Hero Section */}
       <section className="relative min-h-[400px] md:min-h-[600px] flex items-center justify-center overflow-hidden">
-        
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(https://media.kigalicarhire.rw/cars/car_b49ae6f3-3f29-4546-98a3-9c5ea70cc3e8.webp)`,
-          }}
+          style={{ backgroundImage: 'url(https://kigalicarhire.b-cdn.net/cars/1763129080028-2022-toyota-rav-4-prime-wheels-red-carprousa-1404x1112.webp)' }}
         >
-          <div className="absolute inset-0 bg-black/65"></div>
+          <div className="absolute inset-0 bg-black/60"></div>
         </div>
 
         {/* Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16 md:py-32">
           <h1 className="text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6 font-[family-name:var(--font-plus-jakarta)]">
-            Rwanda Car Rental Blog & Travel Insights
+            Car Rental Blog & Travel Guides
           </h1>
           <p className="text-sm md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Powerful travel guides, smart car rental tips, and local insights from
-            <span className="text-[#1D4ED8] font-semibold"> Kigali Car Rentals </span>
-            to help you explore Rwanda with confidence, comfort, and class.
+            Expert tips, travel guides, and insights to make your Rwanda journey unforgettable
           </p>
-
-          {/* Accent Line */}
-          <div className="mt-8 flex justify-center">
-            <span className="w-24 h-1 bg-[#1D4ED8] rounded-full"></span>
-          </div>
         </div>
       </section>
 
-      {/* Blog Listing */}
-      <section className="relative">
-        {/* Decorative Accent */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1D4ED8] to-[#1E3A8A]" />
-        <BlogListing initialBlogs={blogs.map((b) => ({ ...b, publishedAt: b.publishedAt?.toISOString() ?? "" }))} />
-      </section>
+      {/* Blog Listing Component */}
+      <BlogListing />
     </main>
   );
 }

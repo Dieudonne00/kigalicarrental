@@ -1,77 +1,107 @@
-import type { Metadata } from "next";
-import ModernLayout from "@/components/ModernLayout";
-import { CONTACT } from "@/lib/constants";
+import { Metadata } from "next";
+
+const SITE = "https://kigalicarhire.rw";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Kigali Car Rental",
+  title: "Privacy Policy | Kigali Car Hire",
   description:
-    "How Kigali Car Rental collects, uses, and protects your personal information when you book or inquire about our car rental services in Kigali, Rwanda.",
-  alternates: { canonical: "/privacy" },
+    "Privacy policy for Kigali Car Hire — how we collect, use and protect your personal information when you book a car rental in Rwanda.",
+  alternates: { canonical: `${SITE}/privacy` },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title: "Privacy Policy | Kigali Car Hire",
+    description: "How Kigali Car Hire collects, uses and protects your personal information.",
+    url: `${SITE}/privacy`,
+    siteName: "Kigali Car Hire",
+    images: [{ url: `${SITE}/opengraph-image`, width: 1200, height: 630, alt: "Kigali Car Hire Privacy Policy" }],
+  },
 };
 
 export default function PrivacyPage() {
   return (
-    <ModernLayout title="Privacy Policy" subtitle="How we collect, use, and protect your information.">
-      <div className="prose max-w-none space-y-6 text-gray-700">
-        <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">Information We Collect</h2>
-          <p>
-            When you book a vehicle, request a quote, or contact us, we collect information such
-            as your name, email address, phone number, and trip details (pickup/return dates and
-            locations) so we can process your booking and communicate with you.
-          </p>
-        </section>
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 font-[family-name:var(--font-plus-jakarta)]">
+          Privacy Policy
+        </h1>
+        <p className="text-gray-500 mb-10">Last updated: July 2026</p>
 
-        <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">How We Use Your Information</h2>
-          <p>
-            We use the information you provide to confirm bookings, respond to inquiries, send
-            booking-related updates, and improve our services. We do not sell your personal
-            information to third parties.
-          </p>
-        </section>
+        <div className="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed">
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">1. Information We Collect</h2>
+            <p>
+              When you book a car with Kigali Car Hire we collect your name, phone number, email address,
+              driving licence and ID/passport details, and payment information necessary to process your
+              rental and refundable deposit.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">Data Sharing</h2>
-          <p>
-            We may share your information with trusted service providers who help us operate our
-            business (for example, payment processing or email delivery), and only to the extent
-            necessary to provide our services to you.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">2. How We Use Your Information</h2>
+            <p>
+              Your information is used to confirm bookings, verify identity and driving eligibility,
+              process payments, arrange airport pickups and hotel delivery, and to contact you about your
+              rental. We do not sell your personal information to third parties.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">Data Security</h2>
-          <p>
-            We take reasonable steps to protect the personal information you share with us from
-            unauthorized access, loss, or misuse.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">3. Payment Information</h2>
+            <p>
+              Mobile money and bank transfer payments are processed through MTN Mobile Money, Airtel Money
+              and our banking partners. Kigali Car Hire does not store your mobile money PIN or full bank
+              account credentials.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">Your Choices</h2>
-          <p>
-            You can contact us at any time to ask what information we hold about you, to correct
-            it, or to request that it be deleted, subject to any records we are required to keep
-            for legal or accounting purposes.
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">4. Data Sharing</h2>
+            <p>
+              We may share limited booking details with vehicle owners for fleet management purposes, and
+              with relevant authorities where required for cross-border travel permits or insurance claims.
+            </p>
+          </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">Contact</h2>
-          <p>
-            Questions about this policy can be directed to us at{" "}
-            <a href={`mailto:${CONTACT.EMAIL}`} className="text-blue-600 font-semibold">
-              {CONTACT.EMAIL}
-            </a>{" "}
-            or{" "}
-            <a href={`tel:${CONTACT.PHONE}`} className="text-blue-600 font-semibold">
-              {CONTACT.PHONE}
-            </a>
-            .
-          </p>
-        </section>
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">5. Data Retention</h2>
+            <p>
+              Booking and identification records are retained for as long as needed to comply with
+              Rwandan tax and business record-keeping requirements, and are then securely deleted.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">6. Cookies &amp; Analytics</h2>
+            <p>
+              Our website uses cookies and analytics tools to understand how visitors use the site and to
+              improve our services. You can disable cookies in your browser settings at any time.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">7. Your Rights</h2>
+            <p>
+              You can request a copy of the personal information we hold about you, or ask us to correct
+              or delete it, by contacting us at the details below.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-gray-900 mb-2">8. Contact</h2>
+            <p>
+              For privacy questions or data requests, contact{" "}
+              <a href="mailto:kigalicarhire1990@gmail.com" className="text-[#01B000] font-semibold hover:underline">
+                kigalicarhire1990@gmail.com
+              </a>{" "}
+              or WhatsApp{" "}
+              <a href="https://wa.me/250788892976" className="text-[#01B000] font-semibold hover:underline">
+                +250 788 892 976
+              </a>
+              .
+            </p>
+          </section>
+        </div>
       </div>
-    </ModernLayout>
+    </div>
   );
 }

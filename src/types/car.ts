@@ -15,6 +15,7 @@ export interface Car {
   weeklyRate: number | null;
   monthlyRate: number | null;
   images: string[];
+  videoUrl: string | null;
   available: boolean;
   featured: boolean;
   gameDrive: boolean;

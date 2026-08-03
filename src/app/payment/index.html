@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Payment</title>
+
+<style>
+*{box-sizing:border-box;}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f6f8;
+}
+
+.payment-container{
+    max-width:950px;
+    margin:40px auto;
+    background:#fff;
+    display:flex;
+    flex-wrap:wrap;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    border-radius:6px;
+    overflow:hidden;
+}
+
+.left{
+    flex:1 1 300px;
+    padding:30px;
+    border-right:1px solid #e5e5e5;
+}
+
+.right{
+    flex:1 1 400px;
+    padding:30px;
+}
+
+.payment-option{
+    margin:12px 0;
+    font-size:14px;
+}
+
+.payment-option input{
+    margin-right:8px;
+    accent-color:#00875a;
+}
+
+.card-types{
+    margin-left:20px;
+    margin-top:8px;
+    display:none;
+    font-size:13px;
+}
+
+.card-types label{
+    display:block;
+    margin:4px 0;
+}
+
+/* receipt section  */
+.receipt-section{
+    margin-top:30px;
+    font-size:13px;
+    background:#f0f7f4;
+    padding:16px;
+    border-radius:6px;
+    border-left:3px solid #00875a;
+}
+
+.receipt-section label{
+    display:block;
+    margin-bottom:8px;
+    color:#1e3a5f;
+    font-weight:600;
+    font-size:14px;
+}
+
+.receipt-section input{
+    width:100%;
+    padding:10px;
+    border:1px solid #b0d9c8;
+    border-radius:4px;
+    font-size:14px;
+    background:#fff;
+}
+
+.receipt-section input:focus{
+    border-color:#00875a;
+    outline:none;
+    box-shadow:0 0 0 2px rgba(0,135,90,0.1);
+}
+
+.receipt-hint{
+    font-size:12px;
+    color:#4a6b8a;
+    margin-top:6px;
+    font-style:italic;
+}
+
+.form-group{
+    margin-bottom:15px;
+}
+
+.form-group label{
+    font-size:13px;
+    display:block;
+    margin-bottom:6px;
+    color:#555;
+}
+
+.form-group input{
+    width:100%;
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius:4px;
+    font-size:14px;
+}
+
+.row{
+    display:flex;
+    gap:10px;
+}
+
+.row .form-group{
+    flex:1;
+}
+
+.hidden{display:none;}
+
+.pay-btn{
+    width:100%;
+    padding:12px;
+    background:#28a745;
+    color:#fff;
+    border:none;
+    border-radius:4px;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.pay-btn:hover{
+    background:#23913d;
+}
+
+.error-msg{
+    color:red;
+    font-size:12px;
+}
+
+.pci{
+    margin-top:15px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:12px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .payment-container{
+        flex-direction:column;
+        margin:10px;
+    }
+    .left{
+        border-right:none;
+        border-bottom:1px solid #e5e5e5;
+    }
+    .row{
+        flex-direction:column;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="payment-container">
+
+<div class="left">
+<h3>How would you like to pay?</h3>
+
+<div class="payment-option">
+<label><input type="radio" name="payment" value="mtn"> MTN Mobile Money</label>
+</div>
+
+<div class="payment-option">
+<label><input type="radio" name="payment" value="airtel"> Airtel Money</label>
+</div>
+
+<div class="payment-option">
+<label><input type="radio" name="payment" value="card" checked>
+<strong>Debit / Credit Card</strong></label>
+
+<div class="card-types" id="cardTypes">
+<label><input type="radio" name="cardType"> Visa</label>
+<label><input type="radio" name="cardType"> Mastercard</label>
+<label><input type="radio" name="cardType"> American Express</label>
+<label><input type="radio" name="cardType"> SmartCash</label>
+<label><input type="radio" name="cardType"> SPENN</label>
+<div class="error-msg" id="cardTypeError"></div>
+</div>
+</div>
+
+
+<div class="receipt-section">
+    <label> Receive receipt & track your payment</label>
+    <input type="email" id="receiptEmail" placeholder="your.email@example.com" value="">
+    <div class="error-msg" id="receiptEmailError"></div>
+    <div class="receipt-hint">We'll email you a receipt and tracking details</div>
+</div>
+
+</div>
+
+<div class="right">
+
+<div class="form-group">
+<label>Amount to Pay (USD $)</label>
+<input type="number" id="amountUSD">
+<div class="error-msg" id="amountError"></div>
+</div>
+
+<div id="mobileSection" class="hidden">
+<div class="form-group">
+<label>Phone Number</label>
+<input type="text" id="phone" placeholder="07XXXXXXXX">
+<div class="error-msg" id="phoneError"></div>
+</div>
+</div>
+
+<div id="cardSection">
+
+<div class="form-group">
+<label>Card Holder Name</label>
+<input type="text" id="cardName">
+</div>
+
+<div class="form-group">
+<label>Card Number</label>
+<input type="text" id="cardNumber" maxlength="19">
+<div class="error-msg" id="cardError"></div>
+</div>
+
+<div class="row">
+<div class="form-group">
+<label>Expiry (MM/YY)</label>
+<input type="text" id="expiry" maxlength="5" placeholder="MM/YY">
+<div class="error-msg" id="expiryError"></div>
+</div>
+
+<div class="form-group">
+<label>CVV</label>
+<input type="text" id="cvv" maxlength="4">
+<div class="error-msg" id="cvvError"></div>
+</div>
+</div>
+
+</div>
+
+<button class="pay-btn" onclick="processPayment()">Pay Now</button>
+
+<div class="pci">
+<img src="https://i.sstatic.net/xPCy2.png" width="60">
+PCI Certified
+</div>
+
+</div>
+</div>
+
+<script>
+
+const rate=1300;
+
+const paymentRadios=document.querySelectorAll('input[name="payment"]');
+const cardTypes=document.getElementById("cardTypes");
+const cardSection=document.getElementById("cardSection");
+const mobileSection=document.getElementById("mobileSection");
+
+function toggle(){
+const selected=document.querySelector('input[name="payment"]:checked').value;
+if(selected==="card"){
+cardTypes.style.display="block";
+cardSection.classList.remove("hidden");
+mobileSection.classList.add("hidden");
+}else{
+cardTypes.style.display="none";
+cardSection.classList.add("hidden");
+mobileSection.classList.remove("hidden");
+}
+}
+paymentRadios.forEach(r=>r.addEventListener("change",toggle));
+toggle();
+
+/* Format card number */
+document.getElementById("cardNumber").addEventListener("input",function(e){
+let v=e.target.value.replace(/\D/g,'').substring(0,16);
+let f=v.match(/.{1,4}/g);
+e.target.value=f?f.join(" "):v;
+});
+
+/* Expiry Auto Format */
+document.getElementById("expiry").addEventListener("input",function(e){
+let v=e.target.value.replace(/\D/g,'').substring(0,4);
+if(v.length>=3){
+e.target.value=v.substring(0,2)+"/"+v.substring(2);
+}else{
+e.target.value=v;
+}
+});
+
+/* Luhn */
+function luhn(num){
+let sum=0, dbl=false;
+for(let i=num.length-1;i>=0;i--){
+let d=parseInt(num[i]);
+if(dbl){ d*=2; if(d>9)d-=9; }
+sum+=d; dbl=!dbl;
+}
+return sum%10===0;
+}
+
+/* Expiry validation */
+function validateExpiry(value){
+if(!/^\d{2}\/\d{2}$/.test(value)) return false;
+
+let [month,year]=value.split("/");
+month=parseInt(month);
+year=parseInt("20"+year);
+
+if(month<1 || month>12) return false;
+
+let today=new Date();
+let expDate=new Date(year,month);
+return expDate>today;
+}
+
+function processPayment(){
+
+let valid=true;
+document.querySelectorAll(".error-msg").forEach(e=>e.innerText="");
+
+let usd=document.getElementById("amountUSD").value;
+if(!usd || usd<=0){
+document.getElementById("amountError").innerText="Enter valid USD amount";
+valid=false;
+}
+
+// receipt email validation - now included in payment details
+let receiptEmail = document.getElementById("receiptEmail").value.trim();
+if(receiptEmail !== ""){
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(!emailPattern.test(receiptEmail)){
+        document.getElementById("receiptEmailError").innerText = "Please enter a valid email address";
+        valid=false;
+    }
+} else {
+    // email is optional, but if left empty we still proceed
+    // you could also decide to make it required - adjust if needed
+}
+
+const selected=document.querySelector('input[name="payment"]:checked').value;
+
+if(selected==="card"){
+
+if(!document.querySelector('input[name="cardType"]:checked')){
+document.getElementById("cardTypeError").innerText="Select card type";
+valid=false;
+}
+
+let number=document.getElementById("cardNumber").value.replace(/\s/g,'');
+let expiry=document.getElementById("expiry").value;
+let cvv=document.getElementById("cvv").value;
+
+if(!luhn(number)){
+document.getElementById("cardError").innerText="Invalid card number";
+valid=false;
+}
+
+if(!validateExpiry(expiry)){
+document.getElementById("expiryError").innerText="Card expired or invalid date";
+valid=false;
+}
+
+if(!/^\d{3,4}$/.test(cvv)){
+document.getElementById("cvvError").innerText="Invalid CVV";
+valid=false;
+}
+
+if(valid){
+let rwf=usd*rate;
+let emailMsg = receiptEmail ? ` Receipt & tracking will be sent to ${receiptEmail}.` : ' No email provided for receipt.';
+alert(` Payment Validated (Card)
+━━━━━━━━━━━━━━━━━━━━━
+ Amount: $${usd} USD
+🇷🇼 Backend charge: ${rwf} RWF
+ ${receiptEmail ? 'Receipt: '+receiptEmail : 'Receipt email not provided'}`);
+}
+
+}else{
+
+let phone=document.getElementById("phone").value;
+if(!/^07\d{8}$/.test(phone)){
+document.getElementById("phoneError").innerText="Invalid Rwanda number";
+valid=false;
+}
+
+if(valid){
+let rwf=usd*rate;
+let emailMsg = receiptEmail ? ` Receipt & tracking will be sent to ${receiptEmail}.` : ' No email provided for receipt.';
+alert(` Mobile Payment Validated
+━━━━━━━━━━━━━━━━━━━━━
+ Amount: $${usd} USD
+🇷🇼 Backend charge: ${rwf} RWF
+ ${receiptEmail ? 'Receipt: '+receiptEmail : 'Receipt email not provided'}`);
+}
+}
+
+}
+</script>
+
+</body>
+</html>

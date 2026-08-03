@@ -1,74 +1,59 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import Link from "next/link";
-import ModernLayout from "@/components/ModernLayout";
 import { prisma } from "@/lib/prisma";
 
+const SITE = "https://kigalicarhire.rw";
+
 export const metadata: Metadata = {
-  title: "Sitemap | Kigali Car Rental",
-  description: "Browse every page on the Kigali Car Rental website.",
-  alternates: { canonical: "/site-map" },
+  title: "Sitemap | Kigali Car Hire",
+  description:
+    "Full sitemap of Kigali Car Hire — every page on kigalicarhire.rw including our fleet, service pages, destinations and blog.",
+  alternates: { canonical: `${SITE}/site-map` },
+  robots: { index: true, follow: true },
 };
 
-const linkGroups: { title: string; links: { label: string; href: string }[] }[] = [
+const sections: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Main",
     links: [
       { label: "Home", href: "/" },
       { label: "Our Fleet", href: "/fleet" },
+      { label: "Book Now", href: "/book-now" },
       { label: "How It Works", href: "/how-it-works" },
       { label: "About Us", href: "/about" },
-      { label: "Contact", href: "/contact" },
-      { label: "Book Now", href: "/book-now" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "FAQ", href: "/faq" },
       { label: "Blog", href: "/blog" },
     ],
   },
   {
-    title: "Car Rental",
+    title: "Services",
     links: [
-      { label: "Car Hire Rwanda", href: "/car-hire-rwanda" },
-      { label: "Car Rental Rwanda", href: "/car-rental-rwanda" },
-      { label: "Kigali Airport Car Rental", href: "/kigali-airport-car-rental" },
-      { label: "Cheap Car Rental Kigali", href: "/cheap-car-rental-kigali" },
-      { label: "Luxury Car Rental Kigali", href: "/luxury-car-rental-kigali" },
-      { label: "Long Term Car Rental Rwanda", href: "/long-term-car-rental-rwanda" },
-      { label: "Monthly Rental", href: "/long-term/monthly" },
-      { label: "Last Minute Deals", href: "/deals/last-minute" },
+      { label: "Self-Drive Rwanda", href: "/self-drive-rwanda" },
+      { label: "Airport Transfer Kigali", href: "/airport-transfer-kigali" },
+      { label: "4x4 Car Hire Rwanda", href: "/4x4-car-hire-rwanda" },
+      { label: "Luxury Car Hire Kigali", href: "/luxury-car-hire-kigali" },
+      { label: "Corporate Car Hire Kigali", href: "/corporate-car-hire-kigali" },
+      { label: "Long-Term Car Hire Kigali", href: "/long-term-car-hire-kigali" },
+      { label: "Wedding Car Hire Kigali", href: "/wedding-car-hire-kigali" },
+      { label: "NGO Car Hire Kigali", href: "/ngo-car-hire-kigali" },
+      { label: "Car Hire Kigali 2026", href: "/car-hire-kigali-2026" },
     ],
   },
   {
-    title: "Self Drive & Drivers",
+    title: "Destinations",
     links: [
-      { label: "Self Drive Rwanda", href: "/self-drive-rwanda" },
-      { label: "Self Drive Car Rental Kigali", href: "/self-drive-car-rental-kigali" },
-      { label: "Driver Car Hire Kigali", href: "/driver-car-hire-kigali" },
-      { label: "Chauffeur Service Rwanda", href: "/chauffeur-service-rwanda" },
-      { label: "Private Driver Kigali", href: "/private-driver-kigali" },
-      { label: "Rwanda Guided Transport", href: "/rwanda-guided-transport" },
-      { label: "Airport Driver Service", href: "/airport-driver-service" },
-      { label: "City Tour Driver", href: "/city-tour-driver" },
-      { label: "Business Driver Service", href: "/business-driver-service" },
-      { label: "Event Transport Driver", href: "/event-transport-driver" },
-    ],
-  },
-  {
-    title: "4x4 & Safari",
-    links: [
-      { label: "4x4 Car Rental Rwanda", href: "/4x4-car-rental-rwanda" },
-      { label: "Safari Car Rental Rwanda", href: "/safari-car-rental-rwanda" },
-      { label: "Land Cruiser Rental Rwanda", href: "/land-cruiser-rental-rwanda" },
-      { label: "Prado Rental Kigali", href: "/prado-rental-kigali" },
-      { label: "Rooftop Tent Car Rental Rwanda", href: "/rooftop-tent-car-rental-rwanda" },
-      { label: "Camping Car Rental Rwanda", href: "/camping-car-rental-rwanda" },
-      { label: "Akagera Safari Rental", href: "/akagera-safari-rental" },
       { label: "Akagera Game Drive", href: "/akagera-game-drive" },
-      { label: "Volcanoes 4x4 Rental", href: "/volcanoes-4x4-rental" },
-      { label: "Nyungwe Forest Safari", href: "/nyungwe-forest-safari" },
+      { label: "Gorilla Trekking Car Hire", href: "/gorilla-trekking-car-hire" },
+      { label: "Volcanoes National Park Car Hire", href: "/volcanoes-national-park-car-hire" },
+      { label: "Lake Kivu Car Hire", href: "/lake-kivu-car-hire" },
+      { label: "Nyungwe Forest Car Hire", href: "/nyungwe-forest-car-hire" },
     ],
   },
   {
-    title: "Support & Legal",
+    title: "Legal",
     links: [
-      { label: "FAQ", href: "/faq" },
       { label: "Terms & Conditions", href: "/terms" },
       { label: "Privacy Policy", href: "/privacy" },
     ],
@@ -76,74 +61,69 @@ const linkGroups: { title: string; links: { label: string; href: string }[] }[] 
 ];
 
 export default async function SitemapPage() {
-  let cars: { id: string; name: string }[] = [];
-  let blogPosts: { slug: string; title: string }[] = [];
+  let carLinks: { label: string; href: string }[] = [];
+  let blogLinks: { label: string; href: string }[] = [];
 
   try {
-    [cars, blogPosts] = await Promise.all([
-      prisma.car.findMany({
-        where: { available: true },
-        select: { id: true, name: true },
-        orderBy: { createdAt: "desc" },
-      }),
-      prisma.blogPost.findMany({
-        where: { published: true },
-        select: { slug: true, title: true },
-        orderBy: { publishedAt: "desc" },
-      }),
-    ]);
-  } catch (error) {
-    console.error("Sitemap page: failed to fetch cars/blog posts", error);
+    const cars = await prisma.car.findMany({
+      where: { available: true },
+      select: { id: true, name: true },
+      take: 100,
+    });
+    carLinks = cars.map((c) => ({ label: c.name, href: `/cars/${c.id}` }));
+  } catch {
+    // DB unavailable — skip dynamic car links
   }
 
+  try {
+    const posts = await prisma.blogPost.findMany({
+      where: { published: true },
+      select: { slug: true, title: true },
+      orderBy: { updatedAt: "desc" },
+      take: 100,
+    });
+    blogLinks = posts.map((p) => ({ label: p.title, href: `/blog/${p.slug}` }));
+  } catch {
+    // DB unavailable — skip dynamic blog links
+  }
+
+  const allSections = [...sections];
+  if (carLinks.length) allSections.push({ title: "Our Cars", links: carLinks });
+  if (blogLinks.length) allSections.push({ title: "Blog Posts", links: blogLinks });
+
   return (
-    <ModernLayout title="Sitemap" subtitle="Every page on the Kigali Car Rental website.">
-      <div className="grid md:grid-cols-2 gap-10">
-        {linkGroups.map((group) => (
-          <div key={group.title}>
-            <h2 className="text-xl font-bold text-blue-900 mb-3">{group.title}</h2>
-            <ul className="space-y-2">
-              {group.links.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-gray-600 hover:text-blue-600 transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+    <div className="min-h-screen bg-gray-50">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 font-[family-name:var(--font-plus-jakarta)]">
+          Sitemap
+        </h1>
+        <p className="text-gray-600 mb-10">
+          Every page on Kigali Car Hire. Looking for the XML version for search engines?{" "}
+          <a href="/sitemap.xml" className="text-[#01B000] font-semibold hover:underline">
+            View sitemap.xml
+          </a>
+          .
+        </p>
 
-        {cars.length > 0 && (
-          <div>
-            <h2 className="text-xl font-bold text-blue-900 mb-3">Vehicles</h2>
-            <ul className="space-y-2">
-              {cars.map((car) => (
-                <li key={car.id}>
-                  <Link href={`/cars/${car.id}`} className="text-gray-600 hover:text-blue-600 transition-colors">
-                    {car.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {blogPosts.length > 0 && (
-          <div>
-            <h2 className="text-xl font-bold text-blue-900 mb-3">Blog Posts</h2>
-            <ul className="space-y-2">
-              {blogPosts.map((post) => (
-                <li key={post.slug}>
-                  <Link href={`/blog/${post.slug}`} className="text-gray-600 hover:text-blue-600 transition-colors">
-                    {post.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {allSections.map((section) => (
+            <div key={section.title}>
+              <h2 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wide">
+                {section.title}
+              </h2>
+              <ul className="space-y-2">
+                {section.links.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-gray-600 hover:text-[#01B000] transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
       </div>
-    </ModernLayout>
+    </div>
   );
 }

@@ -2,6 +2,55 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { sendStatusUpdateToCustomer } from "@/lib/email";
 
+// Create manual booking
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    const {
+      carId,
+      customerName,
+      customerPhone,
+      customerEmail,
+      pickupDate,
+      returnDate,
+      pickupLocation,
+      returnLocation,
+      totalCost,
+      source,
+      notes,
+      specialRequests,
+    } = body;
+
+    if (!carId || !customerName || !customerPhone || !pickupDate || !returnDate) {
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    }
+
+    const booking = await prisma.booking.create({
+      data: {
+        carId,
+        customerName,
+        customerPhone,
+        customerEmail: customerEmail || "manual@kigalicarhire.rw",
+        pickupDate: new Date(pickupDate),
+        returnDate: new Date(returnDate),
+        pickupLocation: pickupLocation || "Kigali",
+        returnLocation: returnLocation || null,
+        totalCost: parseFloat(totalCost) || 0,
+        status: "confirmed",
+        source: source || "phone",
+        notes: notes || null,
+        specialRequests: specialRequests || null,
+      },
+      include: { car: true },
+    });
+
+    return NextResponse.json({ booking }, { status: 201 });
+  } catch (error) {
+    console.error("Error creating manual booking:", error);
+    return NextResponse.json({ error: "Failed to create booking" }, { status: 500 });
+  }
+}
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);

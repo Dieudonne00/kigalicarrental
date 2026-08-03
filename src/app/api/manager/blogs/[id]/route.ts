@@ -68,7 +68,7 @@ export async function PUT(
         excerpt: data.excerpt,
         content: data.content,
         featuredImage: data.featuredImage || null,
-        author: data.author || "Kigali Car Rental Team",
+        author: data.author || "Kigali Car Hire Team",
         category: data.category,
         tags: data.tags || [],
         metaTitle: data.metaTitle || data.title,

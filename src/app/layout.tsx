@@ -4,7 +4,7 @@ import "./globals.css";
 import ConditionalLayout from "@/components/ConditionalLayout";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
-import OrganizationSchema from "@/components/OrganizationSchema";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,15 +21,37 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
+const OG_IMAGE = "https://kigalicarhire.rw/opengraph-image";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.kigalicarrental.site"),
-  title: "Kigali Car Rental - Premium Car Hire Services in Rwanda",
-  description: "Rent quality vehicles in Kigali, Rwanda. Airport pickup, city delivery, SUVs & luxury cars. Book online for best rates with 24/7 support.",
+  title: {
+    default: "Kigali Car Hire | #1 Car Rental in Rwanda — from $30/day",
+    template: "%s | Kigali Car Hire",
+  },
+  description:
+    "Kigali Car Hire — Rwanda's most trusted car rental. From $30/day: SUVs, 4x4 Land Cruisers, luxury & economy cars. Airport pickup 24/7. Self-drive or chauffeur. WhatsApp +250 788 892 976.",
+  keywords:
+    "kigali car hire, car hire kigali, car rental kigali, rent a car kigali rwanda, self drive rwanda, airport transfer kigali, 4x4 hire rwanda, gorilla trekking car hire, chauffeur service kigali, kigali vehicle rental",
+  metadataBase: new URL("https://kigalicarhire.rw"),
   verification: {
-    google: [
-      "xHopaPwEJGui02kgKU5AHndOdIRei2piro21JOdMeGk",
-      "1RDwUPlhnpplY_rLoMQcPUOwl7wFPnh5MU7-FYtYcr8",
-    ],
+    google: "xHopaPwEJGui02kgKU5AHndOdIRei2piro21JOdMeGk",
+  },
+  openGraph: {
+    title: "Kigali Car Hire | #1 Car Rental in Rwanda — from $30/day",
+    description:
+      "Rwanda's trusted car rental from $30/day. 50+ vehicles: SUVs, 4x4 Land Cruisers, luxury & economy. Airport pickup 24/7. Free Kigali delivery. Self-drive or chauffeur.",
+    type: "website",
+    locale: "en_RW",
+    siteName: "Kigali Car Hire",
+    url: "https://kigalicarhire.rw",
+    images: [{ url: OG_IMAGE, width: 1200, height: 630, alt: "Kigali Car Hire — #1 car rental in Rwanda from $30/day" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kigali Car Hire | #1 Car Rental in Rwanda — from $30/day",
+    description:
+      "Rwanda's trusted car rental from $30/day. SUVs, 4x4, luxury & economy. Airport pickup 24/7. Free Kigali delivery.",
+    images: [OG_IMAGE],
   },
 };
 
@@ -41,8 +63,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://kigalicarhire.b-cdn.net" />
+        <link rel="dns-prefetch" href="https://kigalicarhire.b-cdn.net" />
+        <link rel="preconnect" href="https://media.kigalicarhire.rw" />
+
         <GoogleAnalytics />
-        <OrganizationSchema />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} antialiased`}

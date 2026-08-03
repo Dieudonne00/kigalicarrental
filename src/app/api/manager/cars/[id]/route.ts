@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 
 // GET single car
@@ -64,17 +63,13 @@ export async function PUT(
         weeklyRate: data.weeklyRate ? parseFloat(data.weeklyRate) : null,
         monthlyRate: data.monthlyRate ? parseFloat(data.monthlyRate) : null,
         images: data.images || [],
+        videoUrl: data.videoUrl !== undefined ? data.videoUrl : null,
         available: data.available !== undefined ? data.available : true,
         featured: data.featured !== undefined ? data.featured : false,
         gameDrive: data.gameDrive !== undefined ? data.gameDrive : false,
         specifications: data.specifications || null,
       },
     });
-
-    // See the POST route in ../route.ts for why this is needed - without it,
-    // an edit (new photo, price change, availability toggle) sits invisible
-    // on every cached listing page for up to an hour.
-    revalidatePath("/", "layout");
 
     return NextResponse.json(
       { message: "Car updated successfully", car },
@@ -110,8 +105,6 @@ export async function DELETE(
     await prisma.car.delete({
       where: { id },
     });
-
-    revalidatePath("/", "layout");
 
     return NextResponse.json(
       { message: "Car deleted successfully" },

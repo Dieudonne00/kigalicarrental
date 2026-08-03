@@ -17,7 +17,7 @@ export default function AddBlogPage() {
     excerpt: "",
     content: "",
     featuredImage: "",
-    author: "Kigali Car Rental Team",
+    author: "Kigali Car Hire Team",
     category: "car-tips",
     tags: [] as string[],
     metaTitle: "",
@@ -41,7 +41,7 @@ export default function AddBlogPage() {
   // Suggested SEO keywords for car rental in Rwanda
   const suggestedKeywords = [
     "car rental Rwanda",
-    "Kigali car rental",
+    "Kigali car hire",
     "rent a car Kigali",
     "Rwanda car rental",
     "affordable car rental Rwanda",
@@ -128,16 +128,6 @@ export default function AddBlogPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (uploadingImage) {
-      alert("Please wait for the image upload to finish before saving.");
-      return;
-    }
-    if (formData.featuredImage.startsWith("blob:")) {
-      alert("The featured image upload failed - please re-upload before saving.");
-      return;
-    }
-
     setSubmitting(true);
 
     try {
@@ -533,10 +523,10 @@ export default function AddBlogPage() {
               </button>
               <button
                 type="submit"
-                disabled={submitting || uploadingImage}
+                disabled={submitting}
                 className="flex-1 px-6 py-3 bg-[#01B000] text-white rounded-lg font-bold hover:bg-[#019500] transition-all disabled:opacity-50"
               >
-                {submitting ? "Creating Post..." : uploadingImage ? "Uploading image..." : "Create Blog Post"}
+                {submitting ? "Creating Post..." : "Create Blog Post"}
               </button>
             </div>
           </form>
