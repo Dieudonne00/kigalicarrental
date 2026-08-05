@@ -20,14 +20,14 @@ const OG_IMAGE = "https://kigalicarrental.site/opengraph-image";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Kigali Car Rental | Rent a Car in Rwanda from $30/day",
+  title: "Kigali Car Rental | Kigali Car Hire | Free Airport Delivery",
   description:
-    "Kigali Car Rental — Rwanda's trusted car rental company. From $30/day: SUVs, 4x4 Land Cruisers, luxury & economy. Free Kigali hotel delivery. Airport pickup 24/7. Self-drive or chauffeur. Call +250 787 619 387.",
+    "Kigali Car Rental — self-drive & chauffeur car hire in Kigali from $30/day. Free airport delivery, full insurance, 24/7 support. Book online or WhatsApp.",
   keywords: "Kigali car rental",
   openGraph: {
-    title: "Kigali Car Rental | Rent a Car in Rwanda from $30/day",
+    title: "Kigali Car Rental | Kigali Car Hire | Free Airport Delivery",
     description:
-      "Rwanda's trusted car rental from $30/day. SUVs, 4x4 Land Cruisers, luxury & economy. Self-drive or chauffeur. Airport pickup 24/7. Free Kigali delivery.",
+      "Self-drive & chauffeur car hire in Kigali from $30/day. Free airport delivery, full insurance, 24/7 support.",
     url: SITE,
     siteName: "Kigali Car Rental",
     type: "website",
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kigali Car Rental | Rent a Car in Rwanda from $30/day",
+    title: "Kigali Car Rental | Kigali Car Hire | Free Airport Delivery",
     description:
-      "Rwanda's trusted car rental from $30/day. SUVs, 4x4, luxury & economy. Airport pickup 24/7. Free Kigali delivery.",
+      "Self-drive & chauffeur car hire in Kigali from $30/day. Free airport delivery, full insurance, 24/7 support.",
     images: [OG_IMAGE],
   },
   alternates: {
@@ -88,9 +88,9 @@ const localBusinessSchema = {
     postalCode: "0000",
     addressCountry: "RW",
   },
-  // No sameAs entry here - the previous "https://share.google/bagc78zxCxtwqa1ZS" link
-  // actually resolves to a page referencing "Kigali car hire," not this rebranded
-  // Kigali Car Rental entity. Add a real, verified profile URL back once one exists.
+  sameAs: [
+    "https://share.google/7TUI877vpCFKLLU0a",
+  ],
   geo: {
     "@type": "GeoCoordinates",
     latitude: -1.9440727,
@@ -152,7 +152,7 @@ const localBusinessSchema = {
       price: "60",
       priceCurrency: "USD",
       priceSpecification: { "@type": "UnitPriceSpecification", price: "60", priceCurrency: "USD", unitText: "DAY" },
-      itemOffered: { "@type": "Service", name: "Chauffeur Service Kigali", url: `${SITE}/self-drive-rwanda` },
+      itemOffered: { "@type": "Service", name: "Chauffeur Service Kigali", url: `${SITE}/corporate-car-hire-kigali` },
       availability: "https://schema.org/InStock",
     },
   ],
@@ -161,12 +161,12 @@ const localBusinessSchema = {
     name: "Car Hire & Rental Services in Kigali",
     itemListElement: [
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Self-Drive Car Hire Kigali", url: `${SITE}/self-drive-rwanda` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Chauffeur Service Kigali", url: `${SITE}/self-drive-rwanda` } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Chauffeur Service Kigali", url: `${SITE}/corporate-car-hire-kigali` } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Airport Transfer Kigali International Airport", url: `${SITE}/airport-transfer-kigali` } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Gorilla Trekking Car Hire Rwanda", url: `${SITE}/gorilla-trekking-car-hire` } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Luxury Car Hire Kigali", url: `${SITE}/luxury-car-hire-kigali` } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Wedding Car Hire Kigali", url: `${SITE}/wedding-car-hire-kigali` } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "East Africa Cross-Border Car Hire", url: `${SITE}/self-drive-rwanda` } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "East Africa Cross-Border Car Hire", url: `${SITE}/tours` } },
     ],
   },
   // No aggregateRating or review array here - there's no real review

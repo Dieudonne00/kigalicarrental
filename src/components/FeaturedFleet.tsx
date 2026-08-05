@@ -78,7 +78,7 @@ export default function FeaturedFleet({ cars }: { cars: Car[] }) {
               <p className="text-center text-gray-500 py-10">No vehicles in this category right now - check back soon or browse the full fleet.</p>
             ) : (
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-                {filteredCars.slice(0, 6).map((car, index) => (
+                {filteredCars.map((car, index) => (
                   <div
                     key={car.id}
                     className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-[#1e3a8a] hover:shadow-[0_16px_36px_rgba(20,30,50,0.14)] hover:-translate-y-1 transition-all duration-300 group flex flex-col"
