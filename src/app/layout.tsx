@@ -24,10 +24,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 const OG_IMAGE = "https://kigalicarrental.site/opengraph-image";
 
 export const metadata: Metadata = {
-  title: {
-    default: "Kigali Car Rental | Car Rental in Kigali, Rwanda — from $30/day",
-    template: "%s | Kigali Car Rental",
-  },
+  title: "Kigali Car Rental | Car Rental in Kigali, Rwanda — from $30/day",
   description:
     "Kigali Car Rental — self-drive and chauffeur-driven car rental in Kigali. From $30/day: SUVs, 4x4 Land Cruisers, luxury & economy cars. Airport pickup 24/7. WhatsApp +250 787 619 387.",
   keywords: "Kigali car rental",
