@@ -286,6 +286,8 @@ export default async function Home() {
     },
   });
 
+  const minPrice = allCars.length > 0 ? Math.min(...allCars.map((c) => c.dailyRate)) : 30;
+
   const priceByCategory = new Map<string, { fromDaily: number; fromWeekly: number | null; fromMonthly: number | null; example: string }>();
   for (const car of allCars) {
     const cat = (car.category || "other").toLowerCase();
@@ -319,7 +321,7 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <main>
-        <HeroSection />
+        <HeroSection minPrice={minPrice} />
         <FeaturedFleet cars={allCars} />
         <HowToBook />
         <EastAfricaDestinations />

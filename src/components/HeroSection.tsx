@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 // same brand's dark blue instead of their orange, and no fabricated stats:
 // the previous version claimed "1,000+ Happy Customers" and "Since 1990,"
 // neither of which is true for this business.
-export default function HeroSection() {
+export default function HeroSection({ minPrice = 30 }: { minPrice?: number }) {
   const router = useRouter();
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -29,7 +29,7 @@ export default function HeroSection() {
         <div className="max-w-5xl mx-auto">
           <h1 className="font-[family-name:var(--font-plus-jakarta)] text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight mb-4 flex flex-wrap items-center gap-2">
             Kigali Car Rental{" "}
-            <span className="underline decoration-gray-400 underline-offset-4">from $35/day</span>
+            <span className="underline decoration-gray-400 underline-offset-4">from ${minPrice}/day</span>
           </h1>
 
           <form
