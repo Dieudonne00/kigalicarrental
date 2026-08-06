@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const FILTERS = [
   { label: "All Vehicles", value: "all" },
@@ -17,8 +17,17 @@ const FILTERS = [
 // instead of hydrating every card.
 export default function FleetFilterTabs() {
   const [active, setActive] = useState("all");
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
+    // Server-rendered cards already show everything (the "all" state) with
+    // no inline style, so touching 24 elements' style.display on mount is
+    // pure unnecessary DOM writes right in Lighthouse's CLS measurement
+    // window. Only filter in response to an actual user click.
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     const grid = document.getElementById("fleet-grid");
     if (!grid) return;
     const cards = grid.querySelectorAll<HTMLElement>("[data-category]");
