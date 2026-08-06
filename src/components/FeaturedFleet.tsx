@@ -1,8 +1,6 @@
-"use client";
-
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import FleetFilterTabs from "./FleetFilterTabs";
 
 interface Car {
   id: string;
@@ -22,23 +20,14 @@ interface Car {
   hasActiveBooking?: boolean;
 }
 
-const FILTERS = [
-  { label: "All Vehicles", value: "all" },
-  { label: "SUV", value: "suv" },
-  { label: "Luxury", value: "luxury" },
-  { label: "Van", value: "van" },
-  { label: "Sedan", value: "sedan" },
-];
-
+// Server-rendered fleet grid (all cards ship as static HTML, no hydration
+// cost) plus a small client "island" (FleetFilterTabs) that toggles card
+// visibility via direct DOM manipulation - see FleetFilterTabs.tsx for why.
 // Layout adapted from carrentalinkigali.com's fleet-section pattern (filter
 // tabs, results-grid vehicle cards, sticky "rental requirements" sidebar) -
 // our dark blue instead of their orange, same real car data this already had.
 export default function FeaturedFleet({ cars }: { cars: Car[] }) {
-  const [filter, setFilter] = useState("all");
-
   if (cars.length === 0) return null;
-
-  const filteredCars = filter === "all" ? cars : cars.filter((c) => c.category?.toLowerCase() === filter);
 
   return (
     <section className="py-12 md:py-20 bg-white" id="fleet">
@@ -55,105 +44,91 @@ export default function FeaturedFleet({ cars }: { cars: Car[] }) {
           </p>
         </div>
 
-        <div className="flex gap-2 flex-wrap justify-center mb-8 md:mb-10">
-          {FILTERS.map((f) => (
-            <button
-              key={f.value}
-              type="button"
-              onClick={() => setFilter(f.value)}
-              className={`px-5 py-2.5 rounded-lg text-sm font-semibold border transition-all ${
-                filter === f.value
-                  ? "bg-[#1e3a8a] text-white border-[#1e3a8a]"
-                  : "bg-white text-gray-600 border-gray-200 hover:border-[#1e3a8a] hover:text-[#1e3a8a]"
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
-        </div>
+        <FleetFilterTabs />
 
         <div className="grid lg:grid-cols-[1fr_340px] gap-8 items-start">
           <div>
-            {filteredCars.length === 0 ? (
-              <p className="text-center text-gray-500 py-10">No vehicles in this category right now - check back soon or browse the full fleet.</p>
-            ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-                {filteredCars.map((car, index) => (
-                  <div
-                    key={car.id}
-                    className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-[#1e3a8a] hover:shadow-[0_16px_36px_rgba(20,30,50,0.14)] hover:-translate-y-1 transition-all duration-300 group flex flex-col"
-                  >
-                    <div className="relative h-40 sm:h-44 md:h-48 overflow-hidden flex-shrink-0 bg-gray-50">
-                      <Image
-                        src={car.images[0] || "/placeholder-car.jpg"}
-                        alt={`Kigali car rental - ${car.name.trim()} for hire in Kigali Rwanda`}
-                        fill
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        priority={index < 4}
-                      />
-                      <div className="absolute bottom-2.5 left-2.5">
-                        {car.hasActiveBooking ? (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-red-500 text-white rounded text-[10px] font-bold uppercase tracking-wide">
-                            Booked
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-green-600 text-white rounded text-[10px] font-bold uppercase tracking-wide">
-                            <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-                            Available Now
-                          </span>
-                        )}
-                      </div>
-                      {car.videoUrl && (
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 bg-[#1e3a8a]/90 rounded-full flex items-center justify-center">
-                          <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-                        </div>
+            <p id="fleet-empty-msg" className="text-center text-gray-500 py-10" style={{ display: "none" }}>
+              No vehicles in this category right now - check back soon or browse the full fleet.
+            </p>
+            <div id="fleet-grid" className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+              {cars.map((car, index) => (
+                <div
+                  key={car.id}
+                  data-category={car.category?.toLowerCase()}
+                  className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-[#1e3a8a] hover:shadow-[0_16px_36px_rgba(20,30,50,0.14)] hover:-translate-y-1 transition-all duration-300 group flex flex-col"
+                >
+                  <div className="relative h-40 sm:h-44 md:h-48 overflow-hidden flex-shrink-0 bg-gray-50">
+                    <Image
+                      src={car.images[0] || "/placeholder-car.jpg"}
+                      alt={`Kigali car rental - ${car.name.trim()} for hire in Kigali Rwanda`}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      priority={index < 4}
+                      loading={index < 4 ? undefined : "lazy"}
+                    />
+                    <div className="absolute bottom-2.5 left-2.5">
+                      {car.hasActiveBooking ? (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-red-500 text-white rounded text-[10px] font-bold uppercase tracking-wide">
+                          Booked
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-green-600 text-white rounded text-[10px] font-bold uppercase tracking-wide">
+                          <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
+                          Available Now
+                        </span>
                       )}
                     </div>
+                    {car.videoUrl && (
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 bg-[#1e3a8a]/90 rounded-full flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                      </div>
+                    )}
+                  </div>
 
-                    <div className="p-4 flex flex-col flex-1">
-                      <Link href={`/cars/${car.id}`} className="font-bold text-gray-900 text-sm md:text-base mb-0.5 line-clamp-1 hover:text-[#1e3a8a] transition-colors">
-                        {car.name}
+                  <div className="p-4 flex flex-col flex-1">
+                    <Link href={`/cars/${car.id}`} className="font-bold text-gray-900 text-sm md:text-base mb-0.5 line-clamp-1 hover:text-[#1e3a8a] transition-colors">
+                      {car.name}
+                    </Link>
+                    <p className="text-xs text-gray-500 mb-3 capitalize">
+                      {car.category} &middot; {car.year}
+                    </p>
+
+                    <div className="flex flex-wrap gap-3 mb-4 text-xs text-gray-600 font-medium">
+                      <span className="flex items-center gap-1">
+                        <svg className="w-3 h-3 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                          <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        {car.seats} Seats
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <svg className="w-3 h-3 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                          <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        {car.fuelType}
+                      </span>
+                    </div>
+
+                    <div className="mt-auto pt-3 border-t border-gray-100 flex items-center justify-between">
+                      <div className="flex flex-col">
+                        <span className="text-[10px] text-gray-400">from</span>
+                        <span className="text-lg font-extrabold text-gray-900">
+                          ${car.dailyRate}
+                          <span className="text-[10px] font-medium text-gray-400">/day</span>
+                        </span>
+                      </div>
+                      <Link
+                        href={`/cars/${car.id}`}
+                        className="bg-[#1e3a8a] text-white px-3 py-2 rounded-lg text-xs font-bold hover:bg-[#172554] transition-all"
+                      >
+                        View
                       </Link>
-                      <p className="text-xs text-gray-500 mb-3 capitalize">
-                        {car.category} &middot; {car.year}
-                      </p>
-
-                      <div className="flex flex-wrap gap-3 mb-4 text-xs text-gray-600 font-medium">
-                        <span className="flex items-center gap-1">
-                          <svg className="w-3 h-3 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                          </svg>
-                          {car.seats} Seats
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <svg className="w-3 h-3 text-gray-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                          </svg>
-                          {car.fuelType}
-                        </span>
-                      </div>
-
-                      <div className="mt-auto pt-3 border-t border-gray-100 flex items-center justify-between">
-                        <div className="flex flex-col">
-                          <span className="text-[10px] text-gray-400">from</span>
-                          <span className="text-lg font-extrabold text-gray-900">
-                            ${car.dailyRate}
-                            <span className="text-[10px] font-medium text-gray-400">/day</span>
-                          </span>
-                        </div>
-                        <Link
-                          href={`/cars/${car.id}`}
-                          className="bg-[#1e3a8a] text-white px-3 py-2 rounded-lg text-xs font-bold hover:bg-[#172554] transition-all"
-                        >
-                          View
-                        </Link>
-                      </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            )}
+                </div>
+              ))}
+            </div>
 
             <div className="text-center mt-10 md:mt-14">
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
