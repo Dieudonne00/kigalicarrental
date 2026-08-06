@@ -1,0 +1,37 @@
+# Kigali Car Rental
+
+> Kigali Car Rental offers self-drive and chauffeur-driven car rental in Kigali, Rwanda, from $30/day. Free airport delivery, full insurance, and 24/7 support. Fleet ranges from economy sedans to 4x4 Land Cruisers, minibuses, and safari vehicles.
+
+## Fleet & Booking
+- [Our Fleet](https://kigalicarrental.site/fleet): Full list of available vehicles with real-time pricing, filters, and rental requirements.
+- [Book Now](https://kigalicarrental.site/book-now): Online booking form.
+- [Pricing](https://kigalicarrental.site/pricing): Car rental rates from $30/day.
+- [Pay Online](https://kigalicarrental.site/pay): Online payment for existing bookings.
+
+## Services
+- [Self-Drive Rwanda](https://kigalicarrental.site/self-drive-rwanda): Self-drive car hire across Rwanda.
+- [Airport Transfer Kigali](https://kigalicarrental.site/airport-transfer-kigali): 24/7 Kigali International Airport pickup and drop-off.
+- [4x4 Car Hire Rwanda](https://kigalicarrental.site/4x4-car-hire-rwanda): 4x4 and Land Cruiser rental for safari and off-road travel.
+- [Luxury Car Hire Kigali](https://kigalicarrental.site/luxury-car-hire-kigali): Luxury vehicle rental for executive travel.
+- [Corporate Car Hire Kigali](https://kigalicarrental.site/corporate-car-hire-kigali): Business and chauffeur-driven car hire for corporate clients.
+- [NGO Car Hire Kigali](https://kigalicarrental.site/ngo-car-hire-kigali): Vehicle hire for NGOs, UN agencies, and embassies.
+- [Long Term Car Hire Kigali](https://kigalicarrental.site/long-term-car-hire-kigali): Weekly and monthly car rental rates.
+- [Wedding Car Hire Kigali](https://kigalicarrental.site/wedding-car-hire-kigali): Vehicles for weddings and special occasions.
+
+## Tours & Destinations
+- [Tours & Itineraries](https://kigalicarrental.site/tours): Sample itineraries for Akagera, Volcanoes National Park, Nyungwe Forest, and Lake Kivu, each with a vehicle and driver-guide.
+- [Akagera Safari](https://kigalicarrental.site/akagera-game-drive): Self-drive game drive vehicles for Akagera National Park.
+- [Gorilla Trekking Car Hire](https://kigalicarrental.site/gorilla-trekking-car-hire): Vehicle hire for Volcanoes National Park gorilla trekking.
+- [Nyungwe Forest Car Hire](https://kigalicarrental.site/nyungwe-forest-car-hire): Vehicle hire for Nyungwe Forest chimpanzee trekking.
+- [Lake Kivu Car Hire](https://kigalicarrental.site/lake-kivu-car-hire): Vehicle hire for Lake Kivu trips.
+- [Volcanoes National Park Car Hire](https://kigalicarrental.site/volcanoes-national-park-car-hire): Vehicle hire for Volcanoes National Park.
+
+## Company
+- [About](https://kigalicarrental.site/about): About Kigali Car Rental.
+- [Contact](https://kigalicarrental.site/contact): Contact details and location in Kigali.
+- [FAQ](https://kigalicarrental.site/faq): Frequently asked questions about car rental in Kigali.
+- [How It Works](https://kigalicarrental.site/how-it-works): The booking process step by step.
+
+## Optional
+- [Blog](https://kigalicarrental.site/blog): Rwanda travel guides and car rental tips.
+- [Site Map](https://kigalicarrental.site/site-map): Full list of pages on the site.
