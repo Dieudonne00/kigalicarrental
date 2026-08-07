@@ -17,7 +17,11 @@ import PriceList from "@/components/PriceList";
 const SITE = "https://kigalicarrental.site";
 const OG_IMAGE = "https://kigalicarrental.site/opengraph-image";
 
-export const revalidate = 60;
+// Static ISR (revalidate) baked a bad build-time DB read into the cached HTML
+// and never self-healed across many regeneration windows. Force-dynamic
+// guarantees every request - including Googlebot's - gets a fresh read from
+// the database, same as /api/cars already does reliably.
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Kigali Car Rental | Kigali Car Hire | Free Airport Delivery",
