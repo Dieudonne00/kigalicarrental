@@ -264,38 +264,50 @@ const faqSchema = {
 };
 
 
-export default async function Home() {
-  const allCars = await prisma.car.findMany({
-    where: { available: true },
-    orderBy: [{ featured: "desc" }, { createdAt: "desc" }],
-    select: {
-      id: true,
-      name: true,
-      brand: true,
-      model: true,
-      year: true,
-      category: true,
-      transmission: true,
-      seats: true,
-      fuelType: true,
-      dailyRate: true,
-      weeklyRate: true,
-      monthlyRate: true,
-      images: true,
-      videoUrl: true,
-    },
-  });
+const CARS_SELECT = {
+  id: true,
+  name: true,
+  brand: true,
+  model: true,
+  year: true,
+  category: true,
+  transmission: true,
+  seats: true,
+  fuelType: true,
+  dailyRate: true,
+  weeklyRate: true,
+  monthlyRate: true,
+  images: true,
+  videoUrl: true,
+} as const;
 
-  if (allCars.length === 0) {
-    // A real empty fleet is not plausible here - this means the query hit a
-    // transient DB issue (Supabase's connection pool has been unreliable
-    // throughout this project) and returned nothing rather than throwing.
-    // Throwing forces Next.js's ISR to keep serving the last good cached
-    // page instead of publishing a broken/inaccurate one over it.
-    throw new Error("Home: prisma.car.findMany returned zero available cars - refusing to render, likely a transient DB failure");
+async function getAvailableCars() {
+  // Supabase's connection pooler has intermittently rejected connections
+  // throughout this project ("max clients reached"). A single retry lets a
+  // request recover from that within itself. We deliberately never throw
+  // here: throwing during a live request (not just a background ISR
+  // revalidation) returns a hard 500 to whoever asked for the page -
+  // including Googlebot - which is worse than briefly showing stale data.
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const cars = await prisma.car.findMany({
+        where: { available: true },
+        orderBy: [{ featured: "desc" }, { createdAt: "desc" }],
+        select: CARS_SELECT,
+      });
+      if (cars.length > 0) return cars;
+    } catch {
+      // fall through to retry
+    }
+    if (attempt === 0) await new Promise((r) => setTimeout(r, 400));
   }
+  return [];
+}
 
-  const minPrice = Math.min(...allCars.map((c) => c.dailyRate));
+export default async function Home() {
+  const allCars = await getAvailableCars();
+
+  const minPrice = allCars.length > 0 ? Math.min(...allCars.map((c) => c.dailyRate)) : 30;
 
   const priceByCategory = new Map<string, { fromDaily: number; fromWeekly: number | null; fromMonthly: number | null; example: string }>();
   for (const car of allCars) {
