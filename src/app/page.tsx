@@ -90,6 +90,7 @@ const localBusinessSchema = {
   },
   sameAs: [
     "https://share.google/7TUI877vpCFKLLU0a",
+    "https://www.google.com/maps/search/?api=1&query=Kigali+car+hire+car+rental+in+Rwanda+KG+648+St+Kigali",
   ],
   geo: {
     "@type": "GeoCoordinates",
