@@ -21,6 +21,16 @@ const nextConfig: NextConfig = {
         destination: 'https://kigalicarhire.rw/:path*',
         permanent: true,
       },
+      {
+        // The canonical tag already told Google www is a duplicate of the
+        // non-www version, but www.kigalicarrental.site was still serving
+        // full 200 content instead of redirecting - a soft signal instead
+        // of a hard one. This closes that gap entirely.
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.kigalicarrental.site' }],
+        destination: 'https://kigalicarrental.site/:path*',
+        permanent: true,
+      },
     ];
   },
 };
