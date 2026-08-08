@@ -25,7 +25,7 @@ export default function KigaliCarHireContent() {
             </p>
 
             <p className="text-gray-600 mb-6 leading-relaxed">
-              <strong className="text-gray-900">Car rental in Kigali starts from just $30 per day</strong> for economy vehicles and $60 per day for 4x4 SUVs. Weekly and monthly rates offer significant discounts. We offer free car delivery to any hotel or address in Kigali city, with 24/7 phone and WhatsApp support for all customers throughout their rental.
+              <strong className="text-gray-900">Car rental in Kigali starts from just $35 per day</strong> for economy vehicles and $60 per day for 4x4 SUVs. Weekly and monthly rates offer significant discounts. We offer free car delivery to any hotel or address in Kigali city, with 24/7 phone and WhatsApp support for all customers throughout their rental.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">

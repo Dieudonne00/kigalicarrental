@@ -4,14 +4,14 @@ import Link from "next/link";
 const SITE = "https://kigalicarrental.site";
 
 export const metadata: Metadata = {
-  title: "Pricing | Kigali Car Rental — Car Rental Rates from $30/day",
+  title: "Pricing | Kigali Car Rental — Car Rental Rates from $35/day",
   description:
-    "Kigali Car Rental pricing — economy cars from $30/day, SUVs and 4x4 Land Cruisers from $80/day, chauffeur service from $60/day, airport transfers from $30/trip. Weekly and monthly discounts available.",
+    "Kigali Car Rental pricing — economy cars from $35/day, SUVs and 4x4 Land Cruisers from $80/day, chauffeur service from $60/day, airport transfers from $30/trip. Weekly and monthly discounts available.",
   keywords: "Kigali car rental",
   alternates: { canonical: `${SITE}/pricing` },
   openGraph: {
     title: "Pricing | Kigali Car Rental",
-    description: "Transparent car rental rates in Kigali, Rwanda — from $30/day.",
+    description: "Transparent car rental rates in Kigali, Rwanda — from $35/day.",
     url: `${SITE}/pricing`,
     siteName: "Kigali Car Rental",
     images: [{ url: `${SITE}/opengraph-image`, width: 1200, height: 630, alt: "Kigali Car Rental Pricing" }],
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 const tiers = [
   {
     name: "Economy",
-    price: "$30",
+    price: "$35",
     unit: "/ day",
     description: "Compact cars ideal for city driving and short trips around Kigali.",
     features: ["Third-party insurance included", "Free Kigali hotel delivery", "24/7 roadside support"],
@@ -54,9 +54,42 @@ const tiers = [
   },
 ];
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+    { "@type": "ListItem", position: 2, name: "Pricing", item: `${SITE}/pricing` },
+  ],
+};
+
+const offersSchema = {
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  name: "Kigali Car Rental Pricing",
+  url: `${SITE}/pricing`,
+  itemListElement: tiers.map((tier) => ({
+    "@type": "Offer",
+    name: `${tier.name} Car Rental Kigali`,
+    description: tier.description,
+    priceCurrency: "USD",
+    price: tier.price.replace("$", ""),
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: tier.price.replace("$", ""),
+      priceCurrency: "USD",
+      unitText: tier.unit.includes("day") ? "DAY" : "TRIP",
+    },
+    url: `${SITE}${tier.href}`,
+    seller: { "@type": "LocalBusiness", "@id": `${SITE}/#business`, name: "Kigali Car Rental", url: SITE },
+  })),
+};
+
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(offersSchema) }} />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="text-center mb-14">
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 font-[family-name:var(--font-plus-jakarta)]">

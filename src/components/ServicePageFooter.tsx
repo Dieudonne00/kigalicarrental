@@ -28,7 +28,7 @@ export default function ServicePageFooter({ current }: { current: string }) {
           >
             Kigali Car Rental
           </Link>
-          <p className="text-gray-500 text-sm mt-1">Rwanda&apos;s trusted car rental — from $30/day · 24/7 · Free Kigali delivery</p>
+          <p className="text-gray-500 text-sm mt-1">Rwanda&apos;s trusted car rental — from $35/day · 24/7 · Free Kigali delivery</p>
         </div>
         <div className="flex flex-wrap justify-center gap-2">
           {others.map(({ label, href }) => (

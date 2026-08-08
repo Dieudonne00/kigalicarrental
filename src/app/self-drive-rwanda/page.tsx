@@ -4,12 +4,12 @@ import ServicePageFooter from "@/components/ServicePageFooter";
 
 export const metadata: Metadata = {
   title: "Self Drive Rwanda | Self Drive Car Hire Kigali - Kigali Car Rental",
-  description: "Self drive car hire in Rwanda from $30 per day. Explore Rwanda at your own pace with a fully insured car. Economy, SUV, 4x4 and luxury cars available. Book now.",
+  description: "Self drive car hire in Rwanda from $35 per day. Explore Rwanda at your own pace with a fully insured car. Economy, SUV, 4x4 and luxury cars available. Book now.",
   keywords: "Kigali car rental",
   alternates: { canonical: "https://kigalicarrental.site/self-drive-rwanda" },
   openGraph: {
     title: "Self Drive Rwanda | Kigali Car Rental",
-    description: "Self drive car hire in Rwanda from $30/day. Fully insured, 24/7 support. Explore Rwanda your way.",
+    description: "Self drive car hire in Rwanda from $35/day. Fully insured, 24/7 support. Explore Rwanda your way.",
     url: "https://kigalicarrental.site/self-drive-rwanda",
   },
 };
@@ -71,7 +71,7 @@ export default function SelfDriveRwandaPage() {
             </div>
             <div className="space-y-4">
               {[
-                { title: "Economy Cars from $30/day", desc: "Toyota Vitz, Honda Fit, and similar compact cars. Perfect for Kigali city driving and short trips." },
+                { title: "Economy Cars from $35/day", desc: "Toyota Vitz, Honda Fit, and similar compact cars. Perfect for Kigali city driving and short trips." },
                 { title: "SUVs from $60/day", desc: "Toyota RAV4, Hyundai Tucson, and similar. Comfortable for long drives and light off-road use." },
                 { title: "4x4 Land Cruisers from $90/day", desc: "Toyota Land Cruiser and Prado. Essential for national parks and rough terrain." },
                 { title: "Luxury Cars from $80/day", desc: "Mercedes, BMW, and Lexus options for business travel and special occasions." },

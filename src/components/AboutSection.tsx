@@ -14,9 +14,9 @@ export default function AboutSection() {
     },
     {
       title: "Starting Daily Rate",
-      value: "$30",
+      value: "$35",
       description:
-        "Economy sedans start from $30/day, with SUVs, 4x4 Land Cruisers, and minibuses available across every budget.",
+        "Economy sedans start from $35/day, with SUVs, 4x4 Land Cruisers, and minibuses available across every budget.",
     },
   ];
 

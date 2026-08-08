@@ -78,9 +78,40 @@ const tours = [
   },
 ];
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+    { "@type": "ListItem", position: 2, name: "Tours & Itineraries", item: `${SITE}/tours` },
+  ],
+};
+
+const tripsSchema = tours.map((tour) => ({
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  name: tour.name,
+  description: tour.summary,
+  touristType: "Self-drive and chauffeur-driven travellers",
+  itinerary: {
+    "@type": "ItemList",
+    itemListElement: tour.itinerary.map((day, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      description: day,
+    })),
+  },
+  provider: { "@type": "LocalBusiness", "@id": `${SITE}/#business`, name: "Kigali Car Rental", url: SITE },
+  url: `${SITE}${tour.href}`,
+}));
+
 export default function ToursPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      {tripsSchema.map((trip, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(trip) }} />
+      ))}
       <section className="bg-gradient-to-b from-blue-50 to-blue-50/40 pt-28 sm:pt-32 pb-10 sm:pb-14 px-4 sm:px-[5%]">
         <div className="max-w-4xl mx-auto text-center">
           <span className="inline-block bg-[#1e3a8a]/10 border border-[#1e3a8a]/25 text-[#1e3a8a] text-xs font-bold px-4 py-1.5 rounded-full mb-5">

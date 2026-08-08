@@ -5,7 +5,7 @@ import { useState } from "react";
 const faqs = [
   {
     q: "How much does car rental in Kigali cost?",
-    a: "Car rental prices start from $30 per day for economy cars. SUVs and 4x4s range from $60 to $120 per day. We offer discounted weekly and monthly rates. All prices include third-party insurance and 24/7 roadside support — no hidden fees.",
+    a: "Car rental prices start from $35 per day for economy cars. SUVs and 4x4s range from $60 to $120 per day. We offer discounted weekly and monthly rates. All prices include third-party insurance and 24/7 roadside support — no hidden fees.",
   },
   {
     q: "Do you offer self-drive car rental in Kigali?",

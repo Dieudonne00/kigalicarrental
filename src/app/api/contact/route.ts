@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
 import { sendContactFormNotification } from "@/lib/email";
+import { prisma } from "@/lib/prisma";
 
-const prisma = new PrismaClient();
 
 // POST - Create a new contact message
 export async function POST(request: NextRequest) {

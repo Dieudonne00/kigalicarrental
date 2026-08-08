@@ -6,12 +6,12 @@ export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Car Hire Fleet Kigali | SUVs, 4x4, Luxury & Economy Cars — Kigali Car Rental",
-  description: "Browse our full fleet of cars available for hire in Kigali, Rwanda. Economy cars from $30/day, SUVs from $60/day, 4x4 Land Cruisers from $90/day. All fully insured. Book online now.",
+  description: "Browse our full fleet of cars available for hire in Kigali, Rwanda. Economy cars from $35/day, SUVs from $60/day, 4x4 Land Cruisers from $90/day. All fully insured. Book online now.",
   keywords: "Kigali car rental",
   alternates: { canonical: "https://kigalicarrental.site/fleet" },
   openGraph: {
     title: "Car Hire Fleet Kigali | SUVs, 4x4, Luxury & Economy Cars",
-    description: "Browse all cars available for hire in Kigali. Economy from $30/day, 4x4 Land Cruisers from $90/day. Fully insured. Book online or WhatsApp.",
+    description: "Browse all cars available for hire in Kigali. Economy from $35/day, 4x4 Land Cruisers from $90/day. Fully insured. Book online or WhatsApp.",
     url: "https://kigalicarrental.site/fleet",
   },
 };
@@ -40,10 +40,39 @@ export default async function FleetPage() {
     },
   });
 
-  const minRate = cars.length ? Math.min(...cars.map((c) => c.dailyRate)) : 30;
+  const minRate = cars.length ? Math.min(...cars.map((c) => c.dailyRate)) : 35;
+
+  const SITE = "https://kigalicarrental.site";
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+      { "@type": "ListItem", position: 2, name: "Fleet", item: `${SITE}/fleet` },
+    ],
+  };
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Kigali Car Rental Fleet",
+    description: "Full fleet of cars available for hire in Kigali, Rwanda.",
+    url: `${SITE}/fleet`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: cars.length,
+      itemListElement: cars.map((car, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${SITE}/cars/${car.id}`,
+        name: car.name.trim(),
+      })),
+    },
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
       {/* Hero */}
       <section className="bg-gradient-to-b from-blue-50 to-blue-50/40 pt-28 sm:pt-32 pb-10 px-4 sm:px-[5%]">
         <div className="max-w-5xl mx-auto text-center">

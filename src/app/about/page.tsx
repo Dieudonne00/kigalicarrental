@@ -1,12 +1,11 @@
 import { Metadata } from "next";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/lib/prisma";
 
-const prisma = new PrismaClient();
 
 export const metadata: Metadata = {
   title: "About Kigali Car Rental | Trusted Car Rental in Rwanda",
   description:
-    "Learn about Kigali Car Rental - a car rental company offering self-drive and chauffeur-driven cars from $30/day in Kigali, with 24/7 service across Rwanda and East Africa.",
+    "Learn about Kigali Car Rental - a car rental company offering self-drive and chauffeur-driven cars from $35/day in Kigali, with 24/7 service across Rwanda and East Africa.",
   keywords: "Kigali car rental",
   alternates: { canonical: "https://kigalicarrental.site/about" },
   openGraph: {
@@ -19,11 +18,30 @@ export const metadata: Metadata = {
   },
 };
 
+const SITE = "https://kigalicarrental.site";
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+    { "@type": "ListItem", position: 2, name: "About", item: `${SITE}/about` },
+  ],
+};
+const aboutPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About Kigali Car Rental",
+  url: `${SITE}/about`,
+  mainEntity: { "@type": "LocalBusiness", "@id": `${SITE}/#business` },
+};
+
 export default async function AboutPage() {
   const fleetCount = await prisma.car.count({ where: { available: true } });
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }} />
       {/* Hero Section */}
       <section className="relative min-h-[400px] md:min-h-[600px] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
@@ -77,7 +95,7 @@ export default async function AboutPage() {
                 Based in Kigali on <strong className="text-gray-900">KG 648 St, Kigali, Rwanda</strong>, we operate 24/7 and offer two types of car hire: <strong className="text-gray-900">self-drive car hire</strong> for independent travellers, and <strong className="text-gray-900">chauffeur-driven car hire</strong> with professional local drivers who know every road in Rwanda.
               </p>
               <p>
-                Our fleet of {fleetCount} vehicles covers every category — economy sedans from <strong className="text-gray-900">$30/day</strong>, rugged 4x4 Land Cruisers for gorilla trekking and safari, luxury cars for weddings and executive travel, and minibuses for groups and corporate events. Every vehicle is fully insured, regularly serviced, and delivered clean to your hotel or address anywhere in Kigali.
+                Our fleet of {fleetCount} vehicles covers every category — economy sedans from <strong className="text-gray-900">$35/day</strong>, rugged 4x4 Land Cruisers for gorilla trekking and safari, luxury cars for weddings and executive travel, and minibuses for groups and corporate events. Every vehicle is fully insured, regularly serviced, and delivered clean to your hotel or address anywhere in Kigali.
               </p>
             </div>
           </div>
@@ -285,7 +303,7 @@ export default async function AboutPage() {
           {[
             { number: `${fleetCount}`, label: "Vehicles in Our Fleet" },
             { number: "24/7", label: "Customer Support" },
-            { number: "$30", label: "Starting Price / Day" },
+            { number: "$35", label: "Starting Price / Day" },
             { number: "6", label: "Countries We Serve" }
           ].map((stat, index) => (
             <div key={index} className="text-center">

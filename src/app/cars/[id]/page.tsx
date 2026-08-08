@@ -68,10 +68,49 @@ export default async function CarDetailPage({
   const { bookings, ...rest } = carRecord;
   const car = { ...rest, hasActiveBooking: bookings.length > 0 };
   const name = car.name.trim();
+  const inStock = car.available && !car.hasActiveBooking;
+
+  // Offers cover every real rate this car has (daily always exists; weekly/
+  // monthly only when actually set on the record - never invented).
+  const offers = [
+    {
+      "@type": "Offer",
+      name: `${name} - Daily Rate`,
+      url: `${SITE}/cars/${car.id}`,
+      priceCurrency: "USD",
+      price: car.dailyRate,
+      priceValidUntil: new Date(new Date().setMonth(new Date().getMonth() + 3)).toISOString().split("T")[0],
+      availability: inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      itemCondition: "https://schema.org/UsedCondition",
+      seller: { "@type": "LocalBusiness", "@id": `${SITE}/#business`, name: "Kigali Car Rental", url: SITE },
+    },
+    ...(car.weeklyRate
+      ? [{
+          "@type": "Offer",
+          name: `${name} - Weekly Rate`,
+          url: `${SITE}/cars/${car.id}`,
+          priceCurrency: "USD",
+          price: car.weeklyRate,
+          availability: inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+          seller: { "@type": "LocalBusiness", "@id": `${SITE}/#business`, name: "Kigali Car Rental", url: SITE },
+        }]
+      : []),
+    ...(car.monthlyRate
+      ? [{
+          "@type": "Offer",
+          name: `${name} - Monthly Rate`,
+          url: `${SITE}/cars/${car.id}`,
+          priceCurrency: "USD",
+          price: car.monthlyRate,
+          availability: inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+          seller: { "@type": "LocalBusiness", "@id": `${SITE}/#business`, name: "Kigali Car Rental", url: SITE },
+        }]
+      : []),
+  ];
 
   const productSchema = {
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": ["Product", "Car"],
     name,
     description:
       car.description ||
@@ -79,22 +118,33 @@ export default async function CarDetailPage({
     image: car.images.length > 0 ? car.images : undefined,
     brand: { "@type": "Brand", name: car.brand },
     category: car.category,
-    offers: {
-      "@type": "Offer",
-      url: `${SITE}/cars/${car.id}`,
-      priceCurrency: "USD",
-      price: car.dailyRate,
-      availability:
-        car.available && !car.hasActiveBooking
-          ? "https://schema.org/InStock"
-          : "https://schema.org/OutOfStock",
-      itemCondition: "https://schema.org/UsedCondition",
-      seller: {
-        "@type": "LocalBusiness",
-        name: "Kigali Car Rental",
-        url: SITE,
-      },
-    },
+    vehicleModelDate: String(car.year),
+    modelDate: String(car.year),
+    fuelType: car.fuelType,
+    vehicleTransmission: car.transmission,
+    seatingCapacity: car.seats,
+    ...(car.mileage ? { mileageFromOdometer: { "@type": "QuantitativeValue", value: car.mileage } } : {}),
+    offers:
+      offers.length > 1
+        ? {
+            "@type": "AggregateOffer",
+            priceCurrency: "USD",
+            lowPrice: Math.min(...offers.map((o) => o.price)),
+            highPrice: Math.max(...offers.map((o) => o.price)),
+            offerCount: offers.length,
+            offers,
+          }
+        : offers[0],
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE },
+      { "@type": "ListItem", position: 2, name: "Fleet", item: `${SITE}/fleet` },
+      { "@type": "ListItem", position: 3, name, item: `${SITE}/cars/${car.id}` },
+    ],
   };
 
   return (
@@ -102,6 +152,10 @@ export default async function CarDetailPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <CarDetailClient car={car} />
     </>

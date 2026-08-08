@@ -8,13 +8,13 @@ const OG_IMAGE = "https://kigalicarhire.b-cdn.net/hero%20section%20cars.png";
 export const metadata: Metadata = {
   title: "Car Hire Kigali 2026 | Best Car Rental Rwanda 2026 Guide - Kigali Car Rental",
   description:
-    "Car hire Kigali 2026 — complete guide to renting a car in Rwanda in 2026. Updated prices, fleet details, 2026 travel tips, and how to book. From $30/day with Kigali Car Rental.",
+    "Car hire Kigali 2026 — complete guide to renting a car in Rwanda in 2026. Updated prices, fleet details, 2026 travel tips, and how to book. From $35/day with Kigali Car Rental.",
   keywords: "Kigali car rental",
   alternates: { canonical: `${SITE}/car-hire-kigali-2026` },
   openGraph: {
     title: "Car Hire Kigali 2026 | Best Car Rental Rwanda 2026 Guide",
     description:
-      "Complete 2026 guide to car hire in Kigali. Updated prices, fleet details, booking tips, and Rwanda travel advice. From $30/day.",
+      "Complete 2026 guide to car hire in Kigali. Updated prices, fleet details, booking tips, and Rwanda travel advice. From $35/day.",
     url: `${SITE}/car-hire-kigali-2026`,
     siteName: "Kigali Car Rental",
     type: "website",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Car Hire Kigali 2026 | Best Car Rental Rwanda 2026 Guide",
-    description: "Complete 2026 guide to car hire in Kigali. Updated prices, fleet details, booking tips. From $30/day.",
+    description: "Complete 2026 guide to car hire in Kigali. Updated prices, fleet details, booking tips. From $35/day.",
     images: [OG_IMAGE],
   },
 };
@@ -38,7 +38,7 @@ const faqSchema = {
       name: "How much does car hire in Kigali cost in 2026?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Car hire in Kigali in 2026 starts from $30 per day for economy cars. SUVs like the Toyota RAV4 cost from $65 per day, and 4x4 Land Cruisers for safari and upcountry travel cost from $100 per day. Weekly and monthly rates are discounted. All prices include insurance and free hotel delivery in Kigali.",
+        text: "Car hire in Kigali in 2026 starts from $35 per day for economy cars. SUVs like the Toyota RAV4 cost from $65 per day, and 4x4 Land Cruisers for safari and upcountry travel cost from $100 per day. Weekly and monthly rates are discounted. All prices include insurance and free hotel delivery in Kigali.",
       },
     },
     {
@@ -86,7 +86,7 @@ const breadcrumbSchema = {
 };
 
 const prices2026 = [
-  { vehicle: "Economy Saloon (Vitz / Corolla)", daily: "$30", weekly: "$180", monthly: "$600", best: "City and short trips" },
+  { vehicle: "Economy Saloon (Vitz / Corolla)", daily: "$35", weekly: "$180", monthly: "$600", best: "City and short trips" },
   { vehicle: "Compact SUV (RAV4 / HR-V)", daily: "$65", weekly: "$350", monthly: "$900", best: "Most popular" },
   { vehicle: "Land Cruiser Prado 120/150", daily: "$100", weekly: "$560", monthly: "$1,400", best: "Safari and parks" },
   { vehicle: "Land Cruiser 70 / 78 Series", daily: "$120", weekly: "$700", monthly: "$1,800", best: "Off-road and field" },
@@ -138,7 +138,7 @@ export default function CarHireKigali2026Page() {
             The complete 2026 guide to car hire in Kigali, Rwanda. Updated prices, a full fleet, and everything you need to plan your trip.
           </p>
           <p className="text-base text-white/80 max-w-2xl mx-auto mb-10">
-            Kigali Car Rental — self-drive and chauffeur-driven car hire across Rwanda. Transparent pricing from $30/day, 24/7 support.
+            Kigali Car Rental — self-drive and chauffeur-driven car hire across Rwanda. Transparent pricing from $35/day, 24/7 support.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/book-now" className="bg-white text-[#1e3a8a] px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-all shadow-lg">
@@ -258,7 +258,7 @@ export default function CarHireKigali2026Page() {
           </h2>
           <div className="space-y-5 text-gray-600 leading-relaxed">
             <p>
-              <strong className="text-gray-900">Car hire in Kigali in 2026</strong> is easier, more affordable, and more flexible than ever before. Kigali Car Rental offers a full range of vehicles across every category — from economy saloons at $30 per day to executive Land Cruisers at $120 per day — all available for self-drive or chauffeur-driven hire anywhere in Rwanda.
+              <strong className="text-gray-900">Car hire in Kigali in 2026</strong> is easier, more affordable, and more flexible than ever before. Kigali Car Rental offers a full range of vehicles across every category — from economy saloons at $35 per day to executive Land Cruisers at $120 per day — all available for self-drive or chauffeur-driven hire anywhere in Rwanda.
             </p>
             <p>
               Rwanda's roads have improved significantly in recent years, and 2026 is an excellent time to explore the country by car. The Kigali to Musanze road (for Volcanoes National Park gorilla trekking) is fully tarmacked and takes 2.5 hours. The Kigali to Gisenyi/Lake Kivu route is scenic and well-maintained. Off the main highways, a 4x4 vehicle is recommended.
@@ -316,7 +316,7 @@ export default function CarHireKigali2026Page() {
             Book Your Car Hire in Kigali for 2026
           </h2>
           <p className="text-white/85 text-lg mb-8 max-w-xl mx-auto">
-            Transparent pricing, free hotel delivery, and 24/7 support. Self-drive from $30/day.
+            Transparent pricing, free hotel delivery, and 24/7 support. Self-drive from $35/day.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/book-now" className="bg-white text-[#1e3a8a] px-8 py-4 rounded-lg font-bold hover:bg-blue-50 transition-all shadow-lg">
