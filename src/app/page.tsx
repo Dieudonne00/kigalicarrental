@@ -17,11 +17,14 @@ import PriceList from "@/components/PriceList";
 const SITE = "https://kigalicarrental.site";
 const OG_IMAGE = "https://kigalicarrental.site/opengraph-image";
 
-// Static ISR (revalidate) baked a bad build-time DB read into the cached HTML
-// and never self-healed across many regeneration windows. Force-dynamic
-// guarantees every request - including Googlebot's - gets a fresh read from
-// the database, same as /api/cars already does reliably.
-export const dynamic = "force-dynamic";
+// Force-dynamic was tried here to fix ISR baking in a bad DB read, but it
+// meant every request - including every Googlebot crawl - pays a live,
+// uncached DB round trip (measured 1.4-2.6s vs ~0.6-1.0s for the ISR-cached
+// /fleet page). Back to ISR: getAvailableCars() below now throws instead of
+// silently returning empty once retries are exhausted, which is what
+// actually protects the cache from storing a bad/empty render - so this
+// gets ISR's speed back without reintroducing the original bug.
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Kigali Car Rental | Kigali Car Hire | Free Airport Delivery",
@@ -288,12 +291,15 @@ const CARS_SELECT = {
 
 async function getAvailableCars() {
   // Supabase's connection pooler has intermittently rejected connections
-  // throughout this project ("max clients reached"). A single retry lets a
-  // request recover from that within itself. We deliberately never throw
-  // here: throwing during a live request (not just a background ISR
-  // revalidation) returns a hard 500 to whoever asked for the page -
-  // including Googlebot - which is worse than briefly showing stale data.
-  for (let attempt = 0; attempt < 2; attempt++) {
+  // throughout this project ("max clients reached"). Retrying with backoff
+  // absorbs that within a single ISR regeneration. If every attempt still
+  // fails, we throw rather than return an empty array: under ISR, a thrown
+  // error makes Next.js keep serving the last good cached page instead of
+  // publishing a broken one - which is what silently returning [] doesn't
+  // give you (that gets cached as if it were valid, which is exactly the
+  // bug that motivated force-dynamic in the first place).
+  let lastError: unknown;
+  for (let attempt = 0; attempt < 3; attempt++) {
     try {
       const cars = await prisma.car.findMany({
         where: { available: true },
@@ -301,12 +307,13 @@ async function getAvailableCars() {
         select: CARS_SELECT,
       });
       if (cars.length > 0) return cars;
-    } catch {
-      // fall through to retry
+      lastError = new Error("prisma.car.findMany returned zero available cars");
+    } catch (err) {
+      lastError = err;
     }
-    if (attempt === 0) await new Promise((r) => setTimeout(r, 400));
+    if (attempt < 2) await new Promise((r) => setTimeout(r, 400 * (attempt + 1)));
   }
-  return [];
+  throw lastError instanceof Error ? lastError : new Error("getAvailableCars failed after retries");
 }
 
 export default async function Home() {
