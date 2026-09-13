@@ -7,12 +7,9 @@ import ServicesSection from "@/components/ServicesSection";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import FAQSection from "@/components/FAQSection";
 import FeaturedBlogs from "@/components/FeaturedBlogs";
-import EastAfricaDestinations from "@/components/EastAfricaDestinations";
 import KigaliCarHireContent from "@/components/KigaliCarHireContent";
 import Testimonials from "@/components/Testimonials";
 import WhatsAppChatWidget from "@/components/WhatsAppChatWidget";
-import HowToBook from "@/components/HowToBook";
-import PriceList from "@/components/PriceList";
 
 const SITE = "https://kigalicarrental.site";
 const OG_IMAGE = "https://kigalicarrental.site/opengraph-image";
@@ -321,24 +318,6 @@ export default async function Home() {
 
   const minPrice = allCars.length > 0 ? Math.min(...allCars.map((c) => c.dailyRate)) : 30;
 
-  const priceByCategory = new Map<string, { fromDaily: number; fromWeekly: number | null; fromMonthly: number | null; example: string }>();
-  for (const car of allCars) {
-    const cat = (car.category || "other").toLowerCase();
-    const existing = priceByCategory.get(cat);
-    if (!existing || car.dailyRate < existing.fromDaily) {
-      priceByCategory.set(cat, {
-        fromDaily: car.dailyRate,
-        fromWeekly: car.weeklyRate,
-        fromMonthly: car.monthlyRate,
-        example: car.name.trim(),
-      });
-    }
-  }
-  const categoryOrder = ["sedan", "economy", "suv", "van", "luxury"];
-  const categoryPrices = Array.from(priceByCategory.entries())
-    .sort((a, b) => categoryOrder.indexOf(a[0]) - categoryOrder.indexOf(b[0]))
-    .map(([category, v]) => ({ category, ...v }));
-
   return (
     <>
       <script
@@ -355,16 +334,18 @@ export default async function Home() {
       />
       <main>
         <HeroSection minPrice={minPrice} />
+        {/* Cars come right after the hero - this is what visitors came for */}
         <FeaturedFleet cars={allCars} />
-        <HowToBook />
-        <EastAfricaDestinations />
-        <ServicesSection />
         <WhyChooseUs />
-        <PriceList prices={categoryPrices} />
         <Testimonials fleetCount={allCars.length} />
-        <KigaliCarHireContent />
-        <FAQSection />
+        <AboutSection />
+        <ServicesSection />
         <FeaturedBlogs />
+        <FAQSection />
+        {/* Unique on-page copy for the homepage's target keywords, with real
+            internal links - kept at the end, matching the structure that was
+            confirmed climbing toward page 1 before the Aug 3 codebase swap. */}
+        <KigaliCarHireContent />
       </main>
       <WhatsAppChatWidget />
     </>
