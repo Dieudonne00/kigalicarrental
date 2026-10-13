@@ -3,7 +3,7 @@ import Link from "next/link";
 import ServicePageFooter from "@/components/ServicePageFooter";
 
 export const metadata: Metadata = {
-  title: "Self Drive Rwanda | Self Drive Car Hire Kigali - Kigali Car Rental",
+  title: "Self Drive Rwanda | Self Drive Car Hire Kigali",
   description: "Self drive car hire in Rwanda from $35 per day. Explore Rwanda at your own pace with a fully insured car. Economy, SUV, 4x4 and luxury cars available. Book now.",
   keywords: "Kigali car rental",
   alternates: { canonical: "https://kigalicarrental.site/self-drive-rwanda" },

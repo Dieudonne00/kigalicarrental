@@ -3,12 +3,12 @@ import Link from "next/link";
 import ServicePageFooter from "@/components/ServicePageFooter";
 
 export const metadata: Metadata = {
-  title: "4x4 Car Hire Rwanda | 4x4 Rental Kigali Land Cruiser Prado - Kigali Car Rental",
+  title: "4x4 Car Hire Rwanda | Land Cruiser & Prado Rental",
   description: "Hire a 4x4 in Rwanda from $80 per day. Land Cruiser, Prado, RAV4 and more. Perfect for safaris, gorilla trekking, and national park visits. Book online now.",
   keywords: "Kigali car rental",
   alternates: { canonical: "https://kigalicarrental.site/4x4-car-hire-rwanda" },
   openGraph: {
-    title: "4x4 Car Hire Rwanda | Land Cruiser and Prado Rental - Kigali Car Rental",
+    title: "4x4 Car Hire Rwanda | Land Cruiser & Prado Rental",
     description: "Hire a 4x4 in Rwanda from $80/day. Land Cruiser, Prado, RAV4. Ideal for safaris and national parks.",
     url: "https://kigalicarrental.site/4x4-car-hire-rwanda",
   },

@@ -5,7 +5,7 @@ import FleetClient from "./FleetClient";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Car Hire Fleet Kigali | SUVs, 4x4, Luxury & Economy Cars — Kigali Car Rental",
+  title: "Car Hire Fleet Kigali | SUVs, 4x4, Luxury & Economy Cars",
   description: "Browse our full fleet of cars available for hire in Kigali, Rwanda. Economy cars from $35/day, SUVs from $60/day, 4x4 Land Cruisers from $90/day. All fully insured. Book online now.",
   keywords: "Kigali car rental",
   alternates: { canonical: "https://kigalicarrental.site/fleet" },

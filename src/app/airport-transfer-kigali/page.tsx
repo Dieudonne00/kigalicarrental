@@ -3,7 +3,7 @@ import Link from "next/link";
 import ServicePageFooter from "@/components/ServicePageFooter";
 
 export const metadata: Metadata = {
-  title: "Airport Transfer Kigali | Car Hire Kigali International Airport - Kigali Car Rental",
+  title: "Airport Transfer Kigali | 24/7 Pickup - Kigali Car Rental",
   description: "Book a reliable airport transfer in Kigali from $30. We meet you at Kigali International Airport arrivals 24/7 with a name board. Fixed prices, no hidden fees. Call +250 787 619 387.",
   keywords: "Kigali car rental",
   alternates: { canonical: "https://kigalicarrental.site/airport-transfer-kigali" },
